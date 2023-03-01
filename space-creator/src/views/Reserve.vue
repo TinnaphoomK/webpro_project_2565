@@ -13,7 +13,8 @@ export default {
             starttime: '',
             endtime: '',
             value: '',
-            reservations: []
+            reservations: [],
+            account: []
         }
     },
     methods: {
