@@ -3,7 +3,18 @@ import Navbar from '../components/Navbar.vue';
 export default {
     components: {
         Navbar
+    },
+    data() {
+    return {
+      reservations: []
     }
+  },
+  created() {
+    const storedReservations = localStorage.getItem('reservations');
+    if (storedReservations) {
+      this.reservations = JSON.parse(storedReservations);
+    }
+  }
 }
 </script>
 
@@ -21,7 +32,7 @@ export default {
         style="margin-left: 17%; margin-top: 1%;padding-top: 1.7%;">
         <div class="absolute w-10rem h-3rem text-white pt-2 border-round-right-2xl shadow-5 his"
             style="background-color:rgb(35, 87, 165);">รอดำเนินการ</div>
-        Auditorium &emsp;&emsp;&emsp;&emsp; 13 FEB,2023 &emsp;&emsp;&emsp;&emsp; 11:00 - 13:00 &emsp;&emsp;&emsp;&emsp;
+        Auditorium &emsp;&emsp;&emsp;&emsp; reservation.startdate &emsp;&emsp;&emsp;&emsp; 11:00 - 13:00 &emsp;&emsp;&emsp;&emsp;
         #10000
         <a href=""><i class="absolute pi pi-ellipsis-h" style="margin-left: 13%;"></i></a>
     </div>
