@@ -13,16 +13,17 @@
     <div class="white-half border-round-right-2xl shadow-5">
       <form class="absolute h-30rem">
         <label for="username" class="text-xl mx-7">Username</label>
-        <InputText id="username" v-model="username" name="username" type="text" class="p-inputtext-lg shadow-2 mx-7" style="width: 80%;" />
+        <InputText id="username" v-model="username" name="username" type="text" class="p-inputtext-lg shadow-2 mx-7"
+          style="width: 80%;" />
         <br>
         <label for="password" class="text-xl mx-7">Password</label>
         <InputText id="password" v-model="password" name="password" type="password" class="p-inputtext-lg shadow-2 mx-7"
           style="width: 80%;" />
         <br><br>
 
-          <Button  @click.prevent="signin" class="absolute text-center justify-content-center text-bold text-2xl mx-7"
-            style="width: 76%; height: 12%;background-image: linear-gradient(to right, rgb(3, 8, 16), rgb(35, 87, 165));">Sign
-            in</Button><br><br><br><br>
+        <Button @click.prevent="signin" class="absolute text-center justify-content-center text-bold text-2xl mx-7"
+          style="width: 76%; height: 12%;background-image: linear-gradient(to right, rgb(3, 8, 16), rgb(35, 87, 165));">Sign
+          in</Button><br><br><br><br>
 
         <a href="/forgotpassword" class="right bg-transparent">Forget password ?</a><br><br><br>
         <label for="password" class="text-center">don't have an account yet ?<a class="bg-transparent" href="/signup">
@@ -155,6 +156,7 @@ a:active {
 </style>
 
 
+
 <script>
 export default {
   data() {
@@ -191,4 +193,3 @@ export default {
   }
 };
 </script>
-
