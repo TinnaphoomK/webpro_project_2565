@@ -1,4 +1,8 @@
 <script>
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 </script>
 <template>
   <!-- login -->
@@ -40,9 +44,6 @@
   </div>
 </template>
 
-<script>
-
-</script>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
@@ -154,4 +155,8 @@ a:hover {
 a:active {
   text-decoration: none;
 }
+<<<<<<< Updated upstream
 </style>
+=======
+</style>
+>>>>>>> Stashed changes

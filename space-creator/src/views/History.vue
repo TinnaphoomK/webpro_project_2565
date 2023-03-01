@@ -94,4 +94,8 @@ a:hover {
 a:active {
     text-decoration: none;
 }
+<<<<<<< Updated upstream
 </style>
+=======
+</style>
+>>>>>>> Stashed changes
