@@ -1,14 +1,28 @@
 <script>
 import Navbar from '../components/Navbar.vue'
 import CardItem from '../components/CardItem.vue'
+
 export default {
     components: {
         Navbar,
         CardItem
+    },
+    methods: {
+        saveRoomName() {
+            // Get the current list of room names from local storage, or initialize it to an empty array if it doesn't exist yet
+            const roomNames = JSON.parse(localStorage.getItem('roomNames')) || [];
+
+            // Add the room name to the list
+            roomNames.push(document.getElementById('roomname').innerText);
+
+            // Save the updated list to local storage
+            localStorage.setItem('roomNames', JSON.stringify(roomNames));
+            this.$router.push('/reserve');
+
+        }
     }
 };
 </script>
-
 <template>
     <!-- navbar -->
     <Navbar></Navbar>
@@ -27,7 +41,7 @@ export default {
                 </div>
 
             </div>
-            <div class="absolute text-6xl font-bold" style="right: 35%; top: 28%;">
+            <div id="roomname" value="roomname" class="absolute text-6xl font-bold" style="right: 35%; top: 28%;">
                 Auditorium
             </div>
             <div class="bar"></div>
@@ -39,10 +53,8 @@ export default {
                 <div class="thai">มักใช้ในโอกาส : กินข้าว</div>
             </div>
 
-            <router-link to="/reserve">
-                <Button class="thai border-round-xl text-xl absolute w-12rem h-4rem justify-content-center"
+                <Button @click="saveRoomName" class="thai border-round-xl text-xl absolute w-12rem h-4rem justify-content-center"
                     style="right: 37.5%; top: 76.5%; background-color: rgb(35, 87, 165);">ยืนยันการจอง</Button>
-            </router-link>
         </div>
 
     </div>

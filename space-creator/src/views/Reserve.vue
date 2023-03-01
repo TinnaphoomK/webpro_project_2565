@@ -1,36 +1,56 @@
 <script>
-import Navbar from '../components/Navbar.vue'
-import CardItem from '../components/CardItem.vue'
+import Navbar from '../components/Navbar.vue';
+
 export default {
     components: {
         Navbar,
-        CardItem
+
     },
     data() {
         return {
+            reservations: [],
             startdate: '',
             enddate: '',
             starttime: '',
             endtime: '',
             value: '',
-            reservations: [],
-            account: []
+            id: 1, // initialize id to 1
+            roomNames: []
+        }
+    },
+    created() {
+        const storedReservations = localStorage.getItem('reservations');
+        if (storedReservations) {
+            this.reservations = JSON.parse(storedReservations);
+        }
+        const storedRoomNames = localStorage.getItem('roomNames');
+        if (storedRoomNames) {
+            this.roomNames = JSON.parse(storedRoomNames);
         }
     },
     methods: {
-        saveReservation() {
+        saveInputs() {
+            
             const reservation = {
+                id: this.id,
                 startdate: this.startdate,
                 enddate: this.enddate,
                 starttime: this.starttime,
                 endtime: this.endtime,
                 value: this.value
-            }
-            this.reservations.push(reservation);
-            localStorage.setItem('reservations', JSON.stringify(this.reservations));
+            };
+            // increment id for next item
+            this.id++;
+            // add reservation to localStorage
+            localStorage.setItem(`reservation-${reservation.id}`, JSON.stringify(reservation));
+
+            this.$router.push('/history');
+
+
+
         }
     }
-};
+}
 </script>
 
 
@@ -87,10 +107,8 @@ export default {
                 <Textarea v-model="value" class="" style="margin-left: 10%; margin-bottom: 3.2%;" rows="5" cols="136" />
             </div>
 
-            <router-link to="/history">
-                <Button class="thai border-round-xl text-xl absolute w-12rem h-3rem justify-content-center"
+                <Button @click="saveInputs" class="thai border-round-xl text-xl absolute w-12rem h-3rem justify-content-center"
                     style="right: 45%; top: 90%; background-color: rgb(35, 87, 165);">ยืนยันการจอง</Button>
-            </router-link>
         </div>
 
     </div>
