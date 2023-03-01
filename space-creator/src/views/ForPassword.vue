@@ -1,5 +1,3 @@
-<script>
-</script>
 <template>
     <!-- login -->
     <div class="rectangle">
@@ -14,23 +12,23 @@
         <div class="white-half border-round-right-2xl shadow-5">
             <form class="absolute h-30rem">
                 <label for="username" class="text-xl mx-7">Username</label>
-                <InputText id="username" name="username" type="text" class="p-inputtext-lg shadow-2 mx-7"
+                <InputText v-model="username" id="username" name="username" type="text" class="p-inputtext-lg shadow-2 mx-7"
                     style="width: 80%;" />
                 <br>
                 <label for="password" class="text-xl mx-7">New Password</label>
-                <InputText id="password" name="password" type="password" class="p-inputtext-lg shadow-2 mx-7"
+                <InputText v-model="newPassword" id="newpassword" name="newpassword" type="password" class="p-inputtext-lg shadow-2 mx-7"
                     style="width: 80%;" />
                 <br>
                 <label for="password" class="text-xl mx-7">Confirm Password</label>
-                <InputText id="password" name="password" type="password" class="p-inputtext-lg shadow-2 mx-7"
+                <InputText v-model="confirmPassword" id="conpassword" name="conpassword" type="password" class="p-inputtext-lg shadow-2 mx-7"
                     style="width: 80%;" />
                 <br><br>
-                <router-link to="/">
-                    <Button class="absolute text-center justify-content-center text-bold text-2xl mx-7 mt-3"
+
+                    <Button @click="resetPassword" class="absolute text-center justify-content-center text-bold text-2xl mx-7 mt-3"
                         style="width: 76%; height: 12%;background-image: linear-gradient(to right, rgb(3, 8, 16), rgb(35, 87, 165));">Change
                         Password</Button><br><br><br><br><br>
-                </router-link>
-                <label for="password" class="text-center mt-6">already have an account ?<a class="bg-transparent" href="./">
+
+                <label for="password" class="text-center mt-6">already have an account ?<a class="bg-transparent" href="/">
                         Sign
                         in</a></label>
             </form>
@@ -44,9 +42,7 @@
     </div>
 </template>
   
-<script>
 
-</script>
   
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
@@ -168,4 +164,45 @@ a:active {
     text-decoration: none;
 }
 </style>
+
+<script>
+export default {
+  data() {
+    return {
+      username: "",
+      newPassword: "",
+      confirmPassword: "",
+      accounts: []
+    };
+  },
+  methods: {
+    resetPassword() {
+      const account = this.accounts.find(account => {
+        return account.username === this.username;
+      });
+
+      if (account) {
+        account.password = this.newPassword;
+
+        localStorage.setItem('accounts', JSON.stringify(this.accounts));
+
+        this.$router.push('/signin');
+      } else {
+        alert("This username does not exist.");
+      }
+    }
+  },
+  created() {
+    // Load the accounts from local storage
+    const accountsJson = localStorage.getItem('accounts');
+    if (accountsJson) {
+      this.accounts = JSON.parse(accountsJson);
+    }
+  }
+};
+</script>
+This script checks if the provided username exists in the list of accounts, and if it does, it updates the password for that account and saves the updated accounts array to local storage. If the provided username does not exist, it alerts the user that the username is not found.
+
+
+
 

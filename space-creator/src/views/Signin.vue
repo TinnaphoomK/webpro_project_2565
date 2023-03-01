@@ -24,8 +24,7 @@
             style="width: 76%; height: 12%;background-image: linear-gradient(to right, rgb(3, 8, 16), rgb(35, 87, 165));">Sign
             in</Button><br><br><br><br>
 
-        <a href="/forgotpassword"><label for="password" class="text-right mr-7">Forget password
-            ?</label></a><br><br><br>
+        <a href="/forgotpassword" class="right bg-transparent">Forget password ?</a><br><br><br>
         <label for="password" class="text-center">don't have an account yet ?<a class="bg-transparent" href="/signup">
             Sign
             up</a></label>
@@ -62,6 +61,10 @@ h2 {
 .centered-element {
   margin-top: 10%;
   position: absolute;
+}
+
+.right {
+  margin-left: 69%;
 }
 
 .footer {
