@@ -84,11 +84,12 @@ export default {
 
             <label for="comment" class="absolute thai text-xl" style="margin-left: 6%;">หมายเหตุ</label>
             <div class="text-center">
-                <Textarea v-model="value" class="" style="margin-left: 10%; margin-bottom: 3.2%;" rows="5" cols="136" />
+                <Textarea v-model="value" class="shadow-5" style="margin-left: 10%; margin-bottom: 3.2%;" rows="5"
+                    cols="136" />
             </div>
 
             <router-link to="/history">
-                <Button class="thai border-round-xl text-xl absolute w-12rem h-3rem justify-content-center"
+                <Button class="thai border-round-xl text-xl absolute w-12rem h-3rem justify-content-center shadow-5"
                     style="right: 45%; top: 90%; background-color: rgb(35, 87, 165);">ยืนยันการจอง</Button>
             </router-link>
         </div>

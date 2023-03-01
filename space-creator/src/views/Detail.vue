@@ -40,7 +40,7 @@ export default {
             </div>
 
             <router-link to="/reserve">
-                <Button class="thai border-round-xl text-xl absolute w-12rem h-4rem justify-content-center"
+                <Button class="thai border-round-xl text-xl absolute w-12rem h-4rem justify-content-center shadow-5"
                     style="right: 37.5%; top: 76.5%; background-color: rgb(35, 87, 165);">ยืนยันการจอง</Button>
             </router-link>
         </div>

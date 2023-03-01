@@ -43,6 +43,16 @@ const router = createRouter({
       name: 'resrequest',
       component: () => import('../views/ReserveRequest.vue')
     },
+    {
+      path: '/reportrequest',
+      name: 'reportrequest',
+      component: () => import('../views/ReportRequest.vue')
+    },
+    {
+      path: '/report',
+      name: 'report',
+      component: () => import('../views/Report.vue')
+    },
   ]
 })
 

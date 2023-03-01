@@ -21,9 +21,9 @@ export default {
 <template>
     <Navbar></Navbar>
     <!-- badge -->
-    <div class="his bg-white shadow-5 w-2 h-6rem justify-content-center text-center text-5xl align-items-center border-round-2xl"
-        style="margin-left: 42%; margin-top: 3%;padding-top: 1%;">
-        ประวัติการจอง
+    <div class="his bg-white shadow-5 w-3 h-6rem justify-content-center text-center text-5xl align-items-center border-round-2xl"
+        style="margin-left: 37%; margin-top: 3%;padding-top: 1%;">
+        คำร้องรายงานห้อง
     </div>
     <div class="" style="margin-left: 18%; margin-top: 3.4%;">Pending (2)</div>
     <div class="bar"></div>
@@ -32,19 +32,25 @@ export default {
         style="margin-left: 17%; margin-top: 1%;padding-top: 1.7%;">
         <div class="absolute w-10rem h-3rem text-white pt-2 border-round-right-2xl shadow-5 his"
             style="background-color:rgb(35, 87, 165);">รอดำเนินการ</div>
-        Auditorium &emsp;&emsp;&emsp;&emsp; reservation.startdate &emsp;&emsp;&emsp;&emsp; 11:00 - 13:00
+        RoomId &emsp;&emsp;&emsp;&emsp; Auditorium &emsp;&emsp;&emsp;&emsp; เครื่องเสียมีปัญหา
         &emsp;&emsp;&emsp;&emsp;
         #10000
-        <a href="/report"><i class="absolute pi pi-ellipsis-h" style="margin-left: 11%;"></i></a>
+        <div class="absolute w-7rem h-3rem text-center pt-2 text-white border-round-2xl shadow-5 his bg-green-700"
+            style="right: 21.5%; top: 38%;">เสร็จสิ้น</div>
+        <a href=""><i class="absolute pi pi-ellipsis-h" style="margin-left: 13.5%;"></i></a>
     </div>
     <div class="bg-white shadow-5 w-8 h-6rem justify-content-center text-center text-xl align-items-center border-round-2xl"
-        style="margin-left: 17%; margin-top: 1.5%;padding-top: 1.7%;">
+        style="margin-left: 17%; margin-top: 1%;padding-top: 1.7%;">
         <div class="absolute w-10rem h-3rem text-white pt-2 border-round-right-2xl shadow-5 his"
             style="background-color:rgb(35, 87, 165);">รอดำเนินการ</div>
-        Auditorium &emsp;&emsp;&emsp;&emsp; 9 JAN,2023 &emsp;&emsp;&emsp;&emsp; 11:00 - 13:00 &emsp;&emsp;&emsp;&emsp;
+        RoomId &emsp;&emsp;&emsp;&emsp; Auditorium &emsp;&emsp;&emsp;&emsp; เครื่องเสียมีปัญหา
+        &emsp;&emsp;&emsp;&emsp;
         #10000
-        <a href="/report"><i class="absolute pi pi-ellipsis-h" style="margin-left: 13%;"></i></a>
+        <div class="absolute w-7rem h-3rem text-center pt-2 text-white border-round-2xl shadow-5 his bg-green-700"
+            style="right: 21.5%; top: 49.5%;">เสร็จสิ้น</div>
+        <a href=""><i class="absolute pi pi-ellipsis-h" style="margin-left: 13.5%;"></i></a>
     </div>
+
     <div class="" style="margin-left: 17.5%; margin-top: 4.5%;">Completed (3)</div>
     <div class="bar" style="margin-top: 18%;"></div>
 
@@ -52,17 +58,18 @@ export default {
         style="margin-left: 17%; margin-top: 1%;padding-top: 1.7%;">
         <div class="absolute w-10rem h-3rem text-white pt-2 border-round-right-2xl shadow-5 his"
             style="background-color:rgb(15, 120, 19);">อนุมัติ</div>
-        Auditorium &emsp;&emsp;&emsp;&emsp; 13 FEB,2023 &emsp;&emsp;&emsp;&emsp; 11:00 - 13:00 &emsp;&emsp;&emsp;&emsp;
-        #10001
-        <a href="/report"><i class="absolute pi pi-ellipsis-h" style="margin-left: 13%;"></i></a>
+        RoomId &emsp;&emsp;&emsp;&emsp; Auditorium &emsp;&emsp;&emsp;&emsp; เครื่องเสียมีปัญหา &emsp;&emsp;&emsp;&emsp;
+        #10000
+        <a href=""><i class="absolute pi pi-ellipsis-h" style="margin-left: 13%;"></i></a>
     </div>
     <div class="bg-white shadow-5 w-8 h-6rem justify-content-center text-center text-xl align-items-center border-round-2xl"
         style="margin-left: 17%; margin-top: 1.5%;padding-top: 1.7%;">
         <div class="absolute w-10rem h-3rem text-white pt-2 border-round-right-2xl shadow-5 his"
             style="background-color:rgb(164, 17, 17);">ไม่อนุมัติ</div>
-        Auditorium &emsp;&emsp;&emsp;&emsp; 25 FEB,2023 &emsp;&emsp;&emsp;&emsp; 09:00 - 12:00 &emsp;&emsp;&emsp;&emsp;
+        RoomId &emsp;&emsp;&emsp;&emsp; Auditorium &emsp;&emsp;&emsp;&emsp;&emsp; ไมค์ไม่ติด
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
         #10002
-        <a href="/report"><i class="absolute pi pi-ellipsis-h" style="margin-left: 13%;"></i></a>
+        <a href=""><i class="absolute pi pi-ellipsis-h" style="margin-left: 13%;"></i></a>
     </div>
 </template>
 
