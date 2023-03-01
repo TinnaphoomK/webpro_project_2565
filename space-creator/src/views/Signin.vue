@@ -1,5 +1,4 @@
-<script>
-</script>
+
 <template>
   <!-- login -->
   <div class="rectangle">
@@ -14,17 +13,17 @@
     <div class="white-half border-round-right-2xl shadow-5">
       <form class="absolute h-30rem">
         <label for="username" class="text-xl mx-7">Username</label>
-        <InputText id="username" name="username" type="text" class="p-inputtext-lg shadow-2 mx-7" style="width: 80%;" />
+        <InputText id="username" v-model="username" name="username" type="text" class="p-inputtext-lg shadow-2 mx-7" style="width: 80%;" />
         <br>
         <label for="password" class="text-xl mx-7">Password</label>
-        <InputText id="username" name="username" type="password" class="p-inputtext-lg shadow-2 mx-7"
+        <InputText id="password" v-model="password" name="password" type="password" class="p-inputtext-lg shadow-2 mx-7"
           style="width: 80%;" />
         <br><br>
-        <router-link to="/mainpage">
-          <Button class="absolute text-center justify-content-center text-bold text-2xl mx-7"
+
+          <Button  @click.prevent="signin" class="absolute text-center justify-content-center text-bold text-2xl mx-7"
             style="width: 76%; height: 12%;background-image: linear-gradient(to right, rgb(3, 8, 16), rgb(35, 87, 165));">Sign
             in</Button><br><br><br><br>
-        </router-link>
+
         <a href="/forgotpassword"><label for="password" class="text-right mr-7">Forget password
             ?</label></a><br><br><br>
         <label for="password" class="text-center">don't have an account yet ?<a class="bg-transparent" href="/signup">
@@ -39,10 +38,6 @@
     <img src="../assets/img/cc.png" class="bg-transparent" style="width: 0.9%;" alt=""> All Right Reserved | Space Creator
   </div>
 </template>
-
-<script>
-
-</script>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
@@ -155,3 +150,42 @@ a:active {
   text-decoration: none;
 }
 </style>
+
+
+<script>
+export default {
+  data() {
+    return {
+      username: "",
+      password: "",
+      accounts: []
+    };
+  },
+  methods: {
+    signin() {
+      // Check if an account with the same username exists
+      const existingAccount = this.accounts.find(account => {
+        return account.username === this.username;
+      });
+
+      if (!existingAccount) {
+        alert("An account with this username doesn't exist. Please sign up first.");
+      } else if (existingAccount.password !== this.password) {
+        alert("Incorrect password. Please try again.");
+      } else {
+        // Set the currently signed in account and navigate to the home page
+        localStorage.setItem('signedInAccount', JSON.stringify(existingAccount));
+        this.$router.push('/mainpage');
+      }
+    }
+  },
+  created() {
+    // Load the accounts from local storage
+    const accountsJson = localStorage.getItem('accounts');
+    if (accountsJson) {
+      this.accounts = JSON.parse(accountsJson);
+    }
+  }
+};
+</script>
+
