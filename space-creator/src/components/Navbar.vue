@@ -9,12 +9,12 @@
                     </div>
                     <!-- home -->
                     <div class="z-1">
-                        <a class="text-2xl text-white font-bold flex align-items-center justify-content-center"
+                        <a class="text-white font-bold flex align-items-center justify-content-left ml-4"
                             style="min-width: 200px; min-height: 100px" href="./mainpage"><img
-                                src="../assets/img/logonavbar.png" class="w-4" alt=""></a>
+                                src="../assets/img/logonavbar.png" class="h-4rem" alt=""></a>
                     </div>
 
-                    <!-- classroom -->
+                    <!-- space -->
                     <div class="text-white font-bold flex align-items-center justify-content-center"
                         style="min-width: 200px; min-height: 100px"></div>
                     <div class="text-white font-bold flex align-items-center justify-content-center"
