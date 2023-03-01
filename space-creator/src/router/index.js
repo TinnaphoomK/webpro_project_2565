@@ -33,6 +33,16 @@ const router = createRouter({
       name: 'detail',
       component: () => import('../views/Detail.vue')
     },
+    {
+      path: '/reserve',
+      name: 'reserve',
+      component: () => import('../views/Reserve.vue')
+    },
+    {
+      path: '/resrequest',
+      name: 'resrequest',
+      component: () => import('../views/ReserveRequest.vue')
+    },
   ]
 })
 

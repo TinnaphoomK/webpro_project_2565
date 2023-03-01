@@ -14,34 +14,57 @@ export default {
     <Navbar></Navbar>
 
     <!-- top bar-->
-    <div class="relative text-left justify-text-center font-bold text-3xl pt-8">
-        <a class="thai first hover:text-primary-600 " style="color: rgb(35, 87, 165);" href="/mainpage">รายละเอียด</a>
-        <a class="thai ml-8 hover:text-primary-600" style="color: rgb(35, 87, 165);" href="">รายการจอง</a>
+    <div class="relative text-left justify-text-center font-bold text-3xl pt-6">
+        <a class="thai first hover:text-primary-600 " style="color: rgb(35, 87, 165);" href="/detail">รายละเอียด</a>
+        <a class="thai ml-8 hover:text-primary-600" style="color: rgb(35, 87, 165);" href="/reserve">รายการจอง</a>
 
         <div class="cardbg mt-4 shadow-5">
 
             <!-- detail -->
             <div class="justify-content-center">
-                <div class="cardone bg-primary w-5 h-30rem border-round-2xl z-1 shadow-6">
-                    <div class="absolute border-round-3xl" style="margin-left: 14.5%; margin-top: 10%;"></div>
+                <div class="grid justify-content-center">
+                    <div class="cardone bg-primary w-20rem h-7rem border-round-2xl z-1 shadow-6">
+                        <div class="absolute border-round-3xl" style="margin-left: 14.5%; margin-top: 10%;"></div>
+                    </div>
+                    <div class="cardone bg-primary w-20rem h-7rem border-round-2xl z-1 shadow-6">
+                        <div class="absolute border-round-3xl" style="margin-left: 14.5%; margin-top: 10%;"></div>
+                    </div>
+                    <div class="cardone bg-primary w-20rem h-7rem border-round-2xl z-1 shadow-6">
+                        <div class="absolute border-round-3xl" style="margin-left: 14.5%; margin-top: 10%;"></div>
+                    </div>
+                    <div class="cardone bg-primary w-20rem h-7rem border-round-2xl z-1 shadow-6">
+                        <div class="absolute border-round-3xl" style="margin-left: 14.5%; margin-top: 10%;"></div>
+                    </div>
                 </div>
 
             </div>
-            <div class="absolute text-6xl font-bold" style="right: 35%; top: 28%;">
-                Auditorium
+            <div class="ml-6 mt-4">
+                <label for="username" class="thai text-xl ml-8">วันที่เริ่มจอง</label>
+                <InputText id="username" v-model="username" name="username" type="date"
+                    class="p-inputtext-lg shadow-2 mr-8 ml-4 mt-2 mb-4" style="width: 30%;" />
+
+                <label for="username" class="thai text-xl ml-8">วันที่เริ่มจอง</label>
+                <InputText id="username" v-model="username" name="username" type="date"
+                    class="p-inputtext-lg shadow-2 mr-8 ml-4 mt-2 mb-4" style="width: 30%;" />
             </div>
-            <div class="bar"></div>
-            <div class="thai text-black absolute" style="right: 41%; top: 40%;">รายละเอียด</div>
-            <div class="text-500 absolute" style="right: 32%; top: 47%;">
-                <div class="thai">ชั้น : 1</div>
-                <div class="thai">จำนวนที่นั่ง : 222</div>
-                <div class="thai">อุปกรณ์ : เยอะ ถามยามดู</div>
-                <div class="thai">มักใช้ในโอกาส : กินข้าว</div>
+            <div class="ml-6 mt-4">
+                <label for="username" class="thai text-xl ml-8 mr-6">ตั้งแต่</label>
+                <InputText id="username" v-model="username" name="username" type="time"
+                    class="p-inputtext-lg shadow-2 mr-8 ml-4 mt-2" style="width: 30%;" />
+
+                <label for="username" class="thai text-xl ml-8 mr-3">ถึงเวลา</label>
+                <InputText id="username" v-model="username" name="username" type="time"
+                    class="p-inputtext-lg shadow-2 mr-8 ml-6 mt-2 mb-6" style="width: 30%;" />
+            </div>
+
+            <label for="username" class="absolute thai text-xl" style="margin-left: 6%;">หมายเหตุ</label>
+            <div class="text-center">
+                <Textarea v-model="value" class="" style="margin-left: 10%; margin-bottom: 3.2%;" rows="5" cols="136" />
             </div>
 
             <router-link to="/detail">
-                <Button class="thai border-round-xl text-xl absolute w-12rem h-4rem justify-content-center"
-                    style="right: 37.5%; top: 80.5%; background-color: rgb(35, 87, 165);">ยืนยันการจอง</Button>
+                <Button class="thai border-round-xl text-xl absolute w-12rem h-3rem justify-content-center"
+                    style="right: 45%; top: 90%; background-color: rgb(35, 87, 165);">ยืนยันการจอง</Button>
             </router-link>
         </div>
 
@@ -69,7 +92,7 @@ export default {
     margin-bottom: 5%;
     border-radius: 10px;
     padding-top: 4%;
-    padding-bottom: 4%;
+    padding-bottom: 3%;
 }
 
 .cardone {

@@ -14,14 +14,14 @@ export default {
     <Navbar></Navbar>
 
     <!-- top bar-->
-    <div class="relative text-left justify-text-center font-bold text-3xl pt-8">
-        <a class="thai first hover:text-primary-600 " style="color: rgb(35, 87, 165);" href="/mainpage">รายละเอียด</a>
-        <a class="thai ml-8 hover:text-primary-600" style="color: rgb(35, 87, 165);" href="">รายการจอง</a>
+    <div class="relative text-left justify-text-center font-bold text-3xl pt-6">
+        <a class="thai first hover:text-primary-600 " style="color: rgb(35, 87, 165);" href="/detail">รายละเอียด</a>
+        <a class="thai ml-8 hover:text-primary-600" style="color: rgb(35, 87, 165);" href="/reserve">รายการจอง</a>
 
         <div class="cardbg mt-4 shadow-5">
 
             <!-- detail -->
-            <div class="justify-content-center">
+            <div class="justify-content-center pb-5">
                 <div class="cardone bg-primary w-5 h-30rem border-round-2xl z-1 shadow-6">
                     <div class="absolute border-round-3xl" style="margin-left: 14.5%; margin-top: 10%;"></div>
                 </div>
@@ -39,9 +39,9 @@ export default {
                 <div class="thai">มักใช้ในโอกาส : กินข้าว</div>
             </div>
 
-            <router-link to="/detail">
+            <router-link to="/reserve">
                 <Button class="thai border-round-xl text-xl absolute w-12rem h-4rem justify-content-center"
-                    style="right: 37.5%; top: 80.5%; background-color: rgb(35, 87, 165);">ยืนยันการจอง</Button>
+                    style="right: 37.5%; top: 76.5%; background-color: rgb(35, 87, 165);">ยืนยันการจอง</Button>
             </router-link>
         </div>
 

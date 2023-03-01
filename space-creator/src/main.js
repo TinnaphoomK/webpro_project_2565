@@ -10,10 +10,7 @@ import Menubar from 'primevue/menubar';
 import Sidebar from 'primevue/sidebar';
 import InputText from 'primevue/inputtext';
 import Card from 'primevue/card'
-
-
-
-
+import Textarea from 'primevue/textarea';
 
 
 
@@ -30,5 +27,6 @@ app.component("Menubar", Menubar)
 app.component("Sidebar", Sidebar)
 app.component("InputText", InputText)
 app.component("Card", Card)
+app.component("Textarea", Textarea)
 
 app.mount('#app')
