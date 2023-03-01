@@ -1,3 +1,5 @@
+<script>
+</script>
 <template>
   <!-- login -->
   <div class="rectangle">
@@ -162,6 +164,3 @@ a:active {
   text-decoration: none;
 }
 </style>
-
-<script>
-</script>
