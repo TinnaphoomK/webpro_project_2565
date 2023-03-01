@@ -104,7 +104,8 @@ export default {
 
             <label for="comment" class="absolute thai text-xl" style="margin-left: 6%;">หมายเหตุ</label>
             <div class="text-center">
-                <Textarea v-model="value" class="" style="margin-left: 10%; margin-bottom: 3.2%;" rows="5" cols="136" />
+                <Textarea v-model="value" class="shadow-5" style="margin-left: 10%; margin-bottom: 3.2%;" rows="5"
+                    cols="136" />
             </div>
 
                 <Button @click="saveInputs" class="thai border-round-xl text-xl absolute w-12rem h-3rem justify-content-center"
