@@ -1,13 +1,3 @@
-<script>
-import Navbar from '../components/Navbar.vue'
-import CardItem from '../components/CardItem.vue'
-export default {
-    components: {
-        Navbar,
-        CardItem
-    }
-};
-</script>
 
 <template>
     <!-- navbar -->
@@ -120,3 +110,14 @@ a:active {
     text-decoration: none;
 }
 </style>
+
+<script>
+import Navbar from '../components/Navbar.vue'
+import CardItem from '../components/CardItem.vue'
+export default {
+    components: {
+        Navbar,
+        CardItem
+    },
+};
+</script>
