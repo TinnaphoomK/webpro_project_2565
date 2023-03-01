@@ -19,19 +19,27 @@ export default {
 
     <div class="bg-white shadow-5 w-8 h-6rem justify-content-center text-left text-xl align-items-center border-round-2xl"
         style="margin-left: 17%; margin-top: 1%;padding-top: 1.7%;">
-        <div class="absolute w-10rem h-3rem text-white pt-2 border-round-right-2xl shadow-5 his"
-            style="background-color:rgb(35, 87, 165);">รอดำเนินการ</div>
-        Auditorium &emsp;&emsp;&emsp;&emsp; 13 FEB,2023 &emsp;&emsp;&emsp;&emsp; 11:00 - 13:00 &emsp;&emsp;&emsp;&emsp;
+        &emsp;&emsp;&emsp;&emsp; Auditorium &emsp;&emsp;&emsp;&emsp; 13 FEB,2023 &emsp;&emsp;&emsp;&emsp; 11:00 - 13:00
+        &emsp;&emsp;&emsp;&emsp;
         #10000
-        <a href=""><i class="absolute pi pi-ellipsis-h" style="margin-left: 13%;"></i></a>
+        <div class="absolute w-7rem h-3rem text-center pt-2 text-white border-round-2xl shadow-5 his bg-red-700"
+            style="right: 23%; top: 38%;">ไม่อนุมัติ</div>
+        <div class="absolute w-7rem h-3rem text-center pt-2 text-white border-round-2xl shadow-5 his bg-green-700"
+            style="right: 29.5%; top: 38%;">อนุมัติ</div>
+        <a href=""><i class="absolute pi pi-ellipsis-h" style="margin-left: 23%;"></i></a>
     </div>
+
+
     <div class="bg-white shadow-5 w-8 h-6rem justify-content-center text-left text-xl align-items-center border-round-2xl"
         style="margin-left: 17%; margin-top: 1.5%;padding-top: 1.7%;">
-        <div class="absolute w-10rem h-3rem text-white pt-2 border-round-right-2xl shadow-5 his"
-            style="background-color:rgb(35, 87, 165);">รอดำเนินการ</div>
-        Auditorium &emsp;&emsp;&emsp;&emsp; 9 JAN,2023 &emsp;&emsp;&emsp;&emsp; 11:00 - 13:00 &emsp;&emsp;&emsp;&emsp;
+        &emsp;&emsp; &emsp;&emsp;Auditorium &emsp;&emsp;&emsp;&emsp; 9 JAN,2023 &emsp;&emsp;&emsp;&emsp; 11:00 - 13:00
+        &emsp;&emsp;&emsp;&emsp;
         #10000
-        <a href=""><i class="absolute pi pi-ellipsis-h" style="margin-left: 13%;"></i></a>
+        <div class="absolute w-7rem h-3rem text-center pt-2 text-white border-round-2xl shadow-5 his bg-red-700"
+            style="right: 23%; top: 50.5%;">ไม่อนุมัติ</div>
+        <div class="absolute w-7rem h-3rem text-center pt-2 text-white border-round-2xl shadow-5 his bg-green-700"
+            style="right: 29.5%; top: 50.5%;">อนุมัติ</div>
+        <a href=""><i class="absolute pi pi-ellipsis-h" style="margin-left: 23%;"></i></a>
     </div>
     <div class="" style="margin-left: 17.5%; margin-top: 4.5%;">Completed (3)</div>
     <div class="bar" style="margin-top: 18%;"></div>
