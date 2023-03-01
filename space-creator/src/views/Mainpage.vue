@@ -15,7 +15,7 @@
     <div class="relative text-left justify-text-center font-bold text-3xl pt-8">
         <a class="text-gray-900 first hover:text-primary-600" href="/mainpage">1ST FLOOR</a>
         <a class="text-gray-900 ml-8 hover:text-primary-600" href="/resrequest">M FLOOR</a>
-        <a class="text-gray-900 ml-8 hover:text-primary-600" href="">2ND FLOOR</a>
+        <a class="text-gray-900 ml-8 hover:text-primary-600" href="/history">2ND FLOOR</a>
         <a class="text-gray-900 ml-8 hover:text-primary-600" href="">3RD FLOOR</a>
 
         <div class="cardbg mt-4 shadow-5">
