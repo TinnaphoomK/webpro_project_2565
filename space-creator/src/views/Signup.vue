@@ -1,5 +1,4 @@
-<script>
-</script>
+
 <template>
   <!-- login -->
   <div class="rectangle">
@@ -13,18 +12,16 @@
     </div>
     <div class="white-half border-round-right-2xl shadow-5">
       <form class="absolute h-30rem">
-        <label for="username" class="text-xl mx-7">Student ID</label>
-        <InputText id="username" name="username" type="text" class="p-inputtext-lg shadow-2 mx-7" style="width: 80%;" />
-        <br>
-        <label for="username" class="text-xl mx-7">Username</label>
-        <InputText id="username" name="username" type="text" class="p-inputtext-lg shadow-2 mx-7" style="width: 80%;" />
+
+        <label for="username"  class="text-xl mx-7">Username</label>
+        <InputText id="username" v-model="username" placeholder="Fill your username" name="username" type="text" class="p-inputtext-lg shadow-2 mx-7" style="width: 80%;" />
         <br>
         <label for="password" class="text-xl mx-7">Password</label>
-        <InputText id="username" name="username" type="password" class="p-inputtext-lg shadow-2 mx-7"
+        <InputText id="password" v-model="password" placeholder="Set your password" name="password" type="password" class="p-inputtext-lg shadow-2 mx-7"
           style="width: 80%;" />
-        <br><br>
+        <br><br> 
         <router-link to="/">
-          <Button class="absolute text-center justify-content-center text-bold text-2xl mx-7"
+          <Button @click='signup()' class="absolute text-center justify-content-center text-bold text-2xl mx-7"
             style="width: 76%; height: 12%;background-image: linear-gradient(to right, rgb(3, 8, 16), rgb(35, 87, 165));">Sign
             up</Button><br><br><br><br><br>
         </router-link>
@@ -164,3 +161,41 @@ a:active {
   text-decoration: none;
 }
 </style>
+
+<script>
+export default {
+  data() {
+    return {
+      username: "",
+      password: "",
+      accounts: []
+    };
+  },
+  methods: {
+    signup() {
+      // Check if an account with the same username already exists
+      const existingAccount = this.accounts.find(account => {
+        return account.username === this.username;
+      });
+
+      if (existingAccount) {
+        alert("An account with this username already exists.");
+      } else {
+        // Create a new account with the next available ID
+        const newAccount = {
+          id: this.accounts.length + 1,
+          username: this.username,
+          password: this.password
+        };
+
+        // Add the new account to the accounts array and save to local storage
+        this.accounts.push(newAccount);
+        localStorage.setItem('accounts', JSON.stringify(this.accounts));
+
+        // Navigate to the sign-in page
+        this.$router.push('/signin');
+      }
+    }
+  }
+};
+</script>
