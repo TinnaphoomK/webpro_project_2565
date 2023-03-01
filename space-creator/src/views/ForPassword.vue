@@ -186,7 +186,7 @@ export default {
 
         localStorage.setItem('accounts', JSON.stringify(this.accounts));
 
-        this.$router.push('/signin');
+        this.$router.push('/');
       } else {
         alert("This username does not exist.");
       }
