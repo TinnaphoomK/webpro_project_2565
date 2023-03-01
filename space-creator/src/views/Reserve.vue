@@ -5,9 +5,33 @@ export default {
     components: {
         Navbar,
         CardItem
+    },
+    data() {
+        return {
+            startdate: '',
+            enddate: '',
+            starttime: '',
+            endtime: '',
+            value: '',
+            reservations: []
+        }
+    },
+    methods: {
+        saveReservation() {
+            const reservation = {
+                startdate: this.startdate,
+                enddate: this.enddate,
+                starttime: this.starttime,
+                endtime: this.endtime,
+                value: this.value
+            }
+            this.reservations.push(reservation);
+            localStorage.setItem('reservations', JSON.stringify(this.reservations));
+        }
     }
 };
 </script>
+
 
 <template>
     <!-- navbar -->
@@ -39,30 +63,30 @@ export default {
 
             </div>
             <div class="ml-6 mt-4">
-                <label for="username" class="thai text-xl ml-8">วันที่เริ่มจอง</label>
-                <InputText id="username" v-model="username" name="username" type="date"
+                <label for="startdate" class="thai text-xl ml-8">วันที่เริ่มจอง</label>
+                <InputText id="startdate" v-model="startdate" name="startdate" type="date"
                     class="p-inputtext-lg shadow-2 mr-8 ml-4 mt-2 mb-4" style="width: 30%;" />
 
-                <label for="username" class="thai text-xl ml-8">วันที่เริ่มจอง</label>
-                <InputText id="username" v-model="username" name="username" type="date"
+                <label for="enddate" class="thai text-xl ml-8">วันที่เริ่มจอง</label>
+                <InputText id="enddate" v-model="enddate" name="enddate" type="date"
                     class="p-inputtext-lg shadow-2 mr-8 ml-4 mt-2 mb-4" style="width: 30%;" />
             </div>
             <div class="ml-6 mt-4">
-                <label for="username" class="thai text-xl ml-8 mr-6">ตั้งแต่</label>
-                <InputText id="username" v-model="username" name="username" type="time"
+                <label for="starttime" class="thai text-xl ml-8 mr-6">ตั้งแต่</label>
+                <InputText id="starttime" v-model="starttime" name="starttime" type="time"
                     class="p-inputtext-lg shadow-2 mr-8 ml-4 mt-2" style="width: 30%;" />
 
-                <label for="username" class="thai text-xl ml-8 mr-3">ถึงเวลา</label>
-                <InputText id="username" v-model="username" name="username" type="time"
+                <label for="endtime" class="thai text-xl ml-8 mr-3">ถึงเวลา</label>
+                <InputText id="endtime" v-model="endtime" name="endtime" type="time"
                     class="p-inputtext-lg shadow-2 mr-8 ml-6 mt-2 mb-6" style="width: 30%;" />
             </div>
 
-            <label for="username" class="absolute thai text-xl" style="margin-left: 6%;">หมายเหตุ</label>
+            <label for="comment" class="absolute thai text-xl" style="margin-left: 6%;">หมายเหตุ</label>
             <div class="text-center">
                 <Textarea v-model="value" class="" style="margin-left: 10%; margin-bottom: 3.2%;" rows="5" cols="136" />
             </div>
 
-            <router-link to="/detail">
+            <router-link to="/history">
                 <Button class="thai border-round-xl text-xl absolute w-12rem h-3rem justify-content-center"
                     style="right: 45%; top: 90%; background-color: rgb(35, 87, 165);">ยืนยันการจอง</Button>
             </router-link>
