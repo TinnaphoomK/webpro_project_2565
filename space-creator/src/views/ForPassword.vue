@@ -4,7 +4,7 @@
         <div class="blue-half border-round-left-2xl shadow-5">
             <h1 class="bg-transparent text-white text-center">SPACE CREATOR</h1>
             <div class="bar"></div>
-            <h2 class="bg-transparent text-white text-center">your space, your choice</h2>
+            <h2 class="bg-transparent text-yellow-400 text-center">your space, your choice</h2>
             <center class="bg-transparent">
                 <img class="itpic border-round-xl" src="../assets/img/itkmitl.jpeg" alt="">
             </center>
@@ -61,7 +61,7 @@ h1 {
 }
 
 h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-top: 3%;
     margin-bottom: 4%;
 }

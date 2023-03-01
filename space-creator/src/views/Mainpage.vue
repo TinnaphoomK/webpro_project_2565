@@ -23,7 +23,7 @@ export default {
 
     <!-- 1st floor -->
     <div class="relative text-left justify-text-center font-bold text-3xl pt-8">
-        <a class="text-gray-900 first hover:text-primary-600" href="">1ST FLOOR</a>
+        <a class="text-gray-900 first hover:text-primary-600" href="/mainpage">1ST FLOOR</a>
         <a class="text-gray-900 ml-8 hover:text-primary-600" href="">M FLOOR</a>
         <a class="text-gray-900 ml-8 hover:text-primary-600" href="">2ND FLOOR</a>
         <a class="text-gray-900 ml-8 hover:text-primary-600" href="">3RD FLOOR</a>
@@ -34,10 +34,22 @@ export default {
             <div class="grid justify-content-center">
                 <div class="absolute w-10 h-11rem border-round-xl"
                     style="background-color: rgb(112, 130, 198); margin-top: 7%;"></div>
-                <div class="cardone bg-primary w-20rem h-15rem border-round-2xl z-1 shadow-6"></div>
-                <div class="cardone bg-primary w-20rem h-15rem border-round-2xl z-1 shadow-6"></div>
-                <div class="cardone bg-primary w-20rem h-15rem border-round-2xl z-1 shadow-6"></div>
-                <div class="cardone bg-primary w-20rem h-15rem border-round-2xl z-1 shadow-6"></div>
+                <div class="cardone bg-primary w-20rem h-15rem border-round-2xl z-1 shadow-6">
+                    <div class="absolute border-round-3xl" style="margin-left: 14.5%; margin-top: 10%;"><a href=""><i
+                                class="pi pi-search text-white"></i></a></div>
+                </div>
+                <div class="cardone bg-primary w-20rem h-15rem border-round-2xl z-1 shadow-6">
+                    <div class="absolute border-round-3xl" style="margin-left: 14.5%; margin-top: 10%;"><a href=""><i
+                                class="pi pi-search text-white"></i></a></div>
+                </div>
+                <div class="cardone bg-primary w-20rem h-15rem border-round-2xl z-1 shadow-6">
+                    <div class="absolute border-round-3xl" style="margin-left: 14.5%; margin-top: 10%;"><a href=""><i
+                                class="pi pi-search text-white"></i></a></div>
+                </div>
+                <div class="cardone bg-primary w-20rem h-15rem border-round-2xl z-1 shadow-6">
+                    <div class="absolute border-round-3xl" style="margin-left: 14.5%; margin-top: 10%;"><a href=""><i
+                                class="pi pi-search text-white"></i></a></div>
+                </div>
             </div>
             <div class="grid justify-content-center mt-8">
                 <div class="absolute w-10 h-11rem border-round-xl"
