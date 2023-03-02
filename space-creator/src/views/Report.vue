@@ -1,32 +1,63 @@
 <template>
     <Navbar></Navbar>
     <!-- badge -->
-    <div class="his bg-white shadow-5 w-2 h-6rem justify-content-center text-center text-5xl align-items-center border-round-2xl"
-        style="margin-left: 42%; margin-top: 3%;padding-top: 1%; margin-bottom: 3%;">
-        รายงาน
+    <div
+      class="his bg-white shadow-5 w-2 h-6rem justify-content-center text-center text-5xl align-items-center border-round-2xl"
+      style="margin-left: 42%; margin-top: 3%;padding-top: 1%; margin-bottom: 3%;"
+    >
+      รายงาน
     </div>
     <div class="text-center">
-        <label for="topic" class="thai text-xl ml-8">หัวข้อ</label>
-        <InputText id="startdate" v-model="startdate" name="startdate" type="text"
-            class="p-inputtext-lg shadow-2 mr-8 ml-4 mb-4" style="width: 30%;" />
-
-
-        <label for="roomid" class="thai text-xl ml-8">หมายเลขห้อง</label>
-        <InputText id="startdate" v-model="startdate" name="startdate" type="text"
-            class="p-inputtext-lg shadow-2 mr-8 ml-4 mb-4" style="width: 30%;" /><br>
-
-        <label for="comment" class="flex absolute thai text-xl" style="margin-left: 9%; margin-top: 3%;">หมายเหตุ</label>
-        <Textarea v-model="value" class="shadow-5" style="margin-top: 2%; margin-left: 4%;" rows="20" cols="167" />
+      <label for="topic" class="thai text-xl ml-8">หัวข้อ</label>
+      <InputText
+        id="topic"
+        v-model="topic"
+        name="topic"
+        type="text"
+        class="p-inputtext-lg shadow-2 mr-8 ml-4 mb-4"
+        style="width: 30%;"
+      />
+  
+      <label for="roomid" class="thai text-xl ml-8">หมายเลขห้อง</label>
+      <InputText
+        id="roomid"
+        v-model="roomid"
+        name="roomid"
+        type="text"
+        class="p-inputtext-lg shadow-2 mr-8 ml-4 mb-4"
+        style="width: 30%;"
+      /><br />
+  
+      <label
+        for="comment"
+        class="flex absolute thai text-xl"
+        style="margin-left: 9%; margin-top: 3%;"
+      >
+        หมายเหตุ
+      </label>
+      <Textarea
+        v-model="comment"
+        class="shadow-5"
+        style="margin-top: 2%; margin-left: 4%;"
+        rows="20"
+        cols="167"
+      />
     </div>
-
-    <router-link to="/history">
-        <Button class="thai border-round-xl text-xl absolute w-12rem h-3rem justify-content-center shadow-5"
-            style="right: 45%; top: 88%; background-color: rgb(35, 87, 165);">ยืนยันการจอง</Button>
-    </router-link>
-</template>
-
-<style>
+  
+      <Button
+        class="thai border-round-xl text-xl absolute w-12rem h-3rem justify-content-center shadow-5"
+        style="right: 45%; top: 88%; background-color: rgb(35, 87, 165);"
+        @click="saveReportToLocalStorage"
+      >
+        ยืนยันการจอง
+      </Button>
+  </template>
+  
+  
+  
+  <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
 @import url('https://fonts.googleapis.com/css2?family=Mitr&display=swap');
 
 * {
@@ -72,10 +103,28 @@ a:active {
 </style>
 
 <script>
-import Navbar from '../components/Navbar.vue';
+import Navbar from "../components/Navbar.vue";
 export default {
-    components: {
-        Navbar
-    }
+  components: {
+    Navbar,
+  },
+  data() {
+    return {
+      topic: "",
+      roomid: "",
+      comment: "",
+    };
+  },
+  methods: {
+      saveReportToLocalStorage() {
+  const report = {
+    topic: this.topic.toString(),
+    roomid: this.roomid.toString(),
+    comment: this.comment.toString()
+  }
+  localStorage.setItem("report", JSON.stringify(report));
+  this.$router.push('/reporthistory');
 }
+},
+};
 </script>
