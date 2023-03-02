@@ -24,42 +24,18 @@
             <div class="grid justify-content-center">
                 <div class="absolute w-10 h-11rem border-round-xl"
                     style="background-color: rgb(112, 130, 198); margin-top: 7%;"></div>
-                <div class="lalal bg-primary w-20rem h-15rem border-round-2xl z-1 shadow-6">
-                    <div class="absolute border-round-3xl" style="margin-left: 14.5%; margin-top: 10%;"><a href="/detail"><i
-                                class="pi pi-search text-white"></i></a></div>
-                </div>
-                <div class="lalal bg-primary w-20rem h-15rem border-round-2xl z-1 shadow-6">
-                    <div class="absolute border-round-3xl" style="margin-left: 14.5%; margin-top: 10%;"><a href="/detail"><i
-                                class="pi pi-search text-white"></i></a></div>
-                </div>
-                <div class="lalal bg-primary w-20rem h-15rem border-round-2xl z-1 shadow-6">
-                    <div class="absolute border-round-3xl" style="margin-left: 14.5%; margin-top: 10%;"><a href="/detail"><i
-                                class="pi pi-search text-white"></i></a></div>
-                </div>
-                <div class="lalal bg-primary w-20rem h-15rem border-round-2xl z-1 shadow-6">
-                    <div class="absolute border-round-3xl" style="margin-left: 14.5%; margin-top: 10%;"><a href="/detail"><i
-                                class="pi pi-search text-white"></i></a></div>
-                </div>
+                <CardItem></CardItem>
+                <CardItem></CardItem>
+                <CardItem></CardItem>
+                <CardItem></CardItem>
             </div>
             <div class="grid justify-content-center mt-8">
                 <div class="absolute w-10 h-11rem border-round-xl"
                     style="background-color: rgb(112, 130, 198); margin-top: 7%;"></div>
-                <div class="lalal bg-primary w-20rem h-15rem border-round-2xl z-1 shadow-6">
-                    <div class="absolute border-round-3xl" style="margin-left: 14.5%; margin-top: 10%;"><a href=""><i
-                                class="pi pi-search text-white"></i></a></div>
-                </div>
-                <div class="lalal bg-primary w-20rem h-15rem border-round-2xl z-1 shadow-6">
-                    <div class="absolute border-round-3xl" style="margin-left: 14.5%; margin-top: 10%;"><a href=""><i
-                                class="pi pi-search text-white"></i></a></div>
-                </div>
-                <div class="lalal bg-primary w-20rem h-15rem border-round-2xl z-1 shadow-6">
-                    <div class="absolute border-round-3xl" style="margin-left: 14.5%; margin-top: 10%;"><a href=""><i
-                                class="pi pi-search text-white"></i></a></div>
-                </div>
-                <div class="lalal bg-primary w-20rem h-15rem border-round-2xl z-1 shadow-6">
-                    <div class="absolute border-round-3xl" style="margin-left: 14.5%; margin-top: 10%;"><a href=""><i
-                                class="pi pi-search text-white"></i></a></div>
-                </div>
+                <CardItem></CardItem>
+                <CardItem></CardItem>
+                <CardItem></CardItem>
+                <CardItem></CardItem>
             </div>
 
         </div>
