@@ -166,20 +166,25 @@ export default {
   },
   methods: {
     signin() {
-      // Check if an account with the same username exists
-      const existingAccount = this.accounts.find(account => {
-        return account.username === this.username;
-      });
-      
-      if (!existingAccount) {
-        alert("An account with this username doesn't exist. Please sign up first.");
-      } else if (existingAccount.password !== this.password) {
-        alert("Incorrect password. Please try again.");
-      } else {        
-        localStorage.setItem('signedInAccount', JSON.stringify(existingAccount));
-        this.$router.push("/");
-      }
-    },
+  // Retrieve the entered username and password from local storage
+  const enteredUsername = localStorage.getItem('username');
+  const enteredPassword = localStorage.getItem('password');
+
+  // Check if an account with the same username exists
+  const existingAccount = this.accounts.find(account => {
+    return account.username === enteredUsername;
+  });
+  
+  if (!existingAccount) {
+    alert("An account with this username doesn't exist. Please sign up first.");
+  } else if (existingAccount.password !== enteredPassword) {
+    alert("Incorrect password. Please try again.");
+  } else {        
+    localStorage.setItem('signedInAccount', JSON.stringify(existingAccount));
+    localStorage.setItem('isLoggedIn', 'true');
+    this.$router.push("/");
+  }
+},
     fetchAccounts() {
       const localStorageAccounts = localStorage.getItem("accounts");
       if (localStorageAccounts) {

@@ -9,28 +9,34 @@ export default {
   data() {
     return {
       isLoggedIn: false,
+      username: null // initialize username to null
     };
   },
   props: {
     display: true,
   },
   created() {
-    const isLoggedIn = localStorage.getItem('isLoggedIn');
-    if (isLoggedIn) {
-      this.isLoggedIn = JSON.parse(isLoggedIn);
-      if (this.isLoggedIn) {
-        const signedInAccount = JSON.parse(localStorage.getItem('signedInAccount'));
+  const isLoggedIn = localStorage.getItem('isLoggedIn');
+  if (isLoggedIn) {
+    this.isLoggedIn = JSON.parse(isLoggedIn);
+    if (this.isLoggedIn) {
+      const signedInAccount = JSON.parse(localStorage.getItem('signedInAccount'));
+      if (signedInAccount) {
         this.username = signedInAccount.username;
       }
     }
-  },
+  }
+},
+
 
   methods: {
     signout() {
-      localStorage.removeItem('signedInAccount');
-      this.isLoggedIn = false;
-      this.$router.push('/');
-    },
+    this.isLoggedIn = false;
+    this.username = null; // reset username to null on logout
+    localStorage.removeItem('isLoggedIn'); // remove isLoggedIn from localStorage
+    localStorage.removeItem('signedInAccount');
+    this.$router.push('/');
+  },
   }
 };
 </script>
@@ -66,7 +72,6 @@ export default {
             style="min-width: 200px; min-height: 100px"></div>
 
           <template v-if="isLoggedIn ">
-
             <a class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center"
               style="min-width: 125px; min-height: 25px" href="/history">
               <i class="pi pi-history mr-2"></i>
@@ -86,10 +91,11 @@ export default {
             mr-2"></i>
               Log out
             </a>
-      
+
+            
           </template>
 
-          <template v-else>
+          <template v-if="!isLoggedIn">
             <!-- login button -->
             <a class="z-1 bg-white text-primary-800 border-round-3xl ml-6 my-4 text-xl font-bold flex align-items-center justify-content-center shadow-5 hover:bg-bluegray-100"
               style="min-width: 125px; min-height: 25px" href="/signin">

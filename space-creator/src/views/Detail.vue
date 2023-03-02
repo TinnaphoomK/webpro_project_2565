@@ -9,20 +9,28 @@ export default {
     },
     methods: {
         saveRoomName() {
-            // Get the current list of room names from local storage, or initialize it to an empty array if it doesn't exist yet
-            const roomNames = JSON.parse(localStorage.getItem('roomNames')) || [];
+            // Check if user is logged in
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
 
-            // Add the room name to the list
-            roomNames.push(document.getElementById('roomname').innerText);
+            if (isLoggedIn) {
+                // Get the current list of room names from local storage, or initialize it to an empty array if it doesn't exist yet
+                const roomNames = JSON.parse(localStorage.getItem('roomNames')) || [];
 
-            // Save the updated list to local storage
-            localStorage.setItem('roomNames', JSON.stringify(roomNames));
-            this.$router.push('/reserve');
+                // Add the room name to the list
+                roomNames.push(document.getElementById('roomname').innerText);
 
+                // Save the updated list to local storage
+                localStorage.setItem('roomNames', JSON.stringify(roomNames));
+                this.$router.push('/reserve');
+            } else {
+                // Display alert message
+                alert('Please login first');
+            }
         }
     }
 };
 </script>
+
 <template>
     <!-- navbar -->
     <Navbar></Navbar>

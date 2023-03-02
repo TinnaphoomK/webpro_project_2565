@@ -174,27 +174,31 @@ export default {
     signup() {
       // Check if an account with the same username already exists
       const existingAccount = this.accounts.find(account => {
-        return account.username === this.username;
-      });
+    return account.username === this.username;
+  });
 
-      if (existingAccount) {
-        alert("An account with this username already exists.");
-      } else {
-        // Create a new account with the next available ID
-        const newAccount = {
-          id: this.accounts.length + 1,
-          username: this.username,
-          password: this.password
-        };
+  if (existingAccount) {
+    alert("An account with this username already exists.");
+  } else {
+    // Create a new account with the next available ID
+    const newAccount = {
+      id: this.accounts.length + 1,
+      username: this.username,
+      password: this.password
+    };
 
-        // Add the new account to the accounts array and save to local storage
-        this.accounts.push(newAccount);
-        localStorage.setItem('accounts', JSON.stringify(this.accounts));
+    // Add the new account to the accounts array and save to local storage
+    this.accounts.push(newAccount);
+    localStorage.setItem('accounts', JSON.stringify(this.accounts));
 
-        // Navigate to the sign-in page
-        this.$router.push('/signin');
-      }
-    }
+    // Save the entered username and password to local storage
+    localStorage.setItem('username', this.username);
+    localStorage.setItem('password', this.password);
+
+    // Navigate to the sign-in page
+    this.$router.push('/signin');
+  }
+  }
   }
 };
 </script>
