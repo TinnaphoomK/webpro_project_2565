@@ -1,9 +1,9 @@
 <template>
     <div class="bg-white shadow-5 w-8 h-6rem justify-content-center text-left text-xl align-items-center border-round-2xl"
         style="margin-left: 17%; margin-top: 1.5%;padding-top: 1.7%;">
-        &emsp;&emsp; &emsp;&emsp;Auditorium &emsp;&emsp;&emsp;&emsp; 9 JAN,2023 &emsp;&emsp;&emsp;&emsp; 11:00 - 13:00
+        &emsp;&emsp; &emsp;&emsp;{{ room }} &emsp;&emsp;&emsp;&emsp; {{ startdate }} &emsp;&emsp;&emsp;&emsp; {{ time }}
         &emsp;&emsp;&emsp;&emsp;
-        #10000
+        {{ reportnum }}
         <a href="">
             <div class="inline-block w-7rem h-3rem text-center pt-2 text-white border-round-2xl shadow-5 his bg-green-700 hover:bg-green-800 hover:text-400"
                 style="margin-left: 10%;">อนุมัติ</div>
@@ -56,3 +56,18 @@ a:active {
     text-decoration: none;
 }
 </style>
+<script>
+export default {
+    data() {
+        return {
+            room: 'auditorium',
+            roomId: '113',
+            startdate: '9 FEB 2023',
+            time: '11:00 - 13:00',
+            problem: 'เครื่องเสียปัญหา',
+            reportnum: '#10000'
+        }
+
+    }
+}
+</script>

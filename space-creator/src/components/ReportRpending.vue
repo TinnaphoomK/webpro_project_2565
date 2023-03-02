@@ -3,10 +3,11 @@
         style="margin-left: 17%; margin-top: 1%;padding-top: 1.7%;">
         <div class="absolute w-10rem h-3rem text-white pt-2 border-round-right-2xl shadow-5 his"
             style="background-color:rgb(35, 87, 165);">รอดำเนินการ</div>
-        &emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;RoomId &emsp;&emsp;&emsp;&emsp; Auditorium &emsp;&emsp;&emsp;&emsp;
-        เครื่องเสียมีปัญหา
+        &emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;{{ roomId }} &emsp;&emsp;&emsp;&emsp; {{ room }}
         &emsp;&emsp;&emsp;&emsp;
-        #10000
+        {{ problem }}
+        &emsp;&emsp;&emsp;&emsp;
+        {{ reportnum }}
         <a href="">
             <div class="inline-block w-7rem h-3rem text-center pt-2 text-white border-round-2xl shadow-5 his bg-green-700 hover:bg-green-800 hover:text-400"
                 style="margin-left: 10%;">เสร็จสิ้น</div>
@@ -57,3 +58,19 @@ a:active {
     text-decoration: none;
 }
 </style>
+
+<script>
+export default {
+    data() {
+        return {
+            room: 'auditorium',
+            roomId: '113',
+            startdate: '9 FEB 2023',
+            time: '11:00 - 13:00',
+            problem: 'เครื่องเสียปัญหา',
+            reportnum: '#10000'
+        }
+
+    }
+}
+</script>

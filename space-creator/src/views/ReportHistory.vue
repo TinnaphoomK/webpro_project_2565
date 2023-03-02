@@ -9,11 +9,11 @@ export default {
         RepHiscomplete
     },
     computed: {
-    reportData() {
-      return JSON.parse(localStorage.getItem('report')) || {};
+        reportData() {
+            return JSON.parse(localStorage.getItem('report')) || {};
+        }
     }
-  }
-  };
+};
 </script>
 
 <template>
@@ -23,7 +23,13 @@ export default {
         style="margin-left: 37%; margin-top: 3%;padding-top: 1%;">
         ประวัติการรายงาน
     </div>
-    {{ topic  }}
+    
+    <RepHispending></RepHispending>
+    <RepHispending></RepHispending>
+    <div>
+        <RepHiscomplete></RepHiscomplete>
+        <RepHiscomplete></RepHiscomplete>
+    </div>
 </template>
 
 <style>
