@@ -31,8 +31,10 @@ export default {
     </div>
     <div class="" style="margin-left: 18%; margin-top: 3.4%;">Pending (2)</div>
     <div class="bar"></div>
-    <ReportRpending></ReportRpending>
-    <ReportRpending></ReportRpending>
+    <div>
+        <ReportRpending></ReportRpending>
+        <ReportRpending></ReportRpending>
+    </div>
     <div class="" style="margin-left: 17.5%; margin-top: 4.5%;">Completed (3)</div>
     <div class="bar" style="margin-top: 18%;"></div>
     <div class="pb-6">

@@ -1,13 +1,24 @@
 <script>
 import Navbar from '../components/Navbar.vue';
-import block from '../components/block.vue';
-
+import HistoryPending from '../components/HistoryPending.vue';
+import HistoryComplete from '../components/HistoryComplete.vue';
 export default {
     components: {
         Navbar,
-        block
+        HistoryPending,
+        HistoryComplete
     },
-    
+    data() {
+        return {
+            reservations: []
+        }
+    },
+    created() {
+        const storedReservations = localStorage.getItem('reservations');
+        if (storedReservations) {
+            this.reservations = JSON.parse(storedReservations);
+        }
+    }
 }
 </script>
 
@@ -17,9 +28,17 @@ export default {
     <div class="his bg-white shadow-5 w-2 h-6rem justify-content-center text-center text-5xl align-items-center border-round-2xl"
         style="margin-left: 42%; margin-top: 3%;padding-top: 1%;">
         ประวัติการจอง
-    </div>   
-    
+    </div>
+    <div class="" style="margin-left: 18%; margin-top: 3.4%;">Pending (2)</div>
+    <div class="bar"></div>
+    <HistoryPending></HistoryPending>
+    <HistoryPending></HistoryPending>
 
+    <div class="" style="margin-left: 17.5%; margin-top: 4.5%;">Completed (3)</div>
+    <div class="bar" style="margin-top: 18%;"></div>
+
+    <HistoryComplete></HistoryComplete>
+    <HistoryComplete></HistoryComplete>
 </template>
 
 <style>
