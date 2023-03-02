@@ -8,3 +8,7 @@
         <a href="/report"><i class="absolute pi pi-ellipsis-h" style="margin-left: 13%;"></i></a>
     </div>
 </template>
+
+<script src="./data.js"></script>
+<script>
+</script>
