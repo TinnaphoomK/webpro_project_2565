@@ -7,7 +7,7 @@
     <div class="py-6 text-center">
         <span>
             <InputText id="search" type="text" class="p-inputtext-lg shadow-2" style="width: 50%;" v-model="value" />
-            <i class="pi pi-search px-3"></i>
+            <a href="/reporthistory"><i class="pi pi-search px-3"></i></a>
         </span>
     </div>
 

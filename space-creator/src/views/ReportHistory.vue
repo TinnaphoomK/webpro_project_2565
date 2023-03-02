@@ -23,7 +23,7 @@ export default {
     <!-- badge -->
     <div class="his bg-white shadow-5 w-3 h-6rem justify-content-center text-center text-5xl align-items-center border-round-2xl"
         style="margin-left: 37%; margin-top: 3%;padding-top: 1%;">
-        คำร้องรายงานห้อง
+        ประวัติการรายงาน
     </div>
     <div class="" style="margin-left: 18%; margin-top: 3.4%;">Pending (2)</div>
     <div class="bar"></div>
@@ -35,11 +35,6 @@ export default {
         RoomId &emsp;&emsp;&emsp;&emsp; Auditorium &emsp;&emsp;&emsp;&emsp; เครื่องเสียมีปัญหา
         &emsp;&emsp;&emsp;&emsp;
         #10000
-        <a href="">
-            <div class="absolute w-7rem h-3rem text-center pt-2 text-white border-round-2xl shadow-5 his bg-green-700"
-                style="right: 21.5%; top: 38%;">เสร็จสิ้น</div>
-        </a>
-
         <a href=""><i class="absolute pi pi-ellipsis-h" style="margin-left: 13.5%;"></i></a>
     </div>
     <div class="bg-white shadow-5 w-8 h-6rem justify-content-center text-center text-xl align-items-center border-round-2xl"
@@ -49,10 +44,6 @@ export default {
         RoomId &emsp;&emsp;&emsp;&emsp; Auditorium &emsp;&emsp;&emsp;&emsp; เครื่องเสียมีปัญหา
         &emsp;&emsp;&emsp;&emsp;
         #10000
-        <a href="">
-            <div class="absolute w-7rem h-3rem text-center pt-2 text-white border-round-2xl shadow-5 his bg-green-700"
-                style="right: 21.5%; top: 49.5%;">เสร็จสิ้น</div>
-        </a>
         <a href=""><i class="absolute pi pi-ellipsis-h" style="margin-left: 13.5%;"></i></a>
     </div>
 
