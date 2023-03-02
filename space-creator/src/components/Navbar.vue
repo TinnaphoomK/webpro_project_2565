@@ -1,11 +1,50 @@
 <script>
 import SignupButton from './SignupButton.vue';
+
 export default {
+  name: 'Navbar',
   components: {
     SignupButton
   },
-
-}
+  data() {
+    return {
+      isLoggedIn: false,
+      username: '',
+      accounts: []
+    };
+  },
+  props: {
+    display: true,
+  },
+  created() {
+    const check = localStorage.getItem('check');
+    if (check) {
+      this.isLoggedIn = JSON.parse(check);
+      if (this.isLoggedIn) {
+        const username = localStorage.getItem('username');
+        if (username) {
+          this.username = JSON.parse(username);
+        }
+      }
+    }
+    this.loadAccounts();
+  },
+  methods: {
+    signout() {
+      localStorage.removeItem('signedInAccount');
+      localStorage.removeItem('check');
+      this.isLoggedIn = false;
+      this.$router.push('/');
+    },
+    loadAccounts() {
+      // Load the accounts from local storage
+      const accountsJson = localStorage.getItem('accounts');
+      if (accountsJson) {
+        this.accounts = JSON.parse(accountsJson);
+      }
+    }
+  }
+};
 </script>
 
 
@@ -37,23 +76,30 @@ export default {
             style="min-width: 200px; min-height: 100px"></div>
           <div class="text-white font-bold flex align-items-center justify-content-center"
             style="min-width: 200px; min-height: 100px"></div>
-          <div class="text-white font-bold flex align-items-center justify-content-center"
-            style="min-width: 200px; min-height: 100px"></div>
 
           <template v-if="isLoggedIn">
-            <!-- history link -->
+
             <a class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center"
               style="min-width: 125px; min-height: 25px" href="/history">
               <i class="pi pi-history mr-2"></i>
               History
             </a>
 
-            <!-- username link -->
+
             <a class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center"
-              style="min-width: 125px; min-height: 25px" href="/username">
+              style="min-width: 125px; min-height: 25px">
               <i class="pi pi-user mr-2"></i>
               {{ username }}
             </a>
+
+            <a @click.prevent="signout" class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center"
+              style="min-width: 125px; min-height: 25px" href="/signin">
+              <i class="pi pi-power-off
+            mr-2"></i>
+              Log out
+            </a>
+
+            
           </template>
 
           <template v-else>
@@ -66,14 +112,11 @@ export default {
             <!-- sign up button -->
             <a class="z-1 bg-primary-800 text-white border-round-3xl ml-6 my-4 text-xl font-bold flex align-items-center justify-content-center shadow-5 hover:bg-primary-900"
               style="min-width: 125px; min-height: 25px" href="/signup">
-              Sign up
+             Sign up
             </a>
           </template>
         </div>
       </div>
-
-
-
     </header>
   </div>
 </template>

@@ -170,24 +170,27 @@ export default {
       const existingAccount = this.accounts.find(account => {
         return account.username === this.username;
       });
-
+      
       if (!existingAccount) {
         alert("An account with this username doesn't exist. Please sign up first.");
       } else if (existingAccount.password !== this.password) {
         alert("Incorrect password. Please try again.");
-      } else {
-        // Set the currently signed in account and navigate to the home page
+      } else {        
         localStorage.setItem('signedInAccount', JSON.stringify(existingAccount));
+        localStorage.setItem('isLoggedIn', 'true');
         this.$router.push('/mainpage');
+      }
+    },
+    loadAccounts() {
+      // Load the accounts from local storage
+      const accountsJson = localStorage.getItem('accounts');
+      if (accountsJson) {
+        this.accounts = JSON.parse(accountsJson);
       }
     }
   },
   created() {
-    // Load the accounts from local storage
-    const accountsJson = localStorage.getItem('accounts');
-    if (accountsJson) {
-      this.accounts = JSON.parse(accountsJson);
-    }
+    this.loadAccounts();
   }
 };
 </script>
