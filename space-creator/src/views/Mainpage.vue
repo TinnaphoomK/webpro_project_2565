@@ -13,13 +13,8 @@
 
     <!-- 1st floor -->
     <div class="relative text-left justify-text-center font-bold text-3xl pt-8">
-<<<<<<< Updated upstream
         <a class="text-gray-900 first hover:text-primary-600" href="/">1ST FLOOR</a>
         <a class="text-gray-900 ml-8 hover:text-primary-600" href="/reporthistory">M FLOOR</a>
-=======
-        <a class="text-gray-900 first hover:text-primary-600" href="/mainpage">1ST FLOOR</a>
-        <a class="text-gray-900 ml-8 hover:text-primary-600" href="/resrequest">M FLOOR</a>
->>>>>>> Stashed changes
         <a class="text-gray-900 ml-8 hover:text-primary-600" href="/history">2ND FLOOR</a>
         <a class="text-gray-900 ml-8 hover:text-primary-600" href="/reportrequest">3RD FLOOR</a>
 
