@@ -60,7 +60,7 @@ export default {
           <!-- home -->
           <div class="z-1">
             <a class="text-white font-bold flex align-items-center justify-content-left ml-4"
-              style="min-width: 200px; min-height: 100px" href="./mainpage">
+              style="min-width: 200px; min-height: 100px" href="/">
               <img src="../assets/img/logonavbar.png" class="h-4rem" alt="" />
             </a>
           </div>
@@ -105,7 +105,7 @@ export default {
           <template v-else>
             <!-- login button -->
             <a class="z-1 bg-white text-primary-800 border-round-3xl ml-6 my-4 text-xl font-bold flex align-items-center justify-content-center shadow-5 hover:bg-bluegray-100"
-              style="min-width: 125px; min-height: 25px" href="/">
+              style="min-width: 125px; min-height: 25px" href="/signin">
               Sign in
             </a>
 
