@@ -15,24 +15,23 @@ export default {
     display: true,
   },
   created() {
-  const isLoggedIn = localStorage.getItem('isLoggedIn');
-  if (isLoggedIn) {
-    this.isLoggedIn = JSON.parse(isLoggedIn);
-    if (this.isLoggedIn) {
-      const signedInAccount = JSON.parse(localStorage.getItem('signedInAccount'));
-      this.username = signedInAccount.username;
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    if (isLoggedIn) {
+      this.isLoggedIn = JSON.parse(isLoggedIn);
+      if (this.isLoggedIn) {
+        const signedInAccount = JSON.parse(localStorage.getItem('signedInAccount'));
+        this.username = signedInAccount.username;
+      }
     }
-  }
-},
-
-methods: {
-  signout() {
-    localStorage.removeItem('signedInAccount');
-    localStorage.removeItem('check');
-    this.isLoggedIn = false;
-    this.$router.push('/');
   },
-}
+
+  methods: {
+    signout() {
+      localStorage.removeItem('signedInAccount');
+      this.isLoggedIn = false;
+      this.$router.push('/');
+    },
+  }
 };
 </script>
 
@@ -66,7 +65,7 @@ methods: {
           <div class="text-white font-bold flex align-items-center justify-content-center"
             style="min-width: 200px; min-height: 100px"></div>
 
-          <template v-if="isLoggedIn">
+          <template v-if="isLoggedIn ">
 
             <a class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center"
               style="min-width: 125px; min-height: 25px" href="/history">
@@ -87,8 +86,7 @@ methods: {
             mr-2"></i>
               Log out
             </a>
-
-            
+      
           </template>
 
           <template v-else>

@@ -177,22 +177,18 @@ export default {
         alert("Incorrect password. Please try again.");
       } else {        
         localStorage.setItem('signedInAccount', JSON.stringify(existingAccount));
-        localStorage.setItem('isLoggedIn', 'true');
-        
-        this.$router.push('/');
+        this.$router.push("/");
       }
     },
-    loadAccounts() {
-      // Load the accounts from local storage
-      const accountsJson = localStorage.getItem('accounts');
-      if (accountsJson) {
-        this.accounts = JSON.parse(accountsJson);
+    fetchAccounts() {
+      const localStorageAccounts = localStorage.getItem("accounts");
+      if (localStorageAccounts) {
+        this.accounts = JSON.parse(localStorageAccounts);
       }
     }
   },
   created() {
-    this.loadAccounts();
+    this.fetchAccounts();
   }
 };
 </script>
-

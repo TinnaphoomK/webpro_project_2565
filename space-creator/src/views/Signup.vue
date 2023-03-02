@@ -27,7 +27,7 @@
             up</Button><br><br><br><br><br>
         </router-link>
 
-        <label for="password" class="text-center">already have an account ?<a class="bg-transparent" href="./"> Sign
+        <label for="password" class="text-center">already have an account ?<a class="bg-transparent" href="/signin"> Sign
             in</a></label>
       </form>
     </div>
