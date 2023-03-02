@@ -1,52 +1,24 @@
+
 <template>
-  <div>
-    <Navbar></Navbar>
-    <!-- badge -->
-    <div class="his bg-white shadow-5 w-2 h-6rem justify-content-center text-center text-5xl align-items-center border-round-2xl"
-        style="margin-left: 42%; margin-top: 3%;padding-top: 1%;">
-        ประวัติการจอง
+    <div>
+        <Navbar></Navbar>
+        <!-- badge -->
+        <div class="his bg-white shadow-5 w-2 h-6rem justify-content-center text-center text-5xl align-items-center border-round-2xl"
+            style="margin-left: 42%; margin-top: 3%;padding-top: 1%;">
+            ประวัติการจอง
+        </div>
+        <div class="" style="margin-left: 18%; margin-top: 3.4%;">Pending (2)</div>
+        <div class="bar"></div>
+        <HistoryPending></HistoryPending>
+        <HistoryPending></HistoryPending>
+
+        <div class="" style="margin-left: 17.5%; margin-top: 4.5%;">Completed (3)</div>
+        <div class="bar" style="margin-top: 18%;"></div>
+
+        <HistoryComplete></HistoryComplete>
+        <HistoryComplete></HistoryComplete>
     </div>
-    <block v-for="reservation in reservations" :key="reservation.id" :roomName="reservation.roomName" :startdate="reservation.startdate" :enddate="reservation.enddate" :starttime="reservation.starttime" :endtime="reservation.endtime" :id="reservation.id"></block>
-  </div>
 </template>
-
-<script>
-import Navbar from '../components/Navbar.vue';
-import block from '../components/block.vue';
-
-export default {
-  components: {
-    Navbar,
-    block
-  },
-  data() {
-    return {
-      reservations: [],
-      reservation: {
-        startdate: '',
-        starttime: '',
-        enddate: '',
-        endtime: '',
-        id: ''
-      },
-      roomNames: [],
-      roomName: {
-        roomName: ''
-      }
-    }
-  },
-  created() {
-    const storedReservations = localStorage.getItem('reservations');
-    if (storedReservations) {
-      this.reservations = JSON.parse(storedReservations);
-    }
-    const storedRoomNames = localStorage.getItem('roomNames');
-    if (storedRoomNames) {
-      this.roomNames = JSON.parse(storedRoomNames);
-    }
-  }
-}
-</script>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
@@ -90,3 +62,27 @@ a:active {
 }
 </style>
 
+
+<script>
+import Navbar from '../components/Navbar.vue';
+import HistoryPending from '../components/HistoryPending.vue';
+import HistoryComplete from '../components/HistoryComplete.vue';
+export default {
+    components: {
+        Navbar,
+        HistoryPending,
+        HistoryComplete
+    },
+    data() {
+        return {
+            reservations: []
+        }
+    },
+    created() {
+        const storedReservations = localStorage.getItem('reservations');
+        if (storedReservations) {
+            this.reservations = JSON.parse(storedReservations);
+        }
+    }
+}
+</script>

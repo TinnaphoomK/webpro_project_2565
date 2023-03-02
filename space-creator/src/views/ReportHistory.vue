@@ -1,8 +1,12 @@
 <script>
 import Navbar from '../components/Navbar.vue';
+import RepHispending from '../components/RepHispending.vue';
+import RepHiscomplete from '../components/RepHiscomplete.vue';
 export default {
     components: {
-        Navbar
+        Navbar,
+        RepHispending,
+        RepHiscomplete
     },
     computed: {
     reportData() {

@@ -1,8 +1,12 @@
 <script>
 import Navbar from '../components/Navbar.vue';
+import ReportRpending from '../components/ReportRpending.vue';
+import ReportRcomplete from '../components/ReportRcomplete.vue';
 export default {
     components: {
-        Navbar
+        Navbar,
+        ReportRpending,
+        ReportRcomplete
     },
     data() {
         return {
@@ -27,54 +31,15 @@ export default {
     </div>
     <div class="" style="margin-left: 18%; margin-top: 3.4%;">Pending (2)</div>
     <div class="bar"></div>
-
-    <div class="bg-white shadow-5 w-8 h-6rem justify-content-center text-center text-xl align-items-center border-round-2xl"
-        style="margin-left: 17%; margin-top: 1%;padding-top: 1.7%;">
-        <div class="absolute w-10rem h-3rem text-white pt-2 border-round-right-2xl shadow-5 his"
-            style="background-color:rgb(35, 87, 165);">รอดำเนินการ</div>
-        RoomId &emsp;&emsp;&emsp;&emsp; Auditorium &emsp;&emsp;&emsp;&emsp; เครื่องเสียมีปัญหา
-        &emsp;&emsp;&emsp;&emsp;
-        #10000
-        <a href="">
-            <div class="absolute w-7rem h-3rem text-center pt-2 text-white border-round-2xl shadow-5 his bg-green-700"
-                style="right: 21.5%; top: 38%;">เสร็จสิ้น</div>
-        </a>
-
-        <a href=""><i class="absolute pi pi-ellipsis-h" style="margin-left: 13.5%;"></i></a>
+    <div>
+        <ReportRpending></ReportRpending>
+        <ReportRpending></ReportRpending>
     </div>
-    <div class="bg-white shadow-5 w-8 h-6rem justify-content-center text-center text-xl align-items-center border-round-2xl"
-        style="margin-left: 17%; margin-top: 1%;padding-top: 1.7%;">
-        <div class="absolute w-10rem h-3rem text-white pt-2 border-round-right-2xl shadow-5 his"
-            style="background-color:rgb(35, 87, 165);">รอดำเนินการ</div>
-        RoomId &emsp;&emsp;&emsp;&emsp; Auditorium &emsp;&emsp;&emsp;&emsp; เครื่องเสียมีปัญหา
-        &emsp;&emsp;&emsp;&emsp;
-        #10000
-        <a href="">
-            <div class="absolute w-7rem h-3rem text-center pt-2 text-white border-round-2xl shadow-5 his bg-green-700"
-                style="right: 21.5%; top: 49.5%;">เสร็จสิ้น</div>
-        </a>
-        <a href=""><i class="absolute pi pi-ellipsis-h" style="margin-left: 13.5%;"></i></a>
-    </div>
-
     <div class="" style="margin-left: 17.5%; margin-top: 4.5%;">Completed (3)</div>
     <div class="bar" style="margin-top: 18%;"></div>
-
-    <div class="bg-white shadow-5 w-8 h-6rem justify-content-center text-center text-xl align-items-center border-round-2xl"
-        style="margin-left: 17%; margin-top: 1%;padding-top: 1.7%;">
-        <div class="absolute w-10rem h-3rem text-white pt-2 border-round-right-2xl shadow-5 his"
-            style="background-color:rgb(15, 120, 19);">เสร็จสิ้น</div>
-        RoomId &emsp;&emsp;&emsp;&emsp; Auditorium &emsp;&emsp;&emsp;&emsp; เครื่องเสียมีปัญหา &emsp;&emsp;&emsp;&emsp;
-        #10000
-        <a href=""><i class="absolute pi pi-ellipsis-h" style="margin-left: 13%;"></i></a>
-    </div>
-    <div class="bg-white shadow-5 w-8 h-6rem justify-content-center text-center text-xl align-items-center border-round-2xl"
-        style="margin-left: 17%; margin-top: 1.5%;padding-top: 1.7%;">
-        <div class="absolute w-10rem h-3rem text-white pt-2 border-round-right-2xl shadow-5 his"
-            style="background-color:rgb(15, 120, 19);">เสร็จสิ้น</div>
-        RoomId &emsp;&emsp;&emsp;&emsp; Auditorium &emsp;&emsp;&emsp;&emsp;&emsp; ไมค์ไม่ติด
-        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-        #10002
-        <a href=""><i class="absolute pi pi-ellipsis-h" style="margin-left: 13%;"></i></a>
+    <div class="pb-6">
+        <ReportRcomplete></ReportRcomplete>
+        <ReportRcomplete></ReportRcomplete>
     </div>
 </template>
 
