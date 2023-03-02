@@ -39,10 +39,15 @@ export default {
                 endtime: this.endtime,
                 value: this.value
             };
+            const roomNames ={
+                roomNames: this.roomNames
+            }
             // increment id for next item
             this.id++;
             // add reservation to localStorage
             localStorage.setItem(`reservation-${reservation.id}`, JSON.stringify(reservation));
+            localStorage.setItem(`{roomNames.roomNames}`, JSON.stringify(roomNames));
+
 
             this.$router.push('/history');
 
