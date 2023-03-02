@@ -19,7 +19,7 @@
         <Textarea v-model="value" class="shadow-5" style="margin-top: 2%; margin-left: 4%;" rows="20" cols="167" />
     </div>
 
-    <router-link to="/history">
+    <router-link to="/reporthistory">
         <Button class="thai border-round-xl text-xl absolute w-12rem h-3rem justify-content-center shadow-5"
             style="right: 45%; top: 88%; background-color: rgb(35, 87, 165);">ยืนยันการจอง</Button>
     </router-link>

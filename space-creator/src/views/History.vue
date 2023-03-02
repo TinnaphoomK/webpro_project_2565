@@ -1,26 +1,3 @@
-<script>
-import Navbar from '../components/Navbar.vue';
-import HistoryPending from '../components/HistoryPending.vue';
-import HistoryComplete from '../components/HistoryComplete.vue';
-export default {
-    components: {
-        Navbar,
-        HistoryPending,
-        HistoryComplete
-    },
-    data() {
-        return {
-            reservations: []
-        }
-    },
-    created() {
-        const storedReservations = localStorage.getItem('reservations');
-        if (storedReservations) {
-            this.reservations = JSON.parse(storedReservations);
-        }
-    }
-}
-</script>
 
 <template>
     <div>
@@ -42,44 +19,6 @@ export default {
         <HistoryComplete></HistoryComplete>
     </div>
 </template>
-
-<script>
-import Navbar from '../components/Navbar.vue';
-import block from '../components/block.vue';
-
-export default {
-  components: {
-    Navbar,
-    block
-  },
-  data() {
-    return {
-      reservations: [],
-      reservation: {
-        startdate: '',
-        starttime: '',
-        enddate: '',
-        endtime: '',
-        id: ''
-      },
-      roomNames: [],
-      roomName: {
-        roomName: ''
-      }
-    }
-  },
-  created() {
-    const storedReservations = localStorage.getItem('reservations');
-    if (storedReservations) {
-      this.reservations = JSON.parse(storedReservations);
-    }
-    const storedRoomNames = localStorage.getItem('roomNames');
-    if (storedRoomNames) {
-      this.roomNames = JSON.parse(storedRoomNames);
-    }
-  }
-}
-</script>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
@@ -123,3 +62,27 @@ a:active {
 }
 </style>
 
+
+<script>
+import Navbar from '../components/Navbar.vue';
+import HistoryPending from '../components/HistoryPending.vue';
+import HistoryComplete from '../components/HistoryComplete.vue';
+export default {
+    components: {
+        Navbar,
+        HistoryPending,
+        HistoryComplete
+    },
+    data() {
+        return {
+            reservations: []
+        }
+    },
+    created() {
+        const storedReservations = localStorage.getItem('reservations');
+        if (storedReservations) {
+            this.reservations = JSON.parse(storedReservations);
+        }
+    }
+}
+</script>
