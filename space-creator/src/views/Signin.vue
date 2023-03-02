@@ -178,7 +178,8 @@ export default {
       } else {        
         localStorage.setItem('signedInAccount', JSON.stringify(existingAccount));
         localStorage.setItem('isLoggedIn', 'true');
-        this.$router.push('/mainpage');
+        
+        this.$router.push('/');
       }
     },
     loadAccounts() {

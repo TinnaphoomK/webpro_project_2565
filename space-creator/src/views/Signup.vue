@@ -20,11 +20,13 @@
         <InputText id="password" v-model="password" placeholder="Set your password" name="password" type="password" class="p-inputtext-lg shadow-2 mx-7"
           style="width: 80%;" />
         <br><br> 
-        <router-link to="/">
+
+        <router-link to="/signin">
           <Button @click='signup()' class="absolute text-center justify-content-center text-bold text-2xl mx-7"
             style="width: 76%; height: 12%;background-image: linear-gradient(to right, rgb(3, 8, 16), rgb(35, 87, 165));">Sign
             up</Button><br><br><br><br><br>
         </router-link>
+
         <label for="password" class="text-center">already have an account ?<a class="bg-transparent" href="./"> Sign
             in</a></label>
       </form>

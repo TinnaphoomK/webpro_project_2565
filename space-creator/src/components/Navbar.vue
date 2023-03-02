@@ -15,22 +15,24 @@ export default {
     display: true,
   },
   created() {
-    const check = localStorage.getItem('check');
-    if (check) {
-      this.isLoggedIn = JSON.parse(check);
-      if (this.isLoggedIn) {
-        const username = localStorage.getItem('username');
-      }
+  const isLoggedIn = localStorage.getItem('isLoggedIn');
+  if (isLoggedIn) {
+    this.isLoggedIn = JSON.parse(isLoggedIn);
+    if (this.isLoggedIn) {
+      const signedInAccount = JSON.parse(localStorage.getItem('signedInAccount'));
+      this.username = signedInAccount.username;
     }
-  },
-  methods: {
-    signout() {
-      localStorage.removeItem('signedInAccount');
-      localStorage.removeItem('check');
-      this.isLoggedIn = false;
-      this.$router.push('/');
-    },
   }
+},
+
+methods: {
+  signout() {
+    localStorage.removeItem('signedInAccount');
+    localStorage.removeItem('check');
+    this.isLoggedIn = false;
+    this.$router.push('/');
+  },
+}
 };
 </script>
 
