@@ -10,7 +10,6 @@
     </div>
 </template>
 
-<script src="./data.js"></script>
 <script>
 export default {
     data() {
