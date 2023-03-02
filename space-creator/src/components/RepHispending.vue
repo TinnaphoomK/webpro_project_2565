@@ -3,9 +3,24 @@
         style="margin-left: 17%; margin-top: 1%;padding-top: 1.7%;">
         <div class="absolute w-10rem h-3rem text-white pt-2 border-round-right-2xl shadow-5 his"
             style="background-color:rgb(35, 87, 165);">รอดำเนินการ</div>
-        RoomId &emsp;&emsp;&emsp;&emsp; Auditorium &emsp;&emsp;&emsp;&emsp; เครื่องเสียมีปัญหา
+        {{ roomId }} &emsp;&emsp;&emsp;&emsp; {{ room }} &emsp;&emsp;&emsp;&emsp; {{ problem }}
         &emsp;&emsp;&emsp;&emsp;
-        #10000
+        {{ reportnum }}
         <a href=""><i class="absolute pi pi-ellipsis-h" style="margin-left: 13.5%;"></i></a>
     </div>
 </template>
+<script>
+export default {
+    data() {
+        return {
+            room: 'auditorium',
+            roomId: '113',
+            startdate: '9 FEB 2023',
+            time: '11:00 - 13:00',
+            problem: 'เครื่องเสียปัญหา',
+            reportnum: '#10000'
+        }
+
+    }
+}
+</script>

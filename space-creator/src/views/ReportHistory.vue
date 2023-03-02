@@ -7,14 +7,14 @@ export default {
         Navbar,
         RepHispending,
         RepHiscomplete
-        
+
     },
     computed: {
-    reportData() {
-      return JSON.parse(localStorage.getItem('report')) || {};
+        reportData() {
+            return JSON.parse(localStorage.getItem('report')) || {};
+        }
     }
-  }
-  };
+};
 </script>
 
 <template>
