@@ -9,8 +9,6 @@ export default {
   data() {
     return {
       isLoggedIn: false,
-      username: '',
-      accounts: []
     };
   },
   props: {
@@ -22,12 +20,8 @@ export default {
       this.isLoggedIn = JSON.parse(check);
       if (this.isLoggedIn) {
         const username = localStorage.getItem('username');
-        if (username) {
-          this.username = JSON.parse(username);
-        }
       }
     }
-    this.loadAccounts();
   },
   methods: {
     signout() {
@@ -36,13 +30,6 @@ export default {
       this.isLoggedIn = false;
       this.$router.push('/');
     },
-    loadAccounts() {
-      // Load the accounts from local storage
-      const accountsJson = localStorage.getItem('accounts');
-      if (accountsJson) {
-        this.accounts = JSON.parse(accountsJson);
-      }
-    }
   }
 };
 </script>

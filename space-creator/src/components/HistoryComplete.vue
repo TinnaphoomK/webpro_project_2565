@@ -4,7 +4,7 @@
         <div class="absolute w-10rem h-3rem text-white pt-2 border-round-right-2xl shadow-5 his"
             style="background-color:rgb(15, 120, 19);">อนุมัติ</div>
         {{ spacedata.roomid }} &emsp;&emsp;&emsp;&emsp; {{ spacedata.startdate }} &emsp;&emsp;&emsp;&emsp; {{ spacedata.starttime }} - {{ spacedata.endtime }} &emsp;&emsp;&emsp;&emsp;
-        {{ spacedata.id }}
+        #{{ spacedata.id }}
         <a href="/report"><i class="absolute pi pi-ellipsis-h" style="margin-left: 13%;"></i></a>
     </div>
 </template>
