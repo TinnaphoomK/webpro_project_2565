@@ -7,7 +7,9 @@ export default {
         Navbar,
         RepHispending,
         RepHiscomplete
+        
     },
+
     computed: {
     reportData() {
       return JSON.parse(localStorage.getItem('report')) || {};
@@ -21,10 +23,19 @@ export default {
     <!-- badge -->
     <div class="his bg-white shadow-5 w-3 h-6rem justify-content-center text-center text-5xl align-items-center border-round-2xl"
         style="margin-left: 37%; margin-top: 3%;padding-top: 1%;">
-        ประวัติการรายงาน
+       {{report.topic}}
     </div>
-    {{ topic  }}
 </template>
+
+
+
+
+
+
+
+
+
+
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
