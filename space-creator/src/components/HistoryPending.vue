@@ -9,3 +9,16 @@
         <a href="/report"><i class="absolute pi pi-ellipsis-h" style="margin-left: 11%;"></i></a>
     </div>
 </template>
+
+<script>
+export default {
+    data() {
+        room: [
+            { roomname: 'Auditorium', roomId: '#10000' }
+        ]
+        reservation: [
+            { startdate: '9 FEB,2023' }
+        ]
+    }
+}
+</script>
