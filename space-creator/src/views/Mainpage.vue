@@ -4,11 +4,11 @@
     <Navbar></Navbar>
 
     <!-- search bar -->
-    <div class="py-6 text-center">
-        <span>
+    <div class="py-6 text-center w-full flex justify-content-center align-items-center">
+
             <InputText id="search" type="text" class="p-inputtext-lg shadow-2" style="width: 50%;" v-model="value" />
             <a href="/reporthistory"><i class="pi pi-search px-3"></i></a>
-        </span>
+
     </div>
 
     <!-- 1st floor -->

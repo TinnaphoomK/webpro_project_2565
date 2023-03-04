@@ -197,8 +197,14 @@ export default {
 
     // Navigate to the sign-in page
     this.$router.push('/signin');
-  }
-  }
+    }
+    }
+  },
+  created(){
+    const localStorageAccounts = localStorage.getItem("accounts");
+      if (localStorageAccounts) {
+        this.accounts = JSON.parse(localStorageAccounts);
+      }
   }
 };
 </script>

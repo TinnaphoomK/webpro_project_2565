@@ -23,6 +23,7 @@ export default {
       const signedInAccount = JSON.parse(localStorage.getItem('signedInAccount'));
       if (signedInAccount) {
         this.username = signedInAccount.username;
+        console.log(signedInAccount)
       }
     }
   }
@@ -47,7 +48,7 @@ export default {
   <div>
     <header>
       <div class="card">
-        <div class="flex flex-wrap card-container">
+        <div class="flex card-container">
           <div>
             <img class="absolute z-0 w-full" src="src/assets/img/navbar.png" alt="" />
           </div>
@@ -59,17 +60,6 @@ export default {
             </a>
           </div>
 
-          <!-- space -->
-          <div class="text-white font-bold flex align-items-center justify-content-center"
-            style="min-width: 200px; min-height: 100px"></div>
-          <div class="text-white font-bold flex align-items-center justify-content-center"
-            style="min-width: 200px; min-height: 100px"></div>
-          <div class="text-white font-bold flex align-items-center justify-content-center"
-            style="min-width: 200px; min-height: 100px"></div>
-          <div class="text-white font-bold flex align-items-center justify-content-center"
-            style="min-width: 200px; min-height: 100px"></div>
-          <div class="text-white font-bold flex align-items-center justify-content-center"
-            style="min-width: 200px; min-height: 100px"></div>
 
           <template v-if="isLoggedIn ">
             <a class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center"
