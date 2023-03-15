@@ -24,6 +24,10 @@ export default {
         style="margin-left: 37%; margin-top: 3%;padding-top: 1%;">
         ประวัติการรายงาน
     </div>
+    <RepHispending></RepHispending>
+    <RepHispending></RepHispending>
+    <RepHiscomplete></RepHiscomplete>
+    <RepHiscomplete></RepHiscomplete>
 </template>
 
 

@@ -1,5 +1,6 @@
 <script>
 import Navbar from '../components/Navbar.vue';
+import reserve from '../components/reserve.json'
 
 export default {
     components: {
@@ -30,7 +31,7 @@ export default {
     },
     methods: {
         saveInputs() {
-            
+
             const reservation = {
                 id: this.id,
                 startdate: this.startdate,
@@ -39,7 +40,7 @@ export default {
                 endtime: this.endtime,
                 value: this.value
             };
-            const roomNames ={
+            const roomNames = {
                 roomNames: this.roomNames
             }
             // increment id for next item
@@ -113,8 +114,8 @@ export default {
                     cols="136" />
             </div>
 
-                <Button @click="saveInputs" class="thai border-round-xl text-xl absolute w-12rem h-3rem justify-content-center"
-                    style="right: 45%; top: 90%; background-color: rgb(35, 87, 165);">ยืนยันการจอง</Button>
+            <Button @click="saveInputs" class="thai border-round-xl text-xl absolute w-12rem h-3rem justify-content-center"
+                style="right: 45%; top: 90%; background-color: rgb(35, 87, 165);">ยืนยันการจอง</Button>
         </div>
 
     </div>

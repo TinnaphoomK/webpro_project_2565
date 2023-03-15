@@ -1,0 +1,20 @@
+[
+    {
+        "roomid": "Auditorium",
+        "startdate": "13/02/2023",
+        "enddate": "13/02/2023",
+        "starttime": "13:48",
+        "endtime": "13:50",
+        "comment": "i want to die",
+        "reserveid": "#10000"
+    },
+    {
+        "roomid": "Creative",
+        "startdate": "29/02/2023",
+        "enddate": "30/02/2023",
+        "starttime": "20:48",
+        "endtime": "50:50",
+        "comment": "i want to shine",
+        "reserveid": "#10000"
+    }
+]

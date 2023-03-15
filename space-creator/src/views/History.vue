@@ -67,6 +67,7 @@ a:active {
 import Navbar from '../components/Navbar.vue';
 import HistoryPending from '../components/HistoryPending.vue';
 import HistoryComplete from '../components/HistoryComplete.vue';
+
 export default {
     components: {
         Navbar,

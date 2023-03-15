@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import spacedata from '../components/reserve.json';
+
 export default {
     data() {
         return {
