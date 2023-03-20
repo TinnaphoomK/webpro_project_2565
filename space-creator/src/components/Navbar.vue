@@ -1,10 +1,12 @@
 <script>
-import SignupButton from './SignupButton.vue';
+import SignupButton from '../components/SignupButton.vue';
+import LoginButton from '../components/LoginButton.vue';
 
 export default {
   name: 'Navbar',
   components: {
-    SignupButton
+    SignupButton,
+    LoginButton
   },
   data() {
     return {
@@ -16,28 +18,28 @@ export default {
     display: true,
   },
   created() {
-  const isLoggedIn = localStorage.getItem('isLoggedIn');
-  if (isLoggedIn) {
-    this.isLoggedIn = JSON.parse(isLoggedIn);
-    if (this.isLoggedIn) {
-      const signedInAccount = JSON.parse(localStorage.getItem('signedInAccount'));
-      if (signedInAccount) {
-        this.username = signedInAccount.username;
-        console.log(signedInAccount)
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    if (isLoggedIn) {
+      this.isLoggedIn = JSON.parse(isLoggedIn);
+      if (this.isLoggedIn) {
+        const signedInAccount = JSON.parse(localStorage.getItem('signedInAccount'));
+        if (signedInAccount) {
+          this.username = signedInAccount.username;
+          console.log(signedInAccount)
+        }
       }
     }
-  }
-},
+  },
 
 
   methods: {
     signout() {
-    this.isLoggedIn = false;
-    this.username = null; // reset username to null on logout
-    localStorage.removeItem('isLoggedIn'); // remove isLoggedIn from localStorage
-    localStorage.removeItem('signedInAccount');
-    this.$router.push('/');
-  },
+      this.isLoggedIn = false;
+      this.username = null; // reset username to null on logout
+      localStorage.removeItem('isLoggedIn'); // remove isLoggedIn from localStorage
+      localStorage.removeItem('signedInAccount');
+      this.$router.push('/');
+    },
   }
 };
 </script>
@@ -49,10 +51,12 @@ export default {
     <header>
       <div class="card">
         <div class="flex card-container">
-          <div>
-            <img class="absolute z-0 w-full" src="src/assets/img/navbar.png" alt="" />
-          </div>
+          <!-- <div class="navbarr">
+                                                      </div> -->
           <!-- home -->
+          <div>
+            <img class="absolute w-full h-6rem" src="../assets/img/navbar.png" alt="">
+          </div>
           <div class="z-1">
             <a class="text-white font-bold flex align-items-center justify-content-left ml-4"
               style="min-width: 200px; min-height: 100px" href="/">
@@ -61,7 +65,7 @@ export default {
           </div>
 
 
-          <template v-if="isLoggedIn ">
+          <template v-if="isLoggedIn">
             <a class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center"
               style="min-width: 125px; min-height: 25px" href="/history">
               <i class="pi pi-history mr-2"></i>
@@ -75,31 +79,35 @@ export default {
               {{ username }}
             </a>
 
-            <a @click.prevent="signout" class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center"
+            <a @click.prevent="signout"
+              class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center"
               style="min-width: 125px; min-height: 25px" href="/signin">
-              <i class="pi pi-power-off
-            mr-2"></i>
+              <i class="pi pi-power-off mr-2"></i>
               Log out
             </a>
 
-            
+
           </template>
 
           <template v-if="!isLoggedIn">
-            <!-- login button -->
-            <a class="z-1 bg-white text-primary-800 border-round-3xl ml-6 my-4 text-xl font-bold flex align-items-center justify-content-center shadow-5 hover:bg-bluegray-100"
-              style="min-width: 125px; min-height: 25px" href="/signin">
-              Sign in
-            </a>
+            <router-link to="/signin">
+              <LoginButton></LoginButton>
+            </router-link>
 
             <!-- sign up button -->
-            <a class="z-1 bg-primary-800 text-white border-round-3xl ml-6 my-4 text-xl font-bold flex align-items-center justify-content-center shadow-5 hover:bg-primary-900"
-              style="min-width: 125px; min-height: 25px" href="/signup">
-             Sign up
-            </a>
+            <router-link to="/signup">
+              <SignupButton></SignupButton>
+            </router-link>
           </template>
         </div>
       </div>
     </header>
   </div>
 </template>
+<style>
+.navbarr {
+  background-image: linear-gradient(to right, rgb(3, 8, 16), rgb(35, 87, 165), rgb(3, 8, 16));
+  width: 100%;
+  display: flex;
+}
+</style>

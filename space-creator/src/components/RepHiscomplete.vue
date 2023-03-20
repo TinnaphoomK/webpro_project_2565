@@ -1,11 +1,11 @@
 <template>
-    <div class="bg-white shadow-5 w-8 h-6rem justify-content-center text-center text-xl align-items-center border-round-2xl"
-        style="margin-left: 17%; margin-top: 1%;padding-top: 1.7%;">
-        <div class="absolute w-10rem h-3rem text-white pt-2 border-round-right-2xl shadow-5 his"
-            style="background-color:rgb(15, 120, 19);">เสร็จสิ้น</div>
-        {{ roomId }} &emsp;&emsp;&emsp;&emsp; {{ room }} &emsp;&emsp;&emsp;&emsp; {{ problem }} &emsp;&emsp;&emsp;&emsp;
-        {{ reportnum }}
-        <a href=""><i class="absolute pi pi-ellipsis-h" style="margin-left: 13%;"></i></a>
+    <div class="card">
+        <div class="flex justify-content-center flex-wrap card-container">
+            <div class="bg-white text-green-700 text-xl font-bold flex align-items-center justify-content-center w-8 h-6rem border-round-2xl m-2 shadow-5"
+                style="font-family: 'Mitr', sans-serif;">
+                ห้อง : Creative | ปัญหาที่พบ : TV เปิดไม่ติด | รหัสรายงาน : #001
+            </div>
+        </div>
     </div>
 </template>
 <script>

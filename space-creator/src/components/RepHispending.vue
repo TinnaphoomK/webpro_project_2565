@@ -1,26 +1,23 @@
 <template>
-    <div class="bg-white shadow-5 w-8 h-6rem justify-content-center text-center text-xl align-items-center border-round-2xl"
-        style="margin-left: 17%; margin-top: 1%;padding-top: 1.7%;">
-        <div class="absolute w-10rem h-3rem text-white pt-2 border-round-right-2xl shadow-5 his"
-            style="background-color:rgb(35, 87, 165);">รอดำเนินการ</div>
-        {{ roomId }} &emsp;&emsp;&emsp;&emsp; {{ room }} &emsp;&emsp;&emsp;&emsp; {{ problem }}
-        &emsp;&emsp;&emsp;&emsp;
-        {{ reportnum }}
-        <a href=""><i class="absolute pi pi-ellipsis-h" style="margin-left: 13.5%;"></i></a>
+    <div class="card">
+        <div class="flex justify-content-center flex-wrap card-container">
+            <div class="bg-white text-primary-800 text-xl font-bold flex align-items-center justify-content-center w-8 h-6rem border-round-2xl m-2 shadow-5"
+                style="font-family: 'Mitr', sans-serif;">
+                ห้อง : Creative | ปัญหาที่พบ : TV เปิดไม่ติด | รหัสรายงาน : #001
+            </div>
+        </div>
     </div>
 </template>
 <script>
+import spacedata from '../components/db.json';
+
 export default {
     data() {
         return {
-            room: 'auditorium',
-            roomId: '113',
-            startdate: '9 FEB 2023',
-            time: '11:00 - 13:00',
-            problem: 'เครื่องเสียปัญหา',
-            reportnum: '#10000'
-        }
-
-    }
-}
+        };
+    },
+    created() {
+        this.spacedata = JSON.parse(JSON.stringify(spacedata));
+    },
+};
 </script>

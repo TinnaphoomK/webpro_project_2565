@@ -5,25 +5,26 @@
     <div class="blue-half border-round-left-2xl shadow-5">
       <h1 class="bg-transparent text-white text-center">SPACE CREATOR</h1>
       <div class="bar"></div>
-      <h2 class="bg-transparent text-yellow-400 text-center">your space, your choice</h2>
+      <h2 class="bg-transparent text-yellow-400 text-center mt-6">your space, your choice</h2>
       <center class="bg-transparent">
         <img class="itpic border-round-xl" src="../assets/img/itkmitl.jpeg" alt="">
       </center>
     </div>
     <div class="white-half border-round-right-2xl shadow-5">
-      <form class="absolute h-30rem">
+      <form class="absolute">
 
-        <label for="username"  class="text-xl mx-7">Username</label>
-        <InputText id="username" v-model="username" placeholder="Fill your username" name="username" type="text" class="p-inputtext-lg shadow-2 mx-7" style="width: 80%;" />
+        <label for="username" class="text-xl mx-7">Username</label>
+        <InputText id="username" v-model="username" placeholder="Fill your username" name="username" type="text"
+          class="p-inputtext-lg shadow-2 mx-7" style="width: 80%;" />
         <br>
         <label for="password" class="text-xl mx-7">Password</label>
-        <InputText id="password" v-model="password" placeholder="Set your password" name="password" type="password" class="p-inputtext-lg shadow-2 mx-7"
-          style="width: 80%;" />
-        <br><br> 
+        <InputText id="password" v-model="password" placeholder="Set your password" name="password" type="password"
+          class="p-inputtext-lg shadow-2 mx-7" style="width: 80%;" />
+        <br><br>
 
         <router-link to="/signin">
-          <Button @click='signup()' class="absolute text-center justify-content-center text-bold text-2xl mx-7"
-            style="width: 76%; height: 12%;background-image: linear-gradient(to right, rgb(3, 8, 16), rgb(35, 87, 165));">Sign
+          <Button @click='signup()' class="absolute text-center justify-content-center text-bold text-xl mx-7"
+            style="width: 74%; height: 12%;background-image: linear-gradient(to right, rgb(3, 8, 16), rgb(35, 87, 165));">Sign
             up</Button><br><br><br><br><br>
         </router-link>
 
@@ -50,12 +51,12 @@
 }
 
 h1 {
-  font-size: 3.5rem;
+  font-size: 3rem;
   margin-top: 15%;
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-top: 3%;
   margin-bottom: 4%;
 }
@@ -82,9 +83,10 @@ h2 {
 }
 
 .itpic {
-  width: 640px;
-  height: 425px;
+  width: 90%;
+  height: 100%;
   object-fit: cover;
+  margin-top: 10%;
 }
 
 .bar {
@@ -174,37 +176,37 @@ export default {
     signup() {
       // Check if an account with the same username already exists
       const existingAccount = this.accounts.find(account => {
-    return account.username === this.username;
-  });
+        return account.username === this.username;
+      });
 
-  if (existingAccount) {
-    alert("An account with this username already exists.");
-  } else {
-    // Create a new account with the next available ID
-    const newAccount = {
-      id: this.accounts.length + 1,
-      username: this.username,
-      password: this.password
-    };
+      if (existingAccount) {
+        alert("An account with this username already exists.");
+      } else {
+        // Create a new account with the next available ID
+        const newAccount = {
+          id: this.accounts.length + 1,
+          username: this.username,
+          password: this.password
+        };
 
-    // Add the new account to the accounts array and save to local storage
-    this.accounts.push(newAccount);
-    localStorage.setItem('accounts', JSON.stringify(this.accounts));
+        // Add the new account to the accounts array and save to local storage
+        this.accounts.push(newAccount);
+        localStorage.setItem('accounts', JSON.stringify(this.accounts));
 
-    // Save the entered username and password to local storage
-    localStorage.setItem('username', this.username);
-    localStorage.setItem('password', this.password);
+        // Save the entered username and password to local storage
+        localStorage.setItem('username', this.username);
+        localStorage.setItem('password', this.password);
 
-    // Navigate to the sign-in page
-    this.$router.push('/signin');
-    }
+        // Navigate to the sign-in page
+        this.$router.push('/signin');
+      }
     }
   },
-  created(){
+  created() {
     const localStorageAccounts = localStorage.getItem("accounts");
-      if (localStorageAccounts) {
-        this.accounts = JSON.parse(localStorageAccounts);
-      }
+    if (localStorageAccounts) {
+      this.accounts = JSON.parse(localStorageAccounts);
+    }
   }
 };
 </script>

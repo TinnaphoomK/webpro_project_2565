@@ -1,17 +1,7 @@
-<script>
-import Navbar from '../components/Navbar.vue'
-import CardItem from '../components/CardItem.vue'
-export default {
-    components: {
-        Navbar,
-        CardItem
-    },
-};
-</script>
-
 <template>
     <!-- navbar -->
     <Navbar></Navbar>
+
     <!-- search bar -->
     <div class="pt-4 text-center w-full flex justify-content-center align-items-center">
 
@@ -22,12 +12,12 @@ export default {
 
     <!-- 1st floor -->
     <div class="relative text-left justify-text-center font-bold text-2xl pt-6">
-        <router-link to="/" class="text-primary-600 ml-8">1ST FLOOR</router-link>
-        <router-link to="/mfloor" class="text-gray-900 ml-6 hover:text-primary-800">M FLOOR</router-link>
+        <router-link to="/" class="text-gray-900 ml-8 hover:text-primary-800">1ST FLOOR</router-link>
+        <router-link to="/mfloor" class="text-primary-600 ml-6">M FLOOR</router-link>
         <router-link to="/2ndfloor" class="text-gray-900 ml-6 hover:text-primary-800">2ND FLOOR</router-link>
         <router-link to="/3rdfloor" class="text-gray-900 ml-6 hover:text-primary-800">3RD FLOOR</router-link>
 
-        <div class="gridbg mt-3 shadow-5">
+        <div class="gridbg mt-2 shadow-5">
 
             <!-- card loop -->
             <div class="grid justify-content-center">
@@ -107,3 +97,13 @@ a:active {
 }
 </style>
 
+<script>
+import Navbar from '../components/Navbar.vue'
+import CardItem from '../components/CardItem.vue'
+export default {
+    components: {
+        Navbar,
+        CardItem
+    },
+};
+</script>

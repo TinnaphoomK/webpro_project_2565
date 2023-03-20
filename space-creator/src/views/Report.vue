@@ -1,104 +1,76 @@
 <template>
-    <Navbar></Navbar>
-    <!-- badge -->
-    <div
-      class="his bg-white shadow-5 w-2 h-6rem justify-content-center text-center text-5xl align-items-center border-round-2xl"
-      style="margin-left: 42%; margin-top: 3%;padding-top: 1%; margin-bottom: 3%;"
-    >
-      รายงาน
+  <Navbar></Navbar>
+  <!-- badge -->
+  <div class="card">
+    <div class="flex justify-content-center flex-wrap card-container mt-4">
+      <div
+        class="thai flex align-items-center justify-content-center badge bg-white text-primary-800 shadow-5 w-16rem h-6rem text-4xl border-round-2xl">
+        รายงาน</div>
     </div>
-    <div class="text-center">
-      <label for="topic" class="thai text-xl ml-8">หัวข้อ</label>
-      <InputText
-        id="topic"
-        v-model="topic"
-        name="topic"
-        type="text"
-        class="p-inputtext-lg shadow-2 mr-8 ml-4 mb-4"
-        style="width: 30%;"
-      />
-  
-      <label for="roomid" class="thai text-xl ml-8">หมายเลขห้อง</label>
-      <InputText
-        id="roomid"
-        v-model="roomid"
-        name="roomid"
-        type="text"
-        class="p-inputtext-lg shadow-2 mr-8 ml-4 mb-4"
-        style="width: 30%;"
-      /><br />
-  
-      <label
-        for="comment"
-        class="flex absolute thai text-xl"
-        style="margin-left: 9%; margin-top: 3%;"
-      >
-        หมายเหตุ
-      </label>
-      <Textarea
-        v-model="comment"
-        class="shadow-5"
-        style="margin-top: 2%; margin-left: 4%;"
-        rows="20"
-        cols="167"
-      />
+  </div>
+  <div class="text-center justify-content-between mt-6">
+    <div>
+      <label for="topic" class="thai text-xl mr-4">หัวข้อ</label>
+      <InputText id="topic" v-model="topic" name="topic" type="text" class="p-inputtext-lg shadow-2 mb-4 w-3" />
+      <label for="roomid" class="thai text-xl ml-8 mr-4">หมายเลขห้อง</label>
+      <InputText id="roomid" v-model="roomid" name="roomid" type="text" class="p-inputtext-lg shadow-2 mb-4 w-2" /><br />
     </div>
+
+    <div>
+      <Textarea v-model="comment" placeholder="  หมายเหตุ" class="shadow-5 justify-content-center mt-4" rows="15"
+        cols="100" />
+    </div>
+  </div>
+  <div class="flex text-center justify-content-center mt-4">
+    <Button
+      class="thai bg-primary-800 justify-content-center border-round-xl text-xl w-12rem h-3rem py-5 justify-content-center shadow-5"
+      @click="saveReportToLocalStorage">
+      ยืนยันการจอง
+    </Button>
+  </div>
+</template>
   
-      <Button
-        class="thai border-round-xl text-xl absolute w-12rem h-3rem justify-content-center shadow-5"
-        style="right: 45%; top: 88%; background-color: rgb(35, 87, 165);"
-        @click="saveReportToLocalStorage"
-      >
-        ยืนยันการจอง
-      </Button>
-  </template>
   
   
-  
-  <style>
+<style>
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Mitr&display=swap');
 
 * {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-}
-
-.his {
-    font-family: 'Mitr', sans-serif;
-    color: rgb(35, 87, 165);
+  font-family: 'Inter', sans-serif;
+  margin: 0;
 }
 
 .thai {
-    font-family: 'Mitr', sans-serif;
+  font-family: 'Mitr', sans-serif;
 }
 
 .bar {
-    height: 0.2vh;
-    width: 58vw;
-    /* Position the rectangle in the center */
-    position: absolute;
-    top: 33%;
-    left: 53%;
-    background-color: #9E9999;
-    transform: translate(-50%, -50%);
+  height: 0.2vh;
+  width: 58vw;
+  /* Position the rectangle in the center */
+  position: absolute;
+  top: 33%;
+  left: 53%;
+  background-color: #9E9999;
+  transform: translate(-50%, -50%);
 }
 
 a:link {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 a:visited {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 a:active {
-    text-decoration: none;
+  text-decoration: none;
 }
 </style>
 
@@ -116,15 +88,15 @@ export default {
     };
   },
   methods: {
-      saveReportToLocalStorage() {
-  const report = {
-    topic: this.topic.toString(),
-    roomid: this.roomid.toString(),
-    comment: this.comment.toString()
-  }
-  localStorage.setItem("report", JSON.stringify(report));
-  this.$router.push('/reporthistory');
-}
-},
+    saveReportToLocalStorage() {
+      const report = {
+        topic: this.topic.toString(),
+        roomid: this.roomid.toString(),
+        comment: this.comment.toString()
+      }
+      localStorage.setItem("report", JSON.stringify(report));
+      this.$router.push('/reporthistory');
+    }
+  },
 };
 </script>

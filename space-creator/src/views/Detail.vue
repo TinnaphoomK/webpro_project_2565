@@ -36,35 +36,30 @@ export default {
     <Navbar></Navbar>
 
     <!-- top bar-->
-    <div class="relative text-left justify-text-center font-bold text-3xl pt-6">
-        <a class="thai first hover:text-primary-600 " style="color: rgb(35, 87, 165);" href="/detail">รายละเอียด</a>
-        <a class="thai ml-8 hover:text-primary-600" style="color: rgb(35, 87, 165);" href="/reserve">รายการจอง</a>
+    <div class="relative text-left justify-text-center font-bold text-2xl mt-6">
+        <router-link to="/detail" class="thai first text-primary-600 hover:text-primary-600">รายละเอียด</router-link>
+        <router-link to="/reserve" class="thai ml-8 text-gray-900 hover:text-primary-600">รายการจอง</router-link>
 
-        <div class="cardbg mt-4 shadow-5">
-
-            <!-- detail -->
-            <div class="justify-content-center pb-5">
-                <div class="cardone bg-primary w-5 h-30rem border-round-2xl z-1 shadow-6">
-                    <div class="absolute border-round-3xl" style="margin-left: 14.5%; margin-top: 10%;"></div>
+        <div class="card mx-8 mt-3 py-6 shadow-5 border-round-2xl" style="background-color: rgb(233, 238, 246);">
+            <div class="flex justify-content-around flex-wrap card-container">
+                <div
+                    class="flex align-items-center justify-content-center w-30rem h-30rem bg-purple-500 font-bold text-white border-round-2xl">
+                    1</div>
+                <div class="mt-3">
+                    <div class="flex w-30rem bg-transparent font-bold text-6xl text-gray-900 border-round">
+                        Auditorium</div>
+                    <div class="thai flex w-30rem bg-transparent font-semi-bold text-3xl text-gray-900 border-round mt-6">
+                        รายละเอียด</div>
+                    <div class="thai">ชั้น : 1</div>
+                    <div class="thai">จำนวนที่นั่ง : 222</div>
+                    <div class="thai">อุปกรณ์ : เยอะ ถามยามดู</div>
+                    <div class="thai">มักใช้ในโอกาส : กินข้าว</div>
+                    <router-link to="/reserve">
+                        <Button @click="saveRoomName"
+                            class="thai bg-primary-800 hover:bg-primary-900 border-round-xl text-xl absolute w-12rem h-4rem justify-content-center shadow-5 mt-8">ยืนยันการจอง</Button>
+                    </router-link>
                 </div>
-
             </div>
-            <div id="roomname" value="roomname" class="absolute text-6xl font-bold" style="right: 35%; top: 28%;">
-                Auditorium
-            </div>
-            <div class="bar"></div>
-            <div class="thai text-black absolute" style="right: 41%; top: 40%;">รายละเอียด</div>
-            <div class="text-500 absolute" style="right: 32%; top: 47%;">
-                <div class="thai">ชั้น : 1</div>
-                <div class="thai">จำนวนที่นั่ง : 222</div>
-                <div class="thai">อุปกรณ์ : เยอะ ถามยามดู</div>
-                <div class="thai">มักใช้ในโอกาส : กินข้าว</div>
-            </div>
-
-
-
-                <Button @click="saveRoomName"  class="thai border-round-xl text-xl absolute w-12rem h-4rem justify-content-center shadow-5"
-                    style="right: 37.5%; top: 76.5%; background-color: rgb(35, 87, 165);">ยืนยันการจอง</Button>
         </div>
 
     </div>
@@ -84,34 +79,8 @@ export default {
     font-family: 'Mitr', sans-serif;
 }
 
-.cardbg {
-    background-color: rgb(233, 238, 246);
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-bottom: 5%;
-    border-radius: 10px;
-    padding-top: 4%;
-    padding-bottom: 4%;
-}
-
-.cardone {
-    margin-left: 2%;
-    margin-bottom: 1%;
-}
-
-.bar {
-    height: 0.5vh;
-    width: 34vw;
-    /* Position the rectangle in the center */
-    position: absolute;
-    top: 37%;
-    left: 69%;
-    background-color: #000;
-    transform: translate(-50%, -50%);
-}
-
 .first {
-    margin-left: 13%;
+    margin-left: 10%;
 }
 
 a:link {
