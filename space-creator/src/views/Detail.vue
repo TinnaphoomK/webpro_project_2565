@@ -25,6 +25,7 @@ export default {
             } else {
                 // Display alert message
                 alert('Please login first');
+                this.$router.push('/signin');
             }
         }
     }
@@ -54,10 +55,8 @@ export default {
                     <div class="thai">จำนวนที่นั่ง : 222</div>
                     <div class="thai">อุปกรณ์ : เยอะ ถามยามดู</div>
                     <div class="thai">มักใช้ในโอกาส : กินข้าว</div>
-                    <router-link to="/reserve">
-                        <Button @click="saveRoomName"
-                            class="thai bg-primary-800 hover:bg-primary-900 border-round-xl text-xl absolute w-12rem h-4rem justify-content-center shadow-5 mt-8">ยืนยันการจอง</Button>
-                    </router-link>
+                    <Button @click="saveRoomName"
+                        class="thai bg-primary-800 hover:bg-primary-900 border-round-xl text-xl absolute w-12rem h-4rem justify-content-center shadow-5 mt-8">ยืนยันการจอง</Button>
                 </div>
             </div>
         </div>

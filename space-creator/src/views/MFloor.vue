@@ -17,7 +17,7 @@
         <router-link to="/2ndfloor" class="text-gray-900 ml-6 hover:text-primary-800">2ND FLOOR</router-link>
         <router-link to="/3rdfloor" class="text-gray-900 ml-6 hover:text-primary-800">3RD FLOOR</router-link>
 
-        <div class="gridbg mt-2 shadow-5">
+        <div class="gridbg mt-3 shadow-5">
 
             <!-- card loop -->
             <div class="grid justify-content-center">

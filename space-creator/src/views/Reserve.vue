@@ -59,19 +59,77 @@ export default {
 }
 </script>
 
-
 <template>
     <!-- navbar -->
     <Navbar></Navbar>
 
     <!-- top bar-->
-    <div class="relative text-left justify-text-center font-bold text-3xl pt-6">
-        <a class="thai first hover:text-primary-600 " style="color: rgb(35, 87, 165);" href="/detail">รายละเอียด</a>
-        <a class="thai ml-8 hover:text-primary-600" style="color: rgb(35, 87, 165);" href="/reserve">รายการจอง</a>
+    <div class="relative text-left justify-text-center font-bold text-2xl mt-6">
+        <router-link to="/detail" class="thai first text-gray-900 hover:text-primary-600">รายละเอียด</router-link>
+        <router-link to="/reserve" class="thai ml-8 text-primary-600 hover:text-primary-600">รายการจอง</router-link>
+
+        <div class="card mx-8 mt-3 py-4 shadow-5 border-round-sm" style="background-color: rgb(233, 238, 246);">
+            <div class="flex justify-content-center flex-wrap card-container">
+                <div class="flex grid justify-content-center">
+                    <div
+                        class="bg-blue-100 w-15rem h-7rem border-round-xl z-1 shadow-3 m-4 flex align-items-center justify-content-center">
+                        1
+                    </div>
+                    <div
+                        class="bg-blue-100 w-15rem h-7rem border-round-xl z-1 shadow-3 m-4 flex align-items-center justify-content-center">
+                        2
+                    </div>
+                    <div
+                        class="bg-blue-100 w-15rem h-7rem border-round-xl z-1 shadow-3 m-4 flex align-items-center justify-content-center">
+                        3
+                    </div>
+                    <div
+                        class="bg-blue-100 w-15rem h-7rem border-round-xl z-1 shadow-3 m-4 flex align-items-center justify-content-center">
+                        4
+                    </div>
+                </div>
+                <div class="flex justify-content-center align-items-center flex-wrap card-container mt-2">
+                    <div class="flex align-items-center justify-content-center w-5 mx-4">
+                        <label for="startdate" class="thai text-xl">วันที่เริ่มจอง</label>
+                        <InputText id="startdate" v-model="startdate" name="startdate" type="date"
+                            class="p-inputtext-lg shadow-2 mx-4 w-8" />
+                    </div>
+                    <div class="flex align-items-center justify-content-center w-5 mx-4">
+                        <label for="enddate" class="thai text-xl">สิ้นสุดการจอง</label>
+                        <InputText id="enddate" v-model="enddate" name="enddate" type="date"
+                            class="p-inputtext-lg shadow-2 mx-4 w-8" />
+                    </div>
+                    <div class="flex align-items-center justify-content-center w-5 mx-4 mt-4">
+                        <label for="starttime" class="thai text-xl">ตั้งแต่เวลา</label>
+                        <InputText id="starttime" v-model="starttime" name="starttime" type="time"
+                            class="p-inputtext-lg shadow-2 mx-4 w-8" />
+                    </div>
+
+                    <div class="flex align-items-center justify-content-center w-5 mx-3 mt-4">
+                        <label for="endtime" class="thai text-xl ml-6">ถึงเวลา</label>
+                        <InputText id="endtime" v-model="endtime" name="endtime" type="time"
+                            class="p-inputtext-lg shadow-2 mx-4 w-8" />
+                    </div>
+                </div>
+                <Textarea placeholder="หมายเหตุ ..." class="flex align-items-top w-full h-10rem mt-5 mx-8"></Textarea>
+                <Button @click="saveInputs"
+                    class="thai bg-primary-800 hover:bg-primary-900 border-round-xl text-xl w-12rem h-4rem justify-content-center mt-4">ยืนยันการจอง</Button>
+            </div>
+        </div>
+
+
+    </div>
+</template>
+
+<!-- <template>
+    <Navbar></Navbar>
+
+    <div class="relative text-left justify-text-center font-bold text-2xl mt-6">
+        <router-link to="/detail" class="thai first text-primary-600 hover:text-primary-600">รายละเอียด</router-link>
+        <router-link to="/reserve" class="thai ml-8 text-gray-900 hover:text-primary-600">รายการจอง</router-link>
 
         <div class="cardbg mt-4 shadow-5">
 
-            <!-- detail -->
             <div class="justify-content-center">
                 <div class="grid justify-content-center">
                     <div class="cardone bg-primary w-20rem h-7rem border-round-2xl z-1 shadow-6">
@@ -119,7 +177,7 @@ export default {
         </div>
 
     </div>
-</template>
+</template> -->
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
@@ -135,34 +193,8 @@ export default {
     font-family: 'Mitr', sans-serif;
 }
 
-.cardbg {
-    background-color: rgb(233, 238, 246);
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-bottom: 5%;
-    border-radius: 10px;
-    padding-top: 4%;
-    padding-bottom: 3%;
-}
-
-.cardone {
-    margin-left: 2%;
-    margin-bottom: 1%;
-}
-
-.bar {
-    height: 0.5vh;
-    width: 34vw;
-    /* Position the rectangle in the center */
-    position: absolute;
-    top: 37%;
-    left: 69%;
-    background-color: #000;
-    transform: translate(-50%, -50%);
-}
-
 .first {
-    margin-left: 13%;
+    margin-left: 10%;
 }
 
 a:link {
