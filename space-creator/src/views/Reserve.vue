@@ -68,7 +68,7 @@ export default {
         <router-link to="/detail" class="thai first text-gray-900 hover:text-primary-600">รายละเอียด</router-link>
         <router-link to="/reserve" class="thai ml-8 text-primary-600 hover:text-primary-600">รายการจอง</router-link>
 
-        <div class="card mx-8 mt-3 py-4 shadow-5 border-round-sm" style="background-color: rgb(233, 238, 246);">
+        <div class="card mx-8 mt-3 py-4 shadow-5 border-round-sm bg-white">
             <div class="flex justify-content-center flex-wrap card-container">
                 <div class="flex grid justify-content-center">
                     <div
@@ -187,6 +187,10 @@ export default {
 * {
     font-family: 'Inter', sans-serif;
     margin: 0;
+}
+
+body {
+    background-color: rgba(35, 87, 165, 0.1);
 }
 
 .thai {

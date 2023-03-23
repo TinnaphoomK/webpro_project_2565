@@ -1,5 +1,23 @@
 <template>
-    <div class="bg-white shadow-5 w-8 h-6rem justify-content-center text-left text-xl align-items-center border-round-2xl"
+    <div class="card">
+        <div class="flex justify-content-center flex-wrap card-container">
+            <div
+                class="thai bg-white text-primary-800 text-lg font-bold flex align-items-center justify-content-between w-8 h-6rem border-round-2xl m-2 shadow-5">
+                <label class="thai mx-6" for="">Auditorium</label>
+                <label class="thai mr-3" for="">13 FEB 2023</label>
+                <label class="thai mx-3" for="">11:00 - 13:00</label>
+                <label class="thai mx-3" for="">#10000</label>
+                <Button
+                    class="thai bg-green-700 hover:bg-green-800 justify-content-center align-items-center h-2rem w-7rem mx-1">อนุมัติ</Button>
+                <Button
+                    class="thai bg-red-700 hover:bg-red-800 justify-content-center align-items-center h-2rem w-7rem mx-1">ไม่อนุมัติ</Button>
+                <router-link to="/report">
+                    <i class="pi pi-ellipsis-h text-xl text-900 mx-6"></i>
+                </router-link>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="bg-white shadow-5 w-8 h-6rem justify-content-center text-left text-xl align-items-center border-round-2xl"
         style="margin-left: 17%; margin-top: 1.5%;padding-top: 1.7%;">
         &emsp;&emsp; &emsp;&emsp;{{ room }} &emsp;&emsp;&emsp;&emsp; {{ startdate }} &emsp;&emsp;&emsp;&emsp; {{ time }}
         &emsp;&emsp;&emsp;&emsp;
@@ -13,49 +31,9 @@
                 style="margin-left: 1.5%;">ไม่อนุมัติ</div>
         </a>
         <a href=""><i class="inline-block pi pi-ellipsis-h" style="margin-left: 7.5%;"></i></a>
-    </div>
+    </div> -->
 </template>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Mitr&display=swap');
 
-* {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-}
-
-.his {
-    font-family: 'Mitr', sans-serif;
-    color: rgb(35, 87, 165);
-}
-
-.bar {
-    height: 0.2vh;
-    width: 58vw;
-    /* Position the rectangle in the center */
-    position: absolute;
-    top: 33%;
-    left: 53%;
-    background-color: #9E9999;
-    transform: translate(-50%, -50%);
-}
-
-a:link {
-    text-decoration: none;
-}
-
-a:visited {
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: none;
-}
-
-a:active {
-    text-decoration: none;
-}
-</style>
 <script>
 export default {
     data() {

@@ -23,7 +23,7 @@
   </div>
   <div class="flex text-center justify-content-center mt-4">
     <Button
-      class="thai bg-primary-800 justify-content-center border-round-xl text-xl w-12rem h-3rem py-5 justify-content-center shadow-5"
+      class="thai bg-primary-800 hover:bg-primary-900 justify-content-center border-round-xl text-xl w-12rem h-3rem py-5 justify-content-center shadow-5"
       @click="saveReportToLocalStorage">
       ยืนยันการจอง
     </Button>
@@ -40,6 +40,10 @@
 * {
   font-family: 'Inter', sans-serif;
   margin: 0;
+}
+
+body {
+  background-color: rgba(35, 87, 165, 0.1);
 }
 
 .thai {

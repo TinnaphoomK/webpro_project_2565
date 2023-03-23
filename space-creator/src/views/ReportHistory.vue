@@ -27,7 +27,7 @@ export default {
                 ประวัติการรายงาน</div>
         </div>
     </div>
-    <div class="mt-4">
+    <div class="mt-3">
         <div class="thai" style="margin-left: 18%;">รอดำเนินการ (2)</div>
         <RepHispending></RepHispending>
         <RepHispending></RepHispending>
@@ -37,7 +37,7 @@ export default {
     </div>
     <router-link to="/" class="flex text-center justify-content-center mt-4">
         <Button
-            class="thai bg-primary-800 justify-content-center border-round-xl text-xl w-12rem h-3rem py-5 mb-4 justify-content-center shadow-5">
+            class="thai bg-primary-800 hover:bg-primary-900 justify-content-center border-round-xl text-xl w-12rem h-3rem py-5 mb-2 justify-content-center shadow-5">
             กลับสู่หน้าหลัก
         </Button>
     </router-link>

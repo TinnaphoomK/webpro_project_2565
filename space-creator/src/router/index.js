@@ -73,6 +73,11 @@ const router = createRouter({
       name: 'mfloor',
       component: () => import('../views/MFloor.vue')
     },
+    {
+      path: '/manageroom',
+      name: 'manageroom',
+      component: () => import('../views/ManageRoom.vue')
+    },
   ]
 })
 

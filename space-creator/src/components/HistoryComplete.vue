@@ -2,13 +2,14 @@
   <div class="card">
     <div class="flex justify-content-center flex-wrap card-container">
       <div
-        class="bg-white text-green-700 text-xl font-bold flex align-items-center justify-content-center w-8 h-6rem border-round-2xl m-2 shadow-5"
-        style="font-family: 'Mitr', sans-serif;">
-        ห้อง : {{ spacedata.roomid }} | วันที่จอง : {{ spacedata.startdate }} | เวลาที่จอง : {{ spacedata.starttime }} -
-        {{ spacedata.endtime }} | รหัสจอง : #{{ spacedata.id }}
-        <a href="/report">
-          <i class="pi pi-ellipsis-h ml-5 text-xl text-900"></i>
-        </a>
+        class="bg-white text-primary-800 text-lg font-bold flex align-items-center justify-content-between w-8 h-6rem border-round-2xl m-2 shadow-5">
+        <label class="thai ml-6" for="">ห้อง : {{ spacedata.roomid }}</label>
+        <label class="thai ml-6" for="">วันที่จอง : {{ spacedata.startdate }}</label>
+        <label class="thai ml-6" for="">เวลาที่จอง : {{ spacedata.starttime }} - {{ spacedata.endtime }}</label>
+        <label class="thai ml-6" for="">รหัสจอง : #{{ spacedata.id }}</label>
+        <router-link to="/report">
+          <i class="pi pi-ellipsis-h mx-6 text-xl text-900"></i>
+        </router-link>
       </div>
     </div>
   </div>

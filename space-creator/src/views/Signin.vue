@@ -65,11 +65,6 @@ h2 {
   margin-bottom: 4%;
 }
 
-.centered-element {
-  margin-top: 10%;
-  position: absolute;
-}
-
 .right {
   margin-left: 69%;
 }

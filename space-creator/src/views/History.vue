@@ -29,6 +29,10 @@
     margin: 0;
 }
 
+body {
+    background-color: rgba(35, 87, 165, 0.1);
+}
+
 .thai {
     font-family: 'Mitr', sans-serif;
 }

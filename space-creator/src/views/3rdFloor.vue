@@ -17,38 +17,36 @@
         <router-link to="/2ndfloor" class="text-gray-900 ml-6 hover:text-primary-800">2ND FLOOR</router-link>
         <router-link to="/3rdfloor" class="text-primary-600 ml-6">3RD FLOOR</router-link>
 
-        <div class="gridbg mt-3 shadow-5">
+        <div class="mx-7 my-2 px-2 py-8 border-round-xl shadow-5" style="background-color: rgba(35, 87, 165, 0.1);">
 
             <!-- card loop -->
             <div class="grid justify-content-center">
-                <div class="absolute w-10 h-6rem border-round-xl"
-                    style="background-color: rgb(112, 130, 198); margin-top: 7%;"></div>
-                <router-link to="/detail" class="z-1">
+                <!-- <div class="absolute w-10 h-6rem border-round-xl" style="background-color: rgb(112, 130, 198); margin-top: 7%;"></div> -->
+                <router-link to="/detail" class="z-1 mx-2">
                     <CardItem></CardItem>
                 </router-link>
-                <router-link to="/detail" class="z-1">
+                <router-link to="/detail" class="z-1 mx-2">
                     <CardItem></CardItem>
                 </router-link>
-                <router-link to="/detail" class="z-1">
+                <router-link to="/detail" class="z-1 mx-2">
                     <CardItem></CardItem>
                 </router-link>
-                <router-link to="/detail" class="z-1">
+                <router-link to="/detail" class="z-1 mx-2">
                     <CardItem></CardItem>
                 </router-link>
             </div>
             <div class="grid justify-content-center mt-8">
-                <div class="absolute w-10 h-6rem border-round-xl"
-                    style="background-color: rgb(112, 130, 198); margin-top: 7%;"></div>
-                <router-link to="/detail" class="z-1">
+                <!-- <div class="absolute w-10 h-6rem border-round-xl" style="background-color: rgb(112, 130, 198); margin-top: 7%;"></div> -->
+                <router-link to="/detail" class="z-1 mx-2">
                     <CardItem></CardItem>
                 </router-link>
-                <router-link to="/detail" class="z-1">
+                <router-link to="/detail" class="z-1 mx-2">
                     <CardItem></CardItem>
                 </router-link>
-                <router-link to="/detail" class="z-1">
+                <router-link to="/detail" class="z-1 mx-2">
                     <CardItem></CardItem>
                 </router-link>
-                <router-link to="/detail" class="z-1">
+                <router-link to="/detail" class="z-1 mx-2">
                     <CardItem></CardItem>
                 </router-link>
             </div>
@@ -64,16 +62,6 @@
 * {
     font-family: 'Inter', sans-serif;
     margin: 0;
-}
-
-.gridbg {
-    background-color: rgb(233, 238, 246);
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-bottom: 1%;
-    border-radius: 15px;
-    padding-top: 4%;
-    padding-bottom: 7%;
 }
 
 .first {

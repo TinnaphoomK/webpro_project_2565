@@ -51,8 +51,6 @@ export default {
     <header>
       <div class="card">
         <div class="flex card-container">
-          <!-- <div class="navbarr">
-                                                      </div> -->
           <!-- home -->
           <div>
             <img class="absolute w-full h-6rem" src="../assets/img/navbar.png" alt="">
@@ -74,7 +72,7 @@ export default {
 
 
             <a class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center"
-              style="min-width: 125px; min-height: 25px">
+              style="min-width: 125px; min-height: 25px" href="/manageroom">
               <i class="pi pi-user mr-2"></i>
               {{ username }}
             </a>
@@ -105,9 +103,7 @@ export default {
   </div>
 </template>
 <style>
-.navbarr {
-  background-image: linear-gradient(to right, rgb(3, 8, 16), rgb(35, 87, 165), rgb(3, 8, 16));
-  width: 100%;
-  display: flex;
+Button {
+  border-color: transparent;
 }
 </style>

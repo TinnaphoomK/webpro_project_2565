@@ -22,6 +22,7 @@ export default {
                 // Save the updated list to local storage
                 localStorage.setItem('roomNames', JSON.stringify(roomNames));
                 this.$router.push('/reserve');
+                console.log('go to reserve')
             } else {
                 // Display alert message
                 alert('Please login first');
@@ -41,11 +42,11 @@ export default {
         <router-link to="/detail" class="thai first text-primary-600 hover:text-primary-600">รายละเอียด</router-link>
         <router-link to="/reserve" class="thai ml-8 text-gray-900 hover:text-primary-600">รายการจอง</router-link>
 
-        <div class="card mx-8 mt-3 py-6 shadow-5 border-round-2xl" style="background-color: rgb(233, 238, 246);">
+        <div class="card mx-8 mt-3 py-6 shadow-5 border-round-2xl bg-white">
             <div class="flex justify-content-around flex-wrap card-container">
-                <div
-                    class="flex align-items-center justify-content-center w-30rem h-30rem bg-purple-500 font-bold text-white border-round-2xl">
-                    1</div>
+                <div class="flex align-items-center justify-content-center">
+                    <img src="../assets/img/auditorium.jpeg" class="w-30rem h-30rem border-round-2xl" alt="">
+                </div>
                 <div class="mt-3">
                     <div class="flex w-30rem bg-transparent font-bold text-6xl text-gray-900 border-round">
                         Auditorium</div>
@@ -72,6 +73,10 @@ export default {
 * {
     font-family: 'Inter', sans-serif;
     margin: 0;
+}
+
+body {
+    background-color: rgba(35, 87, 165, 0.1);
 }
 
 .thai {

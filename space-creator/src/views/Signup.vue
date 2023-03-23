@@ -1,4 +1,3 @@
-
 <template>
   <!-- login -->
   <div class="rectangle">
@@ -15,16 +14,16 @@
 
         <label for="username" class="text-xl mx-7">Username</label>
         <InputText id="username" v-model="username" placeholder="Fill your username" name="username" type="text"
-          class="p-inputtext-lg shadow-2 mx-7" style="width: 80%;" />
+          class="p-inputtext-lg shadow-2 mx-7" style="width: 75%;" />
         <br>
         <label for="password" class="text-xl mx-7">Password</label>
         <InputText id="password" v-model="password" placeholder="Set your password" name="password" type="password"
-          class="p-inputtext-lg shadow-2 mx-7" style="width: 80%;" />
+          class="p-inputtext-lg shadow-2 mx-7" style="width: 75%;" />
         <br><br>
 
         <router-link to="/signin">
           <Button @click='signup()' class="absolute text-center justify-content-center text-bold text-xl mx-7"
-            style="width: 74%; height: 12%;background-image: linear-gradient(to right, rgb(3, 8, 16), rgb(35, 87, 165));">Sign
+            style="width: 70%; height: 12%;background-image: linear-gradient(to right, rgb(3, 8, 16), rgb(35, 87, 165));">Sign
             up</Button><br><br><br><br><br>
         </router-link>
 

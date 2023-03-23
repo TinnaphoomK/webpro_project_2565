@@ -25,18 +25,19 @@ export default {
 <template>
     <Navbar></Navbar>
     <!-- badge -->
-    <div class="his bg-white shadow-5 w-3 h-6rem justify-content-center text-center text-5xl align-items-center border-round-2xl"
-        style="margin-left: 37%; margin-top: 3%;padding-top: 1%;">
-        คำร้องรายงานห้อง
+    <div class="card">
+        <div class="flex justify-content-center flex-wrap card-container mt-4">
+            <div
+                class="flex align-items-center justify-content-center thai bg-white text-primary-800 shadow-5 w-18rem h-6rem text-4xl border-round-2xl">
+                คำร้องรายงานห้อง</div>
+        </div>
     </div>
-    <div class="" style="margin-left: 18%; margin-top: 3.4%;">Pending (2)</div>
-    <div class="bar"></div>
+    <div class="thai" style="margin-left: 18%; margin-top: 3.4%;">รอดำเนินการ (2)</div>
     <div>
         <ReportRpending></ReportRpending>
         <ReportRpending></ReportRpending>
     </div>
-    <div class="" style="margin-left: 17.5%; margin-top: 4.5%;">Completed (3)</div>
-    <div class="bar" style="margin-top: 18%;"></div>
+    <div class="thai" style="margin-left: 18%; margin-top: 4.5%;">เสร็จสิ้น (3)</div>
     <div class="pb-6">
         <ReportRcomplete></ReportRcomplete>
         <ReportRcomplete></ReportRcomplete>
@@ -52,20 +53,12 @@ export default {
     margin: 0;
 }
 
-.his {
-    font-family: 'Mitr', sans-serif;
-    color: rgb(35, 87, 165);
+body {
+    background-color: rgba(35, 87, 165, 0.1);
 }
 
-.bar {
-    height: 0.2vh;
-    width: 58vw;
-    /* Position the rectangle in the center */
-    position: absolute;
-    top: 33%;
-    left: 53%;
-    background-color: #9E9999;
-    transform: translate(-50%, -50%);
+.thai {
+    font-family: 'Mitr', sans-serif;
 }
 
 a:link {
