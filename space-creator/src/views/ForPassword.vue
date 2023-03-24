@@ -28,7 +28,7 @@
                         style="width: 76%; height: 12%;background-image: linear-gradient(to right, rgb(3, 8, 16), rgb(35, 87, 165));">Change
                         Password</Button><br><br><br><br><br>
 
-                <label for="password" class="text-center mt-6">already have an account ?<a class="bg-transparent" href="/">
+                <label for="password" class="text-center mt-6">already have an account ?<a class="bg-transparent" href="/signin">
                         Sign
                         in</a></label>
             </form>
