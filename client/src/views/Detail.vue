@@ -42,10 +42,10 @@ export default {
         <router-link to="/detail" class="thai first text-primary-600 hover:text-primary-600">รายละเอียด</router-link>
         <router-link to="/reserve" class="thai ml-8 text-gray-900 hover:text-primary-600">รายการจอง</router-link>
 
-        <div class="card mx-8 mt-3 py-6 shadow-5 border-round-2xl bg-white">
+        <div class="card mx-8 mt-3 py-6 shadow-5 border-round-sm bg-white">
             <div class="flex justify-content-around flex-wrap card-container">
                 <div class="flex align-items-center justify-content-center">
-                    <img src="../assets/img/auditorium.jpeg" class="w-30rem h-30rem border-round-2xl" alt="">
+                    <img src="../assets/img/auditorium.jpeg" class="w-30rem h-30rem border-round-2xl my-4" alt="">
                 </div>
                 <div class="mt-3">
                     <div class="flex w-30rem bg-transparent font-bold text-6xl text-gray-900 border-round">
