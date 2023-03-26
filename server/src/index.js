@@ -4,6 +4,8 @@ import cors from "cors"
 import auth from "./auth.js";
 import room from "./room.js";
 import report from "./report.js";
+import reservation from "./reservation.js";
+
 
 
 const router = express.Router();
@@ -17,7 +19,8 @@ app.use(cors());
 app.use('/api',
     router.use("/auth",auth),
     router.use('/room', room),
-    router.use('/report', report));
+    router.use('/report', report),
+    router.use('/reservation', reservation));
 
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`);
