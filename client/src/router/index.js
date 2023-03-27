@@ -78,6 +78,11 @@ const router = createRouter({
       name: 'manageroom',
       component: () => import('../views/ManageRoom.vue')
     },
+    {
+      path: '/reservetable',
+      name: 'reservetable',
+      component: () => import('../views/ReserveTable.vue')
+    },
   ]
 })
 

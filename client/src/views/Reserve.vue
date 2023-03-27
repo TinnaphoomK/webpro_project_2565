@@ -21,7 +21,7 @@ export default {
 
                 // Save the updated list to local storage
                 localStorage.setItem('roomNames', JSON.stringify(roomNames));
-                this.$router.push('/reserve');
+                this.$router.push('/reservetable');
                 console.log('go to reserve')
             } else {
                 // Display alert message
@@ -39,46 +39,53 @@ export default {
 
     <!-- top bar-->
     <div class="relative text-left justify-text-center font-bold text-2xl mt-6">
-        <router-link to="/detail" class="thai first text-gray-900 hover:text-primary-600">รายละเอียด</router-link>
-        <router-link to="/reserve" class="thai ml-8 text-primary-600 hover:text-primary-600">รายการจอง</router-link>
+        <router-link to="/reserve" class="thai first text-primary-600">ทำการจอง</router-link>
 
-        <div class="card mx-8 mt-3 py-6 shadow-5 border-round-sm bg-white">
-            <div class="flex justify-content-around flex-wrap card-container">
+        <div class="card mx-8 my-3 py-6 shadow-5 border-round-sm bg-white">
+            <div class="flex justify-content-center flex-wrap card-container">
                 <div class="flex align-items-center justify-content-center">
-                    <img src="../assets/img/auditorium.jpeg" class="w-30rem h-30rem border-round-2xl my-4" alt="">
+                    <img src="../assets/img/auditorium.jpeg" class="w-30rem h-30rem border-round-2xl my-4 mx-8" alt="">
+                    <div class="flex flex-column card-container mt-3 mx-7 justify-content-start">
+                        <div class="mt-2 flex flex-column">
+                            <label for="startdate" class="thai text-xl">วันที่เริ่มจอง</label>
+                            <InputText id="startdate" v-model="startdate" name="startdate" type="date"
+                                class="p-inputtext-lg shadow-2 w-30rem" />
+                        </div>
+
+                        <div class="mt-2 flex flex-column">
+                            <label for="enddate" class="thai text-xl">สิ้นสุดการจอง</label>
+                            <InputText id="enddate" v-model="enddate" name="enddate" type="date"
+                                class="p-inputtext-lg shadow-2 w-30rem" />
+                        </div>
+
+                        <div class="mt-2 flex flex-column">
+                            <label for="starttime" class="thai text-xl">ตั้งแต่เวลา</label>
+                            <InputText id="starttime" v-model="starttime" name="starttime" type="time"
+                                class="p-inputtext-lg shadow-2 w-30rem" />
+                        </div>
+
+                        <div class="mt-2 flex flex-column">
+                            <label for="endtime" class="thai text-xl">จนถึงเวลา</label>
+                            <InputText id="endtime" v-model="endtime" name="endtime" type="time"
+                                class="p-inputtext-lg shadow-2 w-30rem" />
+                        </div>
+                        <div class="justify-content-center flex">
+                            <Button @click="saveRoomName"
+                                class="thai bg-primary-800 hover:bg-primary-900 border-round-xl text-xl w-16rem h-4rem justify-content-center shadow-5 mt-4">ยืนยันการจอง</Button>
+                        </div>
+
+                    </div>
                 </div>
 
-                <div class="flex card-container mt-3 mx-6 justify-content-start">
-                    <div>
-                        <label for="startdate" class="thai text-xl">วันที่เริ่มจอง</label>
-                        <InputText id="startdate" v-model="startdate" name="startdate" type="date"
-                            class="p-inputtext-lg shadow-2 w-full" />
-                    </div>
-
-                    <div>
-                        <label for="enddate" class="thai text-xl">สิ้นสุดการจอง</label>
-                        <InputText id="enddate" v-model="enddate" name="enddate" type="date"
-                            class="p-inputtext-lg shadow-2 w-full" />
-                    </div>
-
-                    <div>
-                        <label for="starttime" class="thai text-xl">ตั้งแต่เวลา</label>
-                        <InputText id="starttime" v-model="starttime" name="starttime" type="time"
-                            class="p-inputtext-lg shadow-2 w-full" />
-                    </div>
-
-                    <div>
-                        <label for="endtime" class="thai text-xl">ถึงเวลา</label>
-                        <InputText id="endtime" v-model="endtime" name="endtime" type="time"
-                            class="p-inputtext-lg shadow-2 w-full" />
-                    </div>
-
-                    <Button @click="saveRoomName"
-                        class="thai bg-primary-800 hover:bg-primary-900 border-round-xl text-xl absolute w-12rem h-4rem justify-content-center shadow-5 mt-8">ยืนยันการจอง</Button>
-                </div>
             </div>
         </div>
 
+    </div>
+    <!-- footer -->
+    <div
+        class="flex footerbg bottom-0 w-full h-3rem text-white text-sm align-items-center justify-content-center text-center">
+        <img src="../assets/img/cc.png" class="bg-transparent mx-2" style="width: 0.9%;" alt=""> All Right Reserved |
+        Space Creator
     </div>
 </template>
 
@@ -98,6 +105,10 @@ body {
 
 .thai {
     font-family: 'Mitr', sans-serif;
+}
+
+.footerbg {
+    background-image: linear-gradient(to right, rgb(3, 8, 16), rgb(35, 87, 165), rgb(3, 8, 16));
 }
 
 .first {

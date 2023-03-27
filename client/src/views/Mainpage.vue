@@ -13,10 +13,11 @@ export default {
     <!-- navbar -->
     <Navbar></Navbar>
     <!-- search bar -->
-    <div class="pt-4 text-center w-full flex justify-content-center align-items-center">
-
-        <InputText placeholder="Search here!" id="search" type="text" class="p-inputtext-lg shadow-2" style="width: 50%;"
-            v-model="value" />
+    <div class="pt-4 mt-4 text-center w-full flex justify-content-center align-items-center">
+        <span class="p-float-label">
+            <InputText id="search" type="text" class="p-inputtext-lg shadow-2 w-30rem" v-model="value" />
+            <label for="search">Search here !</label>
+        </span>
 
     </div>
 
@@ -62,7 +63,32 @@ export default {
             </div>
 
         </div>
+        <div class="flex flex-column justify-content-center mx-7 my-6 px-2 py-8 border-round-xl shadow-5"
+            style="background-color: rgba(35, 87, 165, 0.1);">
+            <div class="flex flex-column card-container text-lg mx-7 my-4 justify-content-start align-self-start">
+                <div class="flex flex-column w-30rem bg-transparent font-bold text-5xl text-gray-900 border-round">
+                    Auditorium Room</div>
+                <ul class="list-none">
+                    <li>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                        et dolore magna aliqua.
+                    </li>
+                    <li>
+                        Vitae sapien pellentesque habitant morbi tristique senectus et netus. Vitae proin sagittis nisl
+                        rhoncus mattis.
+                    </li>
+                    <li>
+                        Maecenas pharetra convallis posuere morbi leo urna molestie.
+                    </li>
+                </ul>
+            </div>
+        </div>
 
+    </div>
+    <div
+        class="flex footerbg bottom-0 w-full h-3rem text-white text-sm align-items-center justify-content-center text-center">
+        <img src="../assets/img/cc.png" class="bg-transparent mx-2" style="width: 0.9%;" alt=""> All Right Reserved |
+        Space Creator
     </div>
 </template>
 
@@ -76,6 +102,10 @@ export default {
 
 .first {
     margin-left: 6%;
+}
+
+.footerbg {
+    background-image: linear-gradient(to right, rgb(3, 8, 16), rgb(35, 87, 165), rgb(3, 8, 16));
 }
 
 a:link {
