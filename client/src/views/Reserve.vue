@@ -21,8 +21,8 @@ export default {
 
                 // Save the updated list to local storage
                 localStorage.setItem('roomNames', JSON.stringify(roomNames));
-                this.$router.push('/reservetable');
-                console.log('go to reserve')
+                this.$router.push('/history');
+                console.log('go to history')
             } else {
                 // Display alert message
                 alert('Please login first');
@@ -83,7 +83,7 @@ export default {
     </div>
     <!-- footer -->
     <div
-        class="flex footerbg bottom-0 w-full h-3rem text-white text-sm align-items-center justify-content-center text-center">
+        class="flex footerbg absolute bottom-0 w-full h-3rem text-white text-sm align-items-center justify-content-center text-center">
         <img src="../assets/img/cc.png" class="bg-transparent mx-2" style="width: 0.9%;" alt=""> All Right Reserved |
         Space Creator
     </div>

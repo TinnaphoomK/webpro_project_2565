@@ -11,6 +11,10 @@ import Sidebar from 'primevue/sidebar';
 import InputText from 'primevue/inputtext';
 import Card from 'primevue/card'
 import Textarea from 'primevue/textarea';
+import DataTable from 'primevue/datatable';
+import Column from 'primevue/column';
+import ColumnGroup from 'primevue/columngroup';   // optional
+import Row from 'primevue/row';                   // optional
 
 
 
@@ -28,5 +32,9 @@ app.component("Sidebar", Sidebar)
 app.component("InputText", InputText)
 app.component("Card", Card)
 app.component("Textarea", Textarea)
+app.component("DataTable", DataTable)
+app.component("Column", Column)
+app.component("ColumnGroup", ColumnGroup)
+app.component("Row", Row)
 
 app.mount('#app')

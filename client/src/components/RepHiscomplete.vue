@@ -1,9 +1,22 @@
 <template>
     <div class="card">
         <div class="flex justify-content-center flex-wrap card-container">
-            <div class="bg-white text-green-700 text-xl font-bold flex align-items-center justify-content-center w-8 h-6rem border-round-2xl m-2 shadow-5"
-                style="font-family: 'Mitr', sans-serif;">
-                ห้อง : Creative | ปัญหาที่พบ : TV เปิดไม่ติด | รหัสรายงาน : #001
+            <div
+                class="bg-white text-primary-800 text-xl font-bold flex align-items-center justify-content-between w-8 h-6rem border-round-2xl m-2 shadow-5">
+                <!-- approved -->
+                <div
+                    class="thai bg-green-700 font-normal text-lg text-white text-center align-items-center h-2rem w-7rem border-round-right-lg">
+                    เสร็จสิ้น</div>
+                <!-- not approved -->
+                <!-- <div
+          class="thai bg-red-700 font-normal text-white text-center justify-content-center align-items-center h-2rem w-7rem mx-2">
+          ไม่อนุมัติ</div> -->
+                <div class="mx-8">
+                    <label class="thai ml-6" for="">ห้อง : Creative</label>
+                    <label class="thai ml-6" for="">วันที่จอง : 13 FEB 2023</label>
+                    <label class="thai ml-6" for="">เวลาที่จอง : 13:48 - 13:49</label>
+                    <label class="thai ml-6" for="">รหัสจอง : #1</label>
+                </div>
             </div>
         </div>
     </div>

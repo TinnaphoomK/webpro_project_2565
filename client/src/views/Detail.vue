@@ -40,7 +40,7 @@ export default {
     <!-- top bar-->
     <div class="relative text-left justify-text-center font-bold text-2xl mt-6">
         <router-link to="/detail" class="thai first text-primary-600 hover:text-primary-600">รายละเอียด</router-link>
-        <router-link to="/reserve" class="thai ml-8 text-gray-900 hover:text-primary-600">รายการจอง</router-link>
+        <router-link to="/reservetable" class="thai ml-8 text-gray-900 hover:text-primary-600">รายการจอง</router-link>
 
         <div class="card mx-8 my-3 py-6 shadow-5 border-round-sm bg-white">
             <div class="flex justify-content-center flex-wrap card-container">
@@ -66,7 +66,7 @@ export default {
         </div>
     </div>
     <div
-        class="flex footerbg bottom-0 w-full h-3rem text-white text-sm align-items-center justify-content-center text-center">
+        class="flex footerbg absolute bottom-0 w-full h-3rem text-white text-sm align-items-center justify-content-center text-center">
         <img src="../assets/img/cc.png" class="bg-transparent mx-2" style="width: 0.9%;" alt=""> All Right Reserved |
         Space Creator
     </div>

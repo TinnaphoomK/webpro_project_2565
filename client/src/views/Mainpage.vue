@@ -63,24 +63,33 @@ export default {
             </div>
 
         </div>
-        <div class="flex flex-column justify-content-center mx-7 my-6 px-2 py-8 border-round-xl shadow-5"
+        <div class="flex justify-content-center mx-7 my-6 px-2 py-4 border-round-xl shadow-5"
             style="background-color: rgba(35, 87, 165, 0.1);">
-            <div class="flex flex-column card-container text-lg mx-7 my-4 justify-content-start align-self-start">
-                <div class="flex flex-column w-30rem bg-transparent font-bold text-5xl text-gray-900 border-round">
-                    Auditorium Room</div>
-                <ul class="list-none">
-                    <li>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                        et dolore magna aliqua.
+            <div class="flex flex-column card-container text-lg mx-8 my-8 justify-content-start align-self-start">
+                <label class="flex flex-column w-30rem my-3 bg-transparent font-bold text-5xl text-gray-900 border-round">
+                    Auditorium Room</label>
+                <label class="my-4" for="">For the event and meeting for each important things in faculty. Exclusive</label>
+                <ul class="flex flex-column list-none align-items-start">
+                    <li class="flex my-2 align-items-center">
+                        <img src="../assets/img/itcirclelogo.png" alt="">
+                        220 seats
                     </li>
-                    <li>
-                        Vitae sapien pellentesque habitant morbi tristique senectus et netus. Vitae proin sagittis nisl
-                        rhoncus mattis.
+                    <li class="flex my-2 align-items-center">
+                        <img src="../assets/img/itcirclelogo.png" alt="">
+                        Wide screen projector
                     </li>
-                    <li>
-                        Maecenas pharetra convallis posuere morbi leo urna molestie.
+                    <li class="flex my-2 align-items-center">
+                        <img src="../assets/img/itcirclelogo.png" alt="">
+                        Stage Setup
+                    </li>
+                    <li class="flex my-2 align-items-center">
+                        <img src="../assets/img/itcirclelogo.png" alt="">
+                        Sound Control room
                     </li>
                 </ul>
+            </div>
+            <div class="flex card-container text-lg my-4 justify-content-center align-self-end">
+                <img src="../assets/img/auditorium.jpeg" class="w-10 h-auto border-round-2xl my-4 mx-8" alt="">
             </div>
         </div>
 

@@ -16,7 +16,34 @@ export default {
             endtime: '',
             value: '',
             id: 1, // initialize id to 1
-            roomNames: []
+            roomNames: [],
+            queue: [
+                {
+                    name: 'นายธรรมปพน ประทุม',
+                    date: '29/03/2566',
+                    time: '11:50 - 13:50'
+                },
+                {
+                    name: 'นายติณณภูมิ เกิดอินทร์',
+                    date: '29/03/2566',
+                    time: '11:50 - 13:50'
+                },
+                {
+                    name: 'ไก่จ๋า',
+                    date: '29/03/2566',
+                    time: '11:50 - 13:50'
+                },
+                {
+                    name: 'ไข่เจียว',
+                    date: '29/03/2566',
+                    time: '11:50 - 13:50'
+                },
+                {
+                    name: 'ทูน่า',
+                    date: '29/03/2566',
+                    time: '11:50 - 13:50'
+                },
+            ]
         }
     },
     created() {
@@ -68,56 +95,21 @@ export default {
         <router-link to="/detail" class="thai first text-gray-900 hover:text-primary-600">รายละเอียด</router-link>
         <router-link to="/reserve" class="thai ml-8 text-primary-600 hover:text-primary-600">รายการจอง</router-link>
 
-        <div class="card mx-8 mt-3 py-4 shadow-5 border-round-sm bg-white">
-            <div class="flex justify-content-center flex-wrap card-container">
-                <div class="flex grid justify-content-center">
-                    <div
-                        class="bg-blue-100 w-15rem h-7rem border-round-xl z-1 shadow-3 m-4 flex align-items-center justify-content-center">
-                        1
-                    </div>
-                    <div
-                        class="bg-blue-100 w-15rem h-7rem border-round-xl z-1 shadow-3 m-4 flex align-items-center justify-content-center">
-                        2
-                    </div>
-                    <div
-                        class="bg-blue-100 w-15rem h-7rem border-round-xl z-1 shadow-3 m-4 flex align-items-center justify-content-center">
-                        3
-                    </div>
-                    <div
-                        class="bg-blue-100 w-15rem h-7rem border-round-xl z-1 shadow-3 m-4 flex align-items-center justify-content-center">
-                        4
-                    </div>
-                </div>
-                <div class="flex justify-content-center align-items-center flex-wrap card-container mt-2">
-                    <div class="flex align-items-center justify-content-center w-5 mx-4">
-                        <label for="startdate" class="thai text-xl">วันที่เริ่มจอง</label>
-                        <InputText id="startdate" v-model="startdate" name="startdate" type="date"
-                            class="p-inputtext-lg shadow-2 mx-4 w-8" />
-                    </div>
-                    <div class="flex align-items-center justify-content-center w-5 mx-4">
-                        <label for="enddate" class="thai text-xl">สิ้นสุดการจอง</label>
-                        <InputText id="enddate" v-model="enddate" name="enddate" type="date"
-                            class="p-inputtext-lg shadow-2 mx-4 w-8" />
-                    </div>
-                    <div class="flex align-items-center justify-content-center w-5 mx-4 mt-4">
-                        <label for="starttime" class="thai text-xl">ตั้งแต่เวลา</label>
-                        <InputText id="starttime" v-model="starttime" name="starttime" type="time"
-                            class="p-inputtext-lg shadow-2 mx-4 w-8" />
-                    </div>
-
-                    <div class="flex align-items-center justify-content-center w-5 mx-3 mt-4">
-                        <label for="endtime" class="thai text-xl ml-6">ถึงเวลา</label>
-                        <InputText id="endtime" v-model="endtime" name="endtime" type="time"
-                            class="p-inputtext-lg shadow-2 mx-4 w-8" />
-                    </div>
-                </div>
-                <Textarea placeholder="หมายเหตุ ..." class="flex align-items-top w-full h-10rem mt-5 mx-8"></Textarea>
-                <Button @click="saveInputs"
-                    class="thai bg-primary-800 hover:bg-primary-900 border-round-xl text-xl w-12rem h-4rem justify-content-center mt-4">ยืนยันการจอง</Button>
-            </div>
+        <div class="flex flex-column card mx-8 mt-3 py-6 shadow-5 border-round-sm bg-white justify-content-center">
+            <label class="flex justify-content-center text-center text-5xl" for="">Room name</label>
+            <DataTable class="flex justify-content-center my-4" :value="queue" showGridlines tableStyle="min-width: 50rem">
+                <Column field="name" header="ชื่อผู้จอง"></Column>
+                <Column field="date" header="วันที่จอง"></Column>
+                <Column field="time" header="เวลาที่จอง"></Column>
+            </DataTable>
         </div>
 
 
+    </div>
+    <div
+        class="flex absolute footerbg bottom-0 w-full h-3rem text-white text-sm align-items-center justify-content-center text-center">
+        <img src="../assets/img/cc.png" class="bg-transparent mx-2" style="width: 0.9%;" alt=""> All Right Reserved |
+        Space Creator
     </div>
 </template>
 
