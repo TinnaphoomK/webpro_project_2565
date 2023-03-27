@@ -1,13 +1,34 @@
 <template>
-  <!-- login -->
-  <div class="rectangle">
-    <div class="blue-half border-round-left-2xl shadow-5">
-      <h1 class="bg-transparent text-white text-center">SPACE CREATOR</h1>
-      <div class="bar"></div>
-      <h2 class="bg-transparent text-yellow-400 text-center mt-6">your space, your choice</h2>
-      <center class="bg-transparent">
-        <img class="itpic border-round-xl" src="../assets/img/itkmitl.jpeg" alt="">
-      </center>
+  <!-- navbar -->
+  <Navbar></Navbar>
+
+  <!-- top bar-->
+  <div class="card">
+    <div class="flex justify-content-center flex-wrap card-container">
+      <div
+        class="flex align-items-center  justify-content-center w-4rem h-4rem bg-blue-800 font-bold text-white border-round-left-xl">
+        1</div>
+      <div
+        class="flex align-items-center justify-content-center w-4rem h-4rem bg-white font-bold text-white border-round-right-xl">
+        2</div>
+    </div>
+  </div>
+
+  <div
+    class="flex footerbg absolute bottom-0 w-full h-3rem text-white text-sm align-items-center justify-content-center text-center">
+    <img src="../assets/img/cc.png" class="bg-transparent mx-2" style="width: 0.9%;" alt=""> All Right Reserved |
+    Space Creator
+  </div>
+</template>
+<!-- <template>
+  <div class="flex column rectangle justify-content-center">
+    <div class="flex flex-column blue-half border-round-left-2xl shadow-5 justify-content-center">
+      <img class="flex flex-column justify-content-center w-4 bg-transparent" src="../assets/img/logo.png" alt="">
+      <label
+        class="flex flex-column bg-transparent text-white text-center justify-content-center text-6xl font-bold">SPACE
+        CREATOR</label>
+      <div class="flex flex-column h-1rem w-30rem bg-white justify-content-center align"></div>
+      <label class="flex flex-column bg-transparent text-yellow-400 text-center">your space, your choice</label>
     </div>
     <div class="white-half border-round-right-2xl shadow-5">
       <form class="absolute">
@@ -39,83 +60,32 @@
     </div>
   </div>
 
-  <!-- footer -->
-  <div class="footer h-3rem fixed text-white text-center pt-3">
-    <img src="../assets/img/cc.png" class="bg-transparent" style="width: 0.9%;" alt=""> All Right Reserved | Space Creator
+  <div
+    class="flex footerbg absolute bottom-0 w-full h-3rem text-white text-sm align-items-center justify-content-center text-center">
+    <img src="../assets/img/cc.png" class="bg-transparent mx-2" style="width: 0.9%;" alt=""> All Right Reserved |
+    Space Creator
   </div>
-</template>
+</template> -->
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mitr&display=swap');
 
 * {
-  background-color: rgb(213, 219, 231);
   font-family: 'Inter', sans-serif;
   margin: 0;
 }
 
-h1 {
-  font-size: 3rem;
-  margin-top: 15%;
+body {
+  background-color: rgba(35, 87, 165, 0.1);
 }
 
-h2 {
-  font-size: 1.5rem;
-  margin-top: 3%;
-  margin-bottom: 4%;
+.thai {
+  font-family: 'Mitr', sans-serif;
 }
 
-.right {
-  margin-left: 69%;
-}
-
-.footer {
+.footerbg {
   background-image: linear-gradient(to right, rgb(3, 8, 16), rgb(35, 87, 165), rgb(3, 8, 16));
-  bottom: 0;
-  width: 100%;
-}
-
-.rectangle {
-  height: 75vh;
-  width: 75vw;
-  /* Position the rectangle in the center */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.itpic {
-  width: 90%;
-  height: 100%;
-  object-fit: cover;
-  margin-top: 10%;
-}
-
-.bar {
-  height: 0.7vh;
-  width: 30vw;
-  /* Position the rectangle in the center */
-  position: absolute;
-  top: 25%;
-  left: 25%;
-  background-color: white;
-  transform: translate(-50%, -50%);
-}
-
-/* Set the blue and white split color scheme */
-.blue-half {
-  height: 100%;
-  width: 50%;
-  float: left;
-  background-image: linear-gradient(to right, rgb(3, 8, 16), rgb(35, 87, 165));
-}
-
-.white-half {
-  height: 100%;
-  width: 50%;
-  float: right;
-  background-color: white;
 }
 
 /* Style the form */
