@@ -3,13 +3,15 @@
   <Navbar></Navbar>
 
   <!-- top bar-->
-  <div class="card">
-    <div class="flex justify-content-center flex-wrap card-container">
+  <div class="flex justify-content-center align-items-center h-screen">
+    <div class="flex justify-content-center">
       <div
-        class="flex align-items-center  justify-content-center w-4rem h-4rem bg-blue-800 font-bold text-white border-round-left-xl">
-        1</div>
+        class="flex align-items-center justify-content-center w-30rem h-30rem bg-blue-800 font-bold text-white border-round-left-xl">
+        <img class="w-4" src="../assets/img/logo.png" alt="">
+        <label class="bg-transparent" for="">SPACE CREATOR</label>
+      </div>
       <div
-        class="flex align-items-center justify-content-center w-4rem h-4rem bg-white font-bold text-white border-round-right-xl">
+        class="flex align-items-center justify-content-center w-30rem h-30rem bg-white font-bold text-white border-round-right-xl">
         2</div>
     </div>
   </div>
