@@ -15,7 +15,7 @@ import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import ColumnGroup from 'primevue/columngroup';   // optional
 import Row from 'primevue/row';                   // optional
-
+import Password from 'primevue/password';
 
 
 // import './assets/main.css'
@@ -36,5 +36,6 @@ app.component("DataTable", DataTable)
 app.component("Column", Column)
 app.component("ColumnGroup", ColumnGroup)
 app.component("Row", Row)
+app.component("Password", Password)
 
 app.mount('#app')

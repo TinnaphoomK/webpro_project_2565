@@ -1,5 +1,65 @@
 <template>
-    <!-- login -->
+    <!-- navbar -->
+    <Navbar></Navbar>
+
+    <!-- top bar-->
+    <div class="flex justify-content-center align-items-center h-screen">
+        <div class="flex justify-content-center">
+            <div
+                class="flex flex-column align-items-center justify-content-center w-30rem h-30rem p-8 bglinear border-round-left-xl shadow-5">
+                <img class="flex flex-column w-5 my-4" src="../assets/img/logo.png" alt="">
+                <label class="flex flex-column bg-transparent text-4xl font-bold text-white my-2" for="">SPACE
+                    CREATOR</label>
+                <div class="flex flex-column bar bg-white my-2"></div>
+                <label class="flex flex-column bg-transparent text-lg font-bold text-yellow-400 my-2" for="">your space,
+                    your
+                    choice</label>
+            </div>
+            <div
+                class="flex flex-column align-items-center justify-content-center w-30rem h-30rem bg-white font-normal text-white border-round-right-xl shadow-5">
+                <form class="flex flex-column w-full justify-content-center" action="">
+
+                    <div class="my-2">
+                        <label class="flex text-black-alpha-90 justify-content-start mx-4" for="username">Username</label>
+                        <div class="flex">
+                            <InputText class="flex p-inputtext-sm w-full shadow-1 mx-4 mt-1" id="username" name="username"
+                                v-model="username" />
+                        </div>
+                    </div>
+
+                    <div class="my-2">
+                        <label class="flex text-black-alpha-90 justify-content-start mx-4" for="newPassword">New
+                            Password</label>
+                        <div class="flex">
+                            <InputText class="flex p-inputtext-sm w-full shadow-1 mx-4 mt-1" id="newpassword"
+                                name="newpassword" v-model="newPassword" />
+                        </div>
+                    </div>
+
+                    <div class="my-2">
+                        <label class="flex text-black-alpha-90 justify-content-start mx-4" for="confirmpassword">Confirm
+                            Password</label>
+                        <div class="flex">
+                            <InputText class="flex p-inputtext-sm w-full shadow-1 mx-4 mt-1" id="confirmpassword"
+                                name="confirmpassword" v-model="confirmPassword" />
+                        </div>
+                    </div>
+                    <Button @click="resetPassword()"
+                        class="flex bg-primary-800 text-white hover:bg-primary-900 hover:text-gray-300 justify-content-center text-bold shadow-1 mt-4 mb-2 mx-4">Change
+                        Password</Button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div
+        class="flex footerbg absolute bottom-0 w-full h-3rem text-white text-sm align-items-center justify-content-center text-center">
+        <img src="../assets/img/cc.png" class="bg-transparent mx-2" style="width: 0.9%;" alt=""> All Right Reserved |
+        Space Creator
+    </div>
+</template>
+
+<!-- <template>
     <div class="rectangle">
         <div class="blue-half border-round-left-2xl shadow-5">
             <h1 class="bg-transparent text-white text-center">SPACE CREATOR</h1>
@@ -35,117 +95,42 @@
         </div>
     </div>
 
-    <!-- footer -->
     <div class="footer h-3rem fixed text-white text-center pt-3">
         <img src="../assets/img/cc.png" class="bg-transparent" style="width: 0.9%;" alt=""> All Right Reserved | Space
         Creator
     </div>
-</template>
+</template> -->
   
 
   
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mitr&display=swap');
 
 * {
-    background-color: rgb(213, 219, 231);
     font-family: 'Inter', sans-serif;
     margin: 0;
 }
 
-h1 {
-    font-size: 3.5rem;
-    margin-top: 15%;
-}
-
-h2 {
-    font-size: 2rem;
-    margin-top: 3%;
-    margin-bottom: 4%;
-}
-
-.centered-element {
-    margin-top: 10%;
-    position: absolute;
-}
-
-.footer {
-    background-image: linear-gradient(to right, rgb(3, 8, 16), rgb(35, 87, 165), rgb(3, 8, 16));
-    bottom: 0;
-    width: 100%;
-}
-
-.rectangle {
-    height: 75vh;
-    width: 75vw;
-    /* Position the rectangle in the center */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.itpic {
-    width: 640px;
-    height: 425px;
-    object-fit: cover;
+body {
+    background-color: rgba(35, 87, 165, 0.1);
 }
 
 .bar {
-    height: 0.7vh;
-    width: 30vw;
-    /* Position the rectangle in the center */
-    position: absolute;
-    top: 25%;
-    left: 25%;
-    background-color: white;
-    transform: translate(-50%, -50%);
+    height: 2%;
+    width: 100%;
 }
 
-/* Set the blue and white split color scheme */
-.blue-half {
-    height: 100%;
-    width: 50%;
-    float: left;
-    background-image: linear-gradient(to right, rgb(3, 8, 16), rgb(35, 87, 165));
+.thai {
+    font-family: 'Mitr', sans-serif;
 }
 
-.white-half {
-    height: 100%;
-    width: 50%;
-    float: right;
-    background-color: white;
+.footerbg {
+    background-image: linear-gradient(to right, rgb(3, 8, 16), rgb(35, 87, 165), rgb(3, 8, 16));
 }
 
-/* Style the form */
-form {
-    width: 50%;
-    margin: 0 auto;
-    margin-top: 6%;
-    padding: 20px;
-    background-color: white;
-    border-radius: 5px;
-}
-
-label,
-input {
-    display: block;
-    position: relative;
-    margin-bottom: 10px;
-    background-color: white;
-}
-
-input[type="submit"] {
-    background-color: blue;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-a {
-    color: rgb(35, 87, 165);
+.bglinear {
+    background-image: linear-gradient(to right, rgb(3, 8, 16), rgb(35, 87, 165))
 }
 
 a:link {
@@ -167,38 +152,38 @@ a:active {
 
 <script>
 export default {
-  data() {
-    return {
-      username: "",
-      newPassword: "",
-      confirmPassword: "",
-      accounts: []
-    };
-  },
-  methods: {
-    resetPassword() {
-      const account = this.accounts.find(account => {
-        return account.username === this.username;
-      });
+    data() {
+        return {
+            username: "",
+            newPassword: "",
+            confirmPassword: "",
+            accounts: []
+        };
+    },
+    methods: {
+        resetPassword() {
+            const account = this.accounts.find(account => {
+                return account.username === this.username;
+            });
 
-      if (account) {
-        account.password = this.newPassword;
+            if (account) {
+                account.password = this.newPassword;
 
-        localStorage.setItem('accounts', JSON.stringify(this.accounts));
+                localStorage.setItem('accounts', JSON.stringify(this.accounts));
 
-        this.$router.push('/');
-      } else {
-        alert("This username does not exist.");
-      }
+                this.$router.push('/');
+            } else {
+                alert("This username does not exist.");
+            }
+        }
+    },
+    created() {
+        // Load the accounts from local storage
+        const accountsJson = localStorage.getItem('accounts');
+        if (accountsJson) {
+            this.accounts = JSON.parse(accountsJson);
+        }
     }
-  },
-  created() {
-    // Load the accounts from local storage
-    const accountsJson = localStorage.getItem('accounts');
-    if (accountsJson) {
-      this.accounts = JSON.parse(accountsJson);
-    }
-  }
 };
 </script>
 This script checks if the provided username exists in the list of accounts, and if it does, it updates the password for that account and saves the updated accounts array to local storage. If the provided username does not exist, it alerts the user that the username is not found.

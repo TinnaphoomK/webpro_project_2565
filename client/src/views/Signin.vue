@@ -21,18 +21,19 @@
           <div class="my-2">
             <label class="flex text-black-alpha-90 justify-content-start mx-4" for="email">Email</label>
             <div class="flex">
-              <InputText class="flex w-full shadow-1 mx-4 mt-1" id="email" v-model="value" />
+              <InputText class="flex p-inputtext-sm w-full shadow-1 mx-4 mt-1" id="email" v-model="username" />
             </div>
           </div>
 
           <div class="my-2">
             <label class="flex text-black-alpha-90 justify-content-start mx-4" for="password">Password</label>
             <div class="flex">
-              <InputText class="flex w-full shadow-1 mx-4 mt-1" id="password" v-model="value" />
+              <InputText type="password" class="flex p-inputtext-sm w-full shadow-1 mx-4 mt-1" id="password"
+                v-model="password" />
             </div>
           </div>
           <Button @click.prevent="signin()"
-            class="flex bg-primary-800 text-white hover:bg-primary-900 hover:text-gray-300 justify-content-center text-bold shadow-1 my-4 mx-4">Sign
+            class="flex bg-primary-800 text-white hover:bg-primary-900 hover:text-gray-300 justify-content-center text-bold shadow-1 mt-4 mb-2 mx-4">Sign
             in</Button>
           <router-link to="/forgotpassword"
             class="flex text-sm text-primary-700 hover:text-primary-900 justify-content-end bg-transparent mx-4">

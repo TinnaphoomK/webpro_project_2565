@@ -29,8 +29,12 @@ export default {
             <router-link to="/resrequest">
                 <Button class="thai bg-primary-700 hover:bg-primary-800 mx-2">รายการจอง</Button>
             </router-link>
-            <Button class="thai bg-primary-700 hover:bg-primary-800 mx-2">เพิ่มห้อง</Button>
-            <Button class="thai bg-primary-700 hover:bg-primary-800 mx-2">ลบห้อง</Button>
+            <router-link to="/addroom">
+                <Button class="thai bg-primary-700 hover:bg-primary-800 mx-2">เพิ่มห้อง</Button>
+            </router-link>
+            <router-link to="/editroom">
+                <Button class="thai bg-primary-700 hover:bg-primary-800 mx-2">ลบห้อง</Button>
+            </router-link>
         </div>
         <!-- open and close card -->
         <div class="card mt-4 ml-6">
