@@ -49,6 +49,8 @@ export const useAuthStore = defineStore("auth", {
   },
 });
 
+
+
 // Login route
 router.post("/login", async (req, res) => {
   try {
