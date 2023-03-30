@@ -8,7 +8,7 @@
         <router-link to="/reporthistory"
             class="thai ml-8 text-gray-900 hover:text-primary-600">ประวัติการรายงาน</router-link>
 
-        <div class="card mx-8 my-3 py-6 shadow-5 border-round-sm bg-white">
+        <div class="card mx-8 my-3 py-8 shadow-5 border-round-sm bg-white">
             <div>
                 <div class="thai text-lg font-normal text-gray-600" style="margin-left: 18%; margin-top: 3.4%;">รอดำเนินการ
                     (2)</div>
