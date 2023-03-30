@@ -6,47 +6,13 @@
   <div class="flex justify-content-center align-items-center h-screen">
     <div class="flex justify-content-center">
       <div
-        class="flex flex-column align-items-center justify-content-center w-30rem h-30rem p-8 bglinear border-round-left-xl shadow-5">
-        <img class="flex flex-column w-5 my-4" src="../assets/img/logo.png" alt="">
-        <label class="flex flex-column bg-transparent text-4xl font-bold text-white my-2" for="">SPACE CREATOR</label>
-        <div class="flex flex-column bar bg-white my-2"></div>
-        <label class="flex flex-column bg-transparent text-lg font-bold text-yellow-400 my-2" for="">your space, your
-          choice</label>
+        class="flex align-items-center justify-content-center w-30rem h-30rem bg-blue-800 font-bold text-white border-round-left-xl">
+        <img class="w-4" src="../assets/img/logo.png" alt="">
+        <label class="bg-transparent" for="">SPACE CREATOR</label>
       </div>
       <div
-        class="flex flex-column align-items-center justify-content-center w-30rem h-30rem bg-white font-normal text-white border-round-right-xl shadow-5">
-        <label class="flex text-black-alpha-90 text-4xl font-bold mt-6 mb-2" for="">Welcome back!</label>
-        <form class="flex flex-column w-full justify-content-center" action="">
-
-          <div class="my-2">
-            <label class="flex text-black-alpha-90 justify-content-start mx-4" for="email">Email</label>
-            <div class="flex">
-              <InputText class="flex p-inputtext-sm w-full shadow-1 mx-4 mt-1" id="email" v-model="loginData.email" />
-            </div>
-          </div>
-
-          <div class="my-2">
-            <label class="flex text-black-alpha-90 justify-content-start mx-4" for="password">Password</label>
-            <div class="flex">
-              <InputText type="password" class="flex p-inputtext-sm w-full shadow-1 mx-4 mt-1" id="password"
-                v-model="loginData.password" />
-            </div>
-          </div>
-          <Button @click="login()"
-            class="flex bg-primary-800 text-white hover:bg-primary-900 hover:text-gray-300 justify-content-center text-bold shadow-1 mt-4 mb-2 mx-4">Sign
-            in</Button>
-          <router-link to="/forgotpassword"
-            class="flex text-sm text-primary-700 hover:text-primary-900 justify-content-end bg-transparent mx-4">
-            Forget password ?
-          </router-link>
-          <div class="flex justify-content-center mt-4">
-            <label for="password" class="flex justify-content-center text-gray-500 text-sm">don't have an account yet
-              ?</label>
-            <router-link class="flex text-sm text-primary-700 hover:text-primary-900 mx-2" to="/signup">Sign up
-            </router-link>
-          </div>
-        </form>
-      </div>
+        class="flex align-items-center justify-content-center w-30rem h-30rem bg-white font-bold text-white border-round-right-xl">
+        2</div>
     </div>
   </div>
 
@@ -81,7 +47,7 @@
         <router-link to="/">
           <Button @click.prevent="signin" class="absolute text-center justify-content-center text-bold text-xl mx-7"
             style="width: 70%; height: 12%;background-image: linear-gradient(to right, rgb(3, 8, 16), rgb(35, 87, 165));">Sign
-            in</Button>
+            in</Button><br><br><br><br>
         </router-link>
 
         <router-link to="/forgotpassword" class="right bg-transparent">
@@ -116,11 +82,6 @@ body {
   background-color: rgba(35, 87, 165, 0.1);
 }
 
-.bar {
-  height: 2%;
-  width: 100%;
-}
-
 .thai {
   font-family: 'Mitr', sans-serif;
 }
@@ -129,8 +90,26 @@ body {
   background-image: linear-gradient(to right, rgb(3, 8, 16), rgb(35, 87, 165), rgb(3, 8, 16));
 }
 
-.bglinear {
-  background-image: linear-gradient(to right, rgb(3, 8, 16), rgb(35, 87, 165))
+/* Style the form */
+form {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 7%;
+  padding: 20px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+label,
+input {
+  display: block;
+  position: relative;
+  margin-bottom: 10px;
+  background-color: white;
+}
+
+a {
+  color: rgb(35, 87, 165);
 }
 
 a:link {
@@ -150,30 +129,8 @@ a:active {
 }
 </style>
 
+
 <script>
-import axios from "axios";
-export default {
-  data() {
-    return {
-      loginData: {
-        email: "",
-        password: "",
-      },
-    };
-  },
-  methods: {
-    async login() {
-      try {
-        const res = await axios.post("http://localhost:5173/", this.loginData);
-        console.log(this.loginData)
-      } catch (error) {
-        console.log(error);
-      }
-    },
-  },
-};
-</script>
-<!-- <script>
 export default {
   data() {
     return {
@@ -214,4 +171,4 @@ export default {
     this.fetchAccounts();
   }
 };
-</script> -->
+</script>
