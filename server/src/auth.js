@@ -3,6 +3,19 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 const router = express.Router();
 
+
+router.get('/user', async (req,res) => {
+    try{
+        const user = await prisma.user.findMany();
+        res.status(200).json(user);
+    }
+    catch (error){
+        res.status(400).json({ error: error.message});
+    }
+});
+
+
+
 router.post('/login', async (req,res) => {
     try{
         const { email, password } = req.body;
