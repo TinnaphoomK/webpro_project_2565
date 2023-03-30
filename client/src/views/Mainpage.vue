@@ -10,9 +10,7 @@ export default {
 </script>
 
 <template>
-    <!-- navbar -->
     <Navbar></Navbar>
-    <!-- search bar -->
     <div class="pt-4 mt-4 text-center w-full flex justify-content-center align-items-center">
         <span class="p-float-label">
             <InputText id="search" type="text" class="p-inputtext-lg shadow-2 w-30rem" v-model="value" />
@@ -21,7 +19,6 @@ export default {
 
     </div>
 
-    <!-- 1st floor -->
     <div class="relative text-left justify-text-center font-bold text-2xl pt-6">
         <router-link to="/" class="text-primary-600 ml-8">1ST FLOOR</router-link>
         <router-link to="/mfloor" class="text-gray-900 ml-6 hover:text-primary-800">M FLOOR</router-link>
@@ -30,9 +27,7 @@ export default {
 
         <div class="mx-7 my-2 px-2 py-8 border-round-xl shadow-5" style="background-color: rgba(35, 87, 165, 0.1);">
 
-            <!-- card loop -->
             <div class="grid justify-content-center">
-                <!-- <div class="absolute w-10 h-6rem border-round-xl" style="background-color: rgb(112, 130, 198); margin-top: 7%;"></div> -->
                 <router-link to="/detail" class="z-1 mx-2">
                     <CardItem></CardItem>
                 </router-link>
@@ -47,7 +42,6 @@ export default {
                 </router-link>
             </div>
             <div class="grid justify-content-center mt-8">
-                <!-- <div class="absolute w-10 h-6rem border-round-xl" style="background-color: rgb(112, 130, 198); margin-top: 7%;"></div> -->
                 <router-link to="/detail" class="z-1 mx-2">
                     <CardItem></CardItem>
                 </router-link>

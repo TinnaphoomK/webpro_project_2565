@@ -34,10 +34,8 @@ export default {
 </script>
 
 <template>
-    <!-- navbar -->
     <Navbar></Navbar>
 
-    <!-- top bar-->
     <div class="relative text-left justify-text-center font-bold text-2xl my-6">
         <router-link to="/detail" class="thai first text-primary-600 hover:text-primary-600">แก้ไขห้อง</router-link>
 

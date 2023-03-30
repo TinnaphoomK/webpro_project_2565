@@ -1,8 +1,4 @@
 <template>
-  <!-- navbar -->
-  <Navbar></Navbar>
-
-  <!-- top bar-->
   <div class="flex justify-content-center align-items-center h-screen">
     <div class="flex justify-content-center">
       <div
@@ -56,7 +52,6 @@
     Space Creator
   </div>
 </template>
-
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
