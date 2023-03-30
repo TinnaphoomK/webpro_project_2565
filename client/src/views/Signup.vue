@@ -1,8 +1,4 @@
 <template>
-  <!-- navbar -->
-  <Navbar></Navbar>
-
-  <!-- top bar-->
   <div class="flex justify-content-center align-items-center h-screen">
     <div class="flex justify-content-center">
       <div

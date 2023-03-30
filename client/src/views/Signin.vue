@@ -1,8 +1,4 @@
 <template>
-  <!-- navbar -->
-  <Navbar></Navbar>
-
-  <!-- top bar-->
   <div class="flex justify-content-center align-items-center h-screen">
     <div class="flex justify-content-center">
       <div
@@ -56,52 +52,6 @@
     Space Creator
   </div>
 </template>
-<!-- <template>
-  <div class="flex column rectangle justify-content-center">
-    <div class="flex flex-column blue-half border-round-left-2xl shadow-5 justify-content-center">
-      <img class="flex flex-column justify-content-center w-4 bg-transparent" src="../assets/img/logo.png" alt="">
-      <label
-        class="flex flex-column bg-transparent text-white text-center justify-content-center text-6xl font-bold">SPACE
-        CREATOR</label>
-      <div class="flex flex-column h-1rem w-30rem bg-white justify-content-center align"></div>
-      <label class="flex flex-column bg-transparent text-yellow-400 text-center">your space, your choice</label>
-    </div>
-    <div class="white-half border-round-right-2xl shadow-5">
-      <form class="absolute">
-
-        <label for="username" class="text-xl mx-7">Username</label>
-        <InputText id="username" v-model="username" name="username" placeholder="Fill your username" type="text"
-          class="p-inputtext-lg shadow-2 mx-7" style="width: 75%;" />
-        <br>
-        <label for="password" class="text-xl mx-7">Password</label>
-        <InputText id="password" v-model="password" name="password" placeholder="Set your password" type="password"
-          class="p-inputtext-lg shadow-2 mx-7" style="width: 75%;" />
-        <br><br>
-
-        <router-link to="/">
-          <Button @click.prevent="signin" class="absolute text-center justify-content-center text-bold text-xl mx-7"
-            style="width: 70%; height: 12%;background-image: linear-gradient(to right, rgb(3, 8, 16), rgb(35, 87, 165));">Sign
-            in</Button>
-        </router-link>
-
-        <router-link to="/forgotpassword" class="right bg-transparent">
-          Forget password ?
-        </router-link>
-
-        <label for="password" class="text-center mt-8">don't have an account yet ?<a class="bg-transparent"
-            href="/signup">
-            Sign
-            up</a></label>
-      </form>
-    </div>
-  </div>
-
-  <div
-    class="flex footerbg absolute bottom-0 w-full h-3rem text-white text-sm align-items-center justify-content-center text-center">
-    <img src="../assets/img/cc.png" class="bg-transparent mx-2" style="width: 0.9%;" alt=""> All Right Reserved |
-    Space Creator
-  </div>
-</template> -->
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
@@ -151,7 +101,7 @@ a:active {
 </style>
 
 
-<!-- <script>
+<script>
 export default {
   data() {
     return {
@@ -192,4 +142,4 @@ export default {
     this.fetchAccounts();
   }
 };
-</script> -->
+</script>

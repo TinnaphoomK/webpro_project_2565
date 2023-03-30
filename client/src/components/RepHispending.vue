@@ -2,20 +2,22 @@
     <div class="card">
         <div class="flex justify-content-center flex-wrap card-container">
             <div
-                class="bg-white text-primary-800 text-xl font-bold flex align-items-center justify-content-between w-8 h-6rem border-round-2xl m-2 shadow-5">
+                class="bg-white text-primary-800 text-xl font-bold flex align-items-center justify-content-between w-full h-6rem border-round-2xl m-2 shadow-5">
                 <div
                     class="thai bg-primary-700 text-white text-lg font-normal text-center align-items-center h-2rem w-7rem border-round-right-lg">
                     รอดำเนินการ</div>
-                <div class="mx-8">
-                    <label class="thai ml-6" for="">ห้อง : {{ spacedata.roomid }}</label>
-                    <label class="thai ml-6" for="">วันที่จอง : {{ spacedata.startdate }}</label>
-                    <label class="thai ml-6" for="">เวลาที่จอง : {{ spacedata.starttime }} - {{ spacedata.endtime }}</label>
-                    <label class="thai ml-6" for="">รหัสจอง : #{{ spacedata.id }}</label>
-                </div>
+                <label class="thai ml-6" for="">ห้อง : {{ spacedata.roomid }}</label>
+                <label class="thai ml-6" for="">วันที่จอง : {{ spacedata.startdate }}</label>
+                <label class="thai ml-6" for="">เวลาที่จอง : {{ spacedata.starttime }} - {{ spacedata.endtime }}</label>
+                <label class="thai ml-6" for="">รหัสจอง : #{{ spacedata.id }}</label>
+                <router-link to="/report">
+                    <i class="pi pi-ellipsis-h mx-6 text-xl text-900"></i>
+                </router-link>
             </div>
         </div>
     </div>
 </template>
+
 <script>
 import spacedata from '../components/db.json';
 
