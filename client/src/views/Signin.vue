@@ -21,7 +21,7 @@
           <div class="my-2">
             <label class="flex text-black-alpha-90 justify-content-start mx-4" for="email">Email</label>
             <div class="flex">
-              <InputText class="flex p-inputtext-sm w-full shadow-1 mx-4 mt-1" id="email" v-model="username" />
+              <InputText class="flex p-inputtext-sm w-full shadow-1 mx-4 mt-1" id="email" v-model="loginData.email" />
             </div>
           </div>
 
@@ -29,10 +29,10 @@
             <label class="flex text-black-alpha-90 justify-content-start mx-4" for="password">Password</label>
             <div class="flex">
               <InputText type="password" class="flex p-inputtext-sm w-full shadow-1 mx-4 mt-1" id="password"
-                v-model="password" />
+                v-model="loginData.password" />
             </div>
           </div>
-          <Button @click.prevent="signin()"
+          <Button @click="login()"
             class="flex bg-primary-800 text-white hover:bg-primary-900 hover:text-gray-300 justify-content-center text-bold shadow-1 mt-4 mb-2 mx-4">Sign
             in</Button>
           <router-link to="/forgotpassword"
@@ -150,8 +150,30 @@ a:active {
 }
 </style>
 
-
 <script>
+import axios from "axios";
+export default {
+  data() {
+    return {
+      loginData: {
+        email: "",
+        password: "",
+      },
+    };
+  },
+  methods: {
+    async login() {
+      try {
+        const res = await axios.post("http://localhost:5173/", this.loginData);
+        console.log(this.loginData)
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
+};
+</script>
+<!-- <script>
 export default {
   data() {
     return {
@@ -192,4 +214,4 @@ export default {
     this.fetchAccounts();
   }
 };
-</script>
+</script> -->
