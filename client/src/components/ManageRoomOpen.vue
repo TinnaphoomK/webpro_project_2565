@@ -5,7 +5,7 @@
         <Button class="thai bg-green-700 hover:bg-green-800 h-2rem w-7rem mx-6 justify-content-center">เปิดใช้งาน</Button>
         <label class="thai mx-2" for="">Auditorium</label>
         <label class="thai mx-2" for="">ชั้น 1</label>
-        <router-link to="/detail">
+        <router-link to="/editroom">
             <i class="pi pi-ellipsis-h ml-6 text-xl text-900"></i>
         </router-link>
     </div>

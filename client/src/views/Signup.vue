@@ -65,7 +65,7 @@
 
           <Button @click.prevent="signup"
             class="flex bg-primary-800 text-white hover:bg-primary-900 hover:text-gray-300 justify-content-center text-bold shadow-1 mt-4 mx-4">Sign
-            in</Button>
+            up</Button>
         </form>
       </div>
     </div>

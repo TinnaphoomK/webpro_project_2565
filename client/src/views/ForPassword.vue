@@ -31,8 +31,8 @@
                         <label class="flex text-black-alpha-90 justify-content-start mx-4" for="newPassword">New
                             Password</label>
                         <div class="flex">
-                            <InputText class="flex p-inputtext-sm w-full shadow-1 mx-4 mt-1" id="newpassword"
-                                name="newpassword" v-model="newPassword" />
+                            <InputText type="password" class="flex p-inputtext-sm w-full shadow-1 mx-4 mt-1"
+                                id="newpassword" name="newpassword" v-model="newPassword" />
                         </div>
                     </div>
 
@@ -40,8 +40,8 @@
                         <label class="flex text-black-alpha-90 justify-content-start mx-4" for="confirmpassword">Confirm
                             Password</label>
                         <div class="flex">
-                            <InputText class="flex p-inputtext-sm w-full shadow-1 mx-4 mt-1" id="confirmpassword"
-                                name="confirmpassword" v-model="confirmPassword" />
+                            <InputText type="password" class="flex p-inputtext-sm w-full shadow-1 mx-4 mt-1"
+                                id="confirmpassword" name="confirmpassword" v-model="confirmPassword" />
                         </div>
                     </div>
                     <Button @click="resetPassword()"
@@ -171,7 +171,8 @@ export default {
 
                 localStorage.setItem('accounts', JSON.stringify(this.accounts));
 
-                this.$router.push('/');
+                this.$router.push('/signin');
+                alert("Password's changed!")
             } else {
                 alert("This username does not exist.");
             }
@@ -186,7 +187,6 @@ export default {
     }
 };
 </script>
-This script checks if the provided username exists in the list of accounts, and if it does, it updates the password for that account and saves the updated accounts array to local storage. If the provided username does not exist, it alerts the user that the username is not found.
 
 
 

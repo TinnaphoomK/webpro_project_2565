@@ -42,22 +42,53 @@ export default {
         <router-link to="/detail" class="thai first text-primary-600 hover:text-primary-600">เพิ่มห้อง</router-link>
 
         <div class="card mx-8 my-3 py-6 shadow-5 border-round-sm bg-white">
-            <div class="flex justify-content-center flex-wrap card-container">
+            <div class="flex justify-content-center">
                 <div class="flex align-items-center justify-content-center">
-                    <img src="../assets/img/auditorium.jpeg" class="w-30rem h-30rem border-round-2xl my-4" alt="">
+                    <div class="flex">
+                        <img src="../assets/img/auditorium.jpeg" class="w-30rem h-30rem border-round-2xl shadow-5 my-4 mx-8"
+                            alt="">
+                    </div>
 
                     <div class="flex flex-column card-container my-6 justify-content-center align-self-start">
                         <div class="my-2">
-                            <label class="thai flex text-sm text-black-alpha-90 justify-content-start mx-4"
+                            <label class="thai flex text-sm text-black-alpha-90 justify-content-start mx-8"
                                 for="room">ชื่อห้อง</label>
                             <div class="flex">
-                                <InputText type="room" class="flex p-inputtext-sm w-full shadow-1 mx-4 mt-1" id="room"
+                                <InputText type="room" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
                                     v-model="room" />
                             </div>
                         </div>
+
+                        <div class="my-2">
+                            <label class="thai flex text-sm text-black-alpha-90 justify-content-start mx-8"
+                                for="room">ชั้น</label>
+                            <div class="flex">
+                                <InputText type="room" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
+                                    v-model="room" />
+                            </div>
+                        </div>
+
+                        <div class="my-2">
+                            <label class="thai flex text-sm text-black-alpha-90 justify-content-start mx-8"
+                                for="room">รายละเอียด</label>
+                            <div class="flex">
+                                <InputText type="room" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
+                                    v-model="room" />
+                            </div>
+                        </div>
+
+                        <div class="my-2">
+                            <label class="thai flex text-sm text-black-alpha-90 justify-content-start mx-8"
+                                for="room">รายละเอียดเพิ่มเติม</label>
+                            <div class="flex">
+                                <InputText type="room" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
+                                    v-model="room" />
+                            </div>
+                        </div>
+
                         <router-link to="/manageroom">
                             <Button
-                                class="thai bg-primary-800 hover:bg-primary-900 border-round-xl text-xl w-16rem h-4rem justify-content-center shadow-5 mt-6">ยืนยันการจอง</Button>
+                                class="thai bg-primary-800 hover:bg-primary-900 border-round-xl text-xl w-30rem h-4rem justify-content-center shadow-5 mt-6 mx-8">ยืนยัน</Button>
                         </router-link>
                     </div>
                 </div>
