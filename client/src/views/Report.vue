@@ -8,17 +8,11 @@
         รายงาน</div>
     </div>
   </div>
-  <div class="text-center justify-content-between mt-6">
-    <div>
-      <label for="topic" class="thai text-xl mr-4">หัวข้อ</label>
-      <InputText id="topic" v-model="topic" name="topic" type="text" class="p-inputtext-lg shadow-2 mb-4 w-3" />
-      <label for="roomid" class="thai text-xl ml-8 mr-4">หมายเลขห้อง</label>
-      <InputText id="roomid" v-model="roomid" name="roomid" type="text" class="p-inputtext-lg shadow-2 mb-4 w-2" /><br />
-    </div>
+  <div class="text-center justify-content-between mt-4">
 
-    <div>
-      <Textarea v-model="comment" placeholder="  หมายเหตุ" class="shadow-5 justify-content-center mt-4" rows="15"
-        cols="100" />
+    <div class="flex flex-column justify-content-center">
+      <label class="flex thai mx-8 px-4" for="">เนื้อหา</label>
+      <Textarea v-model="comment" class="flex flex-column shadow-5 justify-content-center my-4 mx-8 h-24rem" cols="100" />
     </div>
   </div>
   <div class="flex text-center justify-content-center mt-4">
@@ -44,6 +38,10 @@
 
 body {
   background-color: rgba(35, 87, 165, 0.1);
+}
+
+.navbg {
+  background-image: linear-gradient(to right, rgb(35, 87, 165), rgb(3, 8, 16), rgb(35, 87, 165));
 }
 
 .thai {

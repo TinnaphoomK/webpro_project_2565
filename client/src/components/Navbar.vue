@@ -50,10 +50,10 @@ export default {
   <div>
     <header>
       <div class="card">
-        <div class="flex card-container">
+        <div class="flex justify-content-between card-container">
           <!-- home -->
-          <div>
-            <img class="absolute w-full h-6rem" src="../assets/img/navbar.png" alt="">
+          <div class="flex absolute w-full">
+            <div class="flex top-0 w-full h-6rem navbg"></div>
           </div>
           <div class="z-1">
             <a class="text-white font-bold flex align-items-center justify-content-left ml-4"
@@ -64,46 +64,45 @@ export default {
 
 
           <template v-if="isLoggedIn">
-            <a class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center"
-              style="min-width: 125px; min-height: 25px" href="/history">
-              <i class="pi pi-history mr-2"></i>
-              History
-            </a>
+            <div class="flex mx-4">
+              <a class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center"
+                style="min-width: 125px; min-height: 25px" href="/history">
+                <i class="pi pi-history mr-2"></i>
+                History
+              </a>
 
 
-            <a class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center"
-              style="min-width: 125px; min-height: 25px" href="/manageroom">
-              <i class="pi pi-user mr-2"></i>
-              {{ username }}
-            </a>
+              <a class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center"
+                style="min-width: 125px; min-height: 25px" href="/manageroom">
+                <i class="pi pi-user mr-2"></i>
+                {{ username }}
+              </a>
 
-            <a @click.prevent="signout"
-              class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center"
-              style="min-width: 125px; min-height: 25px" href="/signin">
-              <i class="pi pi-power-off mr-2"></i>
-              Log out
-            </a>
+              <a @click.prevent="signout"
+                class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center"
+                style="min-width: 125px; min-height: 25px" href="/signin">
+                <i class="pi pi-power-off mr-2"></i>
+                Log out
+              </a>
+            </div>
 
 
           </template>
 
           <template v-if="!isLoggedIn">
-            <router-link to="/signin">
-              <LoginButton></LoginButton>
-            </router-link>
+            <div class="flex mx-4">
+              <router-link to="/signin">
+                <LoginButton></LoginButton>
+              </router-link>
 
-            <!-- sign up button -->
-            <router-link to="/signup">
-              <SignupButton></SignupButton>
-            </router-link>
+              <!-- sign up button -->
+              <router-link to="/signup">
+                <SignupButton></SignupButton>
+              </router-link>
+            </div>
           </template>
         </div>
       </div>
     </header>
   </div>
 </template>
-<style>
-Button {
-  border-color: transparent;
-}
-</style>

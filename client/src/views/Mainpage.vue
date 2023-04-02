@@ -25,7 +25,7 @@ export default {
         <router-link to="/2ndfloor" class="text-gray-900 ml-6 hover:text-primary-800">2ND FLOOR</router-link>
         <router-link to="/3rdfloor" class="text-gray-900 ml-6 hover:text-primary-800">3RD FLOOR</router-link>
 
-        <div class="mx-7 my-2 px-2 py-8 border-round-xl shadow-5" style="background-color: rgba(35, 87, 165, 0.1);">
+        <div class="mx-7 my-2 px-2 py-8 border-round-xl shadow-5 cardbg">
 
             <div class="grid justify-content-center">
                 <router-link to="/detail" class="z-1 mx-2">
@@ -57,9 +57,8 @@ export default {
             </div>
 
         </div>
-        <div class="flex justify-content-center mx-7 my-6 px-2 py-4 border-round-xl shadow-5"
-            style="background-color: rgba(35, 87, 165, 0.1);">
-            <div class="flex flex-column card-container text-lg mx-6 my-6 justify-content-start align-self-start">
+        <div class="flex justify-content-center mx-7 my-6 px-2 py-4 border-round-xl shadow-5 cardbg">
+            <div class="flex flex-column card-container text-lg mx-6 my-6 justify-content-start align-self-center">
                 <label class="flex flex-column w-30rem my-3 bg-transparent font-bold text-5xl text-gray-900 border-round">
                     Auditorium Room</label>
                 <label class="my-4" for="">For the event and meeting for each important things in faculty. Exclusive</label>
@@ -107,8 +106,20 @@ export default {
     margin-left: 6%;
 }
 
+body {
+    background-color: white;
+}
+
+.cardbg {
+    background-color: rgba(35, 87, 165, 0.1);
+}
+
 .footerbg {
     background-image: linear-gradient(to right, rgb(3, 8, 16), rgb(35, 87, 165), rgb(3, 8, 16));
+}
+
+.navbg {
+    background-image: linear-gradient(to right, rgb(35, 87, 165), rgb(3, 8, 16), rgb(35, 87, 165));
 }
 
 a:link {

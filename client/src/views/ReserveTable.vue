@@ -189,6 +189,10 @@ body {
     font-family: 'Mitr', sans-serif;
 }
 
+.navbg {
+    background-image: linear-gradient(to right, rgb(35, 87, 165), rgb(3, 8, 16), rgb(35, 87, 165));
+}
+
 .first {
     margin-left: 10%;
 }

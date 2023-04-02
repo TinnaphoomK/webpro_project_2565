@@ -103,6 +103,10 @@ body {
     background-color: rgba(35, 87, 165, 0.1);
 }
 
+.navbg {
+    background-image: linear-gradient(to right, rgb(35, 87, 165), rgb(3, 8, 16), rgb(35, 87, 165));
+}
+
 .thai {
     font-family: 'Mitr', sans-serif;
 }
