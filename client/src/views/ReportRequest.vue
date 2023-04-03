@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import Navbar from '../components/Navbar.vue';
 import ReportRpending from '../components/ReportRpending.vue';
 import ReportRcomplete from '../components/ReportRcomplete.vue';
