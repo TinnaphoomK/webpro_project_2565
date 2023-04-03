@@ -39,8 +39,8 @@ const router = createRouter({
       component: () => import('../views/Reserve.vue')
     },
     {
-      path: '/resrequest',
-      name: 'resrequest',
+      path: '/reserverequest',
+      name: 'reserverequest',
       component: () => import('../views/ReserveRequest.vue')
     },
     {

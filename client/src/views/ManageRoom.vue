@@ -15,7 +15,7 @@ export default {
     <!-- navbar -->
     <Navbar></Navbar>
     <div class="card">
-        <div class="flex justify-content-center flex-wrap card-container mt-4">
+        <div class="flex justify-content-center flex-wrap card-container my-4">
             <div
                 class="flex align-items-center justify-content-center bg-white text-primary-800 shadow-5 w-16rem h-6rem text-4xl font-bold border-round-2xl">
                 OFFICER</div>
@@ -26,7 +26,7 @@ export default {
             <router-link to="/reportrequest">
                 <Button class="thai bg-primary-700 hover:bg-primary-800 mx-2">คำร้อง</Button>
             </router-link>
-            <router-link to="/resrequest">
+            <router-link to="/reserverequest">
                 <Button class="thai bg-primary-700 hover:bg-primary-800 mx-2">รายการจอง</Button>
             </router-link>
             <router-link to="/addroom">
