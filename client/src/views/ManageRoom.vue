@@ -39,6 +39,7 @@ export default {
         <!-- open and close card -->
         <div class="card mt-4 ml-6">
             <div class="flex justify-content-start flex-wrap card-container my-4">
+                <!-- use props!!!! -->
                 <ManageRoomOpen></ManageRoomOpen>
             </div>
             <div class="flex justify-content-start flex-wrap card-container my-4">
