@@ -33,11 +33,11 @@ router.post("/login", async (req, res) => {
 router.post("/register", async (req, res) => {
   try {
     const { email, password, firstName, lastName, studentId } = req.body;
-    const existingUser = await prisma.user.findUnique({
-      where: { email },
+    const existingUser = await prisma.user.findFirst({
+      where: { OR: [{ email: email }, { studentId: studentId }] },
     });
     if (existingUser) {
-      return res.status(409).json({ error: "Email already in use" });
+      return res.status(409).json({ error: "Email already in use or Student id already in use" });
     }
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await prisma.user.create({

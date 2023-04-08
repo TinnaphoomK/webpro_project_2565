@@ -131,6 +131,7 @@ export default {
           alert("Please enter a valid email address")
           return
         }
+
         else{
         const res = await axios.post("http://localhost:3000/api/auth/login", this.loginData);
         localStorage.setItem("token", res.data.token);
@@ -138,7 +139,9 @@ export default {
         this.$router.push("/");
         }
       } catch (error) {
-        console.log(error)
+        alert(error.response.data.error)
+        console.log(error.response.data.error);
+
       }
     },
   },

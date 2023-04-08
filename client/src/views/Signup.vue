@@ -135,10 +135,11 @@ export default {
         lastName: "",
         password: "",
         confirmPassword: ""
-      }
+      },
     };
   },
   methods: {
+
     async signup() {
       try {
         if (this.registerData.password !== this.registerData.confirmPassword) {
@@ -174,33 +175,38 @@ export default {
           return;
         }
         if (this.registerData.email.indexOf("@") === 0) {
-          alert("Please enter a valid email address")
-          return
+          alert("Please enter a valid email address");
+          return;
         }
         if (this.registerData.email.indexOf("@") === -1) {
-          alert("Please enter a valid email address")
-          return
+          alert("Please enter a valid email address");
+          return;
         }
         if (this.registerData.email.indexOf(".") === -1) {
-          alert("Please enter a valid email address")
-          return
+          alert("Please enter a valid email address");
+          return;
         }
         if (this.registerData.email.indexOf("@") > this.registerData.email.indexOf(".")) {
-          alert("Please enter a valid email address")
-          return
+          alert("Please enter a valid email address");
+          return;
         }
         if (this.registerData.email.indexOf("@") === this.registerData.email.indexOf(".") - 1) {
-          alert("Please enter a valid email address")
-          return
+          alert("Please enter a valid email address");
+          return;
         }
-        else {
-          const res = await axios.post("http://localhost:3000/api/auth/register", this.registerData);
-          localStorage.setItem("token", res.data.token);
-          localStorage.setItem("user", JSON.stringify(res.data.user));
-          this.$router.push("/");
+        if (this.registerData.email.indexOf("@") === this.registerData.email.indexOf(".") + 1) {
+          alert("Please enter a valid email address");
+          return;
         }
-      } catch (error) {
-        console.log(error)
+
+        const res = await axios.post("http://localhost:3000/api/auth/register", this.registerData);
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+        this.$router.push("/");
+      } catch
+      (error) {
+        alert(error.response.data.error)
+        console.log(error.response.data.error);
       }
     },
   },
