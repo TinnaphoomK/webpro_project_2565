@@ -117,10 +117,6 @@ body {
     background-image: linear-gradient(to right, rgb(35, 87, 165), rgb(3, 8, 16), rgb(35, 87, 165));
 }
 
-.footerbg {
-    background-image: linear-gradient(to right, rgb(3, 8, 16), rgb(35, 87, 165), rgb(3, 8, 16));
-}
-
 .first {
     margin-left: 10%;
 }

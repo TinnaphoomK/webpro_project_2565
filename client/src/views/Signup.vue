@@ -16,7 +16,7 @@
           <div class="flex flex-column my-1">
             <label class="flex text-black-alpha-90 justify-content-start mx-4" for="email">Email</label>
             <div class="flex">
-              <InputText class="flex p-inputtext-sm w-full shadow-1 mx-4 mt-1" id="email" name="email"
+              <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="email" name="email"
                 v-model="registerData.email" />
             </div>
           </div>
@@ -24,7 +24,7 @@
           <div class="flex flex-column my-1">
             <label class="flex text-black-alpha-90 justify-content-start mx-4" for="studentid">Student ID</label>
             <div class="flex">
-              <InputText class="flex p-inputtext-sm w-full shadow-1 mx-4 mt-1" id="studentid" name="studentid"
+              <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="studentid" name="studentid"
                 v-model="registerData.studentId" />
             </div>
           </div>
@@ -32,12 +32,12 @@
           <div class="flex my-1 justify-content-between">
             <div class="flex flex-column justify-content-center mx-4">
               <label class="flex text-black-alpha-90 justify-content-start" for="firstname">Firstname</label>
-              <InputText class="flex p-inputtext-sm w-full shadow-1 mt-1" id="firstname" name="firstname"
+              <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mt-1" id="firstname" name="firstname"
                 v-model="registerData.firstName" />
             </div>
             <div class="flex flex-column justify-content-center mx-4">
               <label class="flex text-black-alpha-90 justify-content-start" for="lastname">Lastname</label>
-              <InputText class="flex p-inputtext-sm w-full shadow-1 mt-1" id="lastname" name="lastname"
+              <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mt-1" id="lastname" name="lastname"
                 v-model="registerData.lastName" />
             </div>
           </div>
@@ -46,7 +46,7 @@
             <label class="flex text-black-alpha-90 justify-content-start mx-4" type="password"
               for="password">Password</label>
             <div class="flex">
-              <InputText type="password" class="flex p-inputtext-sm w-full shadow-1 mx-4 mt-1" id="password"
+              <InputText type="password" class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="password"
                 name="password" v-model="registerData.password" />
             </div>
           </div>
@@ -55,14 +55,20 @@
             <label class="flex text-black-alpha-90 justify-content-start mx-4" for="confirmpassword">Confirm
               Password</label>
             <div class="flex">
-              <InputText type="password" class="flex p-inputtext-sm w-full shadow-1 mx-4 mt-1" id="confirmpassword"
+              <InputText type="password" class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="confirmpassword"
                 name="confirmpassword" v-model="registerData.confirmPassword" />
             </div>
           </div>
 
-          <Button @click.prevent="signup"
+          <Button @click.prevent="signup()"
             class="flex bg-primary-800 text-white hover:bg-primary-900 hover:text-gray-300 justify-content-center text-bold shadow-1 mt-4 mx-4">Sign
             up</Button>
+          <div class="flex justify-content-center mt-4">
+            <label for="password" class="flex justify-content-center text-gray-500 text-sm">already have an account
+              ?</label>
+            <router-link class="flex text-sm text-primary-700 hover:text-primary-900 mx-2" to="/signin">Sign in
+            </router-link>
+          </div>
         </form>
       </div>
     </div>

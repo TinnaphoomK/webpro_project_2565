@@ -17,24 +17,27 @@
           <div class="my-2">
             <label class="flex text-black-alpha-90 justify-content-start mx-4" for="email">Email</label>
             <div class="flex">
-              <InputText class="flex p-inputtext-sm w-full shadow-1 mx-4 mt-1" id="email" v-model="loginData.email" />
+              <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="email"
+                v-model="loginData.email" />
             </div>
           </div>
 
           <div class="my-2">
             <label class="flex text-black-alpha-90 justify-content-start mx-4" for="password">Password</label>
             <div class="flex">
-              <InputText type="password" class="flex p-inputtext-sm w-full shadow-1 mx-4 mt-1" id="password"
+              <InputText type="password" class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="password"
                 v-model="loginData.password" />
             </div>
           </div>
           <Button @click.prevent="signin()"
             class="flex bg-primary-800 text-white hover:bg-primary-900 hover:text-gray-300 justify-content-center text-bold shadow-1 mt-4 mb-2 mx-4">Sign
             in</Button>
-          <router-link to="/forgotpassword"
-            class="flex text-sm text-primary-700 hover:text-primary-900 justify-content-end bg-transparent mx-4">
-            Forget password ?
-          </router-link>
+          <div class="flex justify-content-end">
+            <router-link to="/forgotpassword"
+              class="flex text-sm text-primary-700 hover:text-primary-900 bg-transparent mx-4 mt-1">
+              Forget password ?
+            </router-link>
+          </div>
           <div class="flex justify-content-center mt-4">
             <label for="password" class="flex justify-content-center text-gray-500 text-sm">don't have an account yet
               ?</label>
@@ -115,28 +118,28 @@ export default {
   methods: {
     async signin() {
       try {
-        if(this.loginData.email == "" || this.loginData.password == ""){
+        if (this.loginData.email == "" || this.loginData.password == "") {
           alert("Please fill in all fields")
           return
         }
-        if(!this.loginData.email.includes("@")){
+        if (!this.loginData.email.includes("@")) {
           alert("Please enter a valid email address")
           return
         }
-        if(!this.loginData.email.includes(".")){
+        if (!this.loginData.email.includes(".")) {
           alert("Please enter a valid email address")
           return
         }
-        if(this.loginData.email.indexOf("@") > this.loginData.email.indexOf(".")){
+        if (this.loginData.email.indexOf("@") > this.loginData.email.indexOf(".")) {
           alert("Please enter a valid email address")
           return
         }
 
-        else{
-        const res = await axios.post("http://localhost:3000/api/auth/login", this.loginData);
-        localStorage.setItem("token", res.data.token);
-        localStorage.setItem("user", JSON.stringify(res.data.user));
-        this.$router.push("/");
+        else {
+          const res = await axios.post("http://localhost:3000/api/auth/login", this.loginData);
+          localStorage.setItem("token", res.data.token);
+          localStorage.setItem("user", JSON.stringify(res.data.user));
+          this.$router.push("/");
         }
       } catch (error) {
         alert(error.response.data.error)
