@@ -17,7 +17,7 @@
           <div class="my-2">
             <label class="flex text-black-alpha-90 justify-content-start mx-4" for="email">Email</label>
             <div class="flex">
-              <InputText class="flex p-inputtext-sm w-full shadow-1 mx-4 mt-1" id="email" v-model="username" />
+              <InputText class="flex p-inputtext-sm w-full shadow-1 mx-4 mt-1" id="email" v-model="loginData.email" />
             </div>
           </div>
 
@@ -25,7 +25,7 @@
             <label class="flex text-black-alpha-90 justify-content-start mx-4" for="password">Password</label>
             <div class="flex">
               <InputText type="password" class="flex p-inputtext-sm w-full shadow-1 mx-4 mt-1" id="password"
-                v-model="password" />
+                v-model="loginData.password" />
             </div>
           </div>
           <Button @click.prevent="signin()"
@@ -102,44 +102,55 @@ a:active {
 
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
-      username: "",
-      password: "",
-      accounts: []
+      loginData: {
+        email: "",
+        password: ""
+      }
     };
   },
   methods: {
-    signin() {
-      // Retrieve the entered username and password from local storage
-      // const enteredUsername = localStorage.getItem('username');
-      // const enteredPassword = localStorage.getItem('password');
-
-      // Check if an account with the same username exists
-      const existingAccount = this.accounts.find(account => {
-        return account.username === this.username;
-      });
-
-      if (!existingAccount) {
-        alert("An account with this username doesn't exist. Please sign up first.");
-      } else if (existingAccount.password !== this.password) {
-        alert("Incorrect password. Please try again.");
-      } else {
-        localStorage.setItem('signedInAccount', JSON.stringify(existingAccount));
-        localStorage.setItem('isLoggedIn', 'true');
+    async signin() {
+      try {
+        if(this.loginData.email == "" || this.loginData.password == ""){
+          alert("Please fill in all fields")
+          return
+        }
+        if(!this.loginData.email.includes("@")){
+          alert("Please enter a valid email address")
+          return
+        }
+        if(!this.loginData.email.includes(".")){
+          alert("Please enter a valid email address")
+          return
+        }
+        if(this.loginData.email.indexOf("@") > this.loginData.email.indexOf(".")){
+          alert("Please enter a valid email address")
+          return
+        }
+        else{
+        const res = await axios.post("http://localhost:3000/api/auth/login", this.loginData);
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("user", JSON.stringify(res.data.user));
         this.$router.push("/");
+        }
+      } catch (error) {
+        console.log(error)
       }
     },
-    fetchAccounts() {
-      const localStorageAccounts = localStorage.getItem("accounts");
-      if (localStorageAccounts) {
-        this.accounts = JSON.parse(localStorageAccounts);
-      }
-    }
   },
-  created() {
-    this.fetchAccounts();
-  }
 };
 </script>
+
+
+<!-- 
+  const token = localStorage.getItem("token");
+  axios.post("http://localhost:3000/api/auth/login", {
+          headers: {
+            Authorization: "Bearer " + token
+          }
+        },this.loginData)
+ -->

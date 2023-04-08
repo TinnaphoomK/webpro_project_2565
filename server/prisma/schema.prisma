@@ -19,11 +19,21 @@ model User {
   updatedAt   DateTime      @default(now()) @map("updated_at")
   Reservation Reservation[]
   Report      Report[]
+  Loging      Loging[]
 }
 
 enum Role {
   admin
   user
+}
+
+model Loging {
+  id            Int      @id @default(autoincrement())
+  userId        String   @map("user_id")
+  method String   @map("request_method")
+  url           String
+  createdAt     DateTime @default(now()) @map("created_at")
+  User          User     @relation(fields: [userId], references: [studentId])
 }
 
 model Reservation {

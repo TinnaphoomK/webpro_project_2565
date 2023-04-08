@@ -17,17 +17,14 @@ export default {
   props: {
     display: true,
   },
-  created() {
-    const isLoggedIn = localStorage.getItem('isLoggedIn');
-    if (isLoggedIn) {
-      this.isLoggedIn = JSON.parse(isLoggedIn);
-      if (this.isLoggedIn) {
-        const signedInAccount = JSON.parse(localStorage.getItem('signedInAccount'));
-        if (signedInAccount) {
-          this.username = signedInAccount.username;
-          console.log(signedInAccount)
-        }
-      }
+  mounted() {
+    const token = localStorage.getItem('token');
+    const user = JSON.parse(localStorage.getItem('user'));
+    console.log(user)
+
+    if (token) {
+      this.isLoggedIn = true;
+      this.username = user.firstName;
     }
   },
 
@@ -36,8 +33,8 @@ export default {
     signout() {
       this.isLoggedIn = false;
       this.username = null; // reset username to null on logout
-      localStorage.removeItem('isLoggedIn'); // remove isLoggedIn from localStorage
-      localStorage.removeItem('signedInAccount');
+      localStorage.removeItem('user'); // remove isLoggedIn from localStorage
+      localStorage.removeItem('token');
       this.$router.push('/');
     },
   }

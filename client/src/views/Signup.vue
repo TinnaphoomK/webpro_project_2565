@@ -16,7 +16,8 @@
           <div class="flex flex-column my-1">
             <label class="flex text-black-alpha-90 justify-content-start mx-4" for="email">Email</label>
             <div class="flex">
-              <InputText class="flex p-inputtext-sm w-full shadow-1 mx-4 mt-1" id="email" name="email" v-model="email" />
+              <InputText class="flex p-inputtext-sm w-full shadow-1 mx-4 mt-1" id="email" name="email"
+                v-model="registerData.email" />
             </div>
           </div>
 
@@ -24,7 +25,7 @@
             <label class="flex text-black-alpha-90 justify-content-start mx-4" for="studentid">Student ID</label>
             <div class="flex">
               <InputText class="flex p-inputtext-sm w-full shadow-1 mx-4 mt-1" id="studentid" name="studentid"
-                v-model="username" />
+                v-model="registerData.studentId" />
             </div>
           </div>
 
@@ -32,12 +33,12 @@
             <div class="flex flex-column justify-content-center mx-4">
               <label class="flex text-black-alpha-90 justify-content-start" for="firstname">Firstname</label>
               <InputText class="flex p-inputtext-sm w-full shadow-1 mt-1" id="firstname" name="firstname"
-                v-model="firstname" />
+                v-model="registerData.firstName" />
             </div>
             <div class="flex flex-column justify-content-center mx-4">
               <label class="flex text-black-alpha-90 justify-content-start" for="lastname">Lastname</label>
               <InputText class="flex p-inputtext-sm w-full shadow-1 mt-1" id="lastname" name="lastname"
-                v-model="lastname" />
+                v-model="registerData.lastName" />
             </div>
           </div>
 
@@ -46,7 +47,7 @@
               for="password">Password</label>
             <div class="flex">
               <InputText type="password" class="flex p-inputtext-sm w-full shadow-1 mx-4 mt-1" id="password"
-                name="password" v-model="password" />
+                name="password" v-model="registerData.password" />
             </div>
           </div>
 
@@ -55,7 +56,7 @@
               Password</label>
             <div class="flex">
               <InputText type="password" class="flex p-inputtext-sm w-full shadow-1 mx-4 mt-1" id="confirmpassword"
-                name="confirmpassword" v-model="confirmPassword" />
+                name="confirmpassword" v-model="registerData.confirmPassword" />
             </div>
           </div>
 
@@ -123,49 +124,85 @@ a:active {
 </style>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
-      username: "",
-      password: "",
-      accounts: []
+      registerData: {
+        email: "",
+        studentId: "",
+        firstName: "",
+        lastName: "",
+        password: "",
+        confirmPassword: ""
+      }
     };
   },
   methods: {
-    signup() {
-      // Check if an account with the same username already exists
-      const existingAccount = this.accounts.find(account => {
-        return account.username === this.username;
-      });
-
-      if (existingAccount) {
-        alert("An account with this username already exists.");
-      } else {
-        // Create a new account with the next available ID
-        const newAccount = {
-          id: this.accounts.length + 1,
-          username: this.username,
-          password: this.password
-        };
-
-        // Add the new account to the accounts array and save to local storage
-        this.accounts.push(newAccount);
-        localStorage.setItem('accounts', JSON.stringify(this.accounts));
-
-        // Save the entered username and password to local storage
-        localStorage.setItem('username', this.username);
-        localStorage.setItem('password', this.password);
-
-        // Navigate to the sign-in page
-        this.$router.push('/signin');
+    async signup() {
+      try {
+        if (this.registerData.password !== this.registerData.confirmPassword) {
+          alert("Password not match");
+          return;
+        }
+        if (this.registerData.email === "" || this.registerData.studentId === "" || this.registerData.firstname === "" || this.registerData.lastname === "" || this.registerData.password === "" || this.registerData.confirmPassword === "") {
+          alert("Please fill all fields");
+          return;
+        }
+        if (this.registerData.password.length < 8) {
+          alert("Password must be at least 8 characters");
+          return;
+        }
+        if (this.registerData.studentId.length !== 8) {
+          alert("Student ID must be 8 characters");
+          return;
+        }
+        if (this.registerData.password === this.registerData.studentId) {
+          alert("Password cannot be the same as Student ID");
+          return;
+        }
+        if (this.registerData.password === this.registerData.firstname) {
+          alert("Password cannot be the same as Firstname");
+          return;
+        }
+        if (this.registerData.password === this.registerData.lastname) {
+          alert("Password cannot be the same as Lastname");
+          return;
+        }
+        if (this.registerData.password === this.registerData.email) {
+          alert("Password cannot be the same as Email");
+          return;
+        }
+        if (this.registerData.email.indexOf("@") === 0) {
+          alert("Please enter a valid email address")
+          return
+        }
+        if (this.registerData.email.indexOf("@") === -1) {
+          alert("Please enter a valid email address")
+          return
+        }
+        if (this.registerData.email.indexOf(".") === -1) {
+          alert("Please enter a valid email address")
+          return
+        }
+        if (this.registerData.email.indexOf("@") > this.registerData.email.indexOf(".")) {
+          alert("Please enter a valid email address")
+          return
+        }
+        if (this.registerData.email.indexOf("@") === this.registerData.email.indexOf(".") - 1) {
+          alert("Please enter a valid email address")
+          return
+        }
+        else {
+          const res = await axios.post("http://localhost:3000/api/auth/register", this.registerData);
+          localStorage.setItem("token", res.data.token);
+          localStorage.setItem("user", JSON.stringify(res.data.user));
+          this.$router.push("/");
+        }
+      } catch (error) {
+        console.log(error)
       }
-    }
+    },
   },
-  created() {
-    const localStorageAccounts = localStorage.getItem("accounts");
-    if (localStorageAccounts) {
-      this.accounts = JSON.parse(localStorageAccounts);
-    }
-  }
 };
 </script>
