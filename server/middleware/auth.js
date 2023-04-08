@@ -9,7 +9,8 @@ const authenticateToken = async (req, res, next) => {
 
     if (token) {
       const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-      if (decoded.role == "admin") {
+      
+    if (decoded.role == "admin") {
         next();
       } else {
         res.status(403).send("Access denied. No permission.");

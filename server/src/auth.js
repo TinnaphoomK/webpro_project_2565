@@ -24,6 +24,7 @@ router.post("/login", async (req, res) => {
     delete user.password;
     const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET);
     res.status(200).json({ user, accessToken });
+    
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
