@@ -87,11 +87,6 @@ export default {
         </div>
 
     </div>
-    <div
-        class="flex footerbg bottom-0 w-full h-3rem text-white text-sm align-items-center justify-content-center text-center">
-        <img src="../assets/img/cc.png" class="bg-transparent mx-2" style="width: 0.9%;" alt=""> All Right Reserved |
-        Space Creator
-    </div>
 </template>
 
 <style setup>
@@ -112,10 +107,6 @@ body {
 
 .cardbg {
     background-color: rgba(35, 87, 165, 0.1);
-}
-
-.footerbg {
-    background-image: linear-gradient(to right, rgb(3, 8, 16), rgb(35, 87, 165), rgb(3, 8, 16));
 }
 
 .navbg {

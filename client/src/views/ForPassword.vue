@@ -22,8 +22,8 @@
                     <div class="my-2">
                         <label class="flex text-black-alpha-90 justify-content-start mx-4" for="username">Username</label>
                         <div class="flex">
-                            <InputText class="flex p-inputtext-sm w-full shadow-1 mx-4 mt-1" id="username" name="username"
-                                v-model="username" />
+                            <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="username"
+                                name="username" v-model="username" />
                         </div>
                     </div>
 
@@ -31,7 +31,7 @@
                         <label class="flex text-black-alpha-90 justify-content-start mx-4" for="newPassword">New
                             Password</label>
                         <div class="flex">
-                            <InputText type="password" class="flex p-inputtext-sm w-full shadow-1 mx-4 mt-1"
+                            <InputText type="password" class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1"
                                 id="newpassword" name="newpassword" v-model="newPassword" />
                         </div>
                     </div>
@@ -40,7 +40,7 @@
                         <label class="flex text-black-alpha-90 justify-content-start mx-4" for="confirmpassword">Confirm
                             Password</label>
                         <div class="flex">
-                            <InputText type="password" class="flex p-inputtext-sm w-full shadow-1 mx-4 mt-1"
+                            <InputText type="password" class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1"
                                 id="confirmpassword" name="confirmpassword" v-model="confirmPassword" />
                         </div>
                     </div>
