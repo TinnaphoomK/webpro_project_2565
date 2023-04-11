@@ -6,7 +6,7 @@ export default {
         Navbar,
         CardItem
     },
-};
+}
 </script>
 
 <template>
@@ -81,10 +81,13 @@ export default {
                     </li>
                 </ul>
             </div>
-            <div class="flex text-lg my-8 mx-6 justify-content-center align-items-center"><img
+            <router-link to="/detail/auditorium">
+            <div  class="flex text-lg my-8 mx-6 justify-content-center align-items-center"><img
                     src="/src/assets/img/auditorium.jpeg" class="w-full h-full border-round-2xl my-4 mx-8" alt="">
             </div>
+        </router-link>
         </div>
+        
 
     </div>
 </template>
