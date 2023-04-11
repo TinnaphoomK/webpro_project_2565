@@ -13,3 +13,19 @@
         </div>
     </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      data: {
+        room: {
+          name : "",
+          detail: "",
+          floor : ""
+        }
+      }
+    };
+  },
+}
+</script>

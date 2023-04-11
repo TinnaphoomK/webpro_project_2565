@@ -33,11 +33,12 @@ router.get("/:id", async (req, res) => {
 //create
 router.post("/", authenticateToken, async (req, res) => {
   try {
-    const { name, detail } = req.body;
+    const { name, detail, floor} = req.body;
     const room = await prisma.room.create({
       data: {
         name: name,
         detail: detail,
+        floor: floor,
       },
     });
     res.status(200).json({ room });
@@ -58,6 +59,7 @@ router.patch("/:id", authenticateToken, async (req, res) => {
       data: {
         name: name ? name : undefined,
         detail: detail ? detail : undefined,
+        floor: floor ? floor : undefined,
       },
     });
     res.status(200).json(room);
