@@ -29,7 +29,7 @@ const router = createRouter({
       component: () => import('../views/History.vue')
     },
     {
-      path: '/detail',
+      path: '/detail/:id',
       name: 'detail',
       component: () => import('../views/Detail.vue')
     },
