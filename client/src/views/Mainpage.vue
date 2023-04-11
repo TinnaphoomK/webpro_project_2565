@@ -25,9 +25,9 @@ export default {
         <router-link to="/2ndfloor" class="text-gray-900 ml-6 hover:text-primary-800">2ND FLOOR</router-link>
         <router-link to="/3rdfloor" class="text-gray-900 ml-6 hover:text-primary-800">3RD FLOOR</router-link>
 
-        <div class="mx-7 my-2 px-2 py-6 border-round-xl shadow-5 cardbg">
+        <div class="mx-7 my-2 px-5 py-6 border-round-xl shadow-5 cardbg flex flex-wrap gap-5">
 
-            <div class="grid justify-content-center" v-for="value, index in 10" :key="index">
+            <div class="justify-content-center" v-for="value, index in 2" :key="index">
                 <router-link to="/detail" class="z-1 mx-2">
                     <CardItem></CardItem>
                 </router-link>
