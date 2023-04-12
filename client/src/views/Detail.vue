@@ -7,6 +7,16 @@ export default {
         Navbar,
         CardItem
     },
+    mounted() {
+    this.allroom()
+  },
+  methods: {
+    async allroom() {
+      const res = await axios.get('http://localhost:3000/api/room/')
+      console.log(res.data);
+      this.room = res.data
+    },
+  }
 };
 </script>
 
