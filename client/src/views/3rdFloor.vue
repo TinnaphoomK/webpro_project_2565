@@ -61,7 +61,7 @@ export default {
         </router-link>
     </div>
             <div class="mx-7 mb-2 px-5 py-6 border-round-xl shadow-5 cardbg flex gap-5">
-                    <CardItem/>
+                    <CardItem floor="3"/>
             </div>
         <div class="flex justify-content-center mx-7 my-6 px-2 py-4 border-round-xl shadow-5 cardbg">
             <div class="flex flex-column card-container text-lg mx-6 my-6 justify-content-start align-self-center">

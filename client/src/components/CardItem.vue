@@ -27,15 +27,24 @@ export default {
       room: {},
     };
   },
+  props:{
+    floor: String
+  },
   mounted() {
-    this.allroom()
+    this.allroom(this.floor)
   },
   methods: {
-    async allroom() {
-      const res = await axios.get('http://localhost:3000/api/room/')
-      console.log(res.data);
-      this.room = res.data
-    },
+    async allroom(floor) {
+  const res = await axios.get('http://localhost:3000/api/room/')
+  console.log(res.data);
+
+  if (floor) {
+    console.log(this.floor)
+    this.room = res.data.filter(room => room.floor == this.floor)
+  } else {
+    this.room = res.data
+  }
+},
     async getdetail(value) {
       const room = await axios.get(`http://localhost:3000/api/room/${value.id}`)
       console.log(room)

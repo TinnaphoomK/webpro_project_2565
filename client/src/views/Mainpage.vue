@@ -59,7 +59,7 @@ export default {
     </div>
 
     <div class="mx-7 mb-2 px-5 py-6 border-round-bottom-xl shadow-5 cardbg flex gap-5">
-        <CardItem />
+        <CardItem floor="1"/>
     </div>
 
     <div class="flex justify-content-center mx-7 my-6 px-2 py-4 border-round-xl shadow-5 cardbg">
