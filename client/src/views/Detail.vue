@@ -7,7 +7,11 @@ export default {
         Navbar,
         CardItem
     },
-
+    data() {
+    return {
+      room: {},
+    };
+  },
     mounted() {
     this.allroom()
   },
@@ -36,14 +40,14 @@ export default {
                     <img src="../assets/img/auditorium.jpeg" class="w-30rem h-30rem border-round-2xl my-4 mx-8" alt="">
                     <div class="flex flex-column card-container mx-7 my-6 justify-content-start align-self-start">
                         <div class="flex flex-column w-30rem bg-transparent font-bold text-6xl text-gray-900 border-round">
-                            Auditorium</div>
+                            {{room.name}}</div>
                         <div
                             class="thai flex flex-column w-30rem bg-transparent font-semi-bold text-3xl text-gray-900 border-round mt-6">
                             รายละเอียด</div>
-                        <div class="thai flex flex-column text-gray-500">ชั้น : 1</div>
+                        <div class="thai flex flex-column text-gray-500">ชั้น : {{room.floor}}</div>
                         <div class="thai flex flex-column text-gray-500">จำนวนที่นั่ง : 222</div>
                         <div class="thai flex flex-column text-gray-500">อุปกรณ์ : เยอะ ถามยามดู</div>
-                        <div class="thai flex flex-column text-gray-500">มักใช้ในโอกาส : กินข้าว</div>
+                        <div class="thai flex flex-column text-gray-500">มักใช้ในโอกาส : {{room.detail}}</div>
                         <router-link to="/reserve">
                             <Button
                                 class="thai bg-primary-800 hover:bg-primary-900 border-round-xl text-xl w-16rem h-4rem justify-content-center shadow-5 mt-6">ยืนยันการจอง</Button>
@@ -58,7 +62,6 @@ export default {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Mitr&display=swap');
-
 
 * {
     font-family: 'Inter', sans-serif;
