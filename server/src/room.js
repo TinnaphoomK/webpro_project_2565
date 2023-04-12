@@ -39,6 +39,8 @@ router.post("/", authenticateToken, async (req, res) => {
         name: name,
         detail: detail,
         floor: floor,
+        description: description,
+        totalSeat: totalSeat,
       },
     });
     res.status(200).json({ room });
@@ -60,6 +62,8 @@ router.patch("/:id", authenticateToken, async (req, res) => {
         name: name ? name : undefined,
         detail: detail ? detail : undefined,
         floor: floor ? floor : undefined,
+        description: description ? description : undefined,
+        totalSeat: totalSeat ? totalSeat : undefined,
       },
     });
     res.status(200).json(room);
