@@ -1,29 +1,33 @@
 <script>
 import Navbar from '../components/Navbar.vue'
 import CardItem from '../components/CardItem.vue'
+import axios from 'axios'
 
 export default {
-    components: {
-        Navbar,
-        CardItem
-    },
-    data() {
+  components: {
+    Navbar,
+    CardItem
+  },
+  data() {
     return {
       room: {},
-    };
+      roomId: '',
+    }
   },
-    mounted() {
-    this.allroom()
+  mounted() {
+    this.roomId = this.$route.params.id
+    this.thisroom(this.roomId) // You can pass the room ID as a parameter here
   },
   methods: {
-    async allroom() {
-      const res = await axios.get('http://localhost:3000/api/room/')
+    async thisroom(id) {
+      const res = await axios.get(`http://localhost:3000/api/room/${id}`)
       console.log(res.data);
-      this.room = res.data
+        this.room = res.data
     },
   }
 };
 </script>
+
 
 <template>
     <!-- navbar -->
@@ -44,10 +48,11 @@ export default {
                         <div
                             class="thai flex flex-column w-30rem bg-transparent font-semi-bold text-3xl text-gray-900 border-round mt-6">
                             รายละเอียด</div>
-                        <div class="thai flex flex-column text-gray-500">ชั้น : {{room.floor}}</div>
-                        <div class="thai flex flex-column text-gray-500">จำนวนที่นั่ง : 222</div>
-                        <div class="thai flex flex-column text-gray-500">อุปกรณ์ : เยอะ ถามยามดู</div>
-                        <div class="thai flex flex-column text-gray-500">มักใช้ในโอกาส : {{room.detail}}</div>
+                        <div class="thai flex flex-column text-gray-500">ชั้น : {{ room.floor }}</div>
+                        <div class="thai flex flex-column text-gray-500">รายละเอียด : {{ room.detail }}</div>
+                        <div class="thai flex flex-column text-gray-500">จำนวนที่นั่ง : {{ room.totalSeat }}</div>
+                        <div class="thai flex flex-column text-gray-500">มักใช้ในโอกาส : {{ room.description }}</div>
+
                         <router-link to="/reserve">
                             <Button
                                 class="thai bg-primary-800 hover:bg-primary-900 border-round-xl text-xl w-16rem h-4rem justify-content-center shadow-5 mt-6">ยืนยันการจอง</Button>

@@ -60,6 +60,8 @@ model Room {
   name        String        @unique
   floor       String
   detail      String
+  description String
+  totalSeat   String        
   Reservation Reservation[]
   Report      Report[]
 }
