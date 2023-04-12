@@ -21,18 +21,22 @@
 
 <script>
 import axios from 'axios';
-
 export default {
   data() {
     return {
       room: {},
     };
   },
-  props: ['floor'],
+  props: {floor: String},
   created: function () {
     console.log(this.floor)
     console.log(this.room)
     this.allroom(this.floor)
+  },
+  watch: {
+    floor: function () {
+      this.allroom(this.floor)
+    }
   },
   methods: {
     async allroom(floor) {

@@ -59,21 +59,6 @@ const router = createRouter({
       component: () => import('../views/ReportHistory.vue')
     },
     {
-      path: '/2ndfloor',
-      name: '2ndfloor',
-      component: () => import('../views/2ndFloor.vue')
-    },
-    {
-      path: '/3rdfloor',
-      name: '3rdfloor',
-      component: () => import('../views/3rdFloor.vue')
-    },
-    {
-      path: '/mfloor',
-      name: 'mfloor',
-      component: () => import('../views/MFloor.vue')
-    },
-    {
       path: '/manageroom',
       name: 'manageroom',
       component: () => import('../views/ManageRoom.vue')

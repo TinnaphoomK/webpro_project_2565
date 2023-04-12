@@ -10,13 +10,14 @@ export default {
     data() {
         return {
             room: {},
-            selectFloor: '',
-            onChange(e) {
-                console.log(e.target.value);
-                this.selectFloor = e.target.value.toString();
-            }
+            selectFloor: '1',
         }
     },
+    methods: {
+        async floorselection(e) {
+            this.selectFloor = e.target.value
+        },
+    }
 }
 </script>
 
@@ -34,12 +35,12 @@ export default {
     </div>
     <div class="flex text-left justify-text-center justify-content-between font-bold text-2xl pt-6 mx-8 my-4">
         <div>
-            <label class="text-6xl" for="">All Room</label>
+            <label class="text-6xl" for="">Room</label>
         </div>
         <div class="flex">
-            <select @change="onChange($event)" v-model="selectFloor" name="floorSelect" placeholder="Select Floor ..." id="floorSelect"
+            <select @input="floorselection($event)" name="floorSelect" placeholder="Select Floor ..." id="floorSelect"
                 class="flex justify-content-center text-center border-round-2xl w-10rem h-3rem font-bold text-lg cursor-pointer">
-                <option value="0">Select Floor...</option>
+                <option value="0" disabled>Select Floor...</option>
                 <option value="1">1st Floor</option>
                 <option value="M">M Floor</option>
                 <option value="2">2nd Floor</option>
@@ -49,7 +50,7 @@ export default {
     </div>
 
     <div class="mx-7 mb-2 px-5 py-6 border-round-xl shadow-5 cardbg flex gap-5">
-        <CardItem :floor='selectFloor' />
+        <CardItem :floor='selectFloor'/>
     </div>
 
     <div class="flex justify-content-center mx-7 my-6 px-2 py-4 border-round-xl shadow-5 cardbg">
