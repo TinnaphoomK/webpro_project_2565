@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="z-1 mr-2 ml-5 flex flex-wrap gap-5">
-      <div v-for="(value, index) in room " :key="index" class="card border-round-2xl shadow-5" @click="getdetail(value)">
+      <div v-for="(value, index) in room " :key="index" class="card border-round-2xl shadow-5 cursor-pointer" @click="getdetail(value)">
         <div class="flex justify-content-start flex-wrap">
           <img class="flex w-17rem h-10rem border-round-top-2xl" src="../assets/img/auditorium.jpeg" alt="">
         </div>

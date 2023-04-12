@@ -60,7 +60,6 @@ export default {
                     src="/src/assets/img/auditorium.jpeg" class="w-full h-full border-round-2xl my-4 mx-8" alt="">
             </div>
         </div>
-    </div>
 </template>
 
 <style setup>

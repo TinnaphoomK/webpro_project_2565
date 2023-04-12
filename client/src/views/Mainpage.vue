@@ -19,48 +19,78 @@ export default {
 
     </div>
 
-    <div class="relative text-left justify-text-center font-bold text-2xl pt-6">
-        <router-link to="/" class="text-primary-600 ml-8">1ST FLOOR</router-link>
-        <router-link to="/mfloor" class="text-gray-900 ml-6 hover:text-primary-800">M FLOOR</router-link>
-        <router-link to="/2ndfloor" class="text-gray-900 ml-6 hover:text-primary-800">2ND FLOOR</router-link>
-        <router-link to="/3rdfloor" class="text-gray-900 ml-6 hover:text-primary-800">3RD FLOOR</router-link>
-
-        <div class="mx-7 my-2 px-5 py-6 border-round-xl shadow-5 cardbg flex gap-5">
-            <CardItem/>
-        </div>
-        
-        <div class="flex justify-content-center mx-7 my-6 px-2 py-4 border-round-xl shadow-5 cardbg">
-            <div class="flex flex-column card-container text-lg mx-6 my-6 justify-content-start align-self-center">
-                <label class="flex flex-column w-30rem my-3 bg-transparent font-bold text-5xl text-gray-900 border-round">
-                    Auditorium Room</label>
-                <label class="my-4" for="">For the event and meeting for each important things in faculty. Exclusive</label>
-                <ul class="flex flex-column list-none align-items-start">
-                    <li class="flex my-2 align-items-center">
-                        <img class="mx-2" src="../assets/img/itcirclelogo.png" alt="">
-                        220 seats
-                    </li>
-                    <li class="flex my-2 align-items-center">
-                        <img class="mx-2" src="../assets/img/itcirclelogo.png" alt="">
-                        Wide screen projector
-                    </li>
-                    <li class="flex my-2 align-items-center">
-                        <img class="mx-2" src="../assets/img/itcirclelogo.png" alt="">
-                        Stage Setup
-                    </li>
-                    <li class="flex my-2 align-items-center">
-                        <img class="mx-2" src="../assets/img/itcirclelogo.png" alt="">
-                        Sound Control room
-                    </li>
-                </ul>
+    <div class="flex text-left justify-text-center font-bold text-2xl pt-6">
+        <router-link to="/">
+            <div class="ml-7">
+                <div class="flex justify-content-center flex-wrap hover:text-primary-800">
+                  <label class="flex h-2rem text-gray-900 hover:text-primary-800 border-round-top-2xl my-2 cursor-pointer">1ST FLOOR</label>
+                </div>
+                <div class="flex bg-primary-600 w-14rem h-1rem border-round-top-2xl">
+                </div>
             </div>
-            <router-link to="/detail/auditorium">
-            <div  class="flex text-lg my-8 mx-6 justify-content-center align-items-center"><img
+        </router-link>
+        <router-link to="/mfloor">
+            <div>
+                <div class="flex justify-content-center flex-wrap hover:text-primary-800">
+                  <label class="flex h-2rem text-gray-900 hover:text-primary-800 border-round-top-2xl my-2 cursor-pointer">M FLOOR</label>
+                </div>
+                <div class="flex bg-transparent w-14rem h-1rem border-round-top-2xl">
+                </div>
+            </div>
+        </router-link>
+        <router-link to="/2ndfloor">
+            <div>
+                <div class="flex justify-content-center flex-wrap hover:text-primary-800">
+                  <label class="flex h-2rem text-gray-900 hover:text-primary-800 border-round-top-2xl my-2 cursor-pointer">2ND FLOOR</label>
+                </div>
+                <div class="flex bg-transparent w-14rem h-1rem border-round-top-2xl">
+                </div>
+            </div>
+        </router-link>
+        <router-link to="/3rdfloor">
+            <div>
+                <div class="flex justify-content-center flex-wrap hover:text-primary-800">
+                  <label class="flex h-2rem text-gray-900 hover:text-primary-800 border-round-top-2xl my-2 cursor-pointer">3RD FLOOR</label>
+                </div>
+                <div class="flex bg-transparent w-14rem h-1rem border-round-top-2xl">
+                </div>
+            </div>
+        </router-link>
+    </div>
+
+    <div class="mx-7 mb-2 px-5 py-6 border-round-bottom-xl shadow-5 cardbg flex gap-5">
+        <CardItem />
+    </div>
+
+    <div class="flex justify-content-center mx-7 my-6 px-2 py-4 border-round-xl shadow-5 cardbg">
+        <div class="flex flex-column card-container text-lg mx-6 my-6 justify-content-start align-self-center">
+            <label class="flex flex-column w-30rem my-3 bg-transparent font-bold text-5xl text-gray-900 border-round">
+                Auditorium Room</label>
+            <label class="my-4" for="">For the event and meeting for each important things in faculty. Exclusive</label>
+            <ul class="flex flex-column list-none align-items-start">
+                <li class="flex my-2 align-items-center">
+                    <img class="mx-2" src="../assets/img/itcirclelogo.png" alt="">
+                    220 seats
+                </li>
+                <li class="flex my-2 align-items-center">
+                    <img class="mx-2" src="../assets/img/itcirclelogo.png" alt="">
+                    Wide screen projector
+                </li>
+                <li class="flex my-2 align-items-center">
+                    <img class="mx-2" src="../assets/img/itcirclelogo.png" alt="">
+                    Stage Setup
+                </li>
+                <li class="flex my-2 align-items-center">
+                    <img class="mx-2" src="../assets/img/itcirclelogo.png" alt="">
+                    Sound Control room
+                </li>
+            </ul>
+        </div>
+        <router-link to="/detail/auditorium">
+            <div class="flex text-lg my-8 mx-6 justify-content-center align-items-center"><img
                     src="/src/assets/img/auditorium.jpeg" class="w-full h-full border-round-2xl my-4 mx-8" alt="">
             </div>
         </router-link>
-        </div>
-        
-
     </div>
 </template>
 

@@ -92,8 +92,7 @@ export default {
 
     <!-- top bar-->
     <div class="relative text-left justify-text-center font-bold text-2xl mt-6">
-        <router-link to="/detail" class="thai first text-gray-900 hover:text-primary-600">รายละเอียด</router-link>
-        <router-link to="/reserve" class="thai ml-8 text-primary-600 hover:text-primary-600">รายการจอง</router-link>
+        <router-link to="/reserve" class="thai first text-primary-600">รายการจอง</router-link>
 
         <div class="flex flex-column card mx-8 mt-3 py-6 shadow-5 border-round-sm bg-white justify-content-center">
             <label class="flex justify-content-center text-center text-5xl" for="">Room name</label>
