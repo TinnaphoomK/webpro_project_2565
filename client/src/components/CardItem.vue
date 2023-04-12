@@ -35,7 +35,7 @@ export default {
     console.log(res.data);
     this.room = res.data
   
-    
+
     }
 
   }
