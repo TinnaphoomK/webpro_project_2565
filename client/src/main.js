@@ -16,7 +16,7 @@ import Column from 'primevue/column';
 import ColumnGroup from 'primevue/columngroup';   // optional
 import Row from 'primevue/row';                   // optional
 import Password from 'primevue/password';
-
+import Dropdown from 'primevue/dropdown';
 
 // import './assets/main.css'
 
@@ -37,5 +37,6 @@ app.component("Column", Column)
 app.component("ColumnGroup", ColumnGroup)
 app.component("Row", Row)
 app.component("Password", Password)
+app.component("Dropdown", Dropdown)
 
 app.mount('#app')

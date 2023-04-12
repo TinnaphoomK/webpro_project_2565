@@ -4,7 +4,7 @@ import CardItem from '../components/CardItem.vue'
 export default {
     components: {
         Navbar,
-        CardItem
+        CardItem,
     },
 };
 </script>

@@ -1,7 +1,8 @@
 <template>
   <div>
     <div class="z-1 mr-2 ml-5 flex flex-wrap gap-5">
-      <div v-for="(value, index) in room " :key="index" class="card border-round-2xl shadow-5 cursor-pointer" @click="getdetail(value)">
+      <div v-for="(value, index) in room " :key="index" class="card border-round-2xl shadow-5 cursor-pointer"
+        @click="getdetail(value)">
         <div class="flex justify-content-start flex-wrap">
           <img class="flex w-17rem h-10rem border-round-top-2xl" src="../assets/img/auditorium.jpeg" alt="">
         </div>
@@ -27,24 +28,24 @@ export default {
       room: {},
     };
   },
-  props:{
-    floor: String
-  },
-  mounted() {
+  props: ['floor'],
+  created: function () {
+    console.log(this.floor)
+    console.log(this.room)
     this.allroom(this.floor)
   },
   methods: {
     async allroom(floor) {
-  const res = await axios.get('http://localhost:3000/api/room/')
-  console.log(res.data);
+      const res = await axios.get('http://localhost:3000/api/room/')
+      console.log(res.data);
 
-  if (floor) {
-    console.log(this.floor)
-    this.room = res.data.filter(room => room.floor == this.floor)
-  } else {
-    this.room = res.data
-  }
-},
+      if (floor) {
+        console.log(this.floor)
+        this.room = res.data.filter(room => room.floor == this.floor)
+      } else {
+        this.room = res.data
+      }
+    },
     async getdetail(value) {
       const room = await axios.get(`http://localhost:3000/api/room/${value.id}`)
       console.log(room)

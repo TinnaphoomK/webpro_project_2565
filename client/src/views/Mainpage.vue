@@ -1,10 +1,21 @@
 <script>
 import Navbar from '../components/Navbar.vue'
 import CardItem from '../components/CardItem.vue'
+
 export default {
     components: {
         Navbar,
-        CardItem
+        CardItem,
+    },
+    data() {
+        return {
+            room: {},
+            selectFloor: '',
+            onChange(e) {
+                console.log(e.target.value);
+                this.selectFloor = e.target.value.toString();
+            }
+        }
     },
 }
 </script>
@@ -18,48 +29,27 @@ export default {
         </span>
 
     </div>
+    <div>
 
-    <div class="flex text-left justify-text-center font-bold text-2xl pt-6">
-        <router-link to="/">
-            <div class="ml-7">
-                <div class="flex justify-content-center flex-wrap hover:text-primary-800">
-                  <label class="flex h-2rem text-gray-900 hover:text-primary-800 border-round-top-2xl my-2 cursor-pointer">1ST FLOOR</label>
-                </div>
-                <div class="flex bg-primary-600 w-14rem h-1rem border-round-top-2xl">
-                </div>
-            </div>
-        </router-link>
-        <router-link to="/mfloor">
-            <div>
-                <div class="flex justify-content-center flex-wrap hover:text-primary-800">
-                  <label class="flex h-2rem text-gray-900 hover:text-primary-800 border-round-top-2xl my-2 cursor-pointer">M FLOOR</label>
-                </div>
-                <div class="flex bg-transparent w-14rem h-1rem border-round-top-2xl">
-                </div>
-            </div>
-        </router-link>
-        <router-link to="/2ndfloor">
-            <div>
-                <div class="flex justify-content-center flex-wrap hover:text-primary-800">
-                  <label class="flex h-2rem text-gray-900 hover:text-primary-800 border-round-top-2xl my-2 cursor-pointer">2ND FLOOR</label>
-                </div>
-                <div class="flex bg-transparent w-14rem h-1rem border-round-top-2xl">
-                </div>
-            </div>
-        </router-link>
-        <router-link to="/3rdfloor">
-            <div>
-                <div class="flex justify-content-center flex-wrap hover:text-primary-800">
-                  <label class="flex h-2rem text-gray-900 hover:text-primary-800 border-round-top-2xl my-2 cursor-pointer">3RD FLOOR</label>
-                </div>
-                <div class="flex bg-transparent w-14rem h-1rem border-round-top-2xl">
-                </div>
-            </div>
-        </router-link>
+    </div>
+    <div class="flex text-left justify-text-center justify-content-between font-bold text-2xl pt-6 mx-8 my-4">
+        <div>
+            <label class="text-6xl" for="">All Room</label>
+        </div>
+        <div class="flex">
+            <select @change="onChange($event)" v-model="selectFloor" name="floorSelect" placeholder="Select Floor ..." id="floorSelect"
+                class="flex justify-content-center text-center border-round-2xl w-10rem h-3rem font-bold text-lg cursor-pointer">
+                <option value="0">Select Floor...</option>
+                <option value="1">1st Floor</option>
+                <option value="M">M Floor</option>
+                <option value="2">2nd Floor</option>
+                <option value="3">3rd Floor</option>
+            </select>
+        </div>
     </div>
 
-    <div class="mx-7 mb-2 px-5 py-6 border-round-bottom-xl shadow-5 cardbg flex gap-5">
-        <CardItem floor="1"/>
+    <div class="mx-7 mb-2 px-5 py-6 border-round-xl shadow-5 cardbg flex gap-5">
+        <CardItem :floor='selectFloor' />
     </div>
 
     <div class="flex justify-content-center mx-7 my-6 px-2 py-4 border-round-xl shadow-5 cardbg">
