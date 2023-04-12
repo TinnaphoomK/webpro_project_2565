@@ -7,6 +7,9 @@ export default {
         Navbar,
         CardItem
     },
+    data(){
+        
+    }
 };
 </script>
 
