@@ -22,12 +22,45 @@ export default {
     </div>
 
     <!-- 1st floor -->
-    <div class="relative text-left justify-text-center font-bold text-2xl pt-6">
-        <router-link to="/" class="text-gray-900 ml-8">1ST FLOOR</router-link>
-        <router-link to="/mfloor" class="text-gray-900 ml-6 hover:text-primary-800">M FLOOR</router-link>
-        <router-link to="/2ndfloor" class="text-primary-600 ml-6">2ND FLOOR</router-link>
-        <router-link to="/3rdfloor" class="text-gray-900 ml-6 hover:text-primary-800">3RD FLOOR</router-link>
-            <div class="mx-7 my-2 px-5 py-6 border-round-xl shadow-5 cardbg flex gap-5">
+    <div class="flex text-left justify-text-center font-bold text-2xl pt-6">
+        <router-link to="/">
+            <div class="ml-7">
+                <div class="flex justify-content-center flex-wrap hover:text-primary-800">
+                  <label class="flex h-2rem text-gray-900 hover:text-primary-800 border-round-top-2xl my-2 cursor-pointer">1ST FLOOR</label>
+                </div>
+                <div class="flex bg-transparent w-14rem h-1rem border-round-top-2xl">
+                </div>
+            </div>
+        </router-link>
+        <router-link to="/mfloor">
+            <div>
+                <div class="flex justify-content-center flex-wrap hover:text-primary-800">
+                  <label class="flex h-2rem text-gray-900 hover:text-primary-800 border-round-top-2xl my-2 cursor-pointer">M FLOOR</label>
+                </div>
+                <div class="flex bg-transparent w-14rem h-1rem border-round-top-2xl">
+                </div>
+            </div>
+        </router-link>
+        <router-link to="/2ndfloor">
+            <div>
+                <div class="flex justify-content-center flex-wrap hover:text-primary-800">
+                  <label class="flex h-2rem text-gray-900 hover:text-primary-800 border-round-top-2xl my-2 cursor-pointer">2ND FLOOR</label>
+                </div>
+                <div class="flex bg-primary-600 w-14rem h-1rem border-round-top-2xl">
+                </div>
+            </div>
+        </router-link>
+        <router-link to="/3rdfloor">
+            <div>
+                <div class="flex justify-content-center flex-wrap hover:text-primary-800">
+                  <label class="flex h-2rem text-gray-900 hover:text-primary-800 border-round-top-2xl my-2 cursor-pointer">3RD FLOOR</label>
+                </div>
+                <div class="flex bg-transparent w-14rem h-1rem border-round-top-2xl">
+                </div>
+            </div>
+        </router-link>
+    </div>
+            <div class="mx-7 mb-2 px-5 py-6 border-round-xl shadow-5 cardbg flex gap-5">
                 <CardItem/>
             </div>
         <div class="flex justify-content-center mx-7 my-6 px-2 py-4 border-round-xl shadow-5 cardbg">
@@ -58,7 +91,6 @@ export default {
                     src="/src/assets/img/auditorium.jpeg" class="w-full h-full border-round-2xl my-4 mx-8" alt="">
             </div>
         </div>
-    </div>
 </template>
 
 <style setup>
