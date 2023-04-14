@@ -24,6 +24,9 @@ export default {
       console.log(res.data);
         this.room = res.data
     },
+    async toreserve(id) {
+      this.$router.push(`/reserve/${id}`)
+    }
   }
 };
 </script>
@@ -52,10 +55,11 @@ export default {
                         <div class="thai flex flex-column text-gray-500">จำนวนที่นั่ง : {{ room.totalSeat }}</div>
                         <div class="thai flex flex-column text-gray-500">มักใช้ในโอกาส : {{ room.description }}</div>
 
-                        <router-link to="/reserve">
-                            <Button
-                                class="thai bg-primary-800 hover:bg-primary-900 border-round-xl text-xl w-16rem h-4rem justify-content-center shadow-5 mt-6">ยืนยันการจอง</Button>
-                        </router-link>
+                        
+                            <Button @click.prevent="toreserve(room.id)"
+                                class="thai bg-primary-800 hover:bg-primary-900 border-round-xl text-xl w-16rem h-4rem justify-content-center shadow-5 mt-6">จองห้อง
+                            </Button>
+                       
                     </div>
                 </div>
             </div>

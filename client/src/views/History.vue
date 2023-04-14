@@ -1,3 +1,27 @@
+<script>
+import Navbar from '../components/Navbar.vue';
+import HistoryPending from '../components/HistoryPending.vue';
+import HistoryComplete from '../components/HistoryComplete.vue';
+
+export default {
+    components: {
+        Navbar,
+        HistoryPending,
+        HistoryComplete
+    },
+    data() {
+        return {
+            startdate: '',
+            enddate: '',
+            starttime: '',
+            endtime: '',
+            roomId: '',
+        }
+    },
+
+}
+</script>
+
 <template>
     <Navbar></Navbar>
 
@@ -11,13 +35,11 @@
                 <div class="mx-8">
                     <div class="thai text-lg font-normal text-gray-600 mx-4">รอดำเนินการ (2)</div>
                     <HistoryPending></HistoryPending>
-                    <HistoryPending></HistoryPending>
                 </div>
 
                 <div class="mx-8">
                     <div class="thai text-lg font-normal text-gray-600 mx-4 mt-6">เสร็จสิ้น
                         (3)</div>
-                    <HistoryComplete></HistoryComplete>
                     <HistoryComplete></HistoryComplete>
                 </div>
             </div>
@@ -66,29 +88,3 @@ a:active {
     text-decoration: none;
 }
 </style>
-
-
-<script>
-import Navbar from '../components/Navbar.vue';
-import HistoryPending from '../components/HistoryPending.vue';
-import HistoryComplete from '../components/HistoryComplete.vue';
-
-export default {
-    components: {
-        Navbar,
-        HistoryPending,
-        HistoryComplete
-    },
-    data() {
-        return {
-            reservations: []
-        }
-    },
-    created() {
-        const storedReservations = localStorage.getItem('reservations');
-        if (storedReservations) {
-            this.reservations = JSON.parse(storedReservations);
-        }
-    }
-}
-</script>

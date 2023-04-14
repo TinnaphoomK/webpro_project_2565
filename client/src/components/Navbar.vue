@@ -20,10 +20,12 @@ export default {
   mounted() {
     const token = localStorage.getItem('token');
     const user = JSON.parse(localStorage.getItem('user'));
+    this.student = JSON.parse(localStorage.getItem("user")).studentId
 
     if (token) {
-      this.isLoggedIn = true;
       this.username = user.firstName;
+      this.isLoggedIn = true;
+
     }
   },
 
@@ -36,6 +38,10 @@ export default {
       localStorage.removeItem('token');
       this.$router.push('/');
     },
+    tohistory() {
+      this.isLoggedIn = true;
+      this.$router.push(`/history/${this.student}`)
+    }
   }
 };
 </script>
@@ -67,8 +73,9 @@ export default {
               Queue
               </a>
 
-              <a class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center"
-                style="min-width: 125px; min-height: 25px" href="/history">
+              <a @click.prevent="tohistory"
+               class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center"
+                style="min-width: 125px; min-height: 25px" >
                 <i class="pi pi-history mr-2"></i>
                 History
               </a>
@@ -88,9 +95,7 @@ export default {
               </a>
             </div>
 
-
           </template>
-
           <template v-if="!isLoggedIn">
             <div class="flex mx-4">
               <router-link to="/signin">

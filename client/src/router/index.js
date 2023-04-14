@@ -24,7 +24,7 @@ const router = createRouter({
       component: () => import('../views/ForPassword.vue')
     },
     {
-      path: '/history',
+      path: '/history/:studentId',
       name: 'history',
       component: () => import('../views/History.vue')
     },
@@ -34,7 +34,7 @@ const router = createRouter({
       component: () => import('../views/Detail.vue')
     },
     {
-      path: '/reserve',
+      path: '/reserve/:id',
       name: 'reserve',
       component: () => import('../views/Reserve.vue')
     },

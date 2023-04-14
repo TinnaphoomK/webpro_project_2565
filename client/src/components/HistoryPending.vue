@@ -6,10 +6,11 @@
                 <div
                     class="thai bg-primary-700 text-white text-lg font-normal text-center align-items-center h-2rem w-7rem border-round-right-lg">
                     รอดำเนินการ</div>
-                <label class="thai ml-6" for="">ห้อง : {{ spacedata.roomid }}</label>
-                <label class="thai ml-6" for="">วันที่จอง : {{ spacedata.startdate }}</label>
-                <label class="thai ml-6" for="">เวลาที่จอง : {{ spacedata.starttime }} - {{ spacedata.endtime }}</label>
-                <label class="thai ml-6" for="">รหัสจอง : #{{ spacedata.id }}</label>
+                <label class="thai ml-6" for="">ห้อง : {{ reservation.name }}</label>
+                <label class="thai ml-6" for="">วันที่จอง : {{  }}</label>
+                <label class="thai ml-6" for="">เวลาที่จอง : {{  }} - {{  }}</label>
+                <label class="thai ml-6" for="">รหัสจอง : #{{  }}</label>
+                <label class="thai ml-6" for="">รายละเอียด : {{  }}</label>
                 <router-link to="/report">
                     <i class="pi pi-ellipsis-h mx-6 text-xl text-900"></i>
                 </router-link>
@@ -19,15 +20,8 @@
 </template>
 
 <script>
-import spacedata from '../components/db.json';
-
+import axios from 'axios';
 export default {
-    data() {
-        return {
-        };
-    },
-    created() {
-        this.spacedata = JSON.parse(JSON.stringify(spacedata));
-    },
-};
+   
+}
 </script>

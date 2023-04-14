@@ -1,13 +1,51 @@
 <script>
 import Navbar from '../components/Navbar.vue'
 import CardItem from '../components/CardItem.vue'
+import axios from 'axios';
 
 export default {
     components: {
         Navbar,
         CardItem
     },
+    data() {
+        return {
+            startdate: '',
+            enddate: '',
+            starttime: '',
+            endtime: '',
+            roomId: '',
+        }
+
+    },
+    mounted() {
+        this.roomId = this.$route.params.id
+        this.userId = JSON.parse(localStorage.getItem("user")).id
+        this.student = JSON.parse(localStorage.getItem("user")).studentId
+    },
     methods: {
+        async reserve() {
+            try {
+                console.log({
+                    dateTimeStart: new Date(this.startdate + ' ' + this.starttime).toISOString(),
+                    dateTimeEnd: new Date(this.enddate + ' ' + this.endtime).toISOString(),
+                    roomId: this.roomId,
+                    userId: this.userId
+                })
+                const res = await axios.post(`http://localhost:3000/api/reservation`, {
+                    dateTimeStart: new Date(this.startdate + ' ' + this.starttime).toISOString(),
+                    dateTimeEnd: new Date(this.enddate + ' ' + this.endtime).toISOString(),
+                    roomId: parseInt(this.roomId),
+                    userId: this.userId
+                })
+                console.log(res.data);
+                this.$router.push(`/history/${this.student}`)
+
+            }
+            catch (err) {
+                console.log(err);
+            }
+        }
     }
 };
 </script>
@@ -49,7 +87,7 @@ export default {
                                 class="p-inputtext-lg shadow-2 w-30rem" />
                         </div>
                         <div class="justify-content-center flex">
-                            <Button @click="saveRoomName"
+                            <Button @click.prevent="reserve()"
                                 class="thai bg-primary-800 hover:bg-primary-900 border-round-xl text-xl w-16rem h-4rem justify-content-center shadow-5 mt-4">ยืนยันการจอง</Button>
                         </div>
 

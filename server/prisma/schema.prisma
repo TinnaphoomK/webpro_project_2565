@@ -28,25 +28,25 @@ enum Role {
 }
 
 model Loging {
-  id            Int      @id @default(autoincrement())
-  userId        String   @map("user_id")
-  method String   @map("request_method")
-  url           String
-  createdAt     DateTime @default(now()) @map("created_at")
-  User          User     @relation(fields: [userId], references: [studentId])
+  id        Int      @id @default(autoincrement())
+  userId    String   @map("user_id")
+  method    String   @map("request_method")
+  url       String
+  createdAt DateTime @default(now()) @map("created_at")
+  User      User     @relation(fields: [userId], references: [studentId])
 }
 
 model Reservation {
   id            Int               @id @default(autoincrement())
-  userId        String            @map("user_id")
+  userId        Int               @map("user_id")
   roomId        Int               @map("room_id")
   dateTimeStart DateTime          @map("date_time_start")
   dateTimeEnd   DateTime          @map("date_time_end")
-  detail        String
+  detail        String?
   status        ReservationStatus @default(pending)
   createdAt     DateTime          @default(now()) @map("created_at")
   updatedAt     DateTime          @default(now()) @map("updated_at")
-  User          User              @relation(fields: [userId], references: [studentId])
+  User          User              @relation(fields: [userId], references: [id])
   Room          Room              @relation(fields: [roomId], references: [id])
 }
 
@@ -62,7 +62,7 @@ model Room {
   floor       String
   detail      String
   description String
-  totalSeat   String        
+  totalSeat   String
   Reservation Reservation[]
   Report      Report[]
 }
