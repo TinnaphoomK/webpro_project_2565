@@ -63,32 +63,40 @@ export default {
                 <div class="flex align-items-center justify-content-center">
                     <img src="../assets/img/auditorium.jpeg" class="w-30rem h-30rem border-round-2xl my-4 mx-8" alt="">
                     <div class="flex flex-column card-container mt-3 mx-7 justify-content-start">
-                        <div class="mt-2 flex flex-column">
-                            <label for="startdate" class="thai text-xl">วันที่เริ่มจอง</label>
-                            <InputText id="startdate" v-model="startdate" name="startdate" type="date"
-                                class="p-inputtext-lg shadow-2 w-30rem" />
+                        <div class="flex">
+                            <div class="mt-2 mx-4 flex flex-column">
+                                <label for="startdate" class="thai text-xl">วันที่เริ่มจอง</label>
+                                <InputText id="startdate" v-model="startdate" name="startdate" type="date"
+                                    class="p-inputtext-lg shadow-2 w-12rem" />
+                            </div>
+    
+                            <div class="mt-2 mx-4 flex flex-column">
+                                <label for="enddate" class="thai text-xl">สิ้นสุดการจอง</label>
+                                <InputText id="enddate" v-model="enddate" name="enddate" type="date"
+                                    class="p-inputtext-lg shadow-2 w-12rem" />
+                            </div>
                         </div>
-
-                        <div class="mt-2 flex flex-column">
-                            <label for="enddate" class="thai text-xl">สิ้นสุดการจอง</label>
-                            <InputText id="enddate" v-model="enddate" name="enddate" type="date"
-                                class="p-inputtext-lg shadow-2 w-30rem" />
+                        <div class="flex">
+                            <div class="mt-2 mx-4 flex flex-column">
+                                <label for="starttime" class="thai text-xl">ตั้งแต่เวลา</label>
+                                <InputText id="starttime" v-model="starttime" name="starttime" type="time"
+                                    class="p-inputtext-lg shadow-2 w-12rem" />
+                            </div>
+    
+                            <div class="mt-2 mx-4 flex flex-column">
+                                <label for="endtime" class="thai text-xl">จนถึงเวลา</label>
+                                <InputText id="endtime" v-model="endtime" name="endtime" type="time"
+                                    class="p-inputtext-lg shadow-2 w-12rem" />
+                            </div>
                         </div>
-
-                        <div class="mt-2 flex flex-column">
-                            <label for="starttime" class="thai text-xl">ตั้งแต่เวลา</label>
-                            <InputText id="starttime" v-model="starttime" name="starttime" type="time"
-                                class="p-inputtext-lg shadow-2 w-30rem" />
-                        </div>
-
-                        <div class="mt-2 flex flex-column">
-                            <label for="endtime" class="thai text-xl">จนถึงเวลา</label>
-                            <InputText id="endtime" v-model="endtime" name="endtime" type="time"
-                                class="p-inputtext-lg shadow-2 w-30rem" />
+                        <div class="mt-2 mx-4 flex flex-column">
+                            <label for="starttime" class="thai text-xl">หมายเหตุ</label>
+                            <InputText id="starttime" v-model="detail" name="starttime" type="text"
+                                class="p-inputtext-lg shadow-2 w-27rem" />
                         </div>
                         <div class="justify-content-center flex">
                             <Button @click.prevent="reserve()"
-                                class="thai bg-primary-800 hover:bg-primary-900 border-round-xl text-xl w-16rem h-4rem justify-content-center shadow-5 mt-4">ยืนยันการจอง</Button>
+                                class="thai bg-primary-800 hover:bg-primary-900 border-round-xl text-xl w-16rem h-4rem justify-content-center shadow-5 mt-8">ยืนยันการจอง</Button>
                         </div>
 
                     </div>
