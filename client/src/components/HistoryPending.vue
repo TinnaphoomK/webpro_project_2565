@@ -6,7 +6,7 @@
                 <div
                     class="thai bg-primary-700 text-white text-lg font-normal text-center align-items-center h-2rem w-7rem border-round-right-lg">
                     รอดำเนินการ</div>
-                <label class="thai ml-6" for="">ห้อง : {{ reservation.name }}</label>
+                <label class="thai ml-6" for="">ห้อง : {{  }}</label>
                 <label class="thai ml-6" for="">วันที่จอง : {{  }}</label>
                 <label class="thai ml-6" for="">เวลาที่จอง : {{  }} - {{  }}</label>
                 <label class="thai ml-6" for="">รหัสจอง : #{{  }}</label>

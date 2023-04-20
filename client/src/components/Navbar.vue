@@ -21,7 +21,7 @@ export default {
     const token = localStorage.getItem('token');
     const user = JSON.parse(localStorage.getItem('user'));
     this.student = JSON.parse(localStorage.getItem("user")).studentId
-
+    
     if (token) {
       this.username = user.firstName;
       this.isLoggedIn = true;
