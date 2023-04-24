@@ -5,7 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon ./src/index.js"
+    "dev": "nodemon ./src/index.js",
+    "db:push" : "prisma db push",
+    "db:seed" : "echo hello"
   },
   "keywords": [],
   "author": "",
