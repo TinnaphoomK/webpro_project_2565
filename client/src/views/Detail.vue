@@ -43,7 +43,7 @@ export default {
         <div class="card mx-8 my-3 py-6 shadow-5 border-round-sm bg-white">
             <div class="flex justify-content-center flex-wrap card-container">
                 <div class="flex align-items-center justify-content-center">
-                    <img src="../assets/img/auditorium.jpeg" class="w-30rem h-30rem border-round-2xl my-4 mx-8" alt="">
+                    <img :src="room.image" class="w-30rem h-30rem border-round-2xl my-4 mx-8" alt="">
                     <div class="flex flex-column card-container mx-7 my-6 justify-content-start align-self-start">
                         <div class="flex flex-column w-30rem bg-transparent font-bold text-6xl text-gray-900 border-round">
                             {{room.name}}</div>

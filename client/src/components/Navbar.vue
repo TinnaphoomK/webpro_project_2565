@@ -11,7 +11,7 @@ export default {
   data() {
     return {
       isLoggedIn: false,
-      username: null // initialize username to null
+      username: null
     };
   },
   props: {
@@ -33,8 +33,8 @@ export default {
   methods: {
     signout() {
       this.isLoggedIn = false;
-      this.username = null; // reset username to null on logout
-      localStorage.removeItem('user'); // remove isLoggedIn from localStorage
+      this.username = null;
+      localStorage.removeItem('user');
       localStorage.removeItem('token');
       this.$router.push('/');
     },
@@ -48,12 +48,10 @@ export default {
 
 
 <template>
-  <!-- navbar -->
   <div>
     <header>
       <div class="card">
         <div class="flex justify-content-between card-container">
-          <!-- home -->
           <div class="flex absolute w-full">
             <div class="flex top-0 w-full h-6rem navbg"></div>
           </div>
@@ -102,7 +100,6 @@ export default {
                 <LoginButton></LoginButton>
               </router-link>
 
-              <!-- sign up button -->
               <router-link to="/signup">
                 <SignupButton></SignupButton>
               </router-link>

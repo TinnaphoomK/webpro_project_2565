@@ -63,6 +63,7 @@ model Room {
   detail      String
   description String
   totalSeat   String
+  image       String
   Reservation Reservation[]
   Report      Report[]
 }

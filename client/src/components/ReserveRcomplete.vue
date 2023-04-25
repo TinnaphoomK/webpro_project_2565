@@ -3,11 +3,9 @@
         <div class="flex justify-content-center flex-wrap card-container">
             <div
                 class="thai bg-white text-primary-800 text-lg font-bold flex align-items-center justify-content-between w-8 h-6rem border-round-2xl m-2 shadow-5">
-                <!-- approved -->
                 <div
                     class="thai bg-green-700 text-white text-center align-items-center h-2rem w-7rem border-round-right-lg">
                     อนุมัติ</div>
-                <!-- not approved -->
                 <!-- <div
                     class="thai bg-red-700 text-white text-center justify-content-center align-items-center h-2rem w-7rem mx-2">
                     ไม่อนุมัติ</div> -->
