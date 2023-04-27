@@ -1,8 +1,16 @@
 <script>
 import Navbar from '../components/Navbar.vue'
 import CardItem from '../components/CardItem.vue'
+import { ref as storageRef, getDownloadURL, listAll, deleteObject, uploadBytes } from "firebase/storage";
+import { useFirebaseStorage } from "vuefire";
+const storage = useFirebaseStorage();
 
 export default {
+    data() {
+        return {
+            image: "",
+        };
+    },
     components: {
         Navbar,
         CardItem
@@ -28,7 +36,42 @@ export default {
                 alert('Please login first');
                 this.$router.push('/signin');
             }
-        }
+        },
+        async uploadFile(event) {
+            try {
+                this.roading = true;
+                const file = event.target.files[0];
+                const starsRef = storageRef(storage, `users/${this.userId}/${file.name}`);
+                await uploadBytes(starsRef, file);
+                this.getFile(this.userId);
+                this.roading = false;
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        async getFile(userId) {
+            try {
+                const starsRef = storageRef(storage, "users/" + userId);
+                const search = await listAll(starsRef);
+                const download = (await getDownloadURL(search.items[0])).toString();
+                this.image = download;
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        async removeFile(userId) {
+            try {
+                this.roading = true;
+                const starsRef = storageRef(storage, "users/" + userId);
+                const search = await listAll(starsRef);
+                const remove = await deleteObject(search.items[0]);
+                console.log(remove);
+                this.roading = false;
+                this.image = "";
+            } catch (error) {
+                console.log(error);
+            }
+        },
     }
 };
 </script>
@@ -43,8 +86,7 @@ export default {
             <div class="flex justify-content-center">
                 <div class="flex align-items-center justify-content-center">
                     <div class="flex">
-                        <img src="../assets/img/auditorium.jpeg" class="w-30rem h-30rem border-round-2xl shadow-5 my-4 mx-8"
-                            alt="">
+                        <input type="file" @change="(event) => {uploadFile(event);}">
                     </div>
 
                     <div class="flex flex-column card-container my-6 justify-content-center align-self-start">

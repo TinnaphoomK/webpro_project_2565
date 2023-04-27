@@ -17,6 +17,8 @@ import ColumnGroup from 'primevue/columngroup';   // optional
 import Row from 'primevue/row';                   // optional
 import Password from 'primevue/password';
 import Dropdown from 'primevue/dropdown';
+import { firebaseApp } from "./firebase";
+import { VueFire } from "vuefire";
 
 // import './assets/main.css'
 
@@ -24,6 +26,9 @@ const app = createApp(App)
 
 app.use(router)
 app.use(ToastService);
+app.use(VueFire, {
+    firebaseApp,
+  });
 
 app.component("Button", Button)
 app.component("Toast", Toast)
