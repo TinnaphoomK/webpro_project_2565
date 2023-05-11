@@ -30,13 +30,15 @@ export default {
                     dateTimeStart: new Date(this.startdate + ' ' + this.starttime).toISOString(),
                     dateTimeEnd: new Date(this.enddate + ' ' + this.endtime).toISOString(),
                     roomId: this.roomId,
-                    userId: this.userId
+                    userId: this.userId,
+                    detaill: this.detail
                 })
                 const res = await axios.post(`http://localhost:3000/api/reservation`, {
                     dateTimeStart: new Date(this.startdate + ' ' + this.starttime).toISOString(),
                     dateTimeEnd: new Date(this.enddate + ' ' + this.endtime).toISOString(),
                     roomId: parseInt(this.roomId),
-                    userId: this.userId
+                    userId: this.userId,
+                    detail: this.detail
                 })
                 console.log(res.data);
                 this.$router.push(`/history/${this.student}`)
@@ -51,12 +53,9 @@ export default {
 </script>
 
 <template>
-    <!-- navbar -->
     <Navbar></Navbar>
-
-    <!-- top bar-->
     <div class="relative text-left justify-text-center font-bold text-2xl mt-6">
-        <router-link to="/reserve" class="thai first text-primary-600">ทำการจอง</router-link>
+        <label class="thai first text-primary-600">ทำการจอง</label>
 
         <div class="card mx-8 my-3 py-6 shadow-5 border-round-sm bg-white">
             <div class="flex justify-content-center flex-wrap card-container">

@@ -1,3 +1,47 @@
+<script>
+import Navbar from "../components/Navbar.vue";
+import axios from 'axios';
+
+export default {
+  components: {
+    Navbar,
+  },
+  data() {
+    return {
+      roomId: "",
+      userId: "",
+      detail: "",
+    };
+  },
+  mounted() {
+        this.roomId = this.$route.params.id
+        this.userId = JSON.parse(localStorage.getItem("user")).id
+        this.student = JSON.parse(localStorage.getItem("user")).studentId
+    },
+  methods: {
+    async report() {
+      try {
+        console.log({
+          roomId: this.roomId,
+          userId: this.userId,
+          detail: this.detail
+        })
+        const res = await axios.post(`http://localhost:3000/api/report`, {
+          roomId: parseInt(this.roomId),
+          userId: this.userId,
+          detail: this.detail
+        })
+        console.log(res.data);
+        this.$router.push(`/reporthistory/${this.student}`)
+      }
+      catch (err) {
+        console.log(err);
+      }
+    },
+  },
+};
+</script>
+
 <template>
   <Navbar></Navbar>
   <!-- badge -->
@@ -12,13 +56,12 @@
 
     <div class="flex flex-column justify-content-center">
       <label class="flex thai mx-8 px-4" for="">เนื้อหา</label>
-      <Textarea v-model="comment" class="flex flex-column shadow-5 justify-content-center my-4 mx-8 h-24rem" cols="100" />
+      <Textarea v-model="detail" class="flex flex-column shadow-5 justify-content-center my-4 mx-8 h-24rem" cols="100" />
     </div>
   </div>
   <div class="flex text-center justify-content-center mt-4">
-    <Button
-      class="thai bg-primary-800 hover:bg-primary-900 justify-content-center border-round-xl text-xl w-12rem h-3rem py-5 justify-content-center shadow-5"
-      @click="saveReportToLocalStorage">
+    <Button @click.prevent="report()"
+      class="thai bg-primary-800 hover:bg-primary-900 justify-content-center border-round-xl text-xl w-12rem h-3rem py-5 justify-content-center shadow-5">
       ยืนยันการจอง
     </Button>
   </div>
@@ -75,30 +118,3 @@ a:active {
   text-decoration: none;
 }
 </style>
-
-<script>
-import Navbar from "../components/Navbar.vue";
-export default {
-  components: {
-    Navbar,
-  },
-  data() {
-    return {
-      topic: "",
-      roomid: "",
-      comment: "",
-    };
-  },
-  methods: {
-    saveReportToLocalStorage() {
-      const report = {
-        topic: this.topic.toString(),
-        roomid: this.roomid.toString(),
-        comment: this.comment.toString()
-      }
-      localStorage.setItem("report", JSON.stringify(report));
-      this.$router.push('/reporthistory');
-    }
-  },
-};
-</script>

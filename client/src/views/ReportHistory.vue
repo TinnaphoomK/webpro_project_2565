@@ -52,14 +52,11 @@ export default {
                     <div class="thai text-lg font-normal text-gray-600 mx-4">รอดำเนินการ
                         </div>
                     <RepHispending></RepHispending>
-                    <RepHispending></RepHispending>
                 </div>
 
                 <div class="mx-8">
                     <div class="thai text-lg font-normal text-gray-600 mx-4 mt-6">เสร็จสิ้น
                         </div>
-
-                    <RepHiscomplete></RepHiscomplete>
                     <RepHiscomplete></RepHiscomplete>
                 </div>
             </div>

@@ -2,12 +2,14 @@
 import Navbar from '../components/Navbar.vue';
 import HistoryPending from '../components/HistoryPending.vue';
 import HistoryComplete from '../components/HistoryComplete.vue';
+import HistoryReject from '../components/HistoryReject.vue';
 
 export default {
     components: {
         Navbar,
         HistoryPending,
-        HistoryComplete
+        HistoryComplete,
+        HistoryReject
     },
     data() {
         return {
@@ -61,6 +63,7 @@ export default {
                 <div class="mx-8">
                     <div class="thai text-lg font-normal text-gray-600 mx-4 mt-6">เสร็จสิ้น</div>
                     <HistoryComplete></HistoryComplete>
+                    <HistoryReject></HistoryReject>
                 </div>
             </div>
         </div>
