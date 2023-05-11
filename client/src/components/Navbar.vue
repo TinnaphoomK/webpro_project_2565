@@ -11,41 +11,45 @@ export default {
   data() {
     return {
       isLoggedIn: false,
-      username: null
+      username: null,
+      studentId: null,
+      role: null
     };
   },
   props: {
     display: true,
   },
   mounted() {
-    const token = localStorage.getItem('token');
-    const user = JSON.parse(localStorage.getItem('user'));
-    this.student = JSON.parse(localStorage.getItem("user")).studentId
-    this.role = JSON.parse(localStorage.getItem("user")).role
-    
+  const token = localStorage.getItem('token');
+  const user = JSON.parse(localStorage.getItem('user'));
+  if (user) {
+    this.studentId = user.studentId;
+    this.role = user.role;
     if (token) {
       this.username = user.firstName;
       this.isLoggedIn = true;
-
     }
-  },
-
-
+  }
+},
   methods: {
     signout() {
       this.isLoggedIn = false;
       this.username = null;
+      this.studentId = null;
+      this.role = null;
       localStorage.removeItem('user');
       localStorage.removeItem('token');
-      this.$router.push('/');
+      if (this.role === 'admin') {
+        this.$router.push('/signin');
+      } else {
+        this.$router.push('/');
+      }
     },
     tohistory() {
       this.isLoggedIn = true;
-      this.$router.push(`/history/${this.student}`)
-    }
-  },
-  refreshPage() {
-    location.reload();
+      this.$router.push(`/history/${this.studentId}`)
+    },
+
   }
 };
 </script>
@@ -67,17 +71,17 @@ export default {
           </div>
 
 
-          <template v-if="isLoggedIn && this.role ==='user'">
+          <template v-if="isLoggedIn && this.role === 'user'">
             <div class="flex mx-4">
               <a class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer"
                 style="min-width: 125px; min-height: 25px" href="/reservetable">
                 <i class="pi pi-list mr-2"></i>
-              Queue
+                Queue
               </a>
 
               <a @click.prevent="tohistory"
-               class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer"
-                style="min-width: 125px; min-height: 25px" >
+                class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer"
+                style="min-width: 125px; min-height: 25px">
                 <i class="pi pi-history mr-2"></i>
                 History
               </a>
@@ -98,7 +102,7 @@ export default {
             </div>
           </template>
 
-          <template v-if="isLoggedIn && this.role ==='admin'">
+          <template v-if="isLoggedIn && this.role === 'admin'">
             <div class="flex mx-4">
 
               <a class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer"
@@ -109,7 +113,7 @@ export default {
 
               <a @click.prevent="signout"
                 class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer"
-                style="min-width: 125px; min-height: 25px">
+                style="min-width: 125px; min-height: 25px" href="/signin">
                 <i class="pi pi-power-off mr-2"></i>
                 Log out
               </a>
@@ -118,11 +122,11 @@ export default {
 
           <template v-if="!isLoggedIn">
             <div class="flex mx-4">
-              <router-link to="/signin" @click="refreshPage">
+              <router-link to="/signin" >
                 <LoginButton></LoginButton>
               </router-link>
 
-              <router-link to="/signup" @click="refreshPage">
+              <router-link to="/signup" >
                 <SignupButton></SignupButton>
               </router-link>
             </div>
