@@ -21,6 +21,7 @@ export default {
     const token = localStorage.getItem('token');
     const user = JSON.parse(localStorage.getItem('user'));
     this.student = JSON.parse(localStorage.getItem("user")).studentId
+    this.role = JSON.parse(localStorage.getItem("user")).role
     
     if (token) {
       this.username = user.firstName;
@@ -66,7 +67,7 @@ export default {
           </div>
 
 
-          <template v-if="isLoggedIn">
+          <template v-if="isLoggedIn && this.role ==='user'">
             <div class="flex mx-4">
               <a class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer"
                 style="min-width: 125px; min-height: 25px" href="/reservetable">
@@ -95,8 +96,26 @@ export default {
                 Log out
               </a>
             </div>
-
           </template>
+
+          <template v-if="isLoggedIn && this.role ==='admin'">
+            <div class="flex mx-4">
+
+              <a class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer"
+                style="min-width: 125px; min-height: 25px" href="/manageroom">
+                <i class="pi pi-user mr-2"></i>
+                {{ username }}
+              </a>
+
+              <a @click.prevent="signout"
+                class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer"
+                style="min-width: 125px; min-height: 25px">
+                <i class="pi pi-power-off mr-2"></i>
+                Log out
+              </a>
+            </div>
+          </template>
+
           <template v-if="!isLoggedIn">
             <div class="flex mx-4">
               <router-link to="/signin" @click="refreshPage">
