@@ -17,10 +17,12 @@ router.post("/login", async (req, res) => {
     if (!user) {
       return res.status(404).json({ error: "Email not found" });
     }
+    
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
       return res.status(401).json({ error: "Incorrect password" });
     }
+
     delete user.password;
     const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET);
     res.status(200).json({ user, accessToken });

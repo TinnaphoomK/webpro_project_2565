@@ -42,6 +42,9 @@ export default {
       this.isLoggedIn = true;
       this.$router.push(`/history/${this.student}`)
     }
+  },
+  refreshPage() {
+    location.reload();
   }
 };
 </script>
@@ -96,11 +99,11 @@ export default {
           </template>
           <template v-if="!isLoggedIn">
             <div class="flex mx-4">
-              <router-link to="/signin">
+              <router-link to="/signin" @click="refreshPage">
                 <LoginButton></LoginButton>
               </router-link>
 
-              <router-link to="/signup">
+              <router-link to="/signup" @click="refreshPage">
                 <SignupButton></SignupButton>
               </router-link>
             </div>
