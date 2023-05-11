@@ -13,6 +13,23 @@ export default {
         reportData() {
             return JSON.parse(localStorage.getItem('report')) || {};
         }
+    },
+    mounted() {
+        const token = localStorage.getItem('token');
+        const user = JSON.parse(localStorage.getItem('user'));
+        this.student = JSON.parse(localStorage.getItem("user")).studentId
+
+        if (token) {
+            this.username = user.firstName;
+            this.isLoggedIn = true;
+
+        }
+    },
+    methods: {
+        tohistory() {
+            this.isLoggedIn = true;
+            this.$router.push(`/history/${this.student}`)
+        }
     }
 };
 </script>
@@ -21,7 +38,7 @@ export default {
     <Navbar></Navbar>
 
     <div class="relative text-left justify-text-center font-bold text-2xl my-6">
-        <router-link to="/history" class="thai first text-gray-900 hover:text-primary-600">ประวัติการจอง</router-link>
+        <a @click.prevent="tohistory" class="thai first text-gray-900 hover:text-primary-600 cursor-pointer">ประวัติการจอง</a>
         <router-link to="/reporthistory"
             class="thai ml-8 text-primary-600 hover:text-primary-600">ประวัติการรายงาน</router-link>
 

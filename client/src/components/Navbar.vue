@@ -65,28 +65,28 @@ export default {
 
           <template v-if="isLoggedIn">
             <div class="flex mx-4">
-              <a class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center"
+              <a class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer"
                 style="min-width: 125px; min-height: 25px" href="/reservetable">
                 <i class="pi pi-list mr-2"></i>
               Queue
               </a>
 
               <a @click.prevent="tohistory"
-               class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center"
+               class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer"
                 style="min-width: 125px; min-height: 25px" >
                 <i class="pi pi-history mr-2"></i>
                 History
               </a>
 
 
-              <a class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center"
+              <a class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer"
                 style="min-width: 125px; min-height: 25px" href="/manageroom">
                 <i class="pi pi-user mr-2"></i>
                 {{ username }}
               </a>
 
               <a @click.prevent="signout"
-                class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center"
+                class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer"
                 style="min-width: 125px; min-height: 25px" href="/signin">
                 <i class="pi pi-power-off mr-2"></i>
                 Log out
