@@ -10,10 +10,9 @@
         class="thai bg-red-700 font-normal text-white text-center justify-content-center align-items-center h-2rem w-7rem mx-2">
         ไม่อนุมัติ</div> -->
         <label class="thai ml-6" for="">ห้อง : {{ value.roomId }}</label>
-        <label class="thai ml-6" for="">วันที่จอง : {{ value.dateTimeStart }}</label>
-        <label class="thai ml-6" for="">เวลาที่จอง : {{ value.dateTimeStart }} - {{ value.dateTimeEnd }}</label>
+        <label class="thai ml-6" for="">วันที่จอง : {{ value.dateTimeStart.slice(0, 10) }}</label>
+        <label class="thai ml-6" for="">เวลาที่จอง : {{ value.dateTimeStart.slice(value.dateTimeStart.indexOf('T') + 1, -5) }} - {{ value.dateTimeEnd.slice(value.dateTimeEnd.indexOf('T') + 1, -5) }}</label>
         <label class="thai ml-6" for="">รหัสจอง : #{{ value.id }}</label>
-        <label class="thai ml-6" for="">รายละเอียด : {{ value.detail }}</label>
         <router-link to="/report">
           <i class="pi pi-ellipsis-h mx-6 text-xl text-900"></i>
         </router-link>
@@ -31,8 +30,6 @@ export default {
     };
   },
   created: function () {
-    console.log(this.roomId)
-    console.log(this.reservation)
     this.allreserve(this.roomId)
   },
   methods: {
@@ -41,7 +38,6 @@ export default {
       console.log(res.data);
 
       if (roomId) {
-        console.log(this.roomId)
         this.reservation = res.data.filter(reservation => reservation.roomId == this.roomId)
       } else {
         this.reservation = res.data

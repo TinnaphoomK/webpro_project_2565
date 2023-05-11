@@ -77,7 +77,7 @@ export default {
                 </li>
             </ul>
         </div>
-        <router-link to="/detail/auditorium">
+        <router-link to="/detail/2">
             <div class="flex text-lg my-8 mx-6 justify-content-center align-items-center"><img
                     src="/src/assets/img/auditorium.jpeg" class="w-full h-full border-round-2xl my-4 mx-8" alt="">
             </div>

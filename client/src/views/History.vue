@@ -33,6 +33,10 @@ export default {
         tohistory() {
             this.isLoggedIn = true;
             this.$router.push(`/history/${this.student}`)
+        },
+        toreporthistory() {
+            this.isLoggedIn = true;
+            this.$router.push(`/reporthistory/${this.student}`)
         }
     }
 
@@ -44,19 +48,18 @@ export default {
 
     <div class="relative text-left justify-text-center font-bold text-2xl my-6">
         <a @click.prevent="tohistory" class="thai first text-primary-600 hover:text-primary-600 cursor-pointer">ประวัติการจอง</a>
-        <router-link to="/reporthistory"
-            class="thai ml-8 text-gray-900 hover:text-primary-600">ประวัติการรายงาน</router-link>
+        <a @click.prevent="toreporthistory"
+            class="thai ml-8 text-gray-900 hover:text-primary-600">ประวัติการรายงาน</a>
 
         <div class="card mx-6 my-3 py-8 shadow-5 border-round-sm bg-white">
             <div>
                 <div class="mx-8">
-                    <div class="thai text-lg font-normal text-gray-600 mx-4">รอดำเนินการ (2)</div>
+                    <div class="thai text-lg font-normal text-gray-600 mx-4">รอดำเนินการ</div>
                     <HistoryPending></HistoryPending>
                 </div>
 
                 <div class="mx-8">
-                    <div class="thai text-lg font-normal text-gray-600 mx-4 mt-6">เสร็จสิ้น
-                        (3)</div>
+                    <div class="thai text-lg font-normal text-gray-600 mx-4 mt-6">เสร็จสิ้น</div>
                     <HistoryComplete></HistoryComplete>
                 </div>
             </div>

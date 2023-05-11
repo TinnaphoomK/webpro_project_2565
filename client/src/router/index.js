@@ -54,7 +54,7 @@ const router = createRouter({
       component: () => import('../views/Report.vue')
     },
     {
-      path: '/reporthistory',
+      path: '/reporthistory/:studentId',
       name: 'reporthistory',
       component: () => import('../views/ReportHistory.vue')
     },

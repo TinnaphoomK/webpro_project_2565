@@ -90,8 +90,8 @@ export default {
                             </div>
                         </div>
                         <div class="mt-2 mx-4 flex flex-column">
-                            <label for="starttime" class="thai text-xl">หมายเหตุ</label>
-                            <InputText id="starttime" v-model="detail" name="starttime" type="text"
+                            <label for="detail" class="thai text-xl">หมายเหตุ</label>
+                            <InputText id="detail" v-model="detail" name="detail" type="text"
                                 class="p-inputtext-lg shadow-2 w-27rem" />
                         </div>
                         <div class="justify-content-center flex">

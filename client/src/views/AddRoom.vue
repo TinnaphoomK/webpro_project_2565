@@ -85,7 +85,7 @@ export default {
         <div class="card mx-8 my-3 py-6 shadow-5 border-round-sm bg-white">
             <div class="flex justify-content-center">
                 <div class="flex align-items-center justify-content-center">
-                    <div class="flex">
+                    <div class="flex flex-column card-container mx-8 my-6 justify-content-center align-self-center">
                         <input type="file" @change="(event) => {uploadFile(event);}">
                     </div>
 
