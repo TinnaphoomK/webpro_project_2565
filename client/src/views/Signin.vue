@@ -111,6 +111,7 @@ export default {
     return {
       loginData: {
         email: "",
+        role: "",
         password: ""
       }
     };
@@ -135,17 +136,21 @@ export default {
           return
         }
 
-        if (this.loginData.role == "admin"){
+        if (this.loginData.Role == "admin"){
           const res = await axios.post("http://localhost:3000/api/auth/login", this.loginData);
           localStorage.setItem("token", res.data.token);
           localStorage.setItem("user", JSON.stringify(res.data.user));
           this.$router.push("/managepage");
         }
         
-        else {
-          const res = await axios.post("http://localhost:3000/api/auth/login", this.loginData);
-          localStorage.setItem("token", res.data.token);
-          localStorage.setItem("user", JSON.stringify(res.data.user));
+        const res = await axios.post("http://localhost:3000/api/auth/login", this.loginData);
+        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+
+        // Check the role here
+        if (res.data.user.role === "admin") {
+          this.$router.push("/manageroom");
+        } else {
           this.$router.push("/");
         }
       } catch (error) {
