@@ -1,39 +1,3 @@
-<!-- <template>
-  <div class="card">
-    <div class="flex justify-content-center flex-wrap card-container">
-      <div v-for="(value, index) in reservation" :key="index"
-        class="bg-white text-primary-800 text-xl font-bold flex align-items-center justify-content-between w-full h-6rem border-round-2xl m-2 shadow-5">
-        
-      </div>
-    </div>
-  </div>
-</template>
-
-<script>
-import axios from 'axios';
-export default {
-    data() {
-    return {
-      reservation: {},
-    };
-  },
-  created: function () {
-    this.allreserve(this.roomId)
-  },
-  methods: {
-    async allreserve(roomId) {
-      const res = await axios.get('http://localhost:3000/api/reservation/')
-      console.log(res.data);
-
-      if (roomId) {
-        this.reservation = res.data.filter(reservation => reservation.roomId == this.roomId)
-      } else {
-        this.reservation = res.data
-      }
-    }
-  }
-}
-</script> -->
 <template>
   <div class="card">
     <div class="flex justify-content-center flex-wrap card-container">

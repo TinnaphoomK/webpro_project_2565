@@ -1,6 +1,6 @@
-<script lang="ts">
+<script>
 import Navbar from '../components/Navbar.vue';
-import reserve from '../components/reserve.json'
+import axios from 'axios';
 
 export default {
     components: {
@@ -9,78 +9,47 @@ export default {
     },
     data() {
         return {
-            reservations: [],
-            startdate: '',
-            enddate: '',
-            starttime: '',
-            endtime: '',
-            value: '',
-            id: 1, // initialize id to 1
-            roomNames: [],
-            queue: [
-                {
-                    name: 'นายธรรมปพน ประทุม',
-                    date: '29/03/2566',
-                    time: '11:50 - 13:50'
-                },
-                {
-                    name: 'นายติณณภูมิ เกิดอินทร์',
-                    date: '29/03/2566',
-                    time: '11:50 - 13:50'
-                },
-                {
-                    name: 'ไก่จ๋า',
-                    date: '29/03/2566',
-                    time: '11:50 - 13:50'
-                },
-                {
-                    name: 'ไข่เจียว',
-                    date: '29/03/2566',
-                    time: '11:50 - 13:50'
-                },
-                {
-                    name: 'ทูน่า',
-                    date: '29/03/2566',
-                    time: '11:50 - 13:50'
-                },
-            ]
+            reservation: [],
+        };
+    },
+    mounted() {
+        const token = localStorage.getItem('token');
+        const user = JSON.parse(localStorage.getItem('user'));
+        this.student = JSON.parse(localStorage.getItem("user")).studentId
+
+        if (token) {
+            this.username = user.firstName;
+            this.isLoggedIn = true;
+
         }
     },
-    created() {
-        const storedReservations = localStorage.getItem('reservations');
-        if (storedReservations) {
-            this.reservations = JSON.parse(storedReservations);
+    computed: {
+        pendingReservations() {
+            return this.reservation.filter(reservation => reservation.status === "approved");
         }
-        const storedRoomNames = localStorage.getItem('roomNames');
-        if (storedRoomNames) {
-            this.roomNames = JSON.parse(storedRoomNames);
-        }
+    },
+    created: function () {
+        this.allreserve()
     },
     methods: {
-        saveInputs() {
+        async allreserve() {
+            const res = await axios.get('http://localhost:3000/api/reservation/')
+            console.log(res.data[0].status);
+            console.log(res.data)
 
-            const reservation = {
-                id: this.id,
-                startdate: this.startdate,
-                enddate: this.enddate,
-                starttime: this.starttime,
-                endtime: this.endtime,
-                value: this.value
-            };
-            const roomNames = {
-                roomNames: this.roomNames
+            if (res.data != null) {
+                this.reservation = res.data
+            } else {
+                this.reservation = []
             }
-            // increment id for next item
-            this.id++;
-            // add reservation to localStorage
-            localStorage.setItem(`reservation-${reservation.id}`, JSON.stringify(reservation));
-            localStorage.setItem(`{roomNames.roomNames}`, JSON.stringify(roomNames));
-
-
-            this.$router.push('/history');
-
-
-
+        },
+        tohistory() {
+            this.isLoggedIn = true;
+            this.$router.push(`/history/${this.student}`)
+        },
+        toreporthistory() {
+            this.isLoggedIn = true;
+            this.$router.push(`/reporthistory/${this.student}`)
         }
     }
 }
@@ -95,12 +64,26 @@ export default {
         <router-link to="/reserve" class="thai first text-primary-600">รายการจอง</router-link>
 
         <div class="flex flex-column card mx-8 mt-3 py-6 shadow-5 border-round-sm bg-white justify-content-center">
-            <label class="flex justify-content-center text-center text-5xl" for="">Room name</label>
-            <DataTable class="flex justify-content-center my-4" :value="queue" showGridlines tableStyle="min-width: 50rem">
-                <Column field="name" header="ชื่อผู้จอง"></Column>
-                <Column field="date" header="วันที่จอง"></Column>
-                <Column field="time" header="เวลาที่จอง"></Column>
-            </DataTable>
+            <label class="thai flex justify-content-center text-center text-5xl my-4" for="">ตารางจองคิว</label>
+            <div class="flex thai justify-content-center">
+                <table>
+                    <thead>
+                        <tr class="text-center">
+                            <th class="thai">ชื่อผู้จอง</th>
+                            <th class="thai">วันที่จอง</th>
+                            <th class="thai">เวลาที่จอง</th>
+                        </tr>
+                    </thead>
+                    <tbody v-for="(value, index) in pendingReservations" :key="index">
+                        <tr class="">
+                            <td class="thai">{{ this.student }}</td>
+                            <td class="thai">{{ value.dateTimeStart.slice(0, 10) }}</td>
+                            <td class="thai">{{ value.dateTimeStart.slice(value.dateTimeStart.indexOf('T') + 1, -5) }} - {{
+                                value.dateTimeEnd.slice(value.dateTimeEnd.indexOf('T') + 1, -5) }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
 
@@ -115,6 +98,13 @@ export default {
 * {
     font-family: 'Inter', sans-serif;
     margin: 0;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
 }
 
 body {
@@ -147,5 +137,4 @@ a:hover {
 
 a:active {
     text-decoration: none;
-}
-</style>
+}</style>
