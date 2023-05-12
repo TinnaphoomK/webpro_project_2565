@@ -18,6 +18,7 @@ router.get("/:id", async (req, res) => {
     const reservation = await prisma.reservation.findUnique({
       where: {
         id: parseInt(id),
+        
       },
     });
     res.status(200).json(reservation);

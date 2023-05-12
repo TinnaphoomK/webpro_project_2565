@@ -49,7 +49,7 @@ const router = createRouter({
       component: () => import('../views/ReportRequest.vue')
     },
     {
-      path: '/report',
+      path: '/report/:roomId',
       name: 'report',
       component: () => import('../views/Report.vue')
     },

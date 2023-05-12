@@ -49,9 +49,9 @@ export default {
     <Navbar></Navbar>
 
     <div class="relative text-left justify-text-center font-bold text-2xl my-6">
-        <a @click.prevent="tohistory" class="thai first text-primary-600 hover:text-primary-600 cursor-pointer">ประวัติการจอง</a>
-        <a @click.prevent="toreporthistory"
-            class="thai ml-8 text-gray-900 hover:text-primary-600">ประวัติการรายงาน</a>
+        <a @click.prevent="tohistory"
+            class="thai first text-primary-600 hover:text-primary-600 cursor-pointer">ประวัติการจอง</a>
+        <a @click.prevent="toreporthistory" class="thai ml-8 text-gray-900 hover:text-primary-600">ประวัติการรายงาน</a>
 
         <div class="card mx-6 my-3 py-8 shadow-5 border-round-sm bg-white">
             <div>

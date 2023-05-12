@@ -14,9 +14,10 @@ export default {
     };
   },
   mounted() {
-        this.roomId = this.$route.params.id
+        this.roomId = this.$route.params.roomId
         this.userId = JSON.parse(localStorage.getItem("user")).id
         this.student = JSON.parse(localStorage.getItem("user")).studentId
+        console.log(this.roomId)
     },
   methods: {
     async report() {

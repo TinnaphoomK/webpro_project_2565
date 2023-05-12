@@ -45,12 +45,12 @@ export default {
         <!-- <div
           class="thai bg-red-700 font-normal text-white text-center justify-content-center align-items-center h-2rem w-7rem mx-2">
           ไม่อนุมัติ</div> -->
-        <label class="thai ml-6" for="">ห้อง : {{ value.roomId }}</label>
+        <label class="thai ml-6" for="">ห้อง : {{ value.Room.name }}</label>
         <label class="thai ml-6" for="">วันที่จอง : {{ value.dateTimeStart.slice(0, 10) }}</label>
         <label class="thai ml-6" for="">เวลาที่จอง : {{ value.dateTimeStart.slice(value.dateTimeStart.indexOf('T') + 1,
           -5) }} - {{ value.dateTimeEnd.slice(value.dateTimeEnd.indexOf('T') + 1, -5) }}</label>
-        <label class="thai ml-6" for="">รหัสจอง : #{{ value.id }}</label>
-        <a @click.prevent="toreport()">
+        <label class="thai ml-6" for="">รหัสจอง : #{{ value.roomId }}</label>
+        <a @click.prevent="toreport(value.roomId)">
           <i class="pi pi-ellipsis-h mx-6 text-xl text-900"></i>
         </a>
       </div>
@@ -64,6 +64,7 @@ export default {
   data() {
     return {
       reservation: [],
+      userId: ""
     };
   },
   computed: {
@@ -71,19 +72,25 @@ export default {
       return this.reservation.filter(reservation => reservation.status === "approved");
     }
   },
-  created: function () {
+  created: async function () {
+    this.userId = await JSON.parse(localStorage.getItem("user")).id
     this.allreserve()
   },
   methods: {
     async allreserve() {
-      const res = await axios.get('http://localhost:3000/api/reservation/')
-      console.log(res.data[0].status);
+      try {
+        const res = await axios.get(`http://localhost:3000/api/user/history/${this.userId}`)
+        console.log(res.data);
 
-      if (res.data != null) {
-        this.reservation = res.data
-      } else {
-        this.reservation = []
+        if (res.data != null) {
+          this.reservation = res.data[0].Reservation
+        } else {
+          this.reservation = []
+        }
+      } catch (error) {
+        console.log(error);
       }
+
     },
     toreport() {
       this.isLoggedIn = true;
