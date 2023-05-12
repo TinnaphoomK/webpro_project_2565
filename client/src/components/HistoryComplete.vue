@@ -14,7 +14,7 @@
         <label class="thai ml-6" for="">เวลาที่จอง : {{ value.dateTimeStart.slice(value.dateTimeStart.indexOf('T') + 1,
           -5) }} - {{ value.dateTimeEnd.slice(value.dateTimeEnd.indexOf('T') + 1, -5) }}</label>
         <label class="thai ml-6" for="">รหัสจอง : #{{ value.roomId }}</label>
-        <a @click.prevent="toreport(value.roomId)">
+        <a @click.prevent="toreport(value.Room.id)">
           <i class="pi pi-ellipsis-h mx-6 text-xl text-900"></i>
         </a>
       </div>
@@ -56,9 +56,8 @@ export default {
       }
 
     },
-    toreport() {
-      this.isLoggedIn = true;
-      this.$router.push(`/report/${this.roomId}`)
+    toreport(roomId) {
+      this.$router.push(`/report/${roomId}`)
     },
   }
 }
