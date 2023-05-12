@@ -6,11 +6,15 @@
         <div
           class="thai bg-primary-700 text-white text-lg font-normal text-center align-items-center h-2rem w-7rem border-round-right-lg">
           รอดำเนินการ</div>
-        <label class="thai ml-6" for="">ห้อง : {{ value.Room.name }}</label>
-        <label class="thai ml-6" for="">วันที่จอง : {{ value.dateTimeStart.slice(0, 10) }}</label>
-        <label class="thai ml-6" for="">เวลาที่จอง : {{ value.dateTimeStart.slice(value.dateTimeStart.indexOf('T') + 1,
+        <label class="thai text-base ml-6" for="">ห้อง : {{ value.Room.name }}</label>
+        <label class="thai text-base ml-6" for="">วันที่จอง : {{ new Date(value.dateTimeStart).toLocaleDateString('th-TH', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        }) }}</label>
+        <label class="thai text-base ml-6" for="">เวลาที่จอง : {{ value.dateTimeStart.slice(value.dateTimeStart.indexOf('T') + 1,
           -5) }} - {{ value.dateTimeEnd.slice(value.dateTimeEnd.indexOf('T') + 1, -5) }}</label>
-        <label class="thai ml-6 mr-8" for="">รหัสจอง : #{{ value.id }}</label>
+        <label class="thai text-base ml-6 mr-8" for="">รหัสจอง : #{{ value.id }}</label>
 
       </div>
     </div>

@@ -70,13 +70,13 @@ model Room {
 
 model Report {
   id        Int          @id @default(autoincrement())
-  userId    String       @map("user_id")
+  userId    Int       @map("user_id")
   roomId    Int          @map("room_id")
   detail    String
   status    ReportStatus @default(pending)
   createdAt DateTime     @default(now()) @map("created_at")
   updatedAt DateTime     @default(now()) @map("updated_at")
-  User      User         @relation(fields: [userId], references: [studentId])
+  User      User         @relation(fields: [userId], references: [id])
   Room      Room         @relation(fields: [roomId], references: [id])
 }
 

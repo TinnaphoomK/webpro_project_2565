@@ -23,13 +23,13 @@ export default {
     async report() {
       try {
         console.log({
-          roomId: this.roomId,
-          userId: this.userId,
+          roomId: parseInt(this.roomId),
+          userId: parseInt(this.userId),
           detail: this.detail
         })
         const res = await axios.post(`http://localhost:3000/api/report`, {
           roomId: parseInt(this.roomId),
-          userId: this.userId,
+          userId: parseInt(this.userId),
           detail: this.detail
         })
         console.log(res.data);
@@ -53,11 +53,11 @@ export default {
         รายงาน</div>
     </div>
   </div>
-  <div class="text-center justify-content-between mt-4">
-
-    <div class="flex flex-column justify-content-center">
+  <div class="text-center justify-content-between mt-6">
+    
+    <div class="flex flex-column justify-content-center mt-4">
       <label class="flex thai mx-8 px-4" for="">เนื้อหา</label>
-      <Textarea v-model="detail" class="flex flex-column shadow-5 justify-content-center my-4 mx-8 h-24rem" cols="100" />
+      <Textarea v-model="detail" class="flex flex-column shadow-5 justify-content-center my-4 mx-8 h-20rem" cols="100" />
     </div>
   </div>
   <div class="flex text-center justify-content-center mt-4">

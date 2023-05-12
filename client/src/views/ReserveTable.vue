@@ -1,5 +1,7 @@
 <script>
 import Navbar from '../components/Navbar.vue';
+import DataTable from 'primevue/datatable';
+import Column from 'primevue/column';
 import axios from 'axios';
 
 export default {
@@ -9,14 +11,22 @@ export default {
     },
     data() {
         return {
+            userId: null,
             reservation: [],
+            columns: [
+                { field: 'User.studentId', header: 'รหัสนักศึกษา' },
+                { field: 'dateTimeStart', header: 'วันที่จอง' },
+                { field: 'dateTimeStart', header: 'เวลาที่เริ่มจอง' },
+                { field: 'dateTimeEnd', header: 'เวลาที่สิ้นสุดการจอง' },
+            ]
         };
     },
     mounted() {
         const token = localStorage.getItem('token');
         const user = JSON.parse(localStorage.getItem('user'));
         this.student = JSON.parse(localStorage.getItem("user")).studentId
-
+        this.userId = user.id
+        this.allreserve()
         if (token) {
             this.username = user.firstName;
             this.isLoggedIn = true;
@@ -25,20 +35,21 @@ export default {
     },
     computed: {
         pendingReservations() {
+            console.log(this.student);
             return this.reservation.filter(reservation => reservation.status === "approved");
         }
+
     },
     created: function () {
-        this.allreserve()
     },
     methods: {
         async allreserve() {
-            const res = await axios.get('http://localhost:3000/api/reservation/')
+            const res = await axios.get(`http://localhost:3000/api/user/history/${this.userId}`)
             console.log(res.data[0].status);
             console.log(res.data)
 
             if (res.data != null) {
-                this.reservation = res.data
+                this.reservation = res.data[0].Reservation
             } else {
                 this.reservation = []
             }
@@ -64,25 +75,12 @@ export default {
         <router-link to="/reserve" class="thai first text-primary-600">รายการจอง</router-link>
 
         <div class="flex flex-column card mx-8 mt-3 py-6 shadow-5 border-round-sm bg-white justify-content-center">
-            <label class="thai flex justify-content-center text-center text-5xl my-4" for="">ตารางจองคิว</label>
+            <label class="thai flex justify-content-center text-center text-5xl my-4" for="">ตารางจอง nagoyalasagna</label>
             <div class="flex thai justify-content-center">
-                <table>
-                    <thead>
-                        <tr class="text-center">
-                            <th class="thai">ชื่อผู้จอง</th>
-                            <th class="thai">วันที่จอง</th>
-                            <th class="thai">เวลาที่จอง</th>
-                        </tr>
-                    </thead>
-                    <tbody v-for="(value, index) in pendingReservations" :key="index">
-                        <tr class="">
-                            <td class="thai">{{ this.student }}</td>
-                            <td class="thai">{{ value.dateTimeStart.slice(0, 10) }}</td>
-                            <td class="thai">{{ value.dateTimeStart.slice(value.dateTimeStart.indexOf('T') + 1, -5) }} - {{
-                                value.dateTimeEnd.slice(value.dateTimeEnd.indexOf('T') + 1, -5) }}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <DataTable :value="pendingReservations" showGridlines tableStyle="min-width: 50rem">
+                    <Column v-for="col of columns" :key="col.field" :field="col.field" :header="col.header"></Column>
+                </DataTable>
+
             </div>
         </div>
 
@@ -137,4 +135,5 @@ a:hover {
 
 a:active {
     text-decoration: none;
-}</style>
+}
+</style>
