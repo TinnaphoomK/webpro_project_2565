@@ -32,6 +32,33 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// Forget password route
+router.patch("/forgetpassword", async (req, res) => {
+  try {
+    const { email, newPassword } = req.body;
+    const user = await prisma.user.findUnique({
+      where: { email },
+    });
+
+    if (!user) {
+      return res.status(404).json({ error: "Email not found" });
+    }
+    if (await bcrypt.compare(newPassword, user.password)) {
+      return res.status(409).json({ error: "New password cannot be the same as old password" });
+    }
+    const forgetPassword = await prisma.user.update({
+      where: { email },
+      data: {
+        password: await bcrypt.hash(newPassword, 10),
+      },
+    });
+    res.status(200).json({ forgetPassword });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: error.message });
+  }
+})
+
 // Registration route
 router.post("/register", async (req, res) => {
   try {

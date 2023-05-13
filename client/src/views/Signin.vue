@@ -162,13 +162,3 @@ export default {
   },
 };
 </script>
-
-
-<!-- 
-  const token = localStorage.getItem("token");
-  axios.post("http://localhost:3000/api/auth/login", {
-          headers: {
-            Authorization: "Bearer " + token
-          }
-        },this.loginData)
- -->

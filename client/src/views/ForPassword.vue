@@ -20,10 +20,10 @@
                 <form class="flex flex-column w-full justify-content-center" action="">
 
                     <div class="my-2">
-                        <label class="flex text-black-alpha-90 justify-content-start mx-4" for="username">Username</label>
+                        <label class="flex text-black-alpha-90 justify-content-start mx-4" for="email">Email</label>
                         <div class="flex">
-                            <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="username"
-                                name="username" v-model="username" />
+                            <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="email"
+                                name="email" v-model="email" />
                         </div>
                     </div>
 
@@ -58,51 +58,7 @@
         Space Creator
     </div>
 </template>
-
-<!-- <template>
-    <div class="rectangle">
-        <div class="blue-half border-round-left-2xl shadow-5">
-            <h1 class="bg-transparent text-white text-center">SPACE CREATOR</h1>
-            <div class="bar"></div>
-            <h2 class="bg-transparent text-yellow-400 text-center">your space, your choice</h2>
-            <center class="bg-transparent">
-                <img class="itpic border-round-xl" src="../assets/img/itkmitl.jpeg" alt="">
-            </center>
-        </div>
-        <div class="white-half border-round-right-2xl shadow-5">
-            <form class="absolute h-30rem">
-                <label for="username" class="text-xl mx-7">Username</label>
-                <InputText v-model="username" id="username" name="username" type="text" class="p-inputtext-lg shadow-2 mx-7"
-                    style="width: 80%;" />
-                <br>
-                <label for="password" class="text-xl mx-7">New Password</label>
-                <InputText v-model="newPassword" id="newpassword" name="newpassword" type="password" class="p-inputtext-lg shadow-2 mx-7"
-                    style="width: 80%;" />
-                <br>
-                <label for="password" class="text-xl mx-7">Confirm Password</label>
-                <InputText v-model="confirmPassword" id="conpassword" name="conpassword" type="password" class="p-inputtext-lg shadow-2 mx-7"
-                    style="width: 80%;" />
-                <br><br>
-
-                    <Button @click="resetPassword" class="absolute text-center justify-content-center text-bold text-2xl mx-7 mt-3"
-                        style="width: 76%; height: 12%;background-image: linear-gradient(to right, rgb(3, 8, 16), rgb(35, 87, 165));">Change
-                        Password</Button><br><br><br><br><br>
-
-                <label for="password" class="text-center mt-6">already have an account ?<a class="bg-transparent" href="/signin">
-                        Sign
-                        in</a></label>
-            </form>
-        </div>
-    </div>
-
-    <div class="footer h-3rem fixed text-white text-center pt-3">
-        <img src="../assets/img/cc.png" class="bg-transparent" style="width: 0.9%;" alt=""> All Right Reserved | Space
-        Creator
-    </div>
-</template> -->
-  
-
-  
+    
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Mitr&display=swap');
@@ -151,40 +107,35 @@ a:active {
 </style>
 
 <script>
+import axios from "axios";
 export default {
     data() {
         return {
-            username: "",
+            email: "",
             newPassword: "",
             confirmPassword: "",
-            accounts: []
         };
     },
     methods: {
-        resetPassword() {
-            const account = this.accounts.find(account => {
-                return account.username === this.username;
-            });
-
-            if (account) {
-                account.password = this.newPassword;
-
-                localStorage.setItem('accounts', JSON.stringify(this.accounts));
-
-                this.$router.push('/signin');
-                alert("Password's changed!")
-            } else {
-                alert("This username does not exist.");
+        async resetPassword(){
+            try {
+                if(this.newPassword !== this.confirmPassword){
+                    alert("Password not match")
+                    return
+                }
+                const res = await axios.patch("http://localhost:3000/api/auth/forgetpassword", {
+                    email: this.email,
+                    newPassword: this.newPassword,
+                });
+            alert("Password changed")
+            this.$router.push("/signin");
+            console.log(res);
+            } catch (error) {
+                alert(error?.response?.data?.error || error?.message || error?.data?.error || error)
+                console.log(error.response.data.error);
             }
         }
     },
-    created() {
-        // Load the accounts from local storage
-        const accountsJson = localStorage.getItem('accounts');
-        if (accountsJson) {
-            this.accounts = JSON.parse(accountsJson);
-        }
-    }
 };
 </script>
 
