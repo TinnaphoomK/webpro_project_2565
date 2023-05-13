@@ -15,6 +15,7 @@ export default {
             reservation: [],
             columns: [
                 { field: 'User.studentId', header: 'รหัสนักศึกษา' },
+                { field: 'Room.name', header: 'ห้องที่จอง' },
                 { field: 'dateTimeStart', header: 'วันที่จอง' },
                 { field: 'dateTimeStart', header: 'เวลาที่เริ่มจอง' },
                 { field: 'dateTimeEnd', header: 'เวลาที่สิ้นสุดการจอง' },
@@ -75,7 +76,7 @@ export default {
         <router-link to="/reserve" class="thai first text-primary-600">รายการจอง</router-link>
 
         <div class="flex flex-column card mx-8 mt-3 py-6 shadow-5 border-round-sm bg-white justify-content-center">
-            <label class="thai flex justify-content-center text-center text-5xl my-4" for="">ตารางจอง nagoyalasagna</label>
+            <label class="thai flex justify-content-center text-center text-5xl my-4" for="">ตารางจองคิว</label>
             <div class="flex thai justify-content-center">
                 <DataTable :value="pendingReservations" showGridlines tableStyle="min-width: 50rem">
                     <Column v-for="col of columns" :key="col.field" :field="col.field" :header="col.header"></Column>

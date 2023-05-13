@@ -49,10 +49,10 @@ export default {
       this.isLoggedIn = true;
       this.$router.push(`/history/${this.studentId}`)
     },
-    toqueue() {
-      this.isLoggedIn = true;
-      this.$router.push(`/reservetable/${this.studentId}`)
-    },
+    // toqueue() {
+    //   this.isLoggedIn = true;
+    //   this.$router.push(`/reservetable/${this.studentId}`)
+    // },
 
   }
 };
@@ -77,11 +77,11 @@ export default {
 
           <template v-if="isLoggedIn && this.role === 'user'">
             <div class="flex mx-4">
-              <a @click.prevent="toqueue" class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer"
+              <router-link to="/reservetable" class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer"
                 style="min-width: 125px; min-height: 25px">
                 <i class="pi pi-list mr-2"></i>
                 Queue
-              </a>
+            </router-link>
 
               <a @click.prevent="tohistory"
                 class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer"

@@ -64,7 +64,7 @@ const router = createRouter({
       component: () => import('../views/ManageRoom.vue')
     },
     {
-      path: '/reservetable/:studentId',
+      path: '/reservetable',
       name: 'reservetable',
       component: () => import('../views/ReserveTable.vue')
     },
