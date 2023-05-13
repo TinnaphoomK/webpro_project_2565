@@ -138,13 +138,13 @@ export default {
 
         if (this.loginData.Role == "admin"){
           const res = await axios.post("http://localhost:3000/api/auth/login", this.loginData);
-          localStorage.setItem("token", res.data.token);
+          localStorage.setItem("token", res.data.accessToken);
           localStorage.setItem("user", JSON.stringify(res.data.user));
           this.$router.push("/managepage");
         }
         
         const res = await axios.post("http://localhost:3000/api/auth/login", this.loginData);
-        localStorage.setItem("token", res.data.token);
+        localStorage.setItem("token", res.data.accessToken);
         localStorage.setItem("user", JSON.stringify(res.data.user));
 
         // Check the role here

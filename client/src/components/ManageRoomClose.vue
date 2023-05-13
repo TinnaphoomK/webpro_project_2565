@@ -7,29 +7,33 @@
         <router-link to="/editroom">
             <i class="pi pi-ellipsis-h ml-6 text-xl text-900"></i>
         </router-link>
-        <Button @click="deleteroom()" class="thai bg-primary-700 hover:bg-primary-800 mx-2">ลบห้อง</Button>
+        <Button @click="deleteRoom()" class="thai bg-primary-700 hover:bg-primary-800 mx-2">ลบห้อง</Button>
     </div>
 </template>
 
 <script>
 import axios from 'axios'
 export default {
-    method:{
-        async deleteroom() {
+    props: {
+        room: Object
+    },
+    methods: {
+        async deleteRoom(id) {
+            console.log(id)
             try {
-                if (room != null) {
-                const res = await axios.delete(`http://localhost:3000/room/${room}`)
-                if (res.data.status == "success") {
-                    alert("ลบห้องสำเร็จ")
-                    window.location.reload()
-                } else {
-                    alert("ไม่พบหมายเลขห้องที่ต้องการลบ")
+                if (id != null) {
+                    const res = await axios.delete(`http://localhost:3000/api/room/${id}`, {
+                        headers: {
+                            Authorization: "Bearer " + localStorage.getItem("token")
+                        }
+                    })
+                console.log(res.data)
+                window.location.reload()
                 }
-            }
             } catch (error) {
-                alert("ไม่พบหมายเลขห้องที่ต้องการลบ")
+                alert("ห้องมีการจองอยู่")
             }
         }
-    }
-    }
+    },
+}
 </script>

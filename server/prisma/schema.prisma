@@ -64,6 +64,7 @@ model Room {
   description String
   totalSeat   String
   image       String
+  status      Boolean       @default(true)
   Reservation Reservation[]
   Report      Report[]
 }

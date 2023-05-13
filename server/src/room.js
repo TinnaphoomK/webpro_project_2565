@@ -83,8 +83,10 @@ router.delete("/:id", authenticateToken, async (req, res) => {
         id: parseInt(id),
       },
     });
+    
     res.status(200).json(room);
   } catch (error) {
+    console.log(error);
     res.status(400).json({ error: error.message });
   }
 });

@@ -9,6 +9,11 @@ export default {
         ManageRoomOpen,
         ManageRoomClose
     },
+    data() {
+        return {
+            rooms: {}
+        }
+    },
 
     methods: {
         async checkrole() {
@@ -17,9 +22,21 @@ export default {
                 this.$router.push("/");
             }
         },
+        async allroom() {
+            try {
+                const res = await axios.get('http://localhost:3000/api/room')
+                console.log(res.data)
+                this.rooms = res.data
+            } catch (error) {
+                console.log(error)
+            }
+        },
+
+
     },
     mounted() {
         this.checkrole()
+        this.allroom()
     },
 }
 </script>
@@ -48,12 +65,9 @@ export default {
         </div>
         <!-- open and close card -->
         <div class="card mt-4 ml-6">
-            <div class="flex justify-content-start flex-wrap card-container my-4">
-                <!-- use props!!!! -->
-                <ManageRoomOpen></ManageRoomOpen>
-            </div>
-            <div class="flex justify-content-start flex-wrap card-container my-4">
-                <ManageRoomClose></ManageRoomClose>
+            <div class="flex justify-content-start flex-wrap card-container my-4" v-for="room in rooms" :key="room.id">
+                <ManageRoomOpen :room="room" v-if="room.status" />
+                <ManageRoomClose :room="room" v-else />
             </div>
         </div>
     </div>
