@@ -1,4 +1,5 @@
 <script>
+import axios from 'axios'
 import Navbar from '../components/Navbar.vue'
 import ManageRoomOpen from '../components/ManageRoomOpen.vue'
 import ManageRoomClose from '../components/ManageRoomClose.vue'
@@ -8,7 +9,19 @@ export default {
         ManageRoomOpen,
         ManageRoomClose
     },
-};
+
+    methods: {
+        async checkrole() {
+            const role = JSON.parse(localStorage.getItem("user")).role
+            if (role != "admin") {
+                this.$router.push("/");
+            }
+        }
+    },
+    mounted() {
+        this.checkrole()
+    },
+}
 </script>
 
 <template>

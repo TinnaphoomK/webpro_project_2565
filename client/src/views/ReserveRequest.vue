@@ -1,4 +1,5 @@
 <script>
+import axios from 'axios';
 import Navbar from '../components/Navbar.vue';
 import ReserveRpending from '../components/ReserveRpending.vue';
 import ReserveRcomplete from '../components/ReserveRcomplete.vue';
@@ -7,7 +8,18 @@ export default {
         Navbar,
         ReserveRpending,
         ReserveRcomplete
-    }
+    },
+    methods: {
+        async checkrole() {
+            const role = JSON.parse(localStorage.getItem("user")).role
+            if (role != "admin") {
+                this.$router.push("/");
+            }
+        }
+    },
+    mounted() {
+        this.checkrole()
+    },
 }
 </script>
 

@@ -1,4 +1,5 @@
 <script lang="ts">
+import axios from 'axios';
 import Navbar from '../components/Navbar.vue';
 import ReportRpending from '../components/ReportRpending.vue';
 import ReportRcomplete from '../components/ReportRcomplete.vue';
@@ -13,12 +14,23 @@ export default {
             reservations: []
         }
     },
+    methods: {
+        async checkrole() {
+            const role = JSON.parse(localStorage.getItem("user") || "").role
+            if (role != "admin") {
+                this.$router.push("/");
+            }
+        }
+    },
+    mounted() {
+        this.checkrole()
+    },
     created() {
         const storedReservations = localStorage.getItem('reservations');
         if (storedReservations) {
             this.reservations = JSON.parse(storedReservations);
         }
-    }
+    },
 }
 </script>
 

@@ -15,28 +15,10 @@ export default {
         Navbar,
         CardItem
     },
+    mounted() {
+        this.checkrole()
+    },
     methods: {
-        saveRoomName() {
-            // Check if user is logged in
-            const isLoggedIn = localStorage.getItem('isLoggedIn');
-
-            if (isLoggedIn) {
-                // Get the current list of room names from local storage, or initialize it to an empty array if it doesn't exist yet
-                const roomNames = JSON.parse(localStorage.getItem('roomNames')) || [];
-
-                // Add the room name to the list
-                roomNames.push(document.getElementById('roomname').innerText);
-
-                // Save the updated list to local storage
-                localStorage.setItem('roomNames', JSON.stringify(roomNames));
-                this.$router.push('/reserve');
-                console.log('go to reserve')
-            } else {
-                // Display alert message
-                alert('Please login first');
-                this.$router.push('/signin');
-            }
-        },
         async uploadFile(event) {
             try {
                 this.roading = true;
@@ -70,6 +52,12 @@ export default {
                 this.image = "";
             } catch (error) {
                 console.log(error);
+            }
+        },
+        async checkrole() {
+            const role = JSON.parse(localStorage.getItem("user")).role
+            if (role != "admin") {
+                this.$router.push("/");
             }
         },
     }
