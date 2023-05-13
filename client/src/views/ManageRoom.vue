@@ -53,11 +53,11 @@ export default {
     </div>
     <div class="gridbg mx-4 mt-4 py-6 shadow-5 border-round-sm">
         <div class="flex justify-content-end mx-6">
-            <router-link to="/reportrequest">
-                <Button class="thai bg-primary-700 hover:bg-primary-800 mx-2">คำร้อง</Button>
-            </router-link>
             <router-link to="/reserverequest">
                 <Button class="thai bg-primary-700 hover:bg-primary-800 mx-2">รายการจอง</Button>
+            </router-link>
+            <router-link to="/reportrequest">
+                <Button class="thai bg-primary-700 hover:bg-primary-800 mx-2">คำร้อง</Button>
             </router-link>
             <router-link to="/addroom">
                 <Button class="thai bg-primary-700 hover:bg-primary-800 mx-2">เพิ่มห้อง</Button>
