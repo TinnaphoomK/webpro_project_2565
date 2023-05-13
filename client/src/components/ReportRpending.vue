@@ -1,48 +1,64 @@
 <template>
     <div class="card">
-        <div class="flex justify-content-center flex-wrap card-container">
-            <div
-                class="bg-white text-primary-800 text-lg font-bold flex align-items-center justify-content-between w-8 h-6rem border-round-2xl m-2 shadow-5">
-                <label class="thai ml-4" for="">ห้อง : Auditorium</label>
-                <label class="thai ml-6" for="">วันที่จอง : 13 FEB 2023</label>
-                <label class="thai ml-6" for="">เวลาที่จอง : 11:00 - 13:00</label>
-                <label class="thai ml-6" for="">รหัสจอง : #10000</label>
-                <router-link to="/report">
-                    <i class="pi pi-ellipsis-h mx-4 text-xl text-900"></i>
-                </router-link>
+      <div class="flex justify-content-center flex-wrap card-container">
+        <div v-for="(value, index) in pendingReport" :key="index"
+          class="bg-white text-primary-800 text-xl font-bold flex align-items-center justify-content-between w-full h-6rem border-round-2xl m-2 shadow-5">
+          <div
+          class="flex justify-content-center thai bg-primary-700 text-white text-lg font-normal text-center align-items-center h-2rem w-7rem border-round-right-lg">
+          รอดำเนินการ</div>
+          <!-- <div
+            class="thai bg-red-700 font-normal text-white text-center justify-content-center align-items-center h-2rem w-7rem mx-2">
+            ไม่อนุมัติ</div> -->
+          <label class="thai text-base ml-4" for="">ห้อง : {{ value.Room.name }}</label>
+          <label class="thai text-base ml-6" for="">วันที่รายงาน : {{ new Date(value.createdAt).toLocaleDateString('th-TH', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          }) }}</label>
+          <label class="thai text-base ml-6" for="">รหัสรายงาน : #{{ value.id }}</label>
+          <label class="thai text-base ml-6" for="">รายละเอียด : {{ value.detail }}</label>
+          <div class="flex">
+                <Button class="thai text-xs bg-green-700 hover:bg-green-800 h-2rem w-6rem ml-4 mr-6 justify-content-center">เสร็จสิ้น</Button>
             </div>
         </div>
+      </div>
     </div>
-    <!-- <div class="bg-white shadow-5 w-8 h-6rem justify-content-center text-center text-xl align-items-center border-round-2xl"
-        style="margin-left: 17%; margin-top: 1%;padding-top: 1.7%;">
-        <div class="absolute w-10rem h-3rem text-white pt-2 border-round-right-2xl shadow-5 his"
-            style="background-color:rgb(35, 87, 165);">รอดำเนินการ</div>
-        &emsp;&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;{{ roomId }} &emsp;&emsp;&emsp;&emsp; {{ room }}
-        &emsp;&emsp;&emsp;&emsp;
-        {{ problem }}
-        &emsp;&emsp;&emsp;&emsp;
-        {{ reportnum }}
-        <a href="">
-            <div class="inline-block w-7rem h-3rem text-center pt-2 text-white border-round-2xl shadow-5 his bg-green-700 hover:bg-green-800 hover:text-400"
-                style="margin-left: 10%;">เสร็จสิ้น</div>
-        </a>
-
-        <a href=""><i class="inline-block pi pi-ellipsis-h" style="margin-left: 7.5%;"></i></a>
-    </div> -->
-</template>
+  </template>
 
 <script>
+import axios from 'axios';
 export default {
     data() {
         return {
-            room: 'auditorium',
-            roomId: '113',
-            startdate: '9 FEB 2023',
-            time: '11:00 - 13:00',
-            problem: 'เครื่องเสียปัญหา',
-            reportnum: '#10000'
+            report: [],
+            userId: ""
+        };
+    },
+    computed: {
+        pendingReport() {
+            return this.report.filter(report => report.status === "pending");
         }
+    },
+    created: async function () {
+        this.userId = await JSON.parse(localStorage.getItem("user")).id
+        this.allreport()
+    },
+    methods: {
+        async allreport() {
+            try {
+                const res = await axios.get(`http://localhost:3000/api/user/report/${this.userId}`)
+                console.log(res.data);
 
+                if (res.data != null) {
+                    this.report = res.data[0].Report
+                } else {
+                    this.report = []
+                }
+            } catch (error) {
+                console.log(error);
+            }
+
+        },
     }
 }
 </script>

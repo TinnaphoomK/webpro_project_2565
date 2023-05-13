@@ -91,7 +91,7 @@ export default {
               </a>
 
 
-              <a class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer"
+              <a class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center"
                 style="min-width: 125px; min-height: 25px">
                 <i class="pi pi-user mr-2"></i>
                 {{ username }}
