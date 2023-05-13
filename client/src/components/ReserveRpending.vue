@@ -1,51 +1,68 @@
 <template>
     <div class="card">
-        <div class="flex justify-content-center flex-wrap card-container">
-            <div
-                class="thai bg-white text-primary-800 text-lg font-bold flex align-items-center justify-content-between w-8 h-6rem border-round-2xl m-2 shadow-5">
-                <label class="thai mx-6" for="">Auditorium</label>
-                <label class="thai mr-3" for="">13 FEB 2023</label>
-                <label class="thai mx-3" for="">11:00 - 13:00</label>
-                <label class="thai mx-3" for="">#10000</label>
-                <Button
-                    class="thai bg-green-700 hover:bg-green-800 justify-content-center align-items-center h-2rem w-7rem mx-1">อนุมัติ</Button>
-                <Button
-                    class="thai bg-red-700 hover:bg-red-800 justify-content-center align-items-center h-2rem w-7rem mx-1">ไม่อนุมัติ</Button>
-                <router-link to="/report">
-                    <i class="pi pi-ellipsis-h text-xl text-900 mx-6"></i>
-                </router-link>
-            </div>
+      <div class="flex justify-content-center flex-wrap card-container">
+        <div v-for="(value, index) in pendingReservations" :key="index"
+          class="bg-white text-primary-800 text-xl font-bold flex align-items-center justify-content-between w-full h-6rem border-round-2xl m-2 shadow-5">
+          <label class="thai text-base ml-4" for="">ห้อง : {{ value.Room.name }}</label>
+          <label class="thai text-base ml-2" for="">วันที่จอง : {{ new Date(value.dateTimeStart).toLocaleDateString('th-TH', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          }) }}</label>
+          <label class="thai text-base ml-2" for="">เวลาที่จอง : {{ value.dateTimeStart.slice(value.dateTimeStart.indexOf('T') + 1,
+            -5) }} - {{ value.dateTimeEnd.slice(value.dateTimeEnd.indexOf('T') + 1, -5) }}</label>
+          <label class="thai text-base ml-2" for="">รหัสจอง : #{{ value.id }}</label>
+          <div class="flex">
+            <Button class="flex thai text-sm bg-green-700 hover:bg-green-800 h-2rem w-5rem mx-1 justify-content-center">Accept</Button>
+            <Button class="flex thai text-sm bg-red-700 hover:bg-red-800 h-2rem w-5rem mx-1 justify-content-center">Reject</Button>
+          </div>
+          <a @click.prevent="toreport(value.Room.id)">
+            <i class="pi pi-ellipsis-h mr-4 text-xl text-900"></i>
+          </a>
         </div>
+      </div>
     </div>
-    <!-- <div class="bg-white shadow-5 w-8 h-6rem justify-content-center text-left text-xl align-items-center border-round-2xl"
-        style="margin-left: 17%; margin-top: 1.5%;padding-top: 1.7%;">
-        &emsp;&emsp; &emsp;&emsp;{{ room }} &emsp;&emsp;&emsp;&emsp; {{ startdate }} &emsp;&emsp;&emsp;&emsp; {{ time }}
-        &emsp;&emsp;&emsp;&emsp;
-        {{ reportnum }}
-        <a href="">
-            <div class="inline-block w-7rem h-3rem text-center pt-2 text-white border-round-2xl shadow-5 his bg-green-700 hover:bg-green-800 hover:text-400"
-                style="margin-left: 10%;">อนุมัติ</div>
-        </a>
-        <a href="">
-            <div class="inline-block w-7rem h-3rem text-center pt-2 text-white border-round-2xl shadow-5 his bg-red-700 hover:bg-red-800 hover:text-400"
-                style="margin-left: 1.5%;">ไม่อนุมัติ</div>
-        </a>
-        <a href=""><i class="inline-block pi pi-ellipsis-h" style="margin-left: 7.5%;"></i></a>
-    </div> -->
-</template>
-
-<script>
-export default {
+  </template>
+  
+  <script>
+  import axios from 'axios';
+  export default {
     data() {
-        return {
-            room: 'auditorium',
-            roomId: '113',
-            startdate: '9 FEB 2023',
-            time: '11:00 - 13:00',
-            problem: 'เครื่องเสียปัญหา',
-            reportnum: '#10000'
+      return {
+        reservation: [],
+        userId: ""
+      };
+    },
+    computed: {
+      pendingReservations() {
+        return this.reservation.filter(reservation => reservation.status === "pending");
+      }
+    },
+    created: async function () {
+      this.userId = await JSON.parse(localStorage.getItem("user")).id
+      this.allreserve()
+    },
+    methods: {
+      async allreserve() {
+        try {
+          const res = await axios.get(`http://localhost:3000/api/user/history/${this.userId}`)
+          console.log(res.data);
+  
+          if (res.data != null) {
+            this.reservation = res.data[0].Reservation
+          } else {
+            this.reservation = []
+          }
+        } catch (error) {
+          console.log(error);
         }
-
+  
+      },
+      toreport() {
+        this.isLoggedIn = true;
+        this.$router.push(`/report/${this.roomId}`)
+      },
     }
-}
-</script>
+  }
+  </script>
+  

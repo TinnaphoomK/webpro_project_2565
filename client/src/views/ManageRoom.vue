@@ -64,7 +64,7 @@ export default {
             </router-link>
         </div>
         <!-- open and close card -->
-        <div class="card mt-4 ml-6">
+        <div class="flex justify-content-center grid card mt-4">
             <div class="flex justify-content-start flex-wrap card-container my-4" v-for="room in rooms" :key="room.id">
                 <ManageRoomOpen :room="room" v-if="room.status" />
                 <ManageRoomClose :room="room" v-else />

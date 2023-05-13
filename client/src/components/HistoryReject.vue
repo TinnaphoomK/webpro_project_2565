@@ -1,4 +1,3 @@
-
 <template>
   <div class="card">
       <div class="flex justify-content-center flex-wrap card-container">
