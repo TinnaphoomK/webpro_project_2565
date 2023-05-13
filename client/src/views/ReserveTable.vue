@@ -45,24 +45,15 @@ export default {
     },
     methods: {
         async allreserve() {
-            const res = await axios.get(`http://localhost:3000/api/user/history/${this.userId}`)
-            console.log(res.data[0].status);
-            console.log(res.data)
+            const res = await axios.get('http://localhost:3000/api/reservation');
+            console.log(res.data);
 
             if (res.data != null) {
-                this.reservation = res.data[0].Reservation
+                this.reservation = res.data;
             } else {
-                this.reservation = []
+                this.reservation = [];
             }
         },
-        tohistory() {
-            this.isLoggedIn = true;
-            this.$router.push(`/history/${this.student}`)
-        },
-        toreporthistory() {
-            this.isLoggedIn = true;
-            this.$router.push(`/reporthistory/${this.student}`)
-        }
     }
 }
 </script>

@@ -5,7 +5,12 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   try {
-    const reservation = await prisma.reservation.findMany();
+    const reservation = await prisma.reservation.findMany({
+      include: {
+        Room: true,
+        User: true,
+      },
+    });
     res.status(200).json(reservation);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -18,7 +23,6 @@ router.get("/:id", async (req, res) => {
     const reservation = await prisma.reservation.findUnique({
       where: {
         id: parseInt(id),
-        
       },
     });
     res.status(200).json(reservation);
