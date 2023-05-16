@@ -1,7 +1,6 @@
 <template>
     <!-- Show closed rooms -->
     <div class="card">
-<<<<<<< Updated upstream
       <div class="flex justify-content-center flex-wrap card-container">
         <div
           class="bg-white text-primary-800 text-xl font-bold flex align-items-center justify-content-between w-28rem h-6rem border-round-2xl mx-2 shadow-5"
@@ -33,25 +32,6 @@
           >
             ลบห้อง
           </Button>
-=======
-        <div class="flex justify-content-center flex-wrap card-container">
-            <div
-                class="bg-white text-primary-800 text-xl font-bold flex align-items-center justify-content-between w-28rem h-6rem border-round-2xl mx-2 shadow-5">
-                <Button @click="changeStatus(room.id)"
-                    class="thai bg-green-700 hover:bg-green-800 text-sm h-2rem w-7rem justify-content-center ml-2">
-                    ปิดใช้งาน
-                </Button>
-                <label class="thai text-sm ml-2" for="">{{ room.name }}</label>
-                <label class="thai text-sm ml-2" for="">ชั้น : {{ room.floor }}</label>
-                <router-link to="/editroom">
-                    <i class="pi pi-ellipsis-h mx-2 text-xl text-900"></i>
-                </router-link>
-                <Button @click="deleteRoom(room.id)"
-                    class="flex justify-content-center thai text-sm bg-primary-700 h-2rem w-6rem hover:bg-primary-800 mx-2">
-                    ลบห้อง
-                </Button>
-            </div>
->>>>>>> Stashed changes
         </div>
       </div>
     </div>
