@@ -65,25 +65,6 @@ router.post("/", async (req, res) => {
   }
 });
 
-//update
-router.patch("/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const { detail } = req.body;
-    const report = await prisma.report.update({
-      where: {
-        id: parseInt(id),
-      },
-      data: {
-        detail: detail ? detail : undefined,
-      },
-    });
-    res.status(200).json(report);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-});
-
 router.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
