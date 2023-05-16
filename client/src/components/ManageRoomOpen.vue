@@ -28,7 +28,6 @@
           class="flex justify-content-center thai text-sm bg-primary-700 h-2rem w-6rem hover:bg-primary-800 mx-2">
             ลบห้อง
           </Button>
-
         </div>
       </div>
     </div>
