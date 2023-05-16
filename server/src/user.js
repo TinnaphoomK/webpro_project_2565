@@ -27,6 +27,8 @@ router.get("/history/:id", async (req, res) => {
   }
 });
 
+
+
 //get room history by user id
 router.get("/report/:id", async (req, res) => {
   try {

@@ -17,12 +17,79 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/pending", async (req, res) => {
+  try {
+    const reservations = await prisma.reservation.findMany({
+      where: {
+        status: "pending",
+      },
+      include: {
+        Room: true,
+        User: true,
+      },
+    });
+    res.status(200).json(reservations);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+router.get("/approved", async (req, res) => {
+  try {
+    const reservations = await prisma.reservation.findMany({
+      where: {
+        status: "approved",
+      },
+      include: {
+        Room: true,
+        User: true,
+      },
+    });
+    res.status(200).json(reservations);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+router.get("/rejected", async (req, res) => {
+  try {
+    const reservations = await prisma.reservation.findMany({
+      where: {
+        status: "rejected",
+      },
+      include: {
+        Room: true,
+        User: true,
+      },
+    });
+    res.status(200).json(reservations);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+ 
 router.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const reservation = await prisma.reservation.findUnique({
       where: {
         id: parseInt(id),
+      },
+    });
+    res.status(200).json(reservation);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+router.put("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const {status} = req.body;
+    const reservation = await prisma.reservation.update({
+      where: {
+        id: parseInt(id),
+      },
+      data: {
+        status: status,
       },
     });
     res.status(200).json(reservation);
