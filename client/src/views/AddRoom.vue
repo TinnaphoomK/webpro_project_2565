@@ -3,12 +3,22 @@ import Navbar from '../components/Navbar.vue'
 import CardItem from '../components/CardItem.vue'
 import { ref as storageRef, getDownloadURL, listAll, deleteObject, uploadBytes } from "firebase/storage";
 import { useFirebaseStorage } from "vuefire";
+import axios from 'axios';
 const storage = useFirebaseStorage();
 
 export default {
     data() {
         return {
+            userId: "",
             image: "",
+            chooseImage: "",
+            roomData: {
+                name: "",
+                floor: "",
+                detail: "",
+                description: "",
+                totalSeat: ""
+            }
         };
     },
     components: {
@@ -17,39 +27,40 @@ export default {
     },
     mounted() {
         this.checkrole()
+        this.userId = localStorage.getItem('token')
     },
     methods: {
-        async uploadFile(event) {
+        addImage(event) {
+            const file = event.target.files[0];
+            this.image = file
+            this.chooseImage = URL.createObjectURL(file);
+            console.log(this.chooseImage);
+        },
+        removeImage() {
+            this.image = ""
+            this.chooseImage = ""
+        },
+        async createRoom() {
             try {
-                this.roading = true;
-                const file = event.target.files[0];
-                const starsRef = storageRef(storage, `users/${this.userId}/${file.name}`);
-                await uploadBytes(starsRef, file);
-                this.getFile(this.userId);
-                this.roading = false;
+                console.log(this.roomData)
+                const res = await axios.post("http://localhost:3000/api/room", this.roomData, {
+                    headers: {
+                        Authorization: "Bearer " + this.userId
+                    }
+                })
+                if (this.image && res.data.id) {
+                    await this.uploadFile(res.data.id)
+                }
+                //redirec
+                
             } catch (error) {
-                console.log(error);
+                console.log(error)
             }
         },
-        async getFile(userId) {
+        async uploadFile(roomId) {
             try {
-                const starsRef = storageRef(storage, "users/" + userId);
-                const search = await listAll(starsRef);
-                const download = (await getDownloadURL(search.items[0])).toString();
-                this.image = download;
-            } catch (error) {
-                console.log(error);
-            }
-        },
-        async removeFile(userId) {
-            try {
-                this.roading = true;
-                const starsRef = storageRef(storage, "users/" + userId);
-                const search = await listAll(starsRef);
-                const remove = await deleteObject(search.items[0]);
-                console.log(remove);
-                this.roading = false;
-                this.image = "";
+                const starsRef = storageRef(storage, `rooms/${roomId}/${this.image.name}`);
+                await uploadBytes(starsRef, this.image);
             } catch (error) {
                 console.log(error);
             }
@@ -73,8 +84,14 @@ export default {
         <div class="card mx-8 my-3 py-6 shadow-5 border-round-sm bg-white">
             <div class="flex justify-content-center">
                 <div class="flex align-items-center justify-content-center">
-                    <div class="flex flex-column card-container mx-8 my-6 justify-content-center align-self-center">
-                        <input type="file" @change="(event) => {uploadFile(event);}">
+                    <div class="flex flex-column card-container mx-8 my-6 justify-content-center align-items-center">
+                        <div class="w-full flex flex-column align-items-center justify-content-center"
+                            v-if="this.chooseImage">
+                            <img class="w-5" :src="this.chooseImage" alt="">
+                            <button class="flex justify-content-center w-4 mt-4" v-if="this.chooseImage"
+                                @click="removeImage">Delete image</button>
+                        </div>
+                        <input v-else type="file" @change="(event) => { addImage(event); }">
                     </div>
 
                     <div class="flex flex-column card-container my-6 justify-content-center align-self-start">
@@ -83,7 +100,7 @@ export default {
                                 for="room">ชื่อห้อง</label>
                             <div class="flex">
                                 <InputText type="room" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
-                                    v-model="room" />
+                                    v-model="roomData.name" />
                             </div>
                         </div>
 
@@ -92,7 +109,7 @@ export default {
                                 for="room">ชั้น</label>
                             <div class="flex">
                                 <InputText type="room" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
-                                    v-model="room" />
+                                    v-model="roomData.floor" />
                             </div>
                         </div>
 
@@ -101,7 +118,7 @@ export default {
                                 for="room">รายละเอียด</label>
                             <div class="flex">
                                 <InputText type="room" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
-                                    v-model="room" />
+                                    v-model="roomData.detail" />
                             </div>
                         </div>
 
@@ -110,14 +127,23 @@ export default {
                                 for="room">รายละเอียดเพิ่มเติม</label>
                             <div class="flex">
                                 <InputText type="room" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
-                                    v-model="room" />
+                                    v-model="roomData.description" />
                             </div>
                         </div>
 
-                        <router-link to="/manageroom">
+                        <div class="my-2">
+                            <label class="thai flex text-sm text-black-alpha-90 justify-content-start mx-8"
+                                for="room">จำนวนที่นั่ง</label>
+                            <div class="flex">
+                                <InputText type="room" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
+                                    v-model="roomData.totalSeat" />
+                            </div>
+                        </div>
+
+                        <a @click.prevent="createRoom()">
                             <Button
                                 class="thai bg-primary-800 hover:bg-primary-900 border-round-xl text-xl w-30rem h-4rem justify-content-center shadow-5 mt-6 mx-8">ยืนยัน</Button>
-                        </router-link>
+                        </a>
                     </div>
                 </div>
             </div>
