@@ -12,6 +12,9 @@
       <div
         class="flex flex-column align-items-center justify-content-center w-30rem h-30rem bg-white font-normal text-white border-round-right-xl shadow-5">
         <label class="flex text-black-alpha-90 text-4xl font-bold mt-6 mb-2" for="">Welcome back!</label>
+
+
+
         <form class="flex flex-column w-full justify-content-center" action="">
 
           <div class="my-2">
@@ -45,6 +48,9 @@
             </router-link>
           </div>
         </form>
+
+
+
       </div>
     </div>
   </div>

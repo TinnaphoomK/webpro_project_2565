@@ -11,65 +11,72 @@
       </div>
       <div
         class="flex flex-column align-items-center justify-content-center w-30rem h-30rem bg-white font-normal text-white border-round-right-xl shadow-5">
-        <form class="flex flex-column w-full justify-content-center" action="">
 
-          <div class="flex flex-column my-1">
+
+
+        <form @submit.prevent="handleSubmit(!v$.$invalid)" class="p-fluid" action="">
+
+          <div class="field">
             <label class="flex text-black-alpha-90 justify-content-start mx-4" for="email">Email</label>
             <div class="flex">
               <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="email" name="email"
-                v-model="registerData.email" />
+                v-model="v$.email.$model" :class="{ 'p-invalid': v$.email.$invalid && submitted }" />
             </div>
           </div>
 
-          <div class="flex flex-column my-1">
+          <div class="field">
             <label class="flex text-black-alpha-90 justify-content-start mx-4" for="studentid">Student ID</label>
             <div class="flex">
               <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="studentid" name="studentid"
-                v-model="registerData.studentId" />
+                v-model="v$.studentId.$model" />
             </div>
           </div>
 
           <div class="flex my-1 justify-content-between">
-            <div class="flex flex-column justify-content-center mx-4">
-              <label class="flex text-black-alpha-90 justify-content-start" for="firstname">Firstname</label>
+            <div class="field">
+              <label class="flex text-black-alpha-90 justify-content-start" for="firstname"
+                :class="{ 'p-error': v$.firstname.$invalid && submitted }">Firstname</label>
               <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mt-1" id="firstname" name="firstname"
-                v-model="registerData.firstName" />
+                v-model="v$.firstname.$model" :class="{ 'p-invalid': v$.firstname.$invalid && submitted }" />
+              <small v-if="(v$.firstname.$invalid && submitted) || v$.firstname.$pending.$response" class="p-error">{{
+                v$.firstname.required.$message.replace('Value', 'First Name') }}</small>
+
             </div>
-            <div class="flex flex-column justify-content-center mx-4">
+            <div class="field">
               <label class="flex text-black-alpha-90 justify-content-start" for="lastname">Lastname</label>
               <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mt-1" id="lastname" name="lastname"
-                v-model="registerData.lastName" />
+                v-model="v$.lastname.$model" :class="{ 'p-invalid': v$.lastname.$invalid && submitted }"/>
+              <small v-if="(v$.lastname.$invalid && submitted) || v$.lastname.$pending.$response" class="p-error">{{
+                v$.lastname.required.$message.replace('Value', 'Last Name') }}</small>
             </div>
           </div>
 
-          <div class="flex flex-column my-1">
+          <div class="field">
             <label class="flex text-black-alpha-90 justify-content-start mx-4" type="password"
               for="password">Password</label>
             <div class="flex">
               <InputText type="password" class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="password"
-                name="password" v-model="registerData.password" />
+                name="password" v-model="v$.password.$model" />
+
             </div>
           </div>
 
-          <div class="flex flex-column my-1">
-            <label class="flex text-black-alpha-90 justify-content-start mx-4" for="confirmpassword">Confirm
+          <div class="field">
+            <label class="flex text-black-alpha-90 justify-content-start mx-4" for="confirmPassword">Confirm
               Password</label>
             <div class="flex">
-              <InputText type="password" class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="confirmpassword"
-                name="confirmpassword" v-model="registerData.confirmPassword" />
+              <InputText type="password" class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="confirmPassword"
+                name="confirmPassword" v-model="v$.confirmPassword.$model" />
             </div>
           </div>
 
-          <Button @click.prevent="signup()"
-            class="flex bg-primary-800 text-white hover:bg-primary-900 hover:text-gray-300 justify-content-center text-bold shadow-1 mt-4 mx-4">Sign
+          <Button type="submit"
+            class="flex justify-content-center bg-primary-700 hover:bg-primary-800 text-white p-button-text p-button-plain">Sign
             up</Button>
-          <div class="flex justify-content-center mt-4">
-            <label for="password" class="flex justify-content-center text-gray-500 text-sm">already have an account
-              ?</label>
-            <router-link class="flex text-sm text-primary-700 hover:text-primary-900 mx-2" to="/signin">Sign in
-            </router-link>
-          </div>
         </form>
+
+
+
       </div>
     </div>
   </div>
@@ -131,83 +138,55 @@ a:active {
 
 <script>
 import axios from "axios";
+import { required, email, minLength, sameAs } from "@vuelidate/validators";
+import { useVuelidate } from "@vuelidate/core";
 export default {
+  setup: () => ({ v$: useVuelidate() }),
   data() {
     return {
-      registerData: {
-        email: "",
-        studentId: "",
-        firstName: "",
-        lastName: "",
-        password: "",
-        confirmPassword: ""
-      },
+      email: "",
+      studentId: "",
+      firstname: "",
+      lastname: "",
+      password: "",
+      confirmPassword: "",
+      submitted: false,
     };
   },
+  validations() {
+    return {
+      firstname: { required },
+      lastname: { required },
+      studentId: { required },
+      email: { required, email },
+      password: { required, minLength: minLength(8) },
+      confirmPassword: { sameAsPassword: sameAs(this.password) }
+    }
+  },
   methods: {
-
+    handleSubmit(isFormValid) {
+      this.submitted = true;
+      if (!isFormValid) {
+        console.log("asd")
+        return;
+      }
+      this.signup();
+    },
+    resetForm() {
+      this.firstname = '';
+      this.lastname = '';
+      this.email = '';
+      this.password = '';
+      this.confirmPassword = '';
+      this.submitted = false;
+    },
     async signup() {
       try {
-        if (this.registerData.password !== this.registerData.confirmPassword) {
-          alert("Password not match");
-          return;
-        }
-        if (this.registerData.email === "" || this.registerData.studentId === "" || this.registerData.firstname === "" || this.registerData.lastname === "" || this.registerData.password === "" || this.registerData.confirmPassword === "") {
-          alert("Please fill all fields");
-          return;
-        }
-        if (this.registerData.password.length < 8) {
-          alert("Password must be at least 8 characters");
-          return;
-        }
-        if (this.registerData.studentId.length !== 8) {
-          alert("Student ID must be 8 characters");
-          return;
-        }
-        if (this.registerData.password === this.registerData.studentId) {
-          alert("Password cannot be the same as Student ID");
-          return;
-        }
-        if (this.registerData.password === this.registerData.firstname) {
-          alert("Password cannot be the same as Firstname");
-          return;
-        }
-        if (this.registerData.password === this.registerData.lastname) {
-          alert("Password cannot be the same as Lastname");
-          return;
-        }
-        if (this.registerData.password === this.registerData.email) {
-          alert("Password cannot be the same as Email");
-          return;
-        }
-        if (this.registerData.email.indexOf("@") === 0) {
-          alert("Please enter a valid email address");
-          return;
-        }
-        if (this.registerData.email.indexOf("@") === -1) {
-          alert("Please enter a valid email address");
-          return;
-        }
-        if (this.registerData.email.indexOf(".") === -1) {
-          alert("Please enter a valid email address");
-          return;
-        }
-        if (this.registerData.email.indexOf("@") > this.registerData.email.indexOf(".")) {
-          alert("Please enter a valid email address");
-          return;
-        }
-        if (this.registerData.email.indexOf("@") === this.registerData.email.indexOf(".") - 1) {
-          alert("Please enter a valid email address");
-          return;
-        }
-        if (this.registerData.email.indexOf("@") === this.registerData.email.indexOf(".") + 1) {
-          alert("Please enter a valid email address");
-          return;
-        }
 
         const res = await axios.post("http://localhost:3000/api/auth/register", this.registerData);
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("user", JSON.stringify(res.data.user));
+        this.resetForm();
         this.$router.push("/");
       } catch
       (error) {
