@@ -10,7 +10,7 @@ export default {
     data() {
         return {
             room: {},
-            selectFloor: '1',
+            selectFloor: '0',
         }
     },
     methods: {

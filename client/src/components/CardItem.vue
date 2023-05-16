@@ -45,11 +45,11 @@ export default {
   methods: {
     async allRooms(floor) {
       const res = await axios.get('http://localhost:3000/api/room/');
-
-      if (floor) {
-        this.rooms = res.data.filter(room => room.floor == floor);
-      } else {
+      console.log(floor);
+      if (floor == 0) {
         this.rooms = res.data;
+      } else {
+        this.rooms = res.data.filter(room => room.floor == floor);
       }
     },
     async getdetail(value) {
