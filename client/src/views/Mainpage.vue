@@ -1,6 +1,7 @@
 <script>
 import Navbar from '../components/Navbar.vue'
 import CardItem from '../components/CardItem.vue'
+import axios from 'axios'
 
 export default {
     components: {

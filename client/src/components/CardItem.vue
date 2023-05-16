@@ -1,7 +1,8 @@
 <template>
   <div>
     <div class="z-1 mr-2 ml-5 flex flex-wrap gap-5">
-      <div v-for="(value, index) in filteredRooms" :key="index" class="card border-round-2xl shadow-5 cursor-pointer" @click="getdetail(value)">
+      <div v-for="(value, index) in filteredRooms" :key="index" class="card border-round-2xl shadow-5 cursor-pointer"
+        @click="getdetail(value)">
         <div class="flex justify-content-start flex-wrap">
           <img class="flex w-17rem h-10rem border-round-top-2xl" :src="value.image" alt="">
         </div>
@@ -19,7 +20,9 @@
 
 <script>
 import axios from 'axios';
-
+import { ref as storageRef, getDownloadURL, listAll, deleteObject, uploadBytes } from "firebase/storage";
+import { useFirebaseStorage } from "vuefire";
+const storage = useFirebaseStorage();
 export default {
   data() {
     return {
@@ -45,12 +48,17 @@ export default {
   methods: {
     async allRooms(floor) {
       const res = await axios.get('http://localhost:3000/api/room/');
-      console.log(floor);
       if (floor == 0) {
         this.rooms = res.data;
       } else {
         this.rooms = res.data.filter(room => room.floor == floor);
       }
+      this.rooms.map(async (room) => {
+        const starsRef = storageRef(storage, "rooms/" + room.id);
+        const search = await listAll(starsRef);
+        const download = (await getDownloadURL(search.items[0])).toString();
+        room.image = download;
+      })
     },
     async getdetail(value) {
       const room = await axios.get(`http://localhost:3000/api/room/${value.id}`);
