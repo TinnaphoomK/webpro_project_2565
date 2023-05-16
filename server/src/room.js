@@ -33,7 +33,7 @@ router.get("/:id", async (req, res) => {
 //create
 router.post("/", authenticateToken, async (req, res) => {
   try {
-    const { name, detail, floor} = req.body;
+    const { name, detail, floor } = req.body;
     const room = await prisma.room.create({
       data: {
         name: name,
@@ -74,6 +74,24 @@ router.patch("/:id", authenticateToken, async (req, res) => {
   }
 });
 
+router.put("/update/:id", authenticateToken, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { status } = req.body;
+    const room = await prisma.room.update({
+      where: {
+        id: parseInt(id),
+      },
+      data: {
+        status: status,
+      },
+    });
+    res.status(200).json(room);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
 //delete
 router.delete("/:id", authenticateToken, async (req, res) => {
   try {
@@ -83,7 +101,7 @@ router.delete("/:id", authenticateToken, async (req, res) => {
         id: parseInt(id),
       },
     });
-    
+
     res.status(200).json(room);
   } catch (error) {
     console.log(error);

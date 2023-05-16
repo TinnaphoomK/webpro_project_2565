@@ -11,14 +11,14 @@ export default {
     },
     data() {
         return {
-            rooms: {}
+            rooms: []
         }
     },
 
     methods: {
         async checkrole() {
             const role = JSON.parse(localStorage.getItem("user")).role
-            if (role != "admin") {
+            if (role !== "admin") {
                 this.$router.push("/");
             }
         },

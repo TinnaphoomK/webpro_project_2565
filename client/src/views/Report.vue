@@ -63,7 +63,7 @@ export default {
   <div class="flex text-center justify-content-center mt-4">
     <Button @click.prevent="report()"
       class="thai bg-primary-800 hover:bg-primary-900 justify-content-center border-round-xl text-xl w-12rem h-3rem py-5 justify-content-center shadow-5">
-      ยืนยันการจอง
+      ยืนยันการรายงาน
     </Button>
   </div>
 </template>
