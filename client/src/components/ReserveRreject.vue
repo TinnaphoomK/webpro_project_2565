@@ -36,7 +36,7 @@ export default {
     methods: {
         async getAllReservations() {
             try {
-                const res = await axios.get(`http://localhost:3000/api/reservation/rejected`);
+                const res = await axios.get(`http://localhost:3000/api/reservation/admin?status=rejected`);
                 console.log(res.data);
 
                 if (res.data != null) {

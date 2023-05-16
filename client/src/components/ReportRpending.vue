@@ -18,7 +18,7 @@
           <label class="thai text-base ml-6" for="">รหัสรายงาน : #{{ value.id }}</label>
           <label class="thai text-base ml-6" for="">รายละเอียด : {{ value.detail }}</label>
           <div class="flex">
-                <Button class="thai text-xs bg-green-700 hover:bg-green-800 h-2rem w-6rem ml-4 mr-6 justify-content-center">เสร็จสิ้น</Button>
+                <Button @click="done(value.id)" class="thai text-xs bg-green-700 hover:bg-green-800 h-2rem w-6rem ml-4 mr-6 justify-content-center">เสร็จสิ้น</Button>
             </div>
         </div>
       </div>
@@ -28,37 +28,46 @@
 <script>
 import axios from 'axios';
 export default {
-    data() {
-        return {
-            report: [],
-            userId: ""
-        };
-    },
-    computed: {
-        pendingReport() {
-            return this.report.filter(report => report.status === "pending");
-        }
-    },
-    created: async function () {
-        this.userId = await JSON.parse(localStorage.getItem("user")).id
-        this.allreport()
-    },
-    methods: {
-        async allreport() {
-            try {
-                const res = await axios.get(`http://localhost:3000/api/user/report/${this.userId}`)
-                console.log(res.data);
-
-                if (res.data != null) {
-                    this.report = res.data[0].Report
-                } else {
-                    this.report = []
-                }
-            } catch (error) {
-                console.log(error);
-            }
-
-        },
+  data() {
+    return {
+      report: [],
+    };
+  },
+  computed: {
+    pendingReport() {
+      return this.report.filter(report => report.status === "pending");
     }
+  },
+  created() {
+    this.getAllReports();
+  },
+  methods: {
+    async getAllReports() {
+      try {
+        const res = await axios.get(`http://localhost:3000/api/report/`);
+        console.log(res.data);
+
+        if (res.data != null) {
+          this.report = res.data;
+        } else {
+          this.report = [];
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async done(id) {
+      try {
+        const res = await axios.put(`http://localhost:3000/api/report/${id}`, {
+          status: "done"
+        });
+        console.log(res.data);
+        this.getAllReports();
+        // window.location.reload();
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  }
 }
 </script>

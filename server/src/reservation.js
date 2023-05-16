@@ -17,11 +17,13 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/pending", async (req, res) => {
+
+router.get("/admin", async (req, res) => {
+  const { status } = req.query;
   try {
     const reservations = await prisma.reservation.findMany({
       where: {
-        status: "pending",
+        status: status,
       },
       include: {
         Room: true,
@@ -33,39 +35,8 @@ router.get("/pending", async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 });
-router.get("/approved", async (req, res) => {
-  try {
-    const reservations = await prisma.reservation.findMany({
-      where: {
-        status: "approved",
-      },
-      include: {
-        Room: true,
-        User: true,
-      },
-    });
-    res.status(200).json(reservations);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-});
-router.get("/rejected", async (req, res) => {
-  try {
-    const reservations = await prisma.reservation.findMany({
-      where: {
-        status: "rejected",
-      },
-      include: {
-        Room: true,
-        User: true,
-      },
-    });
-    res.status(200).json(reservations);
-  } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
-});
- 
+
+
 router.get("/:id", async (req, res) => {
   try {
     const { id } = req.params;

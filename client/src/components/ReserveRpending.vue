@@ -47,7 +47,7 @@ export default {
                     status: 'approved'
                 });
                 console.log(response.data);
-                // window.location.reload()
+                window.location.reload()
                 // Handle success or perform any additional operations
             } catch (error) {
                 console.log(error);
@@ -60,7 +60,7 @@ export default {
                     status: 'rejected'
                 });
                 console.log(response.data);
-                // window.location.reload()
+                window.location.reload()
                 // Handle success or perform any additional operations
             } catch (error) {
                 console.log(error);
@@ -69,7 +69,7 @@ export default {
         },
         async getAllReservations() {
             try {
-                const res = await axios.get(`http://localhost:3000/api/reservation/pending`);
+                const res = await axios.get(`http://localhost:3000/api/reservation/admin?status=pending`);
                 console.log(res.data);
 
                 if (res.data != null) {
