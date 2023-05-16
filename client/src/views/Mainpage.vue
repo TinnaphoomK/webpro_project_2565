@@ -32,27 +32,12 @@ export default {
     </div>
     <div>
 
-<<<<<<< Updated upstream
     </div>
     <div class="flex text-left justify-text-center justify-content-between font-bold text-2xl pt-6 mx-8 my-4">
         <div>
             <label class="text-6xl" for="">Room</label>
-=======
-    <div class="relative text-left justify-text-center font-bold text-2xl pt-6">
-        <router-link to="/" class="text-primary-600 ml-8">1ST FLOOR</router-link>
-        <router-link to="/mfloor" class="text-gray-900 ml-6 hover:text-primary-800">M FLOOR</router-link>
-        <router-link to="/2ndfloor" class="text-gray-900 ml-6 hover:text-primary-800">2ND FLOOR</router-link>
-        <router-link to="/3rdfloor" class="text-gray-900 ml-6 hover:text-primary-800">3RD FLOOR</router-link>
 
-        <div class="mx-7 my-2 px-2 py-6 border-round-xl shadow-5 cardbg">
 
-            <div class="grid justify-content-center" v-for="value, index in 10" :key="index">
-                <router-link to="/detail/:id" class="z-1 mx-2">
-                    <CardItem></CardItem>
-                </router-link>
-            </div>
-
->>>>>>> Stashed changes
         </div>
         <div class="flex">
             <select @input="floorselection($event)" name="floorSelect" placeholder="Select Floor ..." id="floorSelect"
