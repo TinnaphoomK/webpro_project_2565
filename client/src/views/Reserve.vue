@@ -1,6 +1,7 @@
 <script>
 import Navbar from '../components/Navbar.vue'
 import CardItem from '../components/CardItem.vue'
+import moment from 'moment-timezone';
 import axios from 'axios';
 
 export default {
@@ -33,28 +34,32 @@ export default {
         },
         async reserve() {
             try {
+                const dateTimeStart = new Date(new Date(this.startdate + ' ' + this.starttime).getTime() + (7 * 60 * 60 * 1000)).toISOString();
+                const dateTimeEnd = new Date(new Date(this.enddate + ' ' + this.endtime).getTime() + (7 * 60 * 60 * 1000)).toISOString();
+
                 console.log({
-                    dateTimeStart: new Date(this.startdate + ' ' + this.starttime).toISOString(),
-                    dateTimeEnd: new Date(this.enddate + ' ' + this.endtime).toISOString(),
+                    dateTimeStart: dateTimeStart,
+                    dateTimeEnd: dateTimeEnd,
                     roomId: this.roomId,
                     userId: this.userId,
-                    detaill: this.detail
-                })
+                    detail: this.detail
+                });
+
                 const res = await axios.post(`http://localhost:3000/api/reservation`, {
-                    dateTimeStart: new Date(this.startdate + ' ' + this.starttime).toISOString(),
-                    dateTimeEnd: new Date(this.enddate + ' ' + this.endtime).toISOString(),
+                    dateTimeStart: dateTimeStart,
+                    dateTimeEnd: dateTimeEnd,
                     roomId: parseInt(this.roomId),
                     userId: this.userId,
                     detail: this.detail
-                })
+                });
+
                 console.log(res.data);
                 this.$router.push(`/history/${this.student}`)
-
-            }
-            catch (err) {
+            } catch (err) {
                 console.log(err);
             }
         }
+
     }
 };
 </script>
