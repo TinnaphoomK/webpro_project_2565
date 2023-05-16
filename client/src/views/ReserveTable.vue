@@ -70,11 +70,21 @@ export default {
 
     <!-- top bar-->
     <div class="relative text-left justify-text-center font-bold text-2xl mt-6">
-        <router-link to="/reserve" class="thai first text-primary-600">รายการจอง</router-link>
-
-        <div class="flex flex-column card mx-8 mt-3 py-6 shadow-5 border-round-sm bg-white justify-content-center">
-            <label class="thai flex justify-content-center text-center text-5xl my-4" for="">ตารางจองห้อง</label>
-            <div class="flex thai justify-content-center">
+        <div class="flex flex-column card mx-8 mt-4 pb-8 shadow-5 border-round-sm bg-white justify-content-center">
+            <label class="flex thai text-primary-800 justify-content-center text-center text-7xl mt-6" for="">ตารางจองห้อง</label>
+            <div class="flex text-left justify-text-center justify-content-end font-bold text-2xl mx-8 my-2">
+                <!-- <div class="flex">
+                    <select @input="floorselection($event)" name="floorSelect" placeholder="Select Floor ..." id="floorSelect"
+                        class="flex justify-content-center text-center border-round-2xl w-10rem h-3rem font-bold text-lg cursor-pointer">
+                        <option value="0" disabled selected>Select Floor...</option>
+                        <option value="1">1st Floor</option>
+                        <option value="M">M Floor</option>
+                        <option value="2">2nd Floor</option>
+                        <option value="3">3rd Floor</option>
+                    </select>
+                </div> -->
+            </div>
+            <div class="flex thai justify-content-center mt-4">
                 <DataTable :value="pendingReservations" showGridlines tableStyle="min-width: 50rem">
                     <Column v-for="col of columns" :key="col.field" :field="col.field" :header="col.header"></Column>
                 </DataTable>
