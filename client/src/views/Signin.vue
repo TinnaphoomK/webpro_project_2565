@@ -56,6 +56,66 @@
   </div>
 </template>
 
+
+<script>
+import axios from "axios";
+export default {
+  data() {
+    return {
+      loginData: {
+        email: "",
+        role: "",
+        password: ""
+      }
+    };
+  },
+  methods: {
+    async signin() {
+      try {
+        if (this.loginData.email == "" || this.loginData.password == "") {
+          alert("Please fill in all fields")
+          return
+        }
+        if (!this.loginData.email.includes("@")) {
+          alert("Please enter a valid email address")
+          return
+        }
+        if (!this.loginData.email.includes(".")) {
+          alert("Please enter a valid email address")
+          return
+        }
+        if (this.loginData.email.indexOf("@") > this.loginData.email.indexOf(".")) {
+          alert("Please enter a valid email address")
+          return
+        }
+        
+        if (this.loginData.Role == "admin"){
+          const res = await axios.post("http://localhost:3000/api/auth/login", this.loginData);
+          localStorage.setItem("token", res.data.accessToken);
+          localStorage.setItem("user", JSON.stringify(res.data.user));
+          this.$router.push("/managepage");
+        }
+        
+        const res = await axios.post("http://localhost:3000/api/auth/login", this.loginData);
+        localStorage.setItem("token", res.data.accessToken);
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+        
+        // Check the role here
+        if (res.data.user.role === "admin") {
+          this.$router.push("/manageroom");
+        } else {
+          this.$router.push("/");
+        }
+      } catch (error) {
+        alert(error.response.data.error)
+        console.log(error.response.data.error);
+        
+      }
+    },
+  },
+};
+</script>
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Mitr&display=swap');
@@ -102,63 +162,3 @@ a:active {
   text-decoration: none;
 }
 </style>
-
-
-<script>
-import axios from "axios";
-export default {
-  data() {
-    return {
-      loginData: {
-        email: "",
-        role: "",
-        password: ""
-      }
-    };
-  },
-  methods: {
-    async signin() {
-      try {
-        if (this.loginData.email == "" || this.loginData.password == "") {
-          alert("Please fill in all fields")
-          return
-        }
-        if (!this.loginData.email.includes("@")) {
-          alert("Please enter a valid email address")
-          return
-        }
-        if (!this.loginData.email.includes(".")) {
-          alert("Please enter a valid email address")
-          return
-        }
-        if (this.loginData.email.indexOf("@") > this.loginData.email.indexOf(".")) {
-          alert("Please enter a valid email address")
-          return
-        }
-
-        if (this.loginData.Role == "admin"){
-          const res = await axios.post("http://localhost:3000/api/auth/login", this.loginData);
-          localStorage.setItem("token", res.data.accessToken);
-          localStorage.setItem("user", JSON.stringify(res.data.user));
-          this.$router.push("/managepage");
-        }
-        
-        const res = await axios.post("http://localhost:3000/api/auth/login", this.loginData);
-        localStorage.setItem("token", res.data.accessToken);
-        localStorage.setItem("user", JSON.stringify(res.data.user));
-
-        // Check the role here
-        if (res.data.user.role === "admin") {
-          this.$router.push("/manageroom");
-        } else {
-          this.$router.push("/");
-        }
-      } catch (error) {
-        alert(error.response.data.error)
-        console.log(error.response.data.error);
-
-      }
-    },
-  },
-};
-</script>

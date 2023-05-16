@@ -24,20 +24,15 @@ export default {
 <template>
     <Navbar></Navbar>
     <div class="pt-4 mt-4 text-center w-full flex justify-content-center align-items-center">
-        <!-- <span class="p-float-label">
-            <InputText id="search" type="text" class="p-inputtext-lg shadow-2 w-30rem" v-model="value" />
+        <span class="p-float-label">
+            <InputText id="search" type="text" class="p-inputtext-lg shadow-2 w-30rem" v-model="search" />
             <label for="search">Search here !</label>
-        </span> -->
+        </span>
 
     </div>
-    <div>
-
-    </div>
-    <div class="flex text-left justify-text-center justify-content-between font-bold text-2xl pt-6 mx-8 my-4">
+    <div class="flex text-left justify-text-center justify-content-between font-bold text-2xl pt-4 mx-8 my-4">
         <div>
-            <label class="text-6xl" for="">Room</label>
-
-
+            <label class="flex text-6xl" for="">Room</label>
         </div>
         <div class="flex">
             <select @input="floorselection($event)" name="floorSelect" placeholder="Select Floor ..." id="floorSelect"
@@ -51,7 +46,7 @@ export default {
         </div>
     </div>
 
-    <div class="mx-7 mb-2 px-5 py-6 border-round-xl shadow-5 cardbg flex gap-5">
+    <div class="flex mx-7 mb-2 px-5 py-6 border-round-xl shadow-5 cardbg gap-5">
         <CardItem :floor='selectFloor' />
     </div>
 
