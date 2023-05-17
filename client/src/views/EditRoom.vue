@@ -64,7 +64,8 @@
                         </div>
 
                         <a @click.prevent="editRoom()">
-                            <Button class="thai bg-primary-800 hover:bg-primary-900 border-round-xl text-xl w-30rem h-4rem justify-content-center shadow-5 mt-6 mx-8">ยืนยัน</Button>
+                            <Button
+                                class="thai bg-primary-800 hover:bg-primary-900 border-round-xl text-xl w-30rem h-4rem justify-content-center shadow-5 mt-6 mx-8">ยืนยัน</Button>
                         </a>
 
                     </div>
@@ -117,7 +118,6 @@ export default {
         async editRoom() {
             try {
                 const id = this.$route.params.id;
-                console.log(id)
                 const res = await axios.patch(`http://localhost:3000/api/room/${id}`, {
                     name: this.name,
                     floor: this.floor,
@@ -192,5 +192,6 @@ a:hover {
 
 a:active {
     text-decoration: none;
-}</style>
+}
+</style>
   
