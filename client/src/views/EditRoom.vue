@@ -9,7 +9,7 @@
                 <div class="flex align-items-center justify-content-center">
                     <div class="flex flex-column card-container mx-8 my-6 justify-content-center align-items-center">
                         <div class="w-full flex flex-column align-items-center justify-content-center" v-if="image">
-                            <img class="w-5" :src="image" alt="">
+                            <img class="w-6" :src="image" alt="">
                             <button class="flex justify-content-center w-4 mt-4" v-if="image"
                                 @click="removeFile(roomId)">Delete image</button>
                         </div>
@@ -19,46 +19,46 @@
                     <div class="flex flex-column card-container my-6 justify-content-center align-self-start">
                         <div class="my-2">
                             <label class="thai flex text-sm text-black-alpha-90 justify-content-start mx-8"
-                                for="room">ชื่อห้อง</label>
+                                for="room">ชื่อห้อง : {{rooms.name}}</label>
                             <div class="flex">
-                                <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
-                                    v-model="name" :value="rooms.name"/>
+                                <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room" placeholder="New room name..."
+                                    v-model="name"/>
                             </div>
                         </div>
 
                         <div class="my-2">
                             <label class="thai flex text-sm text-black-alpha-90 justify-content-start mx-8"
-                                for="room">ชั้น</label>
+                                for="room">ชั้น : {{rooms.floor}}</label>
                             <div class="flex">
-                                <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
-                                    v-model="floor" :value="rooms.floor"/>
+                                <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room" placeholder="New floor..."
+                                    v-model="floor"/>
                             </div>
                         </div>
 
                         <div class="my-2">
                             <label class="thai flex text-sm text-black-alpha-90 justify-content-start mx-8"
-                                for="room">รายละเอียด</label>
+                                for="room">รายละเอียด : {{rooms.detail}}</label>
                             <div class="flex">
-                                <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
-                                    v-model="detail" :value="rooms.detail"/>
+                                <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room" placeholder="New detail..."
+                                    v-model="detail"/>
                             </div>
                         </div>
 
                         <div class="my-2">
                             <label class="thai flex text-sm text-black-alpha-90 justify-content-start mx-8"
-                                for="room">รายละเอียดเพิ่มเติม</label>
+                                for="room">รายละเอียดเพิ่มเติม : {{rooms.description}}</label>
                             <div class="flex">
-                                <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
-                                    v-model="description" :value="rooms.description"/>
+                                <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room" placeholder="New description..."
+                                    v-model="description"/>
                             </div>
                         </div>
 
                         <div class="my-2">
                             <label class="thai flex text-sm text-black-alpha-90 justify-content-start mx-8"
-                                for="room">จำนวนที่นั่ง</label>
+                                for="room">จำนวนที่นั่ง : {{rooms.totalSeat}}</label>
                             <div class="flex">
-                                <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
-                                    v-model="totalSeat" :value="rooms.totalSeat"/>
+                                <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room" placeholder="New Total seat..."
+                                    v-model="totalSeat"/>
                             </div>
                         </div>
 

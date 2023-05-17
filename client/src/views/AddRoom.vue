@@ -87,7 +87,7 @@ export default {
                     <div class="flex flex-column card-container mx-8 my-6 justify-content-center align-items-center">
                         <div class="w-full flex flex-column align-items-center justify-content-center"
                             v-if="this.chooseImage">
-                            <img class="w-5" :src="this.chooseImage" alt="">
+                            <img class="w-6" :src="this.chooseImage" alt="">
                             <button class="flex justify-content-center w-4 mt-4" v-if="this.chooseImage"
                                 @click="removeImage">Delete image</button>
                         </div>
