@@ -51,7 +51,7 @@ export default {
                 if (this.image && res.data.id) {
                     await this.uploadFile(res.data.id)
                 }
-                //redirec
+                this.$router.push("/manageroom")
                 
             } catch (error) {
                 console.log(error)
