@@ -1,151 +1,196 @@
 <template>
     <Navbar></Navbar>
-  
+
     <div class="relative text-left justify-text-center font-bold text-2xl my-6">
-      <router-link to="/detail" class="thai first text-primary-600 hover:text-primary-600">แก้ไขห้อง</router-link>
-  
-      <div class="card mx-8 my-3 py-6 shadow-5 border-round-sm bg-white">
-        <div class="flex justify-content-center">
-          <div class="flex align-items-center justify-content-center">
-            <div class="flex">
-              <img src="../assets/img/auditorium.jpeg" class="w-30rem h-30rem border-round-2xl shadow-5 my-4 mx-8" alt="">
+        <router-link to="/detail" class="thai first text-primary-600 hover:text-primary-600">แก้ไขห้อง</router-link>
+
+        <div class="card mx-8 my-3 py-6 shadow-5 border-round-sm bg-white">
+            <div class="flex justify-content-center">
+                <div class="flex align-items-center justify-content-center">
+                    <div class="flex flex-column card-container mx-8 my-6 justify-content-center align-items-center">
+                        <div class="w-full flex flex-column align-items-center justify-content-center"
+                            v-if="this.chooseImage">
+                            <img class="w-5" :src="this.chooseImage" alt="">
+                            <button class="flex justify-content-center w-4 mt-4" v-if="this.chooseImage"
+                                @click="removeImage">Delete image</button>
+                        </div>
+                        <input v-else type="file" @change="(event) => { addImage(event); }">
+                    </div>
+
+                    <div class="flex flex-column card-container my-6 justify-content-center align-self-start">
+                        <div class="my-2">
+                            <label class="thai flex text-sm text-black-alpha-90 justify-content-start mx-8"
+                                for="room">ชื่อห้อง</label>
+                            <div class="flex">
+                                <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
+                                    v-model="name" />
+                            </div>
+                        </div>
+
+                        <div class="my-2">
+                            <label class="thai flex text-sm text-black-alpha-90 justify-content-start mx-8"
+                                for="room">ชั้น</label>
+                            <div class="flex">
+                                <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
+                                    v-model="floor" />
+                            </div>
+                        </div>
+
+                        <div class="my-2">
+                            <label class="thai flex text-sm text-black-alpha-90 justify-content-start mx-8"
+                                for="room">รายละเอียด</label>
+                            <div class="flex">
+                                <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
+                                    v-model="detail" />
+                            </div>
+                        </div>
+
+                        <div class="my-2">
+                            <label class="thai flex text-sm text-black-alpha-90 justify-content-start mx-8"
+                                for="room">รายละเอียดเพิ่มเติม</label>
+                            <div class="flex">
+                                <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
+                                    v-model="description" />
+                            </div>
+                        </div>
+
+                        <div class="my-2">
+                            <label class="thai flex text-sm text-black-alpha-90 justify-content-start mx-8"
+                                for="room">จำนวนที่นั่ง</label>
+                            <div class="flex">
+                                <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
+                                    v-model="totalSeat" />
+                            </div>
+                        </div>
+
+                        <a @click.prevent="editRoom()">
+                            <Button class="thai bg-primary-800 hover:bg-primary-900 border-round-xl text-xl w-30rem h-4rem justify-content-center shadow-5 mt-6 mx-8">ยืนยัน</Button>
+                        </a>
+
+                    </div>
+                </div>
             </div>
-  
-            <div class="flex flex-column card-container my-6 justify-content-center align-self-start">
-              <div class="my-2">
-                <label class="thai flex text-sm text-black-alpha-90 justify-content-start mx-8" for="room">ชื่อห้อง</label>
-                <div class="flex">
-                  <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room" v-model="name" />
-                </div>
-              </div>
-  
-              <div class="my-2">
-                <label class="thai flex text-sm text-black-alpha-90 justify-content-start mx-8" for="room">ชั้น</label>
-                <div class="flex">
-                  <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room" v-model="floor" />
-                </div>
-              </div>
-  
-              <div class="my-2">
-                <label class="thai flex text-sm text-black-alpha-90 justify-content-start mx-8" for="room">รายละเอียด</label>
-                <div class="flex">
-                  <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room" v-model="detail" />
-                </div>
-              </div>
-  
-              <div class="my-2">
-                <label class="thai flex text-sm text-black-alpha-90 justify-content-start mx-8" for="room">รายละเอียดเพิ่มเติม</label>
-                <div class="flex">
-                  <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room" v-model="description" />
-                </div>
-              </div>
-  
-              <div class="my-2">
-                <label class="thai flex text-sm text-black-alpha-90 justify-content-start mx-8" for="room">จำนวนที่นั่ง</label>
-                <div class="flex">
-                  <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room" v-model="totalSeat" />
-                </div>
-              </div>
-  
-              <Button @click="editRoom()"
-                            class="thai bg-primary-800 hover:bg-primary-900 border-round-xl text-xl w-30rem h-4rem justify-content-center shadow-5 mt-6 mx-8">ยืนยัน</Button>            </div>
-          </div>
         </div>
-      </div>
     </div>
-  </template>
+</template>
   
-  <script>
-  import axios from 'axios';
-  import Navbar from '../components/Navbar.vue';
-  
-  export default {
+<script>
+import axios from 'axios';
+import Navbar from '../components/Navbar.vue';
+import { ref as storageRef, getDownloadURL, listAll, deleteObject, uploadBytes } from "firebase/storage";
+import { useFirebaseStorage } from "vuefire";
+const storage = useFirebaseStorage();
+
+export default {
     components: {
-      Navbar
+        Navbar
     },
     data() {
-      return {
-        name: '',
-        floor: '',
-        detail: '',
-        description: '',
-        totalSeat: '',
-        userId: '',
-      };
+        return {
+            name: '',
+            floor: '',
+            detail: '',
+            description: '',
+            totalSeat: '',
+            userId: '',
+            image: '',
+            chooseImage: '',
+        };
     },
     methods: {
-      async checkRole() {
-        const role = JSON.parse(localStorage.getItem('user')).role;
-        if (role !== 'admin') {
-          this.$router.push('/');
-        }
-      },
-      async editRoom() {
-        try {
-          const id = this.$route.params.id;
-          const res = await axios.patch(`http://localhost:3000/api/room/${id}`, {
-            name: this.name,
-            floor: this.floor,
-            detail: this.detail,
-            description: this.description,
-            totalSeat: this.totalSeat
-          }, {
-            headers: {
-              Authorization: 'Bearer ' + this.userId
+        async checkRole() {
+            const role = JSON.parse(localStorage.getItem('user')).role;
+            if (role !== 'admin') {
+                this.$router.push('/');
             }
-          });
-          this.$router.push('/manageroom');
-        } catch (err) {
-          alert('Edit room failed');
-        }
-      }
+        },
+        addImage(event) {
+            const file = event.target.files[0];
+            this.image = file
+            this.chooseImage = URL.createObjectURL(file);
+            console.log(this.chooseImage);
+        },
+        removeImage() {
+            this.image = ""
+            this.chooseImage = ""
+        },
+        async editRoom() {
+            try {
+                const id = this.$route.params.id;
+                console.log(id)
+                const res = await axios.patch(`http://localhost:3000/api/room/${id}`, {
+                    name: this.name,
+                    floor: this.floor,
+                    detail: this.detail,
+                    description: this.description,
+                    totalSeat: this.totalSeat
+                }, {
+                    headers: {
+                        Authorization: 'Bearer ' + this.userId
+                    }
+                });
+                if (this.image && id) {
+                    await this.uploadFile(id)
+                }
+                this.$router.push('/manageroom');
+            } catch (err) {
+                alert('Edit room failed');
+            }
+        },
+        async uploadFile(roomId) {
+            try {
+                const starsRef = storageRef(storage, `rooms/${roomId}/${this.image.name}`);
+                await uploadBytes(starsRef, this.image);
+            } catch (error) {
+                console.log(error);
+            }
+        },
     },
     mounted() {
-      this.checkRole();
-      this.userId = localStorage.getItem('token')
+        this.checkRole();
+        this.userId = localStorage.getItem('token')
     }
-  };
-  </script>
+};
+</script>
   
-  <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-  @import url('https://fonts.googleapis.com/css2?family=Mitr&display=swap');
-  
-  * {
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mitr&display=swap');
+
+* {
     font-family: 'Inter', sans-serif;
     margin: 0;
-  }
-  
-  body {
+}
+
+body {
     background-color: rgba(35, 87, 165, 0.1);
-  }
-  
-  .thai {
+}
+
+.thai {
     font-family: 'Mitr', sans-serif;
-  }
-  
-  .navbg {
+}
+
+.navbg {
     background-image: linear-gradient(to right, rgb(35, 87, 165), rgb(3, 8, 16), rgb(35, 87, 165));
-  }
-  
-  .first {
+}
+
+.first {
     margin-left: 10%;
-  }
-  
-  a:link {
+}
+
+a:link {
     text-decoration: none;
-  }
-  
-  a:visited {
+}
+
+a:visited {
     text-decoration: none;
-  }
-  
-  a:hover {
+}
+
+a:hover {
     text-decoration: none;
-  }
-  
-  a:active {
+}
+
+a:active {
     text-decoration: none;
-  }
-  </style>
+}</style>
   

@@ -52,7 +52,7 @@ export default {
                     await this.uploadFile(res.data.id)
                 }
                 this.$router.push("/manageroom")
-                
+
             } catch (error) {
                 console.log(error)
             }

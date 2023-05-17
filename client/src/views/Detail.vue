@@ -1,33 +1,42 @@
 <script>
 import Navbar from '../components/Navbar.vue'
 import CardItem from '../components/CardItem.vue'
+import { ref as storageRef, getDownloadURL, listAll, deleteObject, uploadBytes } from "firebase/storage";
+import { useFirebaseStorage } from "vuefire";
+const storage = useFirebaseStorage();
 import axios from 'axios'
 
 export default {
-  components: {
-    Navbar,
-    CardItem
-  },
-  data() {
-    return {
-      room: {},
-      roomId: '',
-    }
-  },
-  mounted() {
-    this.roomId = this.$route.params.id
-    this.thisroom(this.roomId) // You can pass the room ID as a parameter here
-  },
-  methods: {
-    async thisroom(id) {
-      const res = await axios.get(`http://localhost:3000/api/room/${id}`)
-      console.log(res.data);
-        this.room = res.data
+    components: {
+        Navbar,
+        CardItem
     },
-    async toreserve(id) {
-      this.$router.push(`/reserve/${id}`)
+    data() {
+        return {
+            rooms: {},
+            roomId: '',
+        }
+    },
+    mounted() {
+        this.roomId = this.$route.params.id
+        this.thisroom(this.roomId) // You can pass the room ID as a parameter here
+    },
+    methods: {
+        async thisroom(id) {
+            const res = await axios.get(`http://localhost:3000/api/room/${id}`)
+            console.log(res.data);
+            this.rooms = res.data;
+            const starsRef = storageRef(storage, "rooms/" + this.rooms.id);
+            const search = await listAll(starsRef);
+            const download = (await getDownloadURL(search.items[0])).toString();
+            this.rooms.image = download;
+            console.log(this.rooms.image);
+        },
+
+        async toreserve(id) {
+            this.$router.push(`/reserve/${id}`)
+        }
     }
-  }
 };
 </script>
 
@@ -43,23 +52,23 @@ export default {
         <div class="card mx-8 my-3 py-6 shadow-5 border-round-sm bg-white">
             <div class="flex justify-content-center flex-wrap card-container">
                 <div class="flex align-items-center justify-content-center">
-                    <img :src="room.image" class="w-30rem h-30rem border-round-2xl my-4 mx-8" alt="">
+                    <img :src="this.rooms.image" class="w-30rem h-30rem border-round-2xl my-4 mx-8" alt="">
                     <div class="flex flex-column card-container mx-7 my-6 justify-content-start align-self-start">
                         <div class="flex flex-column w-30rem bg-transparent font-bold text-6xl text-gray-900 border-round">
-                            {{room.name}}</div>
+                            {{ this.rooms.name }}</div>
                         <div
                             class="thai flex flex-column w-30rem bg-transparent font-semi-bold text-3xl text-gray-900 border-round mt-6">
                             รายละเอียด</div>
-                        <div class="thai flex flex-column text-gray-500">ชั้น : {{ room.floor }}</div>
-                        <div class="thai flex flex-column text-gray-500">รายละเอียด : {{ room.detail }}</div>
-                        <div class="thai flex flex-column text-gray-500">จำนวนที่นั่ง : {{ room.totalSeat }}</div>
-                        <div class="thai flex flex-column text-gray-500">มักใช้ในโอกาส : {{ room.description }}</div>
+                        <div class="thai flex flex-column text-gray-500">ชั้น : {{ this.rooms.floor }}</div>
+                        <div class="thai flex flex-column text-gray-500">รายละเอียด : {{ this.rooms.detail }}</div>
+                        <div class="thai flex flex-column text-gray-500">จำนวนที่นั่ง : {{ this.rooms.totalSeat }}</div>
+                        <div class="thai flex flex-column text-gray-500">มักใช้ในโอกาส : {{ this.rooms.description }}</div>
 
-                        
-                            <Button @click.prevent="toreserve(room.id)"
-                                class="thai bg-primary-800 hover:bg-primary-900 border-round-xl text-xl w-16rem h-4rem justify-content-center shadow-5 mt-6">จองห้อง
-                            </Button>
-                       
+
+                        <Button @click.prevent="toreserve(room.id)"
+                            class="thai bg-primary-800 hover:bg-primary-900 border-round-xl text-xl w-16rem h-4rem justify-content-center shadow-5 mt-6">จองห้อง
+                        </Button>
+
                     </div>
                 </div>
             </div>
