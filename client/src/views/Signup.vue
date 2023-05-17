@@ -14,70 +14,73 @@
 
 
 
-        <form @submit.prevent="handleSubmit(!v$.$invalid)" class="p-fluid" action="">
+        <form @submit.prevent="handleSubmit(!v$.$invalid)" class="flex flex-column" action="">
 
-          <div class="field">
+          <div class="flex-column">
             <label class="flex text-black-alpha-90 justify-content-start mx-4" for="email" :class="{ 'p-error': v$.email.$invalid && submitted }">Email</label>
             <div class="flex">
               <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="email" name="email"
                 v-model="v$.email.$model" :class="{ 'p-invalid': v$.email.$invalid && submitted }" />
-                <small v-if="(v$.email.$invalid && submitted) || v$.email.$pending.$response" class="p-error">{{
-                  v$.email.required.$message.replace('Value', 'Email') }}</small>
-            </div>
+              </div>
+              <small v-if="(v$.email.$invalid && submitted) || v$.email.$pending.$response" class="flex ml-4 p-error">{{
+                v$.email.required.$message.replace('Value', 'Email') }}</small>
           </div>
 
-          <div class="field">
+          <div class="flex flex-column mt-2">
             <label class="flex text-black-alpha-90 justify-content-start mx-4" for="studentid" :class="{ 'p-error': v$.studentId.$invalid && submitted }">Student ID</label>
             <div class="flex">
               <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="studentid" name="studentid"
                 v-model="v$.studentId.$model" :class="{ 'p-invalid': v$.studentId.$invalid && submitted }" />
-                <small v-if="(v$.studentId.$invalid && submitted) || v$.studentId.$pending.$response" class="p-error">{{
-                  v$.studentId.required.$message.replace('Value', 'Student ID') }}</small>
-            </div>
+              </div>
+              <small v-if="(v$.studentId.$invalid && submitted) || v$.studentId.$pending.$response" class="flex ml-4 p-error">{{
+                v$.studentId.required.$message.replace('Value', 'Student ID') }}</small>
           </div>
 
-          <div class="flex my-1 justify-content-between">
-            <div class="field">
+          <div class="flex mt-2 justify-content-between">
+            <div class="mx-4">
               <label class="flex text-black-alpha-90 justify-content-start" for="firstName"
-                :class="{ 'p-error': v$.firstName.$invalid && submitted }">firstName</label>
-              <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mt-1" id="firstName" name="firstName"
-                v-model="v$.firstName.$model" :class="{ 'p-invalid': v$.firstName.$invalid && submitted }" />
-              <small v-if="(v$.firstName.$invalid && submitted) || v$.firstName.$pending.$response" class="p-error">{{
+                :class="{ 'p-error': v$.firstName.$invalid && submitted }">First name</label>
+              <div class="flex">
+                <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mt-1" id="firstName" name="firstName"
+                  v-model="v$.firstName.$model" :class="{ 'p-invalid': v$.firstName.$invalid && submitted }" />
+              </div>
+              <small v-if="(v$.firstName.$invalid && submitted) || v$.firstName.$pending.$response" class="flex flex-column p-error">{{
                 v$.firstName.required.$message.replace('Value', 'First name') }}</small>
-
-            </div>
-            <div class="field">
-              <label class="flex text-black-alpha-90 justify-content-start" for="lastName">lastName</label>
-              <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mt-1" id="lastName" name="lastName"
-                v-model="v$.lastName.$model" :class="{ 'p-invalid': v$.lastName.$invalid && submitted }"/>
-              <small v-if="(v$.lastName.$invalid && submitted) || v$.lastName.$pending.$response" class="p-error">{{
+              </div>
+            <div class="mx-4">
+              <label class="flex text-black-alpha-90 justify-content-start" for="lastName" :class="{ 'p-error': v$.firstName.$invalid && submitted }">Last name</label>
+              <div class="flex">
+                <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mt-1" id="lastName" name="lastName"
+                  v-model="v$.lastName.$model" :class="{ 'p-invalid': v$.lastName.$invalid && submitted }"/>
+              </div>
+              <small v-if="(v$.lastName.$invalid && submitted) || v$.lastName.$pending.$response" class="flex flex-column p-error">{{
                 v$.lastName.required.$message.replace('Value', 'Last name') }}</small>
-            </div>
+              </div>
           </div>
 
-          <div class="field">
+          <div class="flex flex-column mt-2">
             <label class="flex text-black-alpha-90 justify-content-start mx-4" for="password" :class="{ 'p-invalid': v$.password.$invalid && submitted }">Password</label>
             <div class="flex">
               <InputText type="password" class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="password"
                 name="password" v-model="v$.password.$model" :class="{ 'p-invalid': v$.password.$invalid && submitted }"/>
-                <small v-if="(v$.password.$invalid && submitted) || v$.password.$pending.$response" class="p-error">{{
-                  v$.password.required.$message.replace('Value', 'Password') }}</small>
-            </div>
+              </div>
+              <small v-if="(v$.password.$invalid && submitted) || v$.password.$pending.$response" class="flex ml-4 p-error">{{
+                v$.password.required.$message.replace('Value', 'Password') }}</small>
           </div>
 
-          <div class="field">
+          <div class="flex flex-column mt-2">
             <label class="flex text-black-alpha-90 justify-content-start mx-4" for="confirmPassword" :class="{ 'p-invalid': v$.confirmPassword.$invalid && submitted }">Confirm
               Password</label>
             <div class="flex">
               <InputText type="password" class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="confirmPassword"
                 name="confirmPassword" v-model="v$.confirmPassword.$model" :class="{ 'p-invalid': v$.confirmPassword.$invalid && submitted }"/>
-                <small v-if="(v$.confirmPassword.$invalid && submitted) || v$.confirmPassword.$pending.$response" class="p-error">{{
-                  v$.confirmPassword.required.$message.replace('Value', 'Confirm password') }}</small>
-            </div>
+              </div>
+              <small v-if="(v$.confirmPassword.$invalid && submitted) || v$.confirmPassword.$pending.$response" class="flex ml-4 p-error">{{
+                v$.confirmPassword.required.$message.replace('Value', 'Confirm password') }}</small>
           </div>
 
           <Button type="submit"
-            class="flex justify-content-center bg-primary-700 hover:bg-primary-800 text-white p-button-text p-button-plain">Sign
+            class="flex justify-content-center text-center bg-primary-800 hover:bg-primary-900 hover:text-200 text-white p-button-text mt-4 mx-4">Sign
             up</Button>
         </form>
 

@@ -24,9 +24,9 @@
                         <div class="flex">
                             <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="email"
                                 name="email" v-model="v$.email.$model" :class="{ 'p-invalid': v$.email.$invalid && submitted }" />
-                                <small v-if="(v$.email.$invalid && submitted) || v$.email.$pending.$response" class="p-error">{{
-                                    v$.email.required.$message.replace('Value', 'Email') }}</small>
-                        </div>
+                            </div>
+                            <small v-if="(v$.email.$invalid && submitted) || v$.email.$pending.$response" class="ml-4 p-error">{{
+                                v$.email.required.$message.replace('Value', 'Email') }}</small>
                     </div>
 
                     <div class="my-2">
@@ -35,9 +35,9 @@
                         <div class="flex">
                             <InputText type="password" class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1"
                                 id="newpassword" name="newpassword" v-model="v$.newPassword.$model" :class="{ 'p-invalid': v$.newPassword.$invalid && submitted }" />
-                                <small v-if="(v$.newPassword.$invalid && submitted) || v$.newPassword.$pending.$response" class="p-error">{{
-                                    v$.newPassword.required.$message.replace('Value', 'New Password') }}</small>
                             </div>
+                            <small v-if="(v$.newPassword.$invalid && submitted) || v$.newPassword.$pending.$response" class="ml-4 p-error">{{
+                                v$.newPassword.required.$message.replace('Value', 'New Password') }}</small>
                     </div>
 
                     <div class="my-2">
@@ -46,12 +46,12 @@
                         <div class="flex">
                             <InputText type="password" class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1"
                                 id="confirmpassword" name="confirmpassword" v-model="v$.confirmPassword.$model" :class="{ 'p-invalid': v$.confirmPassword.$invalid && submitted }" />
-                                <small v-if="(v$.confirmPassword.$invalid && submitted) || v$.confirmPassword.$pending.$response" class="p-error">{{
-                                    v$.confirmPassword.required.$message.replace('Value', 'Confirm Password') }}</small>
                             </div>
+                            <small v-if="(v$.confirmPassword.$invalid && submitted) || v$.confirmPassword.$pending.$response" class="ml-4 p-error">{{
+                                v$.confirmPassword.required.$message.replace('Value', 'Confirm Password') }}</small>
                     </div>
                     <Button type="submit"
-                        class="flex bg-primary-800 text-white hover:bg-primary-900 hover:text-gray-300 justify-content-center text-bold shadow-1 mt-4 mb-2 mx-4">Change
+                        class="flex bg-primary-800 text-white hover:bg-primary-900 hover:text-200 justify-content-center text-bold shadow-1 mt-4 mb-2 mx-4">Change
                         Password</Button>
                 </form>
             </div>

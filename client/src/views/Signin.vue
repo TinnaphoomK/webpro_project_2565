@@ -22,9 +22,9 @@
             <div class="flex">
               <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="email"
               v-model="v$.email.$model" :class="{ 'p-invalid': v$.email.$invalid && submitted }" />
-              <small v-if="(v$.email.$invalid && submitted) || v$.email.$pending.$response" class="p-error">{{
-                v$.email.required.$message.replace('Value', 'Email') }}</small>
             </div>
+            <small v-if="(v$.email.$invalid && submitted) || v$.email.$pending.$response" class="flex ml-4 mt-1 p-error">{{
+              v$.email.required.$message.replace('Value', 'Email') }}</small>
           </div>
 
           <div class="my-2">
@@ -32,12 +32,12 @@
             <div class="flex">
               <InputText type="password" class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="password"
               v-model="v$.password.$model" :class="{ 'p-invalid': v$.password.$invalid && submitted }" />
-              <small v-if="(v$.password.$invalid && submitted) || v$.password.$pending.$response" class="p-error">{{
-                v$.password.required.$message.replace('Value', 'Password') }}</small>
             </div>
+            <small v-if="(v$.password.$invalid && submitted) || v$.password.$pending.$response" class="flex ml-4 mt-1 p-error">{{
+              v$.password.required.$message.replace('Value', 'Password') }}</small>
           </div>
           <Button type="submit"
-            class="flex bg-primary-800 text-white hover:bg-primary-900 hover:text-gray-300 justify-content-center text-bold shadow-1 mt-4 mb-2 mx-4">Sign
+            class="flex bg-primary-800 text-white hover:bg-primary-900 hover:text-200 justify-content-center text-bold shadow-1 mt-4 mb-2 mx-4">Sign
             in</Button>
           <div class="flex justify-content-end">
             <router-link to="/forgotpassword"
