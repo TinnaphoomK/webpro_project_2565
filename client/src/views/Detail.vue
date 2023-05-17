@@ -65,7 +65,7 @@ export default {
                         <div class="thai flex flex-column text-gray-500">มักใช้ในโอกาส : {{ this.rooms.description }}</div>
 
 
-                        <Button @click.prevent="toreserve(room.id)"
+                        <Button @click.prevent="toreserve(roomId)"
                             class="thai bg-primary-800 hover:bg-primary-900 border-round-xl text-xl w-16rem h-4rem justify-content-center shadow-5 mt-6">จองห้อง
                         </Button>
 

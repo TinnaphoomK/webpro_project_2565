@@ -1,7 +1,9 @@
 <script>
 import Navbar from '../components/Navbar.vue'
 import CardItem from '../components/CardItem.vue'
-import moment from 'moment-timezone';
+import { ref as storageRef, getDownloadURL, listAll, deleteObject, uploadBytes } from "firebase/storage";
+import { useFirebaseStorage } from "vuefire";
+const storage = useFirebaseStorage();
 import axios from 'axios';
 
 export default {
@@ -11,7 +13,7 @@ export default {
     },
     data() {
         return {
-            room: {},
+            rooms: {},
             startdate: '',
             enddate: '',
             starttime: '',
@@ -30,7 +32,12 @@ export default {
         async thisroom(id) {
             const res = await axios.get(`http://localhost:3000/api/room/${id}`)
             console.log(res.data);
-            this.room = res.data
+            this.rooms = res.data;
+            const starsRef = storageRef(storage, "rooms/" + this.rooms.id);
+            const search = await listAll(starsRef);
+            const download = (await getDownloadURL(search.items[0])).toString();
+            this.rooms.image = download;
+            console.log(this.rooms.image);
         },
         async reserve() {
             try {
@@ -72,7 +79,7 @@ export default {
         <div class="card mx-8 my-3 py-6 shadow-5 border-round-sm bg-white">
             <div class="flex justify-content-center flex-wrap card-container">
                 <div class="flex align-items-center justify-content-center">
-                    <img :src="room.image" class="w-30rem h-30rem border-round-2xl my-4 mx-8" alt="">
+                    <img :src="this.rooms.image" class="w-30rem h-30rem border-round-2xl my-4 mx-8" alt="">
                     <div class="flex flex-column card-container mt-3 mx-7 justify-content-start">
                         <div class="flex">
                             <div class="mt-2 mx-4 flex flex-column">
