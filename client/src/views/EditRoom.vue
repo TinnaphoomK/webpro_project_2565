@@ -22,7 +22,7 @@
                                 for="room">ชื่อห้อง</label>
                             <div class="flex">
                                 <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
-                                    v-model="name" />
+                                    v-model="name" :value="rooms.name"/>
                             </div>
                         </div>
 
@@ -31,7 +31,7 @@
                                 for="room">ชั้น</label>
                             <div class="flex">
                                 <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
-                                    v-model="floor" />
+                                    v-model="floor" :value="rooms.floor"/>
                             </div>
                         </div>
 
@@ -40,7 +40,7 @@
                                 for="room">รายละเอียด</label>
                             <div class="flex">
                                 <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
-                                    v-model="detail" />
+                                    v-model="detail" :value="rooms.detail"/>
                             </div>
                         </div>
 
@@ -49,7 +49,7 @@
                                 for="room">รายละเอียดเพิ่มเติม</label>
                             <div class="flex">
                                 <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
-                                    v-model="description" />
+                                    v-model="description" :value="rooms.description"/>
                             </div>
                         </div>
 
@@ -58,7 +58,7 @@
                                 for="room">จำนวนที่นั่ง</label>
                             <div class="flex">
                                 <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
-                                    v-model="totalSeat" />
+                                    v-model="totalSeat" :value="rooms.totalSeat"/>
                             </div>
                         </div>
 
@@ -95,11 +95,14 @@ export default {
             userId: '',
             image: '',
             chooseImage: '',
+            rooms: [],
+            roomId: '',
         };
     },
     created() {
         this.roomId = this.$route.params.id
         this.getFile(this.roomId)
+        this.getRoom(this.roomId);
     },
     methods: {
         async checkRole() {
@@ -167,9 +170,15 @@ export default {
                 console.log(error);
             }
         },
-        async getroom(id){
+        async getRoom(id){
              try{
-                const res = await axios.get
+                const res = await axios.get(`http://localhost:3000/api/room/${id}`, {
+                    headers: {
+                        Authorization: "Bearer " + this.userId
+                    }
+                })                
+                console.log(res.data)
+                this.rooms = res.data
              } catch(error) {
                 console.log(error)
              }
