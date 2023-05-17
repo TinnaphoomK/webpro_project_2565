@@ -15,24 +15,28 @@
 
 
 
-        <form class="flex flex-column w-full justify-content-center" action="">
+        <form @submit.prevent="handleSubmit(!v$.$invalid)" class="flex flex-column w-full justify-content-center" action="">
 
           <div class="my-2">
-            <label class="flex text-black-alpha-90 justify-content-start mx-4" for="email">Email</label>
+            <label class="flex text-black-alpha-90 justify-content-start mx-4" for="email" :class="{ 'p-error': v$.email.$invalid && submitted }">Email</label>
             <div class="flex">
               <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="email"
-                v-model="loginData.email" />
+              v-model="v$.email.$model" :class="{ 'p-invalid': v$.email.$invalid && submitted }" />
+              <small v-if="(v$.email.$invalid && submitted) || v$.email.$pending.$response" class="p-error">{{
+                v$.email.required.$message.replace('Value', 'Email') }}</small>
             </div>
           </div>
 
           <div class="my-2">
-            <label class="flex text-black-alpha-90 justify-content-start mx-4" for="password">Password</label>
+            <label class="flex text-black-alpha-90 justify-content-start mx-4" for="password" :class="{ 'p-invalid': v$.password.$invalid && submitted }">Password</label>
             <div class="flex">
               <InputText type="password" class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="password"
-                v-model="loginData.password" />
+              v-model="v$.password.$model" :class="{ 'p-invalid': v$.password.$invalid && submitted }" />
+              <small v-if="(v$.password.$invalid && submitted) || v$.password.$pending.$response" class="p-error">{{
+                v$.password.required.$message.replace('Value', 'Password') }}</small>
             </div>
           </div>
-          <Button @click.prevent="signin()"
+          <Button type="submit"
             class="flex bg-primary-800 text-white hover:bg-primary-900 hover:text-gray-300 justify-content-center text-bold shadow-1 mt-4 mb-2 mx-4">Sign
             in</Button>
           <div class="flex justify-content-end">
@@ -65,44 +69,50 @@
 
 <script>
 import axios from "axios";
+import { required, email, minLength } from "@vuelidate/validators";
+import { useVuelidate } from "@vuelidate/core";
 export default {
+  setup: () => ({ v$: useVuelidate() }),
   data() {
     return {
-      loginData: {
         email: "",
         role: "",
         password: ""
-      }
-    };
+    }
+  },
+  validations() {
+    return {
+      email: { required, email },
+      password: { required, minLength: minLength(8) },
+    }
   },
   methods: {
+    handleSubmit(isFormValid) {
+      this.submitted = true;
+      if (!isFormValid) {
+        return;
+      }
+      this.signin();
+    },
     async signin() {
       try {
-        if (this.loginData.email == "" || this.loginData.password == "") {
-          alert("Please fill in all fields")
-          return
-        }
-        if (!this.loginData.email.includes("@")) {
-          alert("Please enter a valid email address")
-          return
-        }
-        if (!this.loginData.email.includes(".")) {
-          alert("Please enter a valid email address")
-          return
-        }
-        if (this.loginData.email.indexOf("@") > this.loginData.email.indexOf(".")) {
-          alert("Please enter a valid email address")
-          return
-        }
         
-        if (this.loginData.Role == "admin"){
-          const res = await axios.post("http://localhost:3000/api/auth/login", this.loginData);
+        if (this.Role == "admin"){
+          const res = await axios.post("http://localhost:3000/api/auth/login", {
+            email: this.email,
+            password: this.password,
+            role: this.role
+          });
           localStorage.setItem("token", res.data.accessToken);
           localStorage.setItem("user", JSON.stringify(res.data.user));
           this.$router.push("/managepage");
         }
         
-        const res = await axios.post("http://localhost:3000/api/auth/login", this.loginData);
+        const res = await axios.post("http://localhost:3000/api/auth/login", {
+            email: this.email,
+            password: this.password,
+            role: this.role
+        });
         localStorage.setItem("token", res.data.accessToken);
         localStorage.setItem("user", JSON.stringify(res.data.user));
         

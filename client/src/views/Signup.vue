@@ -173,7 +173,6 @@ export default {
     handleSubmit(isFormValid) {
       this.submitted = true;
       if (!isFormValid) {
-        console.log("asd")
         return;
       }
       this.signup();

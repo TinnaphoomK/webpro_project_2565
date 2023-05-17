@@ -17,34 +17,40 @@
             </div>
             <div
                 class="flex flex-column align-items-center justify-content-center w-30rem h-30rem bg-white font-normal text-white border-round-right-xl shadow-5">
-                <form class="flex flex-column w-full justify-content-center" action="">
+                <form @submit.prevent="handleSubmit(!v$.$invalid)" class="flex flex-column w-full justify-content-center" action="">
 
                     <div class="my-2">
-                        <label class="flex text-black-alpha-90 justify-content-start mx-4" for="email">Email</label>
+                        <label class="flex text-black-alpha-90 justify-content-start mx-4" for="email" :class="{ 'p-error': v$.email.$invalid && submitted }">Email</label>
                         <div class="flex">
                             <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="email"
-                                name="email" v-model="email" />
+                                name="email" v-model="v$.email.$model" :class="{ 'p-invalid': v$.email.$invalid && submitted }" />
+                                <small v-if="(v$.email.$invalid && submitted) || v$.email.$pending.$response" class="p-error">{{
+                                    v$.email.required.$message.replace('Value', 'Email') }}</small>
                         </div>
                     </div>
 
                     <div class="my-2">
-                        <label class="flex text-black-alpha-90 justify-content-start mx-4" for="newPassword">New
+                        <label class="flex text-black-alpha-90 justify-content-start mx-4" for="newPassword" :class="{ 'p-error': v$.newPassword.$invalid && submitted }">New
                             Password</label>
                         <div class="flex">
                             <InputText type="password" class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1"
-                                id="newpassword" name="newpassword" v-model="newPassword" />
-                        </div>
+                                id="newpassword" name="newpassword" v-model="v$.newPassword.$model" :class="{ 'p-invalid': v$.newPassword.$invalid && submitted }" />
+                                <small v-if="(v$.newPassword.$invalid && submitted) || v$.newPassword.$pending.$response" class="p-error">{{
+                                    v$.newPassword.required.$message.replace('Value', 'New Password') }}</small>
+                            </div>
                     </div>
 
                     <div class="my-2">
-                        <label class="flex text-black-alpha-90 justify-content-start mx-4" for="confirmpassword">Confirm
+                        <label class="flex text-black-alpha-90 justify-content-start mx-4" for="confirmpassword" :class="{ 'p-error': v$.confirmPassword.$invalid && submitted }">Confirm
                             Password</label>
                         <div class="flex">
                             <InputText type="password" class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1"
-                                id="confirmpassword" name="confirmpassword" v-model="confirmPassword" />
-                        </div>
+                                id="confirmpassword" name="confirmpassword" v-model="v$.confirmPassword.$model" :class="{ 'p-invalid': v$.confirmPassword.$invalid && submitted }" />
+                                <small v-if="(v$.confirmPassword.$invalid && submitted) || v$.confirmPassword.$pending.$response" class="p-error">{{
+                                    v$.confirmPassword.required.$message.replace('Value', 'Confirm Password') }}</small>
+                            </div>
                     </div>
-                    <Button @click="resetPassword()"
+                    <Button type="submit"
                         class="flex bg-primary-800 text-white hover:bg-primary-900 hover:text-gray-300 justify-content-center text-bold shadow-1 mt-4 mb-2 mx-4">Change
                         Password</Button>
                 </form>
@@ -108,7 +114,11 @@ a:active {
 
 <script>
 import axios from "axios";
+import { required, email, minLength, sameAs } from "@vuelidate/validators";
+import { useVuelidate } from "@vuelidate/core";
 export default {
+    setup: () => ({ v$: useVuelidate() }),
+
     data() {
         return {
             email: "",
@@ -116,7 +126,21 @@ export default {
             confirmPassword: "",
         };
     },
+    validations() {
+    return {
+      email: { required, email },
+      newPassword: { required, minLength: minLength(8) },
+      confirmPassword: { required, sameAsNewPassword: sameAs(this.newPassword) }
+    }
+  },
     methods: {
+        handleSubmit(isFormValid) {
+      this.submitted = true;
+      if (!isFormValid) {
+        return;
+      }
+      this.resetPassword();
+    },
         async resetPassword(){
             try {
                 if(this.newPassword !== this.confirmPassword){
