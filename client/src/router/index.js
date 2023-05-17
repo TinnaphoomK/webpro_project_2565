@@ -74,7 +74,7 @@ const router = createRouter({
       component: () => import('../views/AddRoom.vue')
     },
     {
-      path: '/editroom',
+      path: '/editroom/:id',
       name: 'editroom',
       component: () => import('../views/EditRoom.vue')
     },

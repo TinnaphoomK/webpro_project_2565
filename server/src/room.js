@@ -54,7 +54,7 @@ router.post("/", authenticateToken, async (req, res) => {
 router.patch("/:id", authenticateToken, async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, detail } = req.body;
+    const { name, floor, detail, description, totalSeat } = req.body;
     const room = await prisma.room.update({
       where: {
         id: parseInt(id),

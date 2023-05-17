@@ -23,9 +23,9 @@
           </Button>
           <label class="thai text-sm ml-2" for="">{{ room.name }}</label>
           <label class="thai text-sm ml-2" for="">ชั้น : {{ room.floor }}</label>
-          <router-link to="/editroom">
-            <i class="pi pi-ellipsis-h mx-2 text-xl text-900"></i>
-          </router-link>
+          <a @click.prevent="toedit(room.id)">
+          <i class="pi pi-ellipsis-h mx-6 text-xl text-900"></i>
+        </a>
           <Button
             @click="deleteRoom(room.id)"
             class="flex justify-content-center thai text-sm bg-primary-700 h-2rem w-6rem hover:bg-primary-800 mx-2"
@@ -86,6 +86,9 @@
         } catch (error) {
           alert("ห้องนี้มีการจองอยู่");
         }
+      },
+      async toedit(id) {
+        this.$router.push(`/editroom/${id}`)
       }
     }
   };
