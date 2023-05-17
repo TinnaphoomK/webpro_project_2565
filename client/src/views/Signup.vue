@@ -38,26 +38,25 @@
 
           <div class="flex my-1 justify-content-between">
             <div class="field">
-              <label class="flex text-black-alpha-90 justify-content-start" for="firstname"
-                :class="{ 'p-error': v$.firstname.$invalid && submitted }">Firstname</label>
-              <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mt-1" id="firstname" name="firstname"
-                v-model="v$.firstname.$model" :class="{ 'p-invalid': v$.firstname.$invalid && submitted }" />
-              <small v-if="(v$.firstname.$invalid && submitted) || v$.firstname.$pending.$response" class="p-error">{{
-                v$.firstname.required.$message.replace('Value', 'First name') }}</small>
+              <label class="flex text-black-alpha-90 justify-content-start" for="firstName"
+                :class="{ 'p-error': v$.firstName.$invalid && submitted }">firstName</label>
+              <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mt-1" id="firstName" name="firstName"
+                v-model="v$.firstName.$model" :class="{ 'p-invalid': v$.firstName.$invalid && submitted }" />
+              <small v-if="(v$.firstName.$invalid && submitted) || v$.firstName.$pending.$response" class="p-error">{{
+                v$.firstName.required.$message.replace('Value', 'First name') }}</small>
 
             </div>
             <div class="field">
-              <label class="flex text-black-alpha-90 justify-content-start" for="lastname">Lastname</label>
-              <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mt-1" id="lastname" name="lastname"
-                v-model="v$.lastname.$model" :class="{ 'p-invalid': v$.lastname.$invalid && submitted }"/>
-              <small v-if="(v$.lastname.$invalid && submitted) || v$.lastname.$pending.$response" class="p-error">{{
-                v$.lastname.required.$message.replace('Value', 'Last name') }}</small>
+              <label class="flex text-black-alpha-90 justify-content-start" for="lastName">lastName</label>
+              <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mt-1" id="lastName" name="lastName"
+                v-model="v$.lastName.$model" :class="{ 'p-invalid': v$.lastName.$invalid && submitted }"/>
+              <small v-if="(v$.lastName.$invalid && submitted) || v$.lastName.$pending.$response" class="p-error">{{
+                v$.lastName.required.$message.replace('Value', 'Last name') }}</small>
             </div>
           </div>
 
           <div class="field">
-            <label class="flex text-black-alpha-90 justify-content-start mx-4" type="password"
-              for="password" :class="{ 'p-invalid': v$.password.$invalid && submitted }">Password</label>
+            <label class="flex text-black-alpha-90 justify-content-start mx-4" for="password" :class="{ 'p-invalid': v$.password.$invalid && submitted }">Password</label>
             <div class="flex">
               <InputText type="password" class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="password"
                 name="password" v-model="v$.password.$model" :class="{ 'p-invalid': v$.password.$invalid && submitted }"/>
@@ -153,8 +152,8 @@ export default {
     return {
       email: "",
       studentId: "",
-      firstname: "",
-      lastname: "",
+      firstName: "",
+      lastName: "",
       password: "",
       confirmPassword: "",
       submitted: false,
@@ -162,8 +161,8 @@ export default {
   },
   validations() {
     return {
-      firstname: { required },
-      lastname: { required },
+      firstName: { required },
+      lastName: { required },
       studentId: { required },
       email: { required, email },
       password: { required, minLength: minLength(8) },
@@ -180,9 +179,10 @@ export default {
       this.signup();
     },
     resetForm() {
-      this.firstname = '';
-      this.lastname = '';
+      this.firstName = '';
+      this.lastName = '';
       this.email = '';
+      this.studentId = '';
       this.password = '';
       this.confirmPassword = '';
       this.submitted = false;
@@ -190,7 +190,13 @@ export default {
     async signup() {
       try {
 
-        const res = await axios.post("http://localhost:3000/api/auth/register", this.registerData);
+        const res = await axios.post("http://localhost:3000/api/auth/register", {
+          email: this.email,
+          firstName: this.firstName,
+          lastName: this.lastName,
+          studentId: this.studentId,
+          password: toString(this.password)
+        });
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("user", JSON.stringify(res.data.user));
         this.resetForm();
