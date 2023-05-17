@@ -90,7 +90,6 @@ export default {
                 History
               </a>
 
-
               <a class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center"
                 style="min-width: 125px; min-height: 25px">
                 <i class="pi pi-user mr-2"></i>
@@ -108,8 +107,8 @@ export default {
 
           <template v-if="isLoggedIn && this.role === 'admin'">
             <div class="flex mx-4">
-
-              <a class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer"
+              
+              <a href="/manageroom" class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer"
                 style="min-width: 125px; min-height: 25px">
                 <i class="pi pi-user mr-2"></i>
                 {{ username }}

@@ -11,65 +11,81 @@
       </div>
       <div
         class="flex flex-column align-items-center justify-content-center w-30rem h-30rem bg-white font-normal text-white border-round-right-xl shadow-5">
-        <form class="flex flex-column w-full justify-content-center" action="">
 
-          <div class="flex flex-column my-1">
-            <label class="flex text-black-alpha-90 justify-content-start mx-4" for="email">Email</label>
+
+
+        <form @submit.prevent="handleSubmit(!v$.$invalid)" class="flex flex-column" action="">
+
+          <div class="flex-column">
+            <label class="flex text-black-alpha-90 justify-content-start mx-4" for="email" :class="{ 'p-error': v$.email.$invalid && submitted }">Email</label>
             <div class="flex">
               <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="email" name="email"
-                v-model="registerData.email" />
-            </div>
+                v-model="v$.email.$model" :class="{ 'p-invalid': v$.email.$invalid && submitted }" />
+              </div>
+              <small v-if="(v$.email.$invalid && submitted) || v$.email.$pending.$response" class="flex ml-4 p-error">{{
+                v$.email.required.$message.replace('Value', 'Email') }}</small>
           </div>
 
-          <div class="flex flex-column my-1">
-            <label class="flex text-black-alpha-90 justify-content-start mx-4" for="studentid">Student ID</label>
+          <div class="flex flex-column mt-2">
+            <label class="flex text-black-alpha-90 justify-content-start mx-4" for="studentid" :class="{ 'p-error': v$.studentId.$invalid && submitted }">Student ID</label>
             <div class="flex">
               <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="studentid" name="studentid"
-                v-model="registerData.studentId" />
-            </div>
+                v-model="v$.studentId.$model" :class="{ 'p-invalid': v$.studentId.$invalid && submitted }" />
+              </div>
+              <small v-if="(v$.studentId.$invalid && submitted) || v$.studentId.$pending.$response" class="flex ml-4 p-error">{{
+                v$.studentId.required.$message.replace('Value', 'Student ID') }}</small>
           </div>
 
-          <div class="flex my-1 justify-content-between">
-            <div class="flex flex-column justify-content-center mx-4">
-              <label class="flex text-black-alpha-90 justify-content-start" for="firstname">Firstname</label>
-              <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mt-1" id="firstname" name="firstname"
-                v-model="registerData.firstName" />
-            </div>
-            <div class="flex flex-column justify-content-center mx-4">
-              <label class="flex text-black-alpha-90 justify-content-start" for="lastname">Lastname</label>
-              <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mt-1" id="lastname" name="lastname"
-                v-model="registerData.lastName" />
-            </div>
+          <div class="flex mt-2 justify-content-between">
+            <div class="mx-4">
+              <label class="flex text-black-alpha-90 justify-content-start" for="firstName"
+                :class="{ 'p-error': v$.firstName.$invalid && submitted }">First name</label>
+              <div class="flex">
+                <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mt-1" id="firstName" name="firstName"
+                  v-model="v$.firstName.$model" :class="{ 'p-invalid': v$.firstName.$invalid && submitted }" />
+              </div>
+              <small v-if="(v$.firstName.$invalid && submitted) || v$.firstName.$pending.$response" class="flex flex-column p-error">{{
+                v$.firstName.required.$message.replace('Value', 'First name') }}</small>
+              </div>
+            <div class="mx-4">
+              <label class="flex text-black-alpha-90 justify-content-start" for="lastName" :class="{ 'p-error': v$.firstName.$invalid && submitted }">Last name</label>
+              <div class="flex">
+                <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mt-1" id="lastName" name="lastName"
+                  v-model="v$.lastName.$model" :class="{ 'p-invalid': v$.lastName.$invalid && submitted }"/>
+              </div>
+              <small v-if="(v$.lastName.$invalid && submitted) || v$.lastName.$pending.$response" class="flex flex-column p-error">{{
+                v$.lastName.required.$message.replace('Value', 'Last name') }}</small>
+              </div>
           </div>
 
-          <div class="flex flex-column my-1">
-            <label class="flex text-black-alpha-90 justify-content-start mx-4" type="password"
-              for="password">Password</label>
+          <div class="flex flex-column mt-2">
+            <label class="flex text-black-alpha-90 justify-content-start mx-4" for="password" :class="{ 'p-invalid': v$.password.$invalid && submitted }">Password</label>
             <div class="flex">
               <InputText type="password" class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="password"
-                name="password" v-model="registerData.password" />
-            </div>
+                name="password" v-model="v$.password.$model" :class="{ 'p-invalid': v$.password.$invalid && submitted }"/>
+              </div>
+              <small v-if="(v$.password.$invalid && submitted) || v$.password.$pending.$response" class="flex ml-4 p-error">{{
+                v$.password.required.$message.replace('Value', 'Password') }}</small>
           </div>
 
-          <div class="flex flex-column my-1">
-            <label class="flex text-black-alpha-90 justify-content-start mx-4" for="confirmpassword">Confirm
+          <div class="flex flex-column mt-2">
+            <label class="flex text-black-alpha-90 justify-content-start mx-4" for="confirmPassword" :class="{ 'p-invalid': v$.confirmPassword.$invalid && submitted }">Confirm
               Password</label>
             <div class="flex">
-              <InputText type="password" class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="confirmpassword"
-                name="confirmpassword" v-model="registerData.confirmPassword" />
-            </div>
+              <InputText type="password" class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="confirmPassword"
+                name="confirmPassword" v-model="v$.confirmPassword.$model" :class="{ 'p-invalid': v$.confirmPassword.$invalid && submitted }"/>
+              </div>
+              <small v-if="(v$.confirmPassword.$invalid && submitted) || v$.confirmPassword.$pending.$response" class="flex ml-4 p-error">{{
+                v$.confirmPassword.required.$message.replace('Value', 'Confirm password') }}</small>
           </div>
 
-          <Button @click.prevent="signup()"
-            class="flex bg-primary-800 text-white hover:bg-primary-900 hover:text-gray-300 justify-content-center text-bold shadow-1 mt-4 mx-4">Sign
+          <Button type="submit"
+            class="flex justify-content-center text-center bg-primary-800 hover:bg-primary-900 hover:text-200 text-white p-button-text mt-4 mx-4">Sign
             up</Button>
-          <div class="flex justify-content-center mt-4">
-            <label for="password" class="flex justify-content-center text-gray-500 text-sm">already have an account
-              ?</label>
-            <router-link class="flex text-sm text-primary-700 hover:text-primary-900 mx-2" to="/signin">Sign in
-            </router-link>
-          </div>
         </form>
+
+
+
       </div>
     </div>
   </div>
@@ -131,83 +147,61 @@ a:active {
 
 <script>
 import axios from "axios";
+import { required, email, minLength, sameAs } from "@vuelidate/validators";
+import { useVuelidate } from "@vuelidate/core";
 export default {
+  setup: () => ({ v$: useVuelidate() }),
   data() {
     return {
-      registerData: {
-        email: "",
-        studentId: "",
-        firstName: "",
-        lastName: "",
-        password: "",
-        confirmPassword: ""
-      },
+      email: "",
+      studentId: "",
+      firstName: "",
+      lastName: "",
+      password: "",
+      confirmPassword: "",
+      submitted: false,
     };
   },
+  validations() {
+    return {
+      firstName: { required },
+      lastName: { required },
+      studentId: { required },
+      email: { required, email },
+      password: { required, minLength: minLength(8) },
+      confirmPassword: { required, sameAsPassword: sameAs(this.password) }
+    }
+  },
   methods: {
-
+    handleSubmit(isFormValid) {
+      this.submitted = true;
+      if (!isFormValid) {
+        return;
+      }
+      this.signup();
+    },
+    resetForm() {
+      this.firstName = '';
+      this.lastName = '';
+      this.email = '';
+      this.studentId = '';
+      this.password = '';
+      this.confirmPassword = '';
+      this.submitted = false;
+    },
     async signup() {
       try {
-        if (this.registerData.password !== this.registerData.confirmPassword) {
-          alert("Password not match");
-          return;
-        }
-        if (this.registerData.email === "" || this.registerData.studentId === "" || this.registerData.firstname === "" || this.registerData.lastname === "" || this.registerData.password === "" || this.registerData.confirmPassword === "") {
-          alert("Please fill all fields");
-          return;
-        }
-        if (this.registerData.password.length < 8) {
-          alert("Password must be at least 8 characters");
-          return;
-        }
-        if (this.registerData.studentId.length !== 8) {
-          alert("Student ID must be 8 characters");
-          return;
-        }
-        if (this.registerData.password === this.registerData.studentId) {
-          alert("Password cannot be the same as Student ID");
-          return;
-        }
-        if (this.registerData.password === this.registerData.firstname) {
-          alert("Password cannot be the same as Firstname");
-          return;
-        }
-        if (this.registerData.password === this.registerData.lastname) {
-          alert("Password cannot be the same as Lastname");
-          return;
-        }
-        if (this.registerData.password === this.registerData.email) {
-          alert("Password cannot be the same as Email");
-          return;
-        }
-        if (this.registerData.email.indexOf("@") === 0) {
-          alert("Please enter a valid email address");
-          return;
-        }
-        if (this.registerData.email.indexOf("@") === -1) {
-          alert("Please enter a valid email address");
-          return;
-        }
-        if (this.registerData.email.indexOf(".") === -1) {
-          alert("Please enter a valid email address");
-          return;
-        }
-        if (this.registerData.email.indexOf("@") > this.registerData.email.indexOf(".")) {
-          alert("Please enter a valid email address");
-          return;
-        }
-        if (this.registerData.email.indexOf("@") === this.registerData.email.indexOf(".") - 1) {
-          alert("Please enter a valid email address");
-          return;
-        }
-        if (this.registerData.email.indexOf("@") === this.registerData.email.indexOf(".") + 1) {
-          alert("Please enter a valid email address");
-          return;
-        }
 
-        const res = await axios.post("http://localhost:3000/api/auth/register", this.registerData);
+        const res = await axios.post("http://localhost:3000/api/auth/register", {
+          email: this.email,
+          firstName: this.firstName,
+          lastName: this.lastName,
+          studentId: this.studentId,
+          password: toString(this.password)
+        });
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("user", JSON.stringify(res.data.user));
+        this.resetForm();
         this.$router.push("/");
       } catch
       (error) {
