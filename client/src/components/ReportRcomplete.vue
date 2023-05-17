@@ -4,7 +4,7 @@
             <div v-for="(value, index) in allReports" :key="index"
                 class="bg-white text-primary-800 text-xl font-bold flex align-items-center justify-content-between w-full h-6rem border-round-2xl m-2 shadow-5">
                 <div
-                    class="flex thai bg-green-700 font-normal text-lg justify-content-center text-white text-center align-items-center h-2rem w-10rem border-round-right-lg">
+                    class="flex thai bg-green-700 font-normal text-lg justify-content-center text-white text-center align-items-center h-2rem w-7rem border-round-right-lg">
                     เสร็จสิ้น</div>
                 <!-- <div
             class="thai bg-red-700 font-normal text-white text-center justify-content-center align-items-center h-2rem w-7rem mx-2">

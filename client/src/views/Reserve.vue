@@ -45,8 +45,8 @@ export default {
                 const dateTimeEnd = new Date(new Date(this.enddate + ' ' + this.endtime).getTime() + (7 * 60 * 60 * 1000)).toISOString();
 
                 console.log({
-                    dateTimeStart: dateTimeStart,
-                    dateTimeEnd: dateTimeEnd,
+                    dateTimeStart: dateTimeStart.toLocaleString('en-US', { timeZone: 'Asia/Bangkok' }),
+                    dateTimeEnd: dateTimeEnd.toLocaleString('en-US', { timeZone: 'Asia/Bangkok' }),
                     roomId: this.roomId,
                     userId: this.userId,
                     detail: this.detail

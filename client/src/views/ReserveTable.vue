@@ -16,7 +16,7 @@ export default {
             columns: [
                 { field: 'User.studentId', header: 'รหัสนักศึกษา' },
                 { field: 'Room.name', header: 'ห้องที่จอง' },
-                { field: 'createdAt', header: 'วันที่จอง' },
+                { field: 'createdAt', header: 'วันที่ลงชื่อ' },
                 { field: 'dateTimeStart', header: 'เวลาที่เริ่มจอง' },
                 { field: 'dateTimeEnd', header: 'เวลาที่สิ้นสุดการจอง' },
             ]
@@ -39,8 +39,8 @@ export default {
             console.log(this.student);
             this.reservation.map((index) => {
                 index.createdAt = index.createdAt.split("T")[0]
-                index.dateTimeStart = index.dateTimeStart.slice(11,19)
-                index.dateTimeEnd = index.dateTimeEnd.slice(11,19)
+                index.dateTimeStart = index.dateTimeStart.slice(0,19).replace("T", "  เวลา ")
+                index.dateTimeEnd = index.dateTimeEnd.slice(0,19).replace("T", "  เวลา ")
                 console.log(index);
             })
             return this.reservation.filter(reservation => reservation.status === "approved");

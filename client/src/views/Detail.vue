@@ -20,12 +20,25 @@ export default {
     computed: {
         reservationCount() {
             if (this.rooms.Reservation) {
-                return this.rooms.Reservation.filter(reservation => reservation.status === 'approved').length;
+                let today = new Date();
+                today.setHours(0, 0, 0, 0); // Normalize to start of day in local timezone
+
+                return this.rooms.Reservation.filter(reservation => {
+                    let reservationDate = new Date(reservation.dateTimeStart);
+                    reservationDate.setHours(0, 0, 0, 0); // Normalize to start of day
+
+                    // Compare both dates in local timezone
+                    return reservation.status === 'approved' && reservationDate.getTime() === today.getTime();
+                }).length;
             } else {
                 return 0;
             }
         }
     },
+
+
+
+
     mounted() {
         this.roomId = this.$route.params.id
         this.thisroom(this.roomId) // You can pass the room ID as a parameter here
@@ -33,7 +46,7 @@ export default {
     methods: {
         async thisroom(id) {
             const res = await axios.get(`http://localhost:3000/api/room/${id}`)
-            console.log(res.data);
+            console.log("rooms data: ", res.data);
             this.rooms = res.data;
             const starsRef = storageRef(storage, "rooms/" + this.rooms.id);
             const search = await listAll(starsRef);
@@ -73,6 +86,7 @@ export default {
                         <label class="thai flex flex-column text-gray-500">รายละเอียด : {{ this.rooms.detail }}</label>
                         <label class="thai flex flex-column text-gray-500">จำนวนที่นั่ง : {{ this.rooms.totalSeat }}</label>
                         <label class="thai flex flex-column text-gray-500">คิวก่อนหน้า : {{ reservationCount }} คิว</label>
+
 
 
                         <Button @click.prevent="toreserve(roomId)"

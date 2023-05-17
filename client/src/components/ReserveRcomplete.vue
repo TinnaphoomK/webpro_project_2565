@@ -15,6 +15,9 @@
         <label class="thai text-base ml-6" for="">เวลาที่จอง : {{ value.dateTimeStart.slice(value.dateTimeStart.indexOf('T') + 1,
           -5) }} - {{ value.dateTimeEnd.slice(value.dateTimeEnd.indexOf('T') + 1, -5) }}</label>
         <label class="thai text-base ml-6" for="">รหัสจอง : #{{ value.id }}</label>
+        <a href="#">
+          <i class="pi pi-ellipsis-h mx-6 text-xl text-900"></i>
+        </a>
       </div>
     </div>
   </div>

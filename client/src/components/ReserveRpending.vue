@@ -15,7 +15,7 @@
                     value.dateTimeStart.slice(value.dateTimeStart.indexOf('T') + 1,
                         -5) }} - {{ value.dateTimeEnd.slice(value.dateTimeEnd.indexOf('T') + 1, -5) }}</label>
                 <label class="thai text-base ml-2" for="">รหัสจอง : #{{ value.id }}</label>
-                <div class="flex">
+                <div class="flex mr-4">
                     <Button @click="reserveAccept(value.id)"
                         class="flex thai text-sm bg-green-700 hover:bg-green-800 h-2rem w-5rem mx-1 justify-content-center">Accept</Button>
                     <Button @click="reserveReject(value.id)"

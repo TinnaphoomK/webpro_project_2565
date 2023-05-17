@@ -46,7 +46,7 @@ export default {
         <a @click.prevent="toreporthistory"
             class="thai ml-8 text-primary-600 hover:text-primary-600">ประวัติการรายงาน</a>
 
-        <div class="card mx-6 my-3 py-8 shadow-5 border-round-sm bg-white">
+        <div class="card mx-6 my-3 py-8 shadow-5 border-round-sm cardbg">
             <div>
                 <div class="mx-8">
                     <div class="thai text-lg font-normal text-gray-600 mx-4">รอดำเนินการ
@@ -74,9 +74,12 @@ export default {
 }
 
 body {
-    background-color: rgba(35, 87, 165, 0.1);
+    background-color: white;
 }
 
+.cardbg {
+    background-color: rgba(35, 87, 165, 0.1);
+}
 .thai {
     font-family: 'Mitr', sans-serif;
 }
