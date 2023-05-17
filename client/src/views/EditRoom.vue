@@ -42,7 +42,7 @@ export default {
                                 for="room">ชื่อห้อง</label>
                             <div class="flex">
                                 <InputText type="room" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
-                                    v-model="room" />
+                                    v-model="name" />
                             </div>
                         </div>
 
@@ -51,7 +51,7 @@ export default {
                                 for="room">ชั้น</label>
                             <div class="flex">
                                 <InputText type="room" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
-                                    v-model="room" />
+                                    v-model="floor" />
                             </div>
                         </div>
 
@@ -60,7 +60,7 @@ export default {
                                 for="room">รายละเอียด</label>
                             <div class="flex">
                                 <InputText type="room" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
-                                    v-model="room" />
+                                    v-model="detail" />
                             </div>
                         </div>
 
@@ -69,7 +69,16 @@ export default {
                                 for="room">รายละเอียดเพิ่มเติม</label>
                             <div class="flex">
                                 <InputText type="room" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
-                                    v-model="room" />
+                                    v-model="description" />
+                            </div>
+                        </div>
+
+                        <div class="my-2">
+                            <label class="thai flex text-sm text-black-alpha-90 justify-content-start mx-8"
+                                for="room">จำนวนที่นั่ง</label>
+                            <div class="flex">
+                                <InputText type="room" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
+                                    v-model="totalSeat" />
                             </div>
                         </div>
 
