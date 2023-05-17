@@ -17,6 +17,15 @@ export default {
             roomId: '',
         }
     },
+    computed: {
+        reservationCount() {
+            if (this.rooms.Reservation) {
+                return this.rooms.Reservation.filter(reservation => reservation.status === 'approved').length;
+            } else {
+                return 0;
+            }
+        }
+    },
     mounted() {
         this.roomId = this.$route.params.id
         this.thisroom(this.roomId) // You can pass the room ID as a parameter here
@@ -49,20 +58,21 @@ export default {
     <div class="relative text-left justify-text-center font-bold text-2xl mt-6">
         <label class="thai first text-primary-600">รายละเอียด</label>
 
-        <div class="card mx-8 my-3 py-6 shadow-5 border-round-sm bg-white">
+        <div class="card mx-8 my-3 py-6 shadow-5 border-round-sm cardbg">
             <div class="flex justify-content-center flex-wrap card-container">
                 <div class="flex align-items-center justify-content-center">
-                    <img :src="this.rooms.image" class="w-30rem h-30rem border-round-2xl my-4 mx-8" alt="">
-                    <div class="flex flex-column card-container mx-7 my-6 justify-content-start align-self-start">
-                        <div class="flex flex-column w-30rem bg-transparent font-bold text-6xl text-gray-900 border-round">
-                            {{ this.rooms.name }}</div>
-                        <div
+                    <img :src="this.rooms.image" class="w-5 h-30rem border-round-2xl my-4 mx-8 shadow-5" alt="">
+                    <div class="flex flex-column card-container mx-8 my-6 justify-content-start align-self-start">
+                        <label
+                            class="flex flex-column w-30rem bg-transparent font-bold text-6xl text-gray-900 border-round">
+                            {{ this.rooms.name }}</label>
+                        <label
                             class="thai flex flex-column w-30rem bg-transparent font-semi-bold text-3xl text-gray-900 border-round mt-6">
-                            รายละเอียด</div>
-                        <div class="thai flex flex-column text-gray-500">ชั้น : {{ this.rooms.floor }}</div>
-                        <div class="thai flex flex-column text-gray-500">รายละเอียด : {{ this.rooms.detail }}</div>
-                        <div class="thai flex flex-column text-gray-500">จำนวนที่นั่ง : {{ this.rooms.totalSeat }}</div>
-                        <div class="thai flex flex-column text-gray-500">มักใช้ในโอกาส : {{ this.rooms.description }}</div>
+                            รายละเอียด</label>
+                        <label class="thai flex flex-column text-gray-500">ชั้น : {{ this.rooms.floor }}</label>
+                        <label class="thai flex flex-column text-gray-500">รายละเอียด : {{ this.rooms.detail }}</label>
+                        <label class="thai flex flex-column text-gray-500">จำนวนที่นั่ง : {{ this.rooms.totalSeat }}</label>
+                        <label class="thai flex flex-column text-gray-500">คิวก่อนหน้า : {{ reservationCount }} คิว</label>
 
 
                         <Button @click.prevent="toreserve(roomId)"
@@ -86,6 +96,10 @@ export default {
 }
 
 body {
+    background-color: white;
+}
+
+.cardbg {
     background-color: rgba(35, 87, 165, 0.1);
 }
 

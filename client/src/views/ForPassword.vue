@@ -51,7 +51,7 @@
                                 v$.confirmPassword.required.$message.replace('Value', 'Confirm Password') }}</small>
                     </div>
                     <Button type="submit"
-                        class="flex bg-primary-800 text-white hover:bg-primary-900 hover:text-200 justify-content-center text-bold shadow-1 mt-4 mb-2 mx-4">Change
+                        class="flex bg-primary-800 text-white hover:bg-primary-900 hover:text-200 justify-content-center text-bold shadow-3 mt-4 mb-2 mx-4">Change
                         Password</Button>
                 </form>
             </div>

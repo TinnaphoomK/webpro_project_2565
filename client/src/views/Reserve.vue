@@ -76,10 +76,10 @@ export default {
     <div class="relative text-left justify-text-center font-bold text-2xl mt-6">
         <label class="thai first text-primary-600">ทำการจอง</label>
 
-        <div class="card mx-8 my-3 py-6 shadow-5 border-round-sm bg-white">
+        <div class="card mx-8 my-3 py-6 shadow-5 border-round-sm cardbg">
             <div class="flex justify-content-center flex-wrap card-container">
                 <div class="flex align-items-center justify-content-center">
-                    <img :src="this.rooms.image" class="w-30rem h-30rem border-round-2xl my-4 mx-8" alt="">
+                    <img :src="this.rooms.image" class="w-5 h-30rem border-round-2xl my-4 mx-8 shadow-5" alt="">
                     <div class="flex flex-column card-container mt-3 mx-7 justify-content-start">
                         <div class="flex">
                             <div class="mt-2 mx-4 flex flex-column">
@@ -137,8 +137,13 @@ export default {
 }
 
 body {
+    background-color: white;
+}
+
+.cardbg {
     background-color: rgba(35, 87, 165, 0.1);
 }
+
 
 .navbg {
     background-image: linear-gradient(to right, rgb(35, 87, 165), rgb(3, 8, 16), rgb(35, 87, 165));

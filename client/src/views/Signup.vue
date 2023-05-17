@@ -80,7 +80,7 @@
           </div>
 
           <Button type="submit"
-            class="flex justify-content-center text-center bg-primary-800 hover:bg-primary-900 hover:text-200 text-white p-button-text mt-4 mx-4">Sign
+            class="flex justify-content-center text-center bg-primary-800 hover:bg-primary-900 hover:text-200 text-white p-button-text mt-4 mx-4 shadow-3">Sign
             up</Button>
         </form>
 

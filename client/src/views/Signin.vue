@@ -37,7 +37,7 @@
               v$.password.required.$message.replace('Value', 'Password') }}</small>
           </div>
           <Button type="submit"
-            class="flex bg-primary-800 text-white hover:bg-primary-900 hover:text-200 justify-content-center text-bold shadow-1 mt-4 mb-2 mx-4">Sign
+            class="flex bg-primary-800 text-white hover:bg-primary-900 hover:text-200 justify-content-center text-bold shadow-3 mt-4 mb-2 mx-4">Sign
             in</Button>
           <div class="flex justify-content-end">
             <router-link to="/forgotpassword"

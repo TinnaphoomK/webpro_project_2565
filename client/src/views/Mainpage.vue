@@ -24,20 +24,20 @@ export default {
 
 <template>
     <Navbar></Navbar>
-    <div class="pt-4 mt-4 text-center w-full flex justify-content-center align-items-center">
+    <div class="flex justify-content-center align-items-center pt-4 mt-4 text-center w-full">
         <span class="p-float-label">
             <InputText id="search" type="text" class="p-inputtext-lg shadow-2 w-30rem" v-model="search" />
             <label for="search">Search here !</label>
         </span>
 
     </div>
-    <div class="flex text-left justify-text-center justify-content-between font-bold text-2xl pt-4 mx-8 my-4">
+    <div class="flex justify-content-between font-bold text-2xl pt-4 mx-8 my-4">
         <div>
             <label class="flex text-6xl" for="">Room</label>
         </div>
         <div class="flex">
             <select @input="floorselection($event)" name="floorSelect" placeholder="Select Floor ..." id="floorSelect"
-                class="flex justify-content-center text-center border-round-2xl w-10rem h-3rem font-bold text-lg cursor-pointer">
+                class="flex justify-content-center text-center border-round-2xl w-10rem h-3rem font-bold text-lg cursor-pointer shadow-2">
                 <option value="0">All Room</option>
                 <option value="1">1st Floor</option>
                 <option value="M">M Floor</option>
@@ -52,7 +52,7 @@ export default {
     </div>
 
     <div class="flex justify-content-center mx-7 my-6 px-2 py-4 border-round-xl shadow-5 cardbg">
-        <div class="flex flex-column card-container text-lg mx-6 my-6 justify-content-start align-self-center">
+        <div class="flex flex-column justify-content-start align-self-center card-container text-lg mx-6 my-6">
             <label class="flex flex-column w-30rem my-3 bg-transparent font-bold text-5xl text-gray-900 border-round">
                 Auditorium Room</label>
             <label class="my-4" for="">For the event and meeting for each important things in faculty. Exclusive</label>
@@ -75,9 +75,9 @@ export default {
                 </li>
             </ul>
         </div>
-        <router-link to="/detail/2">
+        <router-link to="/detail/37">
             <div class="flex text-lg my-8 mx-6 justify-content-center align-items-center"><img
-                    src="/src/assets/img/auditorium.jpeg" class="w-full h-full border-round-2xl my-4 mx-8" alt="">
+                    src="/src/assets/img/auditorium.jpeg" class="w-full h-full border-round-2xl my-4 mx-8 shadow-5" alt="">
             </div>
         </router-link>
     </div>
