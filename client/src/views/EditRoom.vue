@@ -8,13 +8,12 @@
             <div class="flex justify-content-center">
                 <div class="flex align-items-center justify-content-center">
                     <div class="flex flex-column card-container mx-8 my-6 justify-content-center align-items-center">
-                        <div class="w-full flex flex-column align-items-center justify-content-center"
-                            v-if="this.chooseImage">
-                            <img class="w-5" :src="this.chooseImage" alt="">
-                            <button class="flex justify-content-center w-4 mt-4" v-if="this.chooseImage"
-                                @click="removeImage">Delete image</button>
+                        <div class="w-full flex flex-column align-items-center justify-content-center" v-if="image">
+                            <img class="w-5" :src="image" alt="">
+                            <button class="flex justify-content-center w-4 mt-4" v-if="image"
+                                @click="removeFile(roomId)">Delete image</button>
                         </div>
-                        <input v-else type="file" @change="(event) => { addImage(event); }">
+                        <input v-else type="file" @change="(event) => { uploadFile(event); }">
                     </div>
 
                     <div class="flex flex-column card-container my-6 justify-content-center align-self-start">
@@ -63,7 +62,7 @@
                             </div>
                         </div>
 
-                        <a @click.prevent="editRoom()">
+                        <a @click.prevent="editRoom(roomId)">
                             <Button
                                 class="thai bg-primary-800 hover:bg-primary-900 border-round-xl text-xl w-30rem h-4rem justify-content-center shadow-5 mt-6 mx-8">ยืนยัน</Button>
                         </a>
@@ -98,6 +97,10 @@ export default {
             chooseImage: '',
         };
     },
+    created() {
+        this.roomId = this.$route.params.id
+        this.getFile(this.roomId)
+    },
     methods: {
         async checkRole() {
             const role = JSON.parse(localStorage.getItem('user')).role;
@@ -115,10 +118,9 @@ export default {
             this.image = ""
             this.chooseImage = ""
         },
-        async editRoom() {
+        async editRoom(roomId) {
             try {
-                const id = this.$route.params.id;
-                const res = await axios.patch(`http://localhost:3000/api/room/${id}`, {
+                const res = await axios.patch(`http://localhost:3000/api/room/${roomId}`, {
                     name: this.name,
                     floor: this.floor,
                     detail: this.detail,
@@ -129,22 +131,49 @@ export default {
                         Authorization: 'Bearer ' + this.userId
                     }
                 });
-                if (this.image && id) {
-                    await this.uploadFile(id)
-                }
                 this.$router.push('/manageroom');
             } catch (err) {
                 alert('Edit room failed');
             }
         },
-        async uploadFile(roomId) {
+        async uploadFile(event) {
             try {
-                const starsRef = storageRef(storage, `rooms/${roomId}/${this.image.name}`);
-                await uploadBytes(starsRef, this.image);
+                const file = event.target.files[0];
+                const starsRef = storageRef(storage, `rooms/${this.roomId}/${file.name}`);
+                await uploadBytes(starsRef, file);
+                this.getFile(this.roomId);
             } catch (error) {
                 console.log(error);
             }
         },
+        async removeFile(roomId) {
+            try {
+                const starsRef = storageRef(storage, "rooms/" + roomId);
+                const search = await listAll(starsRef);
+                const remove = await deleteObject(search.items[0]);
+                console.log(remove);
+                this.image = "";
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        async getFile(roomId) {
+            try {
+                const starsRef = storageRef(storage, "rooms/" + roomId);
+                const search = await listAll(starsRef);
+                const download = (await getDownloadURL(search.items[0])).toString();
+                this.image = download;
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        async getroom(id){
+             try{
+                const res = await axios.get
+             } catch(error) {
+                console.log(error)
+             }
+        }
     },
     mounted() {
         this.checkRole();
