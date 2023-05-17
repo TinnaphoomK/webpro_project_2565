@@ -124,6 +124,7 @@ export default {
             email: "",
             newPassword: "",
             confirmPassword: "",
+            submitted: false,
         };
     },
     validations() {
@@ -134,7 +135,7 @@ export default {
     }
   },
     methods: {
-        handleSubmit(isFormValid) {
+      handleSubmit(isFormValid) {
       this.submitted = true;
       if (!isFormValid) {
         return;

@@ -77,7 +77,8 @@ export default {
     return {
         email: "",
         role: "",
-        password: ""
+        password: "",
+        submitted: false,
     }
   },
   validations() {
