@@ -85,7 +85,7 @@ export default {
                         <label class="thai flex flex-column text-gray-500">ชั้น : {{ this.rooms.floor }}</label>
                         <label class="thai flex flex-column text-gray-500">รายละเอียด : {{ this.rooms.detail }}</label>
                         <label class="thai flex flex-column text-gray-500">จำนวนที่นั่ง : {{ this.rooms.totalSeat }}</label>
-                        <label class="thai flex flex-column text-gray-500">คิวก่อนหน้า : {{ reservationCount }} คิว</label>
+                        <label class="thai flex flex-column text-gray-500">มีคิวจองทั้งหมด : {{ reservationCount }} คิว ในวันนี้</label>
 
 
 
