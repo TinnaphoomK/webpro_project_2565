@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-content-center align-items-center h-screen">
+  <div class="flex justify-content-center align-items-center h-screen fadeinleft animation-duration-300">
     <div class="flex justify-content-center">
       <div
         class="flex flex-column align-items-center justify-content-center w-30rem h-30rem p-8 bglinear border-round-left-xl shadow-5">
