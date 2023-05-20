@@ -65,7 +65,7 @@ export default {
 <template>
     <Navbar></Navbar>
     <div class="relative text-left justify-text-center font-bold text-2xl mt-6 mb-8">
-        <div class="flex flex-column card mx-8 mt-4 pb-8 shadow-5 border-round-sm cardbg justify-content-center">
+        <div class="flex flex-column card mx-8 mt-4 pb-8 shadow-5 border-round-sm cardbg justify-content-center fadeindown animation-duration-400">
             <label class="flex thai text-primary-800 justify-content-center text-center text-7xl mt-6" for="">ตารางจองห้อง</label>
             <div class="flex thai justify-content-center mt-4">
                 <DataTable :value="pendingReservations" showGridlines tableStyle="min-width: 50rem" class="shadow-5">

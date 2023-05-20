@@ -36,9 +36,6 @@ export default {
         }
     },
 
-
-
-
     mounted() {
         this.roomId = this.$route.params.id
         this.thisroom(this.roomId) // You can pass the room ID as a parameter here
@@ -69,7 +66,6 @@ export default {
 
     <!-- top bar-->
     <div class="relative text-left justify-text-center font-bold text-2xl mt-6">
-        <label class="thai first text-primary-600">รายละเอียด</label>
 
         <div class="card mx-8 my-3 py-6 shadow-5 border-round-sm cardbg">
             <div class="flex justify-content-center flex-wrap card-container">
@@ -86,13 +82,9 @@ export default {
                         <label class="thai flex flex-column text-gray-500">รายละเอียด : {{ this.rooms.detail }}</label>
                         <label class="thai flex flex-column text-gray-500">จำนวนที่นั่ง : {{ this.rooms.totalSeat }}</label>
                         <label class="thai flex flex-column text-gray-500">มีคิวจองทั้งหมด : {{ reservationCount }} คิว ในวันนี้</label>
-
-
-
                         <Button @click.prevent="toreserve(roomId)"
-                            class="thai bg-primary-800 hover:bg-primary-900 border-round-xl text-xl w-16rem h-4rem justify-content-center shadow-5 mt-6">จองห้อง
+                            class="thai bg-primary-800 hover:bg-primary-900 hover:text-200 border-round-xl text-xl w-16rem h-4rem justify-content-center shadow-5 mt-6">จองห้อง
                         </Button>
-
                     </div>
                 </div>
             </div>

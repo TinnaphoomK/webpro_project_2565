@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card fadeinright animation-duration-400">
     <div class="flex justify-content-center flex-wrap card-container">
       <div v-for="(value, index) in pendingReservations" :key="index"
         class="bg-white text-primary-800 text-xl font-bold flex align-items-center justify-content-between w-full h-6rem border-round-2xl m-2 shadow-5">

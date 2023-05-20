@@ -24,13 +24,13 @@ export default {
 
 <template>
     <Navbar></Navbar>
-    <div class="flex justify-content-center align-items-center pt-4 mt-4 text-center w-full fadeindown animation-duration-400">
+    <!-- <div class="flex justify-content-center align-items-center pt-4 mt-4 text-center w-full fadeindown animation-duration-400">
         <span class="p-float-label">
             <InputText id="search" type="text" class="p-inputtext-lg shadow-2 w-30rem" v-model="search" />
             <label for="search">Search here !</label>
         </span>
 
-    </div>
+    </div> -->
     <div class="flex justify-content-between font-bold text-2xl pt-4 mx-8 my-4 fadeindown animation-duration-400">
         <div>
             <label class="flex text-6xl" for="">Room</label>

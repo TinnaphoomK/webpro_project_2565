@@ -51,16 +51,16 @@ export default {
                 OFFICER</div>
         </div>
     </div>
-    <div class="gridbg mx-4 mt-4 py-6 shadow-5 border-round-sm">
+    <div class="bg-white mx-4 mt-4 py-6 shadow-5 border-round-sm">
         <div class="flex justify-content-end mx-6">
             <router-link to="/reserverequest">
-                <Button class="thai bg-primary-700 hover:bg-primary-800 mx-2">รายการจอง</Button>
+                <Button class="thai bg-primary-800 hover:bg-primary-900 hover:text-200 mx-2">รายการจอง</Button>
             </router-link>
             <router-link to="/reportrequest">
-                <Button class="thai bg-primary-700 hover:bg-primary-800 mx-2">คำร้อง</Button>
+                <Button class="thai bg-primary-800 hover:bg-primary-900 hover:text-200 mx-2">คำร้อง</Button>
             </router-link>
             <router-link to="/addroom">
-                <Button class="thai bg-primary-700 hover:bg-primary-800 mx-2">เพิ่มห้อง</Button>
+                <Button class="thai bg-primary-800 hover:bg-primary-900 hover:text-200 mx-2">เพิ่มห้อง</Button>
             </router-link>
         </div>
         <!-- open and close card -->
@@ -83,7 +83,7 @@ export default {
 }
 
 body {
-    background-color: white;
+    background-color: rgba(35, 87, 165, 0.1);
 }
 
 .thai {
@@ -98,7 +98,7 @@ Button {
     border-color: transparent;
 }
 
-.gridbg {
+.cardbg {
     background-color: rgba(35, 87, 165, 0.1);
 }
 

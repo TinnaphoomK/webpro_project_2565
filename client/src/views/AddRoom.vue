@@ -142,7 +142,7 @@ export default {
 
                         <a @click.prevent="createRoom()">
                             <Button
-                                class="thai bg-primary-800 hover:bg-primary-900 border-round-xl text-xl w-30rem h-4rem justify-content-center shadow-5 mt-6 mx-8">ยืนยัน</Button>
+                                class="thai bg-primary-800 hover:bg-primary-900 hover:text-200 border-round-xl text-xl w-30rem h-4rem justify-content-center shadow-5 mt-6 mx-8">ยืนยัน</Button>
                         </a>
                     </div>
                 </div>

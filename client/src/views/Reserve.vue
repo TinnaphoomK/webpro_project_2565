@@ -61,7 +61,7 @@ export default {
                 });
 
                 console.log(res.data);
-                this.$router.push(`/history/${this.student}`)
+                // this.$router.push(`/history/${this.student}`)
             } catch (err) {
                 console.log(err);
             }
@@ -74,47 +74,47 @@ export default {
 <template>
     <Navbar></Navbar>
     <div class="relative text-left justify-text-center font-bold text-2xl mt-6">
-        <label class="thai first text-primary-600">ทำการจอง</label>
 
         <div class="card mx-8 my-3 py-6 shadow-5 border-round-sm cardbg">
             <div class="flex justify-content-center flex-wrap card-container">
                 <div class="flex align-items-center justify-content-center">
                     <img :src="this.rooms.image" class="w-5 h-30rem border-round-2xl my-4 mx-8 shadow-5" alt="">
-                    <div class="flex flex-column card-container mt-3 mx-7 justify-content-start">
+                    <div class="flex flex-column card-container mt-3 mx-8 justify-content-start">
                         <div class="flex">
+                            
                             <div class="mt-2 mx-4 flex flex-column">
                                 <label for="startdate" class="thai text-xl">วันที่เริ่มจอง</label>
                                 <InputText id="startdate" v-model="startdate" name="startdate" type="date"
-                                    class="p-inputtext-lg shadow-2 w-12rem" />
+                                    class="p-inputtext-lg shadow-2 w-12rem mt-1" />
                             </div>
 
                             <div class="mt-2 mx-4 flex flex-column">
                                 <label for="enddate" class="thai text-xl">สิ้นสุดการจอง</label>
                                 <InputText id="enddate" v-model="enddate" name="enddate" type="date"
-                                    class="p-inputtext-lg shadow-2 w-12rem" />
+                                    class="p-inputtext-lg shadow-2 w-12rem mt-1" />
                             </div>
                         </div>
-                        <div class="flex">
+                        <div class="flex mt-4">
                             <div class="mt-2 mx-4 flex flex-column">
                                 <label for="starttime" class="thai text-xl">ตั้งแต่เวลา</label>
                                 <InputText id="starttime" v-model="starttime" name="starttime" type="time"
-                                    class="p-inputtext-lg shadow-2 w-12rem" />
+                                    class="p-inputtext-lg shadow-2 w-12rem mt-1" />
                             </div>
 
                             <div class="mt-2 mx-4 flex flex-column">
                                 <label for="endtime" class="thai text-xl">จนถึงเวลา</label>
                                 <InputText id="endtime" v-model="endtime" name="endtime" type="time"
-                                    class="p-inputtext-lg shadow-2 w-12rem" />
+                                    class="p-inputtext-lg shadow-2 w-12rem mt-1" />
                             </div>
                         </div>
-                        <div class="mt-2 mx-4 flex flex-column">
+                        <div class="mt-4 mx-4 flex flex-column">
                             <label for="detail" class="thai text-xl">หมายเหตุ</label>
                             <InputText id="detail" v-model="detail" name="detail" type="text"
                                 class="p-inputtext-lg shadow-2 w-27rem" />
                         </div>
                         <div class="justify-content-center flex">
                             <Button @click.prevent="reserve()"
-                                class="thai bg-primary-800 hover:bg-primary-900 border-round-xl text-xl w-16rem h-4rem justify-content-center shadow-5 mt-8">ยืนยันการจอง</Button>
+                                class="thai bg-primary-800 hover:bg-primary-900 hover:text-200 border-round-xl text-xl w-16rem h-4rem justify-content-center shadow-5 mt-6">ยืนยันการจอง</Button>
                         </div>
 
                     </div>
