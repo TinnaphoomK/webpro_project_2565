@@ -77,7 +77,24 @@ router.put("/:id", async (req, res) => {
     const { status } = req.body;
     await updateReservationSchema.validate({ status });
 
-    const reservation = await prisma.reservation.update({
+    const reservation = await prisma.reservation.findUnique({
+      where: {
+        id: parseInt(id),
+      },
+    });
+
+    if (!reservation) {
+      return res.status(404).json({ error: "Reservation not found." });
+    }
+
+    // If the reservation is already approved, return an error
+    if (reservation.status === StatusEnum.APPROVED) {
+      return res
+        .status(400)
+        .json({ error: "The reservation has already been approved." });
+    }
+
+    const updatedReservation = await prisma.reservation.update({
       where: {
         id: parseInt(id),
       },
@@ -85,11 +102,32 @@ router.put("/:id", async (req, res) => {
         status: status,
       },
     });
-    res.status(200).json(reservation);
+
+    if (status === StatusEnum.APPROVED) {
+      // Automatically reject overlapping reservations
+      await prisma.reservation.updateMany({
+        where: {
+          roomId: reservation.roomId,
+          id: { not: parseInt(id) },
+          dateTimeStart: {
+            lte: new Date(reservation.dateTimeEnd),
+          },
+          dateTimeEnd: {
+            gte: new Date(reservation.dateTimeStart),
+          },
+        },
+        data: {
+          status: StatusEnum.REJECTED,
+        },
+      });
+    }
+
+    res.status(200).json(updatedReservation);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 });
+
 
 router.post("/", async (req, res) => {
   try {
@@ -106,6 +144,7 @@ router.post("/", async (req, res) => {
     const overlappingReservations = await prisma.reservation.findMany({
       where: {
         roomId: roomId,
+        status: StatusEnum.APPROVED,
         dateTimeStart: {
           lte: new Date(dateTimeEnd),
         },
@@ -115,11 +154,11 @@ router.post("/", async (req, res) => {
       },
     });
 
-    // If there are overlapping reservations, return an error
+    // If there are overlapping approved reservations, return an error
     if (overlappingReservations.length > 0) {
       return res
         .status(400)
-        .json({ error: "Can't make a reserve betwwen others." });
+        .json({ error: "The requested time is unavailable." });
     }
 
     const reservation = await prisma.reservation.create({
@@ -129,6 +168,7 @@ router.post("/", async (req, res) => {
         dateTimeStart: dateTimeStart,
         dateTimeEnd: dateTimeEnd,
         detail: detail || "",
+        status: StatusEnum.PENDING,
       },
     });
     res.status(200).json({ reservation });
