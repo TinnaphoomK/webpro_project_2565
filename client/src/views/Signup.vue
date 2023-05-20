@@ -29,7 +29,7 @@
           <div class="flex flex-column mt-2">
             <label class="flex text-black-alpha-90 justify-content-start mx-4" for="studentid" :class="{ 'p-error': v$.studentId.$invalid && submitted }">Student ID</label>
             <div class="flex">
-              <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="studentid" name="studentid"
+              <InputText type="text" class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="studentid" name="studentid"
                 v-model="v$.studentId.$model" :class="{ 'p-invalid': v$.studentId.$invalid && submitted }" />
               </div>
               <small v-if="(v$.studentId.$invalid && submitted) || v$.studentId.$pending.$response" class="flex ml-4 p-error">{{
@@ -147,7 +147,7 @@ a:active {
 
 <script>
 import axios from "axios";
-import { required, email, minLength, sameAs } from "@vuelidate/validators";
+import { required, email, minLength, maxLength, sameAs } from "@vuelidate/validators";
 import { useVuelidate } from "@vuelidate/core";
 export default {
   setup: () => ({ v$: useVuelidate() }),
@@ -166,7 +166,7 @@ export default {
     return {
       firstName: { required },
       lastName: { required },
-      studentId: { required },
+      studentId: { required, maxLength: maxLength(8) },
       email: { required, email },
       password: { required, minLength: minLength(8) },
       confirmPassword: { required, sameAsPassword: sameAs(this.password) }
