@@ -61,7 +61,7 @@ export default {
                 });
 
                 console.log(res.data);
-                // this.$router.push(`/history/${this.student}`)
+                this.$router.push(`/history/${this.student}`)
             } catch (err) {
                 console.log(err);
             }

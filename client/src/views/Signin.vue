@@ -13,10 +13,7 @@
         class="flex flex-column align-items-center justify-content-center w-30rem h-30rem bg-white font-normal text-white border-round-right-xl shadow-5">
         <label class="flex text-black-alpha-90 text-4xl font-bold mt-6 mb-2" for="">Welcome back!</label>
 
-
-
         <form @submit.prevent="handleSubmit(!v$.$invalid)" class="flex flex-column w-full justify-content-center" action="">
-
           <div class="my-2">
             <label class="flex text-black-alpha-90 justify-content-start mx-4" for="email" :class="{ 'p-error': v$.email.$invalid && submitted }">Email</label>
             <div class="flex">
@@ -33,8 +30,7 @@
               <InputText type="password" class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="password"
               v-model="v$.password.$model" :class="{ 'p-invalid': v$.password.$invalid && submitted }" />
             </div>
-            <small v-if="(v$.password.$invalid && submitted) || v$.password.$pending.$response" class="flex ml-4 mt-1 p-error">{{
-              v$.password.required.$message.replace('Value', 'Password') }}</small>
+            <small v-if="(v$.password.$invalid && submitted) || v$.password.$pending.$response" class="flex ml-4 mt-1 p-error">{{ v$.password.required.$message.replace('Value', 'Password') }}</small>
           </div>
           <Button type="submit"
             class="flex bg-primary-800 text-white hover:bg-primary-900 hover:text-200 justify-content-center text-bold shadow-3 mt-4 mb-2 mx-4">Sign
@@ -52,8 +48,6 @@
             </router-link>
           </div>
         </form>
-
-
 
       </div>
     </div>
@@ -97,7 +91,6 @@ export default {
     },
     async signin() {
       try {
-        
         if (this.Role == "admin"){
           const res = await axios.post("http://localhost:3000/api/auth/login", {
             email: this.email,
@@ -117,16 +110,13 @@ export default {
         localStorage.setItem("token", res.data.accessToken);
         localStorage.setItem("user", JSON.stringify(res.data.user));
         
-        // Check the role here
         if (res.data.user.role === "admin") {
           this.$router.push("/manageroom");
         } else {
           this.$router.push("/");
         }
       } catch (error) {
-        alert(error.response.data.error)
         console.log(error.response.data.error);
-        
       }
     },
   },
