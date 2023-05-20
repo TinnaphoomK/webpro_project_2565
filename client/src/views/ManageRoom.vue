@@ -44,14 +44,14 @@ export default {
 <template>
     <!-- navbar -->
     <Navbar></Navbar>
-    <div class="card">
+    <div class="card fadeindown animation-duration-200">
         <div class="flex justify-content-center flex-wrap card-container my-4">
             <div
                 class="flex align-items-center justify-content-center bg-white text-primary-800 shadow-5 w-16rem h-6rem text-4xl font-bold border-round-2xl">
                 OFFICER</div>
         </div>
     </div>
-    <div class="bg-white mx-4 mt-4 py-6 shadow-5 border-round-sm">
+    <div class="bg-white mx-4 mt-4 py-6 shadow-5 border-round-sm fadeindown animation-duration-200">
         <div class="flex justify-content-end mx-6">
             <router-link to="/reserverequest">
                 <Button class="thai bg-primary-800 hover:bg-primary-900 hover:text-200 mx-2">รายการจอง</Button>

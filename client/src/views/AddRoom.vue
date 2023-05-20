@@ -51,9 +51,23 @@ export default {
                 if (this.image && res.data.id) {
                     await this.uploadFile(res.data.id)
                 }
+                this.$swal({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Finish!',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
                 this.$router.push("/manageroom")
 
             } catch (error) {
+                this.$swal({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Room informations are required!',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
                 console.log(error)
             }
         },
@@ -78,7 +92,7 @@ export default {
 <template>
     <Navbar></Navbar>
 
-    <div class="relative text-left justify-text-center font-bold text-2xl my-6">
+    <div class="relative text-left justify-text-center font-bold text-2xl my-6 fadeindown animation-duration-200">
         <router-link to="/detail" class="thai first text-primary-600 hover:text-primary-600">เพิ่มห้อง</router-link>
 
         <div class="card mx-8 my-3 py-6 shadow-5 border-round-sm bg-white">
@@ -99,43 +113,43 @@ export default {
                             <label class="thai flex text-sm text-black-alpha-90 justify-content-start mx-8"
                                 for="room">ชื่อห้อง</label>
                             <div class="flex">
-                                <InputText type="room" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
+                                <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="name" placeholder="Room name..."
                                     v-model="roomData.name" />
                             </div>
                         </div>
 
                         <div class="my-2">
                             <label class="thai flex text-sm text-black-alpha-90 justify-content-start mx-8"
-                                for="room">ชั้น</label>
+                                for="floor">ชั้น</label>
                             <div class="flex">
-                                <InputText type="room" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
+                                <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="floor" placeholder="Floor..."
                                     v-model="roomData.floor" />
                             </div>
                         </div>
 
                         <div class="my-2">
                             <label class="thai flex text-sm text-black-alpha-90 justify-content-start mx-8"
-                                for="room">รายละเอียด</label>
+                                for="detail">รายละเอียด</label>
                             <div class="flex">
-                                <InputText type="room" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
+                                <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="detail" placeholder="Room detail..."
                                     v-model="roomData.detail" />
                             </div>
                         </div>
 
                         <div class="my-2">
                             <label class="thai flex text-sm text-black-alpha-90 justify-content-start mx-8"
-                                for="room">รายละเอียดเพิ่มเติม</label>
+                                for="description">รายละเอียดเพิ่มเติม</label>
                             <div class="flex">
-                                <InputText type="room" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
+                                <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="description" placeholder="Room description..."
                                     v-model="roomData.description" />
                             </div>
                         </div>
 
                         <div class="my-2">
                             <label class="thai flex text-sm text-black-alpha-90 justify-content-start mx-8"
-                                for="room">จำนวนที่นั่ง</label>
+                                for="totalSeat">จำนวนที่นั่ง</label>
                             <div class="flex">
-                                <InputText type="room" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
+                                <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="totalSeat" placeholder="Room total seats..."
                                     v-model="roomData.totalSeat" />
                             </div>
                         </div>

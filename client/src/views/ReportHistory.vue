@@ -44,7 +44,7 @@ export default {
     <div class="relative text-left justify-text-center font-bold text-2xl my-6">
         <a @click.prevent="tohistory" class="thai first text-gray-900 hover:text-primary-600 cursor-pointer">ประวัติการจอง</a>
         <a @click.prevent="toreporthistory"
-            class="thai ml-8 text-primary-600 hover:text-primary-600">ประวัติการรายงาน</a>
+            class="thai ml-8 text-primary-600 hover:text-primary-600 cursor-pointer">ประวัติการรายงาน</a>
 
         <div class="card mx-6 my-3 py-8 shadow-5 border-round-sm cardbg">
             <div>

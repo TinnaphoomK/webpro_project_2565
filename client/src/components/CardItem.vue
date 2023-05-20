@@ -9,7 +9,8 @@
         <div class="flex bg-white w-17rem h-4rem border-round-bottom-2xl">
           <div class="flex justify-content-between p-4 w-full">
             <p class="text-sm text-gray-900 w-7">{{ value.name }}</p>
-            <p class="text-sm text-gray-900 w-7">{{ value.description }}</p>
+            <p class="text-sm text-gray-900 w-4"></p>
+            <p class="text-sm text-gray-900 w-7">Floor : {{ value.floor }}</p>
             <i class="flex pi pi-search text-gray-900 text-2xl  align-items-center"></i>
           </div>
         </div>

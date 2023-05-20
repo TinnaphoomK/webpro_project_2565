@@ -6,17 +6,9 @@
                 <div
                     class="flex thai bg-green-700 font-normal text-lg justify-content-center text-white text-center align-items-center h-2rem w-7rem border-round-right-lg">
                     เสร็จสิ้น</div>
-                <!-- <div
-            class="thai bg-red-700 font-normal text-white text-center justify-content-center align-items-center h-2rem w-7rem mx-2">
-            ไม่อนุมัติ</div> -->
+                    <label class="thai text-base ml-6" for="">รหัสรายงาน : #{{ value.id }}</label>
                 <label class="thai text-base ml-6" for="">ห้อง : {{ value.Room.name }}</label>
-                <label class="thai text-base ml-6" for="">วันที่รายงาน : {{ new
-                    Date(value.createdAt).toLocaleDateString('th-TH', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                    }) }}</label>
-                <label class="thai text-base ml-6" for="">รหัสรายงาน : #{{ value.id }}</label>
+                <label class="thai text-base ml-6" for="">วันที่รายงาน : {{ value.createdAt.slice(0, 19).replace("T", " เวลา ") }}</label>
                 <label class="thai text-base ml-6 mr-8" for="">รายละเอียด : {{ value.detail }}</label>
             </div>
         </div>

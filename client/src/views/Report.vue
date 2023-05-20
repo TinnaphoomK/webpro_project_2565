@@ -14,11 +14,11 @@ export default {
     };
   },
   mounted() {
-        this.roomId = this.$route.params.roomId
-        this.userId = JSON.parse(localStorage.getItem("user")).id
-        this.student = JSON.parse(localStorage.getItem("user")).studentId
-        console.log(this.roomId)
-    },
+    this.roomId = this.$route.params.roomId
+    this.userId = JSON.parse(localStorage.getItem("user")).id
+    this.student = JSON.parse(localStorage.getItem("user")).studentId
+    console.log(this.roomId)
+  },
   methods: {
     async report() {
       try {
@@ -33,6 +33,13 @@ export default {
           detail: this.detail
         })
         console.log(res.data);
+        this.$swal({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Finish!',
+          showConfirmButton: false,
+          timer: 2000
+        })
         this.$router.push(`/reporthistory/${this.student}`)
       }
       catch (err) {
@@ -54,10 +61,11 @@ export default {
     </div>
   </div>
   <div class="text-center justify-content-between mt-6">
-    
+
     <div class="flex flex-column justify-content-center mt-4">
       <label class="flex thai mx-8 px-4" for="">เนื้อหา</label>
-      <Textarea v-model="detail" class="flex flex-column shadow-5 justify-content-center my-4 mx-8 h-20rem cardbg" cols="100" />
+      <Textarea v-model="detail" class="flex flex-column shadow-5 justify-content-center my-4 mx-8 h-20rem cardbg"
+        cols="100" />
     </div>
   </div>
   <div class="flex text-center justify-content-center mt-4">
@@ -121,5 +129,4 @@ a:hover {
 
 a:active {
   text-decoration: none;
-}
-</style>
+}</style>

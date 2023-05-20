@@ -30,7 +30,8 @@
               <InputText type="password" class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="password"
               v-model="v$.password.$model" :class="{ 'p-invalid': v$.password.$invalid && submitted }" />
             </div>
-            <small v-if="(v$.password.$invalid && submitted) || v$.password.$pending.$response" class="flex ml-4 mt-1 p-error">{{ v$.password.required.$message.replace('Value', 'Password') }}</small>
+            <small v-if="(v$.password.$invalid && submitted) || v$.password.$pending.$response" class="flex ml-4 mt-1 p-error">{{
+              v$.password.required.$message.replace('Value', 'Password') }}</small>
           </div>
           <Button type="submit"
             class="flex bg-primary-800 text-white hover:bg-primary-900 hover:text-200 justify-content-center text-bold shadow-3 mt-4 mb-2 mx-4">Sign
@@ -77,8 +78,8 @@ export default {
   },
   validations() {
     return {
-      email: { required, email },
-      password: { required, minLength: minLength(8) },
+      email: { email, required },
+      password: { minLength: minLength(8), required },
     }
   },
   methods: {
@@ -110,13 +111,30 @@ export default {
         localStorage.setItem("token", res.data.accessToken);
         localStorage.setItem("user", JSON.stringify(res.data.user));
         
+        // Check the role here
         if (res.data.user.role === "admin") {
           this.$router.push("/manageroom");
+          this.$swal({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Welcome Admin!',
+            showConfirmButton: false,
+            timer: 2000
+          })
         } else {
           this.$router.push("/");
+          this.$swal({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Welcome!',
+            showConfirmButton: false,
+            timer: 2000
+          })
         }
       } catch (error) {
+        this.$swal(error.response.data.error);
         console.log(error.response.data.error);
+        
       }
     },
   },

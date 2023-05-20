@@ -10,21 +10,21 @@ const router = express.Router();
 
 // Define Yup validation schemas
 const loginSchema = yup.object().shape({
-  email: yup.string().email().required(),
-  password: yup.string().required().min(8).max(20),
+  email: yup.string().email('Invalid Email').required('Email is required'),
+  password: yup.string().required('Password is required').min(8, 'Password must be at least 8 characters long!').max(20, 'Password is too long!'),
 });
 
 const forgetPasswordSchema = yup.object().shape({
-  email: yup.string().email().required(),
-  newPassword: yup.string().required().min(8).max(20),
+  email: yup.string().email('Invalid Email').required('Email is required'),
+  newPassword: yup.string().required('Student ID is required!').min(8, 'Password must be at least 8 characters long!').max(20, 'Password is too long!'),
 });
 
 const registerSchema = yup.object().shape({
-  email: yup.string().email().required(),
-  password: yup.string().min(8).max(20).required(),
-  firstName: yup.string().required(),
-  lastName: yup.string().required(),
-  studentId: yup.string().required().min(8).max(8),
+  email: yup.string().email('Invalid email!').required('Email is required'),
+  password: yup.string().min(8).max(20).required('Password is required!'),
+  firstName: yup.string().required('First name is required!'),
+  lastName: yup.string().required('Last name is required!'),
+  studentId: yup.string().required('Student ID is required!').min(8, 'Student ID must be 8 characters long!').max(8, 'Student ID msut be 8 characters long!'),
 });
 
 // Login route

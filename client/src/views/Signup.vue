@@ -29,7 +29,7 @@
           <div class="flex flex-column mt-2">
             <label class="flex text-black-alpha-90 justify-content-start mx-4" for="studentid" :class="{ 'p-error': v$.studentId.$invalid && submitted }">Student ID</label>
             <div class="flex">
-              <InputText type="text" class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="studentid" name="studentid"
+              <InputText type="number" class="input flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="studentid" name="studentid"
                 v-model="v$.studentId.$model" :class="{ 'p-invalid': v$.studentId.$invalid && submitted }" />
               </div>
               <small v-if="(v$.studentId.$invalid && submitted) || v$.studentId.$pending.$response" class="flex ml-4 p-error">{{
@@ -114,6 +114,12 @@ body {
 .bar {
   height: 2%;
   width: 100%;
+}
+
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .thai {
@@ -202,10 +208,17 @@ export default {
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("user", JSON.stringify(res.data.user));
         this.resetForm();
-        this.$router.push("/");
+        this.$router.push("/signin");
+        this.$swal({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Sign up success!',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
       } catch
       (error) {
-        alert(error.response.data.error)
+        this.$swal(error.response.data.error)
         console.log(error.response.data.error);
       }
     },

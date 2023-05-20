@@ -41,18 +41,28 @@ export default {
       localStorage.removeItem('token');
       if (this.role === 'admin') {
         this.$router.push('/signin');
+        this.$swal({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Logout success!',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
       } else {
         this.$router.push('/');
+        this.$swal({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Logout success!',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
       }
     },
     tohistory() {
       this.isLoggedIn = true;
       this.$router.push(`/history/${this.studentId}`)
     },
-    // toqueue() {
-    //   this.isLoggedIn = true;
-    //   this.$router.push(`/reservetable/${this.studentId}`)
-    // },
 
   }
 };

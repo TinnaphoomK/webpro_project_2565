@@ -17,15 +17,25 @@ import ColumnGroup from 'primevue/columngroup';   // optional
 import Row from 'primevue/row';                   // optional
 import Password from 'primevue/password';
 import Dropdown from 'primevue/dropdown';
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 import { firebaseApp } from "./firebase";
 import { VueFire } from "vuefire";
 
 // import './assets/main.css'
+const error1 = {
+  position: 'top-end',
+  icon: 'error',
+  toast: true,
+  showConfirmButton: false,
+  timer: 2000,
+};
 
 const app = createApp(App)
 
 app.use(router)
 app.use(ToastService);
+app.use(VueSweetalert2, error1);
 app.use(VueFire, {
     firebaseApp,
   });

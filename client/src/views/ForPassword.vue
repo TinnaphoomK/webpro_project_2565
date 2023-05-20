@@ -131,7 +131,7 @@ export default {
     return {
       email: { required, email },
       newPassword: { required, minLength: minLength(8) },
-      confirmPassword: { required, sameAsNewPassword: sameAs(this.newPassword) }
+      confirmPassword: { required, sameAs: sameAs(this.newPassword) }
     }
   },
     methods: {
@@ -156,7 +156,7 @@ export default {
             this.$router.push("/signin");
             console.log(res);
             } catch (error) {
-                alert(error?.response?.data?.error || error?.message || error?.data?.error || error)
+                this.$swal(error?.response?.data?.error || error?.message || error?.data?.error || error)
                 console.log(error.response.data.error);
             }
         }

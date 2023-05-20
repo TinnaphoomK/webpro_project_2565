@@ -10,7 +10,7 @@ const router = express.Router();
 const createRoomSchema = yup.object().shape({
   name: yup.string().required(),
   detail: yup.string().required(),
-  floor: yup.number().required(),
+  floor: yup.string().required(),
   description: yup.string().required(),
   totalSeat: yup.number().required(),
 });
@@ -18,7 +18,7 @@ const createRoomSchema = yup.object().shape({
 // Validation schema for the room PATCH route
 const updateRoomSchema = yup.object().shape({
   name: yup.string(),
-  floor: yup.number(),
+  floor: yup.string(),
   detail: yup.string(),
   description: yup.string(),
   totalSeat: yup.number(),

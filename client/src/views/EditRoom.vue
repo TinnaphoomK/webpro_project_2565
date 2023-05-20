@@ -1,7 +1,7 @@
 <template>
     <Navbar></Navbar>
 
-    <div class="relative text-left justify-text-center font-bold text-2xl my-6">
+    <div class="relative text-left justify-text-center font-bold text-2xl my-6 fadeinleft animation-duration-200">
         <router-link to="/detail" class="thai first text-primary-600 hover:text-primary-600">แก้ไขห้อง</router-link>
 
         <div class="card mx-8 my-3 py-6 shadow-5 border-round-sm bg-white">

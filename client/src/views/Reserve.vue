@@ -19,8 +19,8 @@ export default {
             starttime: '',
             endtime: '',
             roomId: '',
+            loading: false,
         }
-
     },
     mounted() {
         this.roomId = this.$route.params.id
@@ -30,6 +30,7 @@ export default {
     },
     methods: {
         async thisroom(id) {
+            this.loading = true;
             const res = await axios.get(`http://localhost:3000/api/room/${id}`)
             console.log(res.data);
             this.rooms = res.data;
@@ -37,21 +38,13 @@ export default {
             const search = await listAll(starsRef);
             const download = (await getDownloadURL(search.items[0])).toString();
             this.rooms.image = download;
+            this.loading = false;
             console.log(this.rooms.image);
         },
         async reserve() {
             try {
                 const dateTimeStart = new Date(new Date(this.startdate + ' ' + this.starttime).getTime() + (7 * 60 * 60 * 1000)).toISOString();
                 const dateTimeEnd = new Date(new Date(this.enddate + ' ' + this.endtime).getTime() + (7 * 60 * 60 * 1000)).toISOString();
-
-                console.log({
-                    dateTimeStart: dateTimeStart.toLocaleString('en-US', { timeZone: 'Asia/Bangkok' }),
-                    dateTimeEnd: dateTimeEnd.toLocaleString('en-US', { timeZone: 'Asia/Bangkok' }),
-                    roomId: this.roomId,
-                    userId: this.userId,
-                    detail: this.detail
-                });
-
                 const res = await axios.post(`http://localhost:3000/api/reservation`, {
                     dateTimeStart: dateTimeStart,
                     dateTimeEnd: dateTimeEnd,
@@ -61,6 +54,13 @@ export default {
                 });
 
                 console.log(res.data);
+                this.$swal({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Finish!',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
                 this.$router.push(`/history/${this.student}`)
             } catch (err) {
                 console.log(err);
@@ -78,10 +78,10 @@ export default {
         <div class="card mx-8 my-3 py-6 shadow-5 border-round-sm cardbg">
             <div class="flex justify-content-center flex-wrap card-container">
                 <div class="flex align-items-center justify-content-center">
-                    <img :src="this.rooms.image" class="w-5 h-30rem border-round-2xl my-4 mx-8 shadow-5" alt="">
+                    <img :src="this.rooms.image" class="w-5 h-30rem border-round-2xl my-4 shadow-5" alt="">
                     <div class="flex flex-column card-container mt-3 mx-8 justify-content-start">
                         <div class="flex">
-                            
+
                             <div class="mt-2 mx-4 flex flex-column">
                                 <label for="startdate" class="thai text-xl">วันที่เริ่มจอง</label>
                                 <InputText id="startdate" v-model="startdate" name="startdate" type="date"
