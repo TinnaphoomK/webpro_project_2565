@@ -1,8 +1,28 @@
 import express from "express";
 import { PrismaClient } from "@prisma/client";
+import * as yup from "yup";
 import authenticateToken from "../middleware/auth.js";
+
 const prisma = new PrismaClient();
 const router = express.Router();
+
+// Validation schema for the room POST route
+const createRoomSchema = yup.object().shape({
+  name: yup.string().required(),
+  detail: yup.string().required(),
+  floor: yup.number().required(),
+  description: yup.string().required(),
+  totalSeat: yup.number().required(),
+});
+
+// Validation schema for the room PATCH route
+const updateRoomSchema = yup.object().shape({
+  name: yup.string(),
+  floor: yup.number(),
+  detail: yup.string(),
+  description: yup.string(),
+  totalSeat: yup.number(),
+});
 
 router.get("/", async (req, res) => {
   try {
@@ -34,6 +54,7 @@ router.get("/:id", async (req, res) => {
 router.post("/", authenticateToken, async (req, res) => {
   try {
     const { name, detail, floor, description, totalSeat } = req.body;
+    await createRoomSchema.validate({ name, detail, floor, description, totalSeat });
     const room = await prisma.room.create({
       data: {
         name: name,
@@ -55,6 +76,7 @@ router.patch("/:id", authenticateToken, async (req, res) => {
   try {
     const { id } = req.params;
     const { name, floor, detail, description, totalSeat } = req.body;
+    await updateRoomSchema.validate({ name, floor, detail, description, totalSeat });
     const room = await prisma.room.update({
       where: {
         id: parseInt(id),

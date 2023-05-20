@@ -3,6 +3,20 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 const router = express.Router();
 
+import * as yup from "yup";
+
+
+const createReportSchema = yup.object().shape({
+  userId: yup.number().required(),
+  roomId: yup.number().required(),
+  detail: yup.string().required(),
+});
+
+// Validation schema for the report PUT route
+const updateReportSchema = yup.object().shape({
+  status: yup.boolean(),
+});
+ 
 router.get("/", async (req, res) => {
   try {
     const reports = await prisma.report.findMany({
@@ -50,6 +64,7 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
+    await createReportSchema.validate(req.body);
     const { userId, roomId, detail } = req.body;
     const report = await prisma.report.create({
       data: {
@@ -81,6 +96,7 @@ router.get("/:id", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
   try {
+    await updateReportSchema.validate(req.body);
     const { id } = req.params;
     const { status } = req.body;
     const report = await prisma.report.update({

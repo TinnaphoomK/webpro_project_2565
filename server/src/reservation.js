@@ -1,7 +1,23 @@
 import express from "express";
 import { PrismaClient } from "@prisma/client";
+import * as yup from "yup";
+
 const prisma = new PrismaClient();
 const router = express.Router();
+
+// Validation schema for the reservation POST route
+const createReservationSchema = yup.object().shape({
+  userId: yup.number().required(),
+  roomId: yup.number().required(),
+  dateTimeStart: yup.date().required(),
+  dateTimeEnd: yup.date().required(),
+  detail: yup.string(),
+});
+
+// Validation schema for the reservation PUT route
+const updateReservationSchema = yup.object().shape({
+  status: yup.string().required(),
+});
 
 router.get("/", async (req, res) => {
   try {
@@ -53,8 +69,11 @@ router.get("/:id", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
   try {
+
     const { id } = req.params;
     const {status} = req.body;
+    await updateReservationSchema.validate({ status });
+
     const reservation = await prisma.reservation.update({
       where: {
         id: parseInt(id),
@@ -71,7 +90,15 @@ router.put("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
+    
     const { userId, roomId, dateTimeStart, dateTimeEnd, detail } = req.body;
+    await createReservationSchema.validate({
+      userId,
+      roomId,
+      dateTimeStart,
+      dateTimeEnd,
+      detail,
+    });
     console.log(userId, roomId, dateTimeStart, dateTimeEnd, detail);
     const reservation = await prisma.reservation.create({
       data: {
