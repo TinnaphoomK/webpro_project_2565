@@ -6,6 +6,10 @@ const router = express.Router();
 import * as yup from "yup";
 
 
+const StatusEnum = {
+  PENDING: "pending",
+  APPROVED: "done",
+};
 const createReportSchema = yup.object().shape({
   userId: yup.number().required(),
   roomId: yup.number().required(),
@@ -14,7 +18,7 @@ const createReportSchema = yup.object().shape({
 
 // Validation schema for the report PUT route
 const updateReportSchema = yup.object().shape({
-  status: yup.boolean(),
+  status: yup.string().oneOf(Object.values(StatusEnum)),
 });
  
 router.get("/", async (req, res) => {

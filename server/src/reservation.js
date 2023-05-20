@@ -6,6 +6,12 @@ const prisma = new PrismaClient();
 const router = express.Router();
 
 // Validation schema for the reservation POST route
+const StatusEnum = {
+  PENDING: "pending",
+  APPROVED: "approved",
+  REJECTED: "rejected",
+
+};
 const createReservationSchema = yup.object().shape({
   userId: yup.number().required(),
   roomId: yup.number().required(),
@@ -16,7 +22,7 @@ const createReservationSchema = yup.object().shape({
 
 // Validation schema for the reservation PUT route
 const updateReservationSchema = yup.object().shape({
-  status: yup.string().required(),
+  status: yup.string().oneOf(Object.values(StatusEnum)),
 });
 
 router.get("/", async (req, res) => {
