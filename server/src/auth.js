@@ -3,9 +3,12 @@ import { PrismaClient } from "@prisma/client";
 import axios from "axios";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import pkg from 'yup';
+const { object, string, number, date, InferType } = pkg;
 
 const prisma = new PrismaClient();
 const router = express.Router();
+
 
 // Login route
 router.post("/login", async (req, res) => {
