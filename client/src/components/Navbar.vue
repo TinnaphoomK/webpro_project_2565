@@ -20,17 +20,17 @@ export default {
     display: true,
   },
   mounted() {
-  const token = localStorage.getItem('token');
-  const user = JSON.parse(localStorage.getItem('user'));
-  if (user) {
-    this.studentId = user.studentId;
-    this.role = user.role;
-    if (token) {
-      this.username = user.firstName;
-      this.isLoggedIn = true;
+    const token = localStorage.getItem('token');
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user) {
+      this.studentId = user.studentId;
+      this.role = user.role;
+      if (token) {
+        this.username = user.firstName;
+        this.isLoggedIn = true;
+      }
     }
-  }
-},
+  },
   methods: {
     signout() {
       this.isLoggedIn = false;
@@ -74,28 +74,25 @@ export default {
             </a>
           </div>
 
-
           <template v-if="isLoggedIn && this.role === 'user'">
             <div class="flex mx-4">
-              <router-link to="/reservetable" class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer"
+              <router-link to="/reservetable"
+                class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer"
                 style="min-width: 125px; min-height: 25px">
                 <i class="pi pi-list mr-2"></i>
                 Queue
-            </router-link>
-
+              </router-link>
               <a @click.prevent="tohistory"
                 class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer"
                 style="min-width: 125px; min-height: 25px">
                 <i class="pi pi-history mr-2"></i>
                 History
               </a>
-
               <a class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center"
                 style="min-width: 125px; min-height: 25px">
                 <i class="pi pi-user mr-2"></i>
                 {{ username }}
               </a>
-
               <a @click.prevent="signout"
                 class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer"
                 style="min-width: 125px; min-height: 25px">
@@ -107,13 +104,24 @@ export default {
 
           <template v-if="isLoggedIn && this.role === 'admin'">
             <div class="flex mx-4">
-              
-              <a href="/manageroom" class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer"
+              <router-link to="/reservetable"
+                class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer"
+                style="min-width: 125px; min-height: 25px">
+                <i class="pi pi-list mr-2"></i>
+                Queue
+              </router-link>
+              <a @click.prevent="tohistory"
+                class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer"
+                style="min-width: 125px; min-height: 25px">
+                <i class="pi pi-history mr-2"></i>
+                History
+              </a>
+              <a href="/manageroom"
+                class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer"
                 style="min-width: 125px; min-height: 25px">
                 <i class="pi pi-user mr-2"></i>
                 {{ username }}
               </a>
-
               <a @click.prevent="signout"
                 class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer"
                 style="min-width: 125px; min-height: 25px" href="/signin">
@@ -125,11 +133,11 @@ export default {
 
           <template v-if="!isLoggedIn">
             <div class="flex mx-4">
-              <router-link to="/signin" >
+              <router-link to="/signin">
                 <LoginButton></LoginButton>
               </router-link>
 
-              <router-link to="/signup" >
+              <router-link to="/signup">
                 <SignupButton></SignupButton>
               </router-link>
             </div>

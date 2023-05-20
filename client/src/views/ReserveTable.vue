@@ -16,7 +16,7 @@ export default {
             columns: [
                 { field: 'User.studentId', header: 'รหัสนักศึกษา' },
                 { field: 'Room.name', header: 'ห้องที่จอง' },
-                { field: 'createdAt', header: 'วันที่ลงชื่อ' },
+                { field: 'createdAt', header: 'เวลาลงชื่อจอง' },
                 { field: 'dateTimeStart', header: 'เวลาที่เริ่มจอง' },
                 { field: 'dateTimeEnd', header: 'เวลาที่สิ้นสุดการจอง' },
             ]
@@ -31,21 +31,19 @@ export default {
         if (token) {
             this.username = user.firstName;
             this.isLoggedIn = true;
-
         }
     },
     computed: {
         pendingReservations() {
             console.log(this.student);
             this.reservation.map((index) => {
-                index.createdAt = index.createdAt.split("T")[0]
+                index.createdAt = index.createdAt.slice(0,19).replace("T", "  เวลา ")
                 index.dateTimeStart = index.dateTimeStart.slice(0,19).replace("T", "  เวลา ")
                 index.dateTimeEnd = index.dateTimeEnd.slice(0,19).replace("T", "  เวลา ")
                 console.log(index);
             })
             return this.reservation.filter(reservation => reservation.status === "approved");
         }
-
     },
     created: function () {
     },
@@ -65,34 +63,16 @@ export default {
 </script>
 
 <template>
-    <!-- navbar -->
     <Navbar></Navbar>
-
-    <!-- top bar-->
-    <div class="relative text-left justify-text-center font-bold text-2xl mt-6">
-        <div class="flex flex-column card mx-8 mt-4 pb-8 shadow-5 border-round-sm bg-white justify-content-center">
+    <div class="relative text-left justify-text-center font-bold text-2xl mt-6 mb-8">
+        <div class="flex flex-column card mx-8 mt-4 pb-8 shadow-5 border-round-sm cardbg justify-content-center">
             <label class="flex thai text-primary-800 justify-content-center text-center text-7xl mt-6" for="">ตารางจองห้อง</label>
-            <div class="flex text-left justify-text-center justify-content-end font-bold text-2xl mx-8 my-2">
-                <!-- <div class="flex">
-                    <select @input="floorselection($event)" name="floorSelect" placeholder="Select Floor ..." id="floorSelect"
-                        class="flex justify-content-center text-center border-round-2xl w-10rem h-3rem font-bold text-lg cursor-pointer">
-                        <option value="0" disabled selected>Select Floor...</option>
-                        <option value="1">1st Floor</option>
-                        <option value="M">M Floor</option>
-                        <option value="2">2nd Floor</option>
-                        <option value="3">3rd Floor</option>
-                    </select>
-                </div> -->
-            </div>
             <div class="flex thai justify-content-center mt-4">
-                <DataTable :value="pendingReservations" showGridlines tableStyle="min-width: 50rem">
+                <DataTable :value="pendingReservations" showGridlines tableStyle="min-width: 50rem" class="shadow-5">
                     <Column v-for="col of columns" :key="col.field" :field="col.field" :header="col.header"></Column>
                 </DataTable>
-
             </div>
         </div>
-
-
     </div>
 </template>
 
@@ -114,8 +94,13 @@ td {
 }
 
 body {
+    background-color: white;
+}
+
+.cardbg {
     background-color: rgba(35, 87, 165, 0.1);
 }
+
 
 .thai {
     font-family: 'Mitr', sans-serif;
