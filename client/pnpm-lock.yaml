@@ -37,6 +37,9 @@ dependencies:
   vue-router:
     specifier: ^4.1.6
     version: 4.1.6(vue@3.2.47)
+  vue-sweetalert2:
+    specifier: ^5.0.5
+    version: 5.0.5(vue@3.2.47)
   vuefire:
     specifier: ^3.1.0
     version: 3.1.0(firebase@9.21.0)(vue@3.2.47)
@@ -2226,6 +2229,10 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
+  /sweetalert2@11.7.5:
+    resolution: {integrity: sha512-RBPKdK8Uf9/bz9r4vy7x6sGqf0MioSXt1po1lAwwcl3AwbjHVTc5S0yud4ZJKU1EhvJFVDrFoqIpHwWERwZJEA==}
+    dev: false
+
   /tar@6.1.15:
     resolution: {integrity: sha512-/zKt9UyngnxIT/EAGYuxaMYgOIJiP81ab9ZfkILq4oNLPFX50qyYmu7jRj9qeXoxmJHjGlbH0+cm2uy1WCs10A==}
     engines: {node: '>=10'}
@@ -2323,8 +2330,8 @@ packages:
       vue: 3.2.47
     dev: false
 
-  /vue-demi@0.14.1(vue@3.2.47):
-    resolution: {integrity: sha512-rt+yuCtXvscYot9SQQj3WKZJVSriPNqVkpVBNEHPzSgBv7QIYzsS410VqVgvx8f9AAPgjg+XPKvmV3vOqqkJQQ==}
+  /vue-demi@0.14.5(vue@3.2.47):
+    resolution: {integrity: sha512-o9NUVpl/YlsGJ7t+xuqJKx8EBGf1quRhCiT6D/J0pfwmk9zUwYkC7yrF4SZCe6fETvSM3UNL2edcbYrSyc4QHA==}
     engines: {node: '>=12'}
     hasBin: true
     requiresBuild: true
@@ -2365,6 +2372,15 @@ packages:
       vue: 3.2.47
     dev: false
 
+  /vue-sweetalert2@5.0.5(vue@3.2.47):
+    resolution: {integrity: sha512-Q7+TjQxNwGruT2jfPaSKMz18HHWs81r4umEwlrrtOf/QL5Iwl1T+tUaNkcvKB7Rf9rYftubt7NnOMjfDMnDH3A==}
+    peerDependencies:
+      vue: '*'
+    dependencies:
+      sweetalert2: 11.7.5
+      vue: 3.2.47
+    dev: false
+
   /vue@3.2.47:
     resolution: {integrity: sha512-60188y/9Dc9WVrAZeUVSDxRQOZ+z+y5nO2ts9jWXSTkMvayiWxCWOWtBQoYjLeccfXkiiPZWAHcV+WTPhkqJHQ==}
     dependencies:
@@ -2388,7 +2404,7 @@ packages:
     dependencies:
       firebase: 9.21.0
       vue: 3.2.47
-      vue-demi: 0.14.1(vue@3.2.47)
+      vue-demi: 0.14.5(vue@3.2.47)
     dev: false
 
   /webidl-conversions@3.0.1:

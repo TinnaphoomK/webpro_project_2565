@@ -64,6 +64,13 @@ export default {
                 this.$router.push(`/history/${this.student}`)
             } catch (err) {
                 console.log(err);
+                this.$swal({
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'There someone reserve this room already!',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
             }
         }
 
