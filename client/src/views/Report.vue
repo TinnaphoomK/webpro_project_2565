@@ -57,7 +57,7 @@ export default {
     
     <div class="flex flex-column justify-content-center mt-4">
       <label class="flex thai mx-8 px-4" for="">เนื้อหา</label>
-      <Textarea v-model="detail" class="flex flex-column shadow-5 justify-content-center my-4 mx-8 h-20rem" cols="100" />
+      <Textarea v-model="detail" class="flex flex-column shadow-5 justify-content-center my-4 mx-8 h-20rem cardbg" cols="100" />
     </div>
   </div>
   <div class="flex text-center justify-content-center mt-4">
@@ -81,6 +81,10 @@ export default {
 }
 
 body {
+  background-color: white;
+}
+
+.cardbg {
   background-color: rgba(35, 87, 165, 0.1);
 }
 

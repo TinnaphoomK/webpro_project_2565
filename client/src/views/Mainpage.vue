@@ -31,7 +31,7 @@ export default {
         </span>
 
     </div> -->
-    <div class="flex justify-content-between font-bold text-2xl pt-4 mx-8 my-4 fadeindown animation-duration-400">
+    <div class="flex justify-content-between font-bold text-2xl pt-4 mx-8 my-4 fadeindown animation-duration-200">
         <div>
             <label class="flex text-6xl" for="">Room</label>
         </div>
@@ -47,11 +47,11 @@ export default {
         </div>
     </div>
 
-    <div class="flex mx-7 mb-2 px-5 py-6 border-round-xl shadow-5 cardbg gap-5 fadeindown animation-duration-400">
+    <div class="flex mx-7 mb-2 px-5 py-6 border-round-xl shadow-5 cardbg gap-5 fadeindown animation-duration-200">
         <CardItem :floor='selectFloor' />
     </div>
 
-    <div class="flex justify-content-center mx-7 my-6 px-2 py-4 border-round-xl shadow-5 cardbg fadeindown animation-duration-400">
+    <div class="flex justify-content-center mx-7 my-6 px-2 py-4 border-round-xl shadow-5 cardbg fadeindown animation-duration-200">
         <div class="flex flex-column justify-content-start align-self-center card-container text-lg mx-6 my-6">
             <label class="flex flex-column w-30rem my-3 bg-transparent font-bold text-5xl text-gray-900 border-round">
                 Auditorium Room</label>
@@ -76,7 +76,7 @@ export default {
             </ul>
         </div>
         <router-link to="/detail/37">
-            <div class="flex text-lg my-8 mx-6 justify-content-center align-items-center fadeindown animation-duration-400"><img
+            <div class="flex text-lg my-8 mx-6 justify-content-center align-items-center fadeindown animation-duration-200"><img
                     src="/src/assets/img/auditorium.jpeg" class="w-full h-full border-round-2xl my-4 mx-8 shadow-5" alt="">
             </div>
         </router-link>
