@@ -51,11 +51,11 @@ export default {
         <CardItem :floor='selectFloor' :searchRoom='search'/>
     </div>
 
-    <div class="flex justify-content-center mx-7 my-6 px-2 py-4 border-round-xl shadow-5 cardbg fadeindown animation-duration-200">
+    <div class="flex justify-content-center mx-7 my-6 px-2 py-2 border-round-xl shadow-5 cardbg fadeindown animation-duration-200">
         <div class="flex flex-column justify-content-start align-self-center card-container text-lg mx-6 my-6">
             <label class="flex flex-column w-30rem my-3 bg-transparent font-bold text-5xl text-gray-900 border-round">
                 Auditorium Room</label>
-            <label class="my-4" for="">For the event and meeting for each important things in faculty. Exclusive</label>
+            <label class="my-4" for="">For the event and meeting for each important things in faculty. Exclusively for IT students 🖥️</label>
             <ul class="flex flex-column list-none align-items-start">
                 <li class="flex my-2 align-items-center">
                     <img class="mx-2" src="../assets/img/itcirclelogo.png" alt="">

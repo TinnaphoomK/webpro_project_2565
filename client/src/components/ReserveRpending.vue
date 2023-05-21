@@ -2,7 +2,7 @@
     <div class="card fadeinright animation-duration-200">
         <div class="flex justify-content-center flex-wrap card-container">
             <div v-for="(value, index) in allReservations" :key="index"
-                class="bg-white text-primary-800 text-xl font-bold flex align-items-center justify-content-between w-full h-6rem border-round-2xl m-2 shadow-5">
+                class="bg-white text-primary-800 text-xl font-bold flex align-items-center justify-content-between w-full h-6rem border-round-2xl m-2 shadow-3 hover:shadow-4">
                 <label class="thai text-base ml-4" for="">รหัสจอง : #{{ value.id }}</label>
                 <label class="thai text-base ml-4" for="">ห้อง : {{ value.Room.name }}</label>
                 <label class="thai text-base ml-4" for="">วันที่จอง : {{ value.dateTimeStart.slice(0, 19).replace("T", " เวลา ") + value.dateTimeEnd.slice(10, 19).replace("T", " ถึง ") }}</label>
@@ -40,10 +40,8 @@ export default {
                 });
                 console.log(response.data);
                 window.location.reload()
-                // Handle success or perform any additional operations
             } catch (error) {
                 console.log(error);
-                // Handle error
             }
         },
         async reserveReject(id) {
@@ -53,10 +51,8 @@ export default {
                 });
                 console.log(response.data);
                 window.location.reload()
-                // Handle success or perform any additional operations
             } catch (error) {
                 console.log(error);
-                // Handle error
             }
         },
         async getAllReservations() {

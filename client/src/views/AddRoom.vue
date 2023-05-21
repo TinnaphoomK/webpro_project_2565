@@ -93,7 +93,7 @@ export default {
     <Navbar></Navbar>
 
     <div class="relative text-left justify-text-center font-bold text-2xl my-6 fadeindown animation-duration-200">
-        <router-link to="/detail" class="thai first text-primary-600 hover:text-primary-600">เพิ่มห้อง</router-link>
+        <label class="thai first text-primary-600 hover:text-primary-600">เพิ่มห้อง</label>
 
         <div class="card mx-8 my-3 py-6 shadow-5 border-round-sm bg-white">
             <div class="flex justify-content-center">
@@ -102,8 +102,8 @@ export default {
                         <div class="w-full flex flex-column align-items-center justify-content-center"
                             v-if="this.chooseImage">
                             <img class="w-6" :src="this.chooseImage" alt="">
-                            <button class="flex justify-content-center w-4 mt-4" v-if="this.chooseImage"
-                                @click="removeImage">Delete image</button>
+                            <Button class="flex bg-primary-800 hover:bg-primary-900 justify-content-center w-4 mt-4" v-if="image"
+                                @click="removeImage(roomId)">Delete image</Button>
                         </div>
                         <input v-else type="file" @change="(event) => { addImage(event); }">
                     </div>
