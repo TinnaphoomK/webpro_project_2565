@@ -8,7 +8,7 @@
           อนุมัติ</div>
         <label class="thai text-base" for="">รหัสจอง : #{{ value.id }}</label>
         <label class="thai text-base ml-4" for="">ห้อง : {{ value.Room.name }}</label>
-        <label class="thai text-base ml-4" for="">เวลาที่จอง : {{ value.dateTimeStart.slice(0, 19).replace("T", " เวลา ") + value.dateTimeEnd.slice(10, 19).replace("T", " - ") }}</label>
+        <label class="thai text-base ml-4" for="">วันที่จอง : {{ value.dateTimeStart.slice(0, 19).replace("T", " เวลา ") + value.dateTimeEnd.slice(10, 19).replace("T", " - ") }}</label>
         <label class="thai text-base ml-4" for="">รายละเอียด : {{ value.detail }}</label>
         <a @click.prevent="toreport(value.Room.id)">
           <i class="pi pi-ellipsis-h mx-4 text-xl text-900"></i>

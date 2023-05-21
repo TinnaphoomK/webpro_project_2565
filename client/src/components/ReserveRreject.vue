@@ -8,7 +8,7 @@
           ไม่อนุมัติ</div>
           <label class="thai text-base ml-6" for="">รหัสจอง : #{{ value.id }}</label>
           <label class="thai text-base ml-6" for="">ห้อง : {{ value.Room.name }}</label>
-          <label class="thai text-base ml-6" for="">เวลาที่จอง : {{ value.dateTimeStart.slice(0, 19).replace("T", " เวลา ") + value.dateTimeEnd.slice(10, 19).replace("T", " ถึง ") }}</label>
+          <label class="thai text-base ml-6" for="">วันที่จอง : {{ value.dateTimeStart.slice(0, 19).replace("T", " เวลา ") + value.dateTimeEnd.slice(10, 19).replace("T", " ถึง ") }}</label>
           <label class="thai text-base mx-6" for="">รายละเอียด : {{ value.detail }}</label>
       </div>
     </div>

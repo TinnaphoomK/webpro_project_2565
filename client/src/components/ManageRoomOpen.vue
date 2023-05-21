@@ -1,5 +1,4 @@
 <template>
-  <!-- แสดงห้องที่ เปิด ใช้งานอยู่ !! -->
   <div class="card">
     <div class="flex justify-content-center flex-wrap card-container">
       <div
@@ -21,7 +20,7 @@
           <i class="pi pi-ellipsis-h mx-2 text-xl text-900"></i>
         </a>
         <Button @click="deleteRoom(room.id)"
-          class="flex justify-content-center thai text-sm bg-red-800 h-2rem w-6rem hover:bg-red-900 hover:text-200 mx-2">
+          class="flex justify-content-center thai text-sm bg-red-700 h-2rem w-6rem hover:bg-red-800 hover:text-200 mx-2">
           ลบห้อง
         </Button>
       </div>
@@ -62,12 +61,12 @@ export default {
         }
       } catch (error) {
         this.$swal({
-            position: 'top-end',
-            icon: 'error',
-            title: 'มีการจองห้องนี้อยู่!',
-            showConfirmButton: false,
-            timer: 2000
-          })
+          position: 'top-end',
+          icon: 'error',
+          title: 'มีการจองห้องนี้อยู่!',
+          showConfirmButton: false,
+          timer: 2000
+        })
       }
     },
     async changeStatus(id) {
@@ -88,12 +87,12 @@ export default {
         window.location.reload()
       } catch (error) {
         this.$swal({
-            position: 'top-end',
-            icon: 'error',
-            title: 'มีการจองห้องนี้อยู่!',
-            showConfirmButton: false,
-            timer: 2000
-          })
+          position: 'top-end',
+          icon: 'error',
+          title: 'มีการจองห้องนี้อยู่!',
+          showConfirmButton: false,
+          timer: 2000
+        })
       }
     },
     async toedit(id) {
