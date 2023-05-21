@@ -2,7 +2,7 @@
   <div class="card">
     <div class="flex justify-content-center flex-wrap card-container">
       <div
-        class="bg-white text-primary-800 text-xl font-bold flex align-items-center justify-content-between w-28rem h-6rem border-round-2xl mx-2 shadow-5">
+        class="bg-white text-primary-800 text-xl font-bold flex align-items-center justify-content-between w-28rem h-6rem border-round-2xl mx-2 shadow-3 hover:shadow-5">
         <Button @mouseenter="hover = true" @mouseleave="hover = false" @click="changeStatus(room.id)" :class="[
           'thai',
           'text-sm',

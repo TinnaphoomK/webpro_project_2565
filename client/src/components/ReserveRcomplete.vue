@@ -2,7 +2,7 @@
   <div class="card">
     <div class="flex justify-content-center flex-wrap card-container">
       <div v-for="(value, index) in allReservations" :key="index"
-        class="bg-white text-primary-800 text-xl font-bold flex align-items-center justify-content-between w-full h-6rem border-round-2xl m-2 shadow-5">
+        class="bg-white text-primary-800 text-xl font-bold flex align-items-center justify-content-between w-full h-6rem border-round-2xl m-2 shadow-3 hover:shadow-4">
         <div
           class="thai bg-green-700 font-normal text-lg text-white text-center align-items-center h-2rem w-7rem border-round-right-lg">
           อนุมัติ</div>

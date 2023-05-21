@@ -87,13 +87,13 @@ export default {
           <template v-if="isLoggedIn && this.role === 'user'">
             <div class="flex mx-4">
               <router-link to="/reservetable"
-                class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer"
+                class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer hover:text-400"
                 style="min-width: 125px; min-height: 25px">
                 <i class="pi pi-list mr-2"></i>
                 Queue
               </router-link>
               <a @click.prevent="tohistory"
-                class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer"
+                class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer hover:text-400"
                 style="min-width: 125px; min-height: 25px">
                 <i class="pi pi-history mr-2"></i>
                 History
@@ -104,7 +104,7 @@ export default {
                 {{ username }}
               </a>
               <a @click.prevent="signout"
-                class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer"
+                class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer hover:text-400"
                 style="min-width: 125px; min-height: 25px">
                 <i class="pi pi-power-off mr-2"></i>
                 Log out
@@ -115,25 +115,25 @@ export default {
           <template v-if="isLoggedIn && this.role === 'admin'">
             <div class="flex mx-4">
               <router-link to="/reservetable"
-                class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer"
+                class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer hover:text-400"
                 style="min-width: 125px; min-height: 25px">
                 <i class="pi pi-list mr-2"></i>
                 Queue
               </router-link>
               <a @click.prevent="tohistory"
-                class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer"
+                class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer hover:text-400"
                 style="min-width: 125px; min-height: 25px">
                 <i class="pi pi-history mr-2"></i>
                 History
               </a>
               <a href="/manageroom"
-                class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer"
+                class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer hover:text-400"
                 style="min-width: 125px; min-height: 25px">
                 <i class="pi pi-user mr-2"></i>
                 {{ username }}
               </a>
               <a @click.prevent="signout"
-                class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer"
+                class="z-1 bg-transparent text-white border-round-3xl ml-6 my-4 text-2xl font-bold flex align-items-center justify-content-center cursor-pointer hover:text-400"
                 style="min-width: 125px; min-height: 25px" href="/signin">
                 <i class="pi pi-power-off mr-2"></i>
                 Log out

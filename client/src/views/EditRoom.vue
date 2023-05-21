@@ -2,7 +2,7 @@
     <Navbar></Navbar>
 
     <div class="relative text-left justify-text-center font-bold text-2xl my-6 fadeinleft animation-duration-200">
-        <router-link to="/detail" class="thai first text-primary-600 hover:text-primary-600">แก้ไขห้อง</router-link>
+        <label class="thai first text-primary-600 hover:text-primary-600">แก้ไขห้อง</label>
 
         <div class="card mx-8 my-3 py-6 shadow-5 border-round-sm bg-white">
             <div class="flex justify-content-center">
@@ -10,8 +10,8 @@
                     <div class="flex flex-column card-container mx-8 my-6 justify-content-center align-items-center">
                         <div class="w-full flex flex-column align-items-center justify-content-center" v-if="image">
                             <img class="w-6" :src="image" alt="">
-                            <button class="flex justify-content-center w-4 mt-4" v-if="image"
-                                @click="removeFile(roomId)">Delete image</button>
+                            <Button class="flex bg-primary-800 hover:bg-primary-900 justify-content-center w-4 mt-4" v-if="image"
+                                @click="removeFile(roomId)">Delete image</Button>
                         </div>
                         <input v-else type="file" @change="(event) => { uploadFile(event); }">
                     </div>
