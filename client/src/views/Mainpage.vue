@@ -37,7 +37,7 @@ export default {
         </div>
         <div class="flex">
             <select @input="floorselection($event)" name="floorSelect" placeholder="Select Floor ..." id="floorSelect"
-                class="flex justify-content-center text-center border-round-2xl w-10rem h-3rem font-bold text-lg cursor-pointer shadow-2">
+                class="flex justify-content-center text-center border-round-lg border-gray-400 w-10rem h-3rem font-bold text-lg cursor-pointer shadow-2 hover:border-blue-500">
                 <option value="0">All Room</option>
                 <option value="1">1st Floor</option>
                 <option value="M">M Floor</option>
@@ -77,7 +77,7 @@ export default {
         </div>
         <router-link to="/detail/37">
             <div class="flex text-lg my-8 mx-6 justify-content-center align-items-center fadeindown animation-duration-200"><img
-                    src="/src/assets/img/auditorium.jpeg" class="w-full h-full border-round-2xl my-4 mx-8 shadow-5" alt="">
+                    src="/src/assets/img/auditorium.jpeg" class="w-full h-full border-round-2xl my-4 mx-8 shadow-3 hover:shadow-5" alt="">
             </div>
         </router-link>
     </div>

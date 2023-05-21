@@ -52,9 +52,9 @@ export default {
                     await this.uploadFile(res.data.id)
                 }
                 this.$swal({
-                    position: 'top-end',
+                    position: 'bottom-end',
                     icon: 'success',
-                    title: 'Finish!',
+                    title: 'Room added!',
                     showConfirmButton: false,
                     timer: 2000
                 })
@@ -62,7 +62,7 @@ export default {
 
             } catch (error) {
                 this.$swal({
-                    position: 'top-end',
+                    position: 'bottom-end',
                     icon: 'error',
                     title: 'Room informations are required!',
                     showConfirmButton: false,

@@ -17,37 +17,46 @@
             </div>
             <div
                 class="flex flex-column align-items-center justify-content-center w-30rem h-30rem bg-white font-normal text-white border-round-right-xl shadow-5">
-                <form @submit.prevent="handleSubmit(!v$.$invalid)" class="flex flex-column w-full justify-content-center" action="">
+                <form @submit.prevent="handleSubmit(!v$.$invalid)" class="flex flex-column w-full justify-content-center"
+                    action="">
 
                     <div class="my-2">
-                        <label class="flex text-black-alpha-90 justify-content-start mx-4" for="email" :class="{ 'p-error': v$.email.$invalid && submitted }">Email</label>
+                        <label class="flex text-black-alpha-90 justify-content-start mx-4" for="email"
+                            :class="{ 'p-error': v$.email.$invalid && submitted }">Email</label>
                         <div class="flex">
-                            <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="email"
-                                name="email" v-model="v$.email.$model" :class="{ 'p-invalid': v$.email.$invalid && submitted }" />
-                            </div>
-                            <small v-if="(v$.email.$invalid && submitted) || v$.email.$pending.$response" class="ml-4 p-error">{{
+                            <InputText class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1" id="email" name="email"
+                                v-model="v$.email.$model" :class="{ 'p-invalid': v$.email.$invalid && submitted }" />
+                        </div>
+                        <small v-if="(v$.email.$invalid && submitted) || v$.email.$pending.$response"
+                            class="ml-4 p-error">{{
                                 v$.email.required.$message.replace('Value', 'Email') }}</small>
                     </div>
 
                     <div class="my-2">
-                        <label class="flex text-black-alpha-90 justify-content-start mx-4" for="newPassword" :class="{ 'p-error': v$.newPassword.$invalid && submitted }">New
+                        <label class="flex text-black-alpha-90 justify-content-start mx-4" for="newPassword"
+                            :class="{ 'p-error': v$.newPassword.$invalid && submitted }">New
                             Password</label>
                         <div class="flex">
                             <InputText type="password" class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1"
-                                id="newpassword" name="newpassword" v-model="v$.newPassword.$model" :class="{ 'p-invalid': v$.newPassword.$invalid && submitted }" />
-                            </div>
-                            <small v-if="(v$.newPassword.$invalid && submitted) || v$.newPassword.$pending.$response" class="ml-4 p-error">{{
+                                id="newpassword" name="newpassword" v-model="v$.newPassword.$model"
+                                :class="{ 'p-invalid': v$.newPassword.$invalid && submitted }" />
+                        </div>
+                        <small v-if="(v$.newPassword.$invalid && submitted) || v$.newPassword.$pending.$response"
+                            class="ml-4 p-error">{{
                                 v$.newPassword.required.$message.replace('Value', 'New Password') }}</small>
                     </div>
 
                     <div class="my-2">
-                        <label class="flex text-black-alpha-90 justify-content-start mx-4" for="confirmpassword" :class="{ 'p-error': v$.confirmPassword.$invalid && submitted }">Confirm
+                        <label class="flex text-black-alpha-90 justify-content-start mx-4" for="confirmpassword"
+                            :class="{ 'p-error': v$.confirmPassword.$invalid && submitted }">Confirm
                             Password</label>
                         <div class="flex">
                             <InputText type="password" class="flex p-inputtext-sm h-2rem w-full shadow-1 mx-4 mt-1"
-                                id="confirmpassword" name="confirmpassword" v-model="v$.confirmPassword.$model" :class="{ 'p-invalid': v$.confirmPassword.$invalid && submitted }" />
-                            </div>
-                            <small v-if="(v$.confirmPassword.$invalid && submitted) || v$.confirmPassword.$pending.$response" class="ml-4 p-error">{{
+                                id="confirmpassword" name="confirmpassword" v-model="v$.confirmPassword.$model"
+                                :class="{ 'p-invalid': v$.confirmPassword.$invalid && submitted }" />
+                        </div>
+                        <small v-if="(v$.confirmPassword.$invalid && submitted) || v$.confirmPassword.$pending.$response"
+                            class="ml-4 p-error">{{
                                 v$.confirmPassword.required.$message.replace('Value', 'Confirm Password') }}</small>
                     </div>
                     <Button type="submit"
@@ -128,23 +137,23 @@ export default {
         };
     },
     validations() {
-    return {
-      email: { required, email },
-      newPassword: { required, minLength: minLength(8) },
-      confirmPassword: { required, sameAs: sameAs(this.newPassword) }
-    }
-  },
-    methods: {
-      handleSubmit(isFormValid) {
-      this.submitted = true;
-      if (!isFormValid) {
-        return;
-      }
-      this.resetPassword();
+        return {
+            email: { required, email },
+            newPassword: { required, minLength: minLength(8) },
+            confirmPassword: { required, sameAs: sameAs(this.newPassword) }
+        }
     },
-        async resetPassword(){
+    methods: {
+        handleSubmit(isFormValid) {
+            this.submitted = true;
+            if (!isFormValid) {
+                return;
+            }
+            this.resetPassword();
+        },
+        async resetPassword() {
             try {
-                if(this.newPassword !== this.confirmPassword){
+                if (this.newPassword !== this.confirmPassword) {
                     alert("Password not match")
                     return
                 }
@@ -152,9 +161,15 @@ export default {
                     email: this.email,
                     newPassword: this.newPassword,
                 });
-            alert("Password changed")
-            this.$router.push("/signin");
-            console.log(res);
+                this.$swal({
+                    position: 'bottom-end',
+                    icon: 'success',
+                    title: 'Password changed!',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
+                this.$router.push("/signin");
+                console.log(res);
             } catch (error) {
                 this.$swal(error?.response?.data?.error || error?.message || error?.data?.error || error)
                 console.log(error.response.data.error);

@@ -55,9 +55,9 @@ export default {
 
                 console.log(res.data);
                 this.$swal({
-                    position: 'top-end',
+                    position: 'bottom-end',
                     icon: 'success',
-                    title: 'Finish!',
+                    title: 'Reserved!',
                     showConfirmButton: false,
                     timer: 2000
                 })
@@ -65,9 +65,9 @@ export default {
             } catch (err) {
                 console.log(err);
                 this.$swal({
-                    position: 'top-end',
+                    position: 'bottom-end',
                     icon: 'error',
-                    title: 'There someone reserve this room already!',
+                    title: 'Someone has already reserved this room!',
                     showConfirmButton: false,
                     timer: 2000
                 })

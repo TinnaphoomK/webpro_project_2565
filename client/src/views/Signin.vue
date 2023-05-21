@@ -115,7 +115,7 @@ export default {
         if (res.data.user.role === "admin") {
           this.$router.push("/manageroom");
           this.$swal({
-            position: 'top-end',
+            position: 'bottom-end',
             icon: 'success',
             title: 'Welcome Admin!',
             showConfirmButton: false,
@@ -124,7 +124,7 @@ export default {
         } else {
           this.$router.push("/");
           this.$swal({
-            position: 'top-end',
+            position: 'bottom-end',
             icon: 'success',
             title: 'Welcome!',
             showConfirmButton: false,
