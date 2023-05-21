@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="flex justify-content-center flex-wrap card-container">
-      <div v-for="(value, index) in pendingReservations" :key="index"
+      <div v-for="(value, index) in rejectedReservations" :key="index"
         class="bg-white text-primary-800 text-xl font-bold flex align-items-center justify-content-between w-full h-6rem border-round-2xl m-2 shadow-5">
         <div
           class="thai bg-red-700 text-white text-lg font-normal text-center align-items-center h-2rem w-7rem border-round-right-lg">
@@ -26,7 +26,7 @@ export default {
     };
   },
   computed: {
-    pendingReservations() {
+    rejectedReservations() {
       return this.reservation.filter(reservation => reservation.status === "rejected");
     }
   },
@@ -45,6 +45,7 @@ export default {
         } else {
           this.reservation = []
         }
+        this.$emit('rejected-count-updated', this.rejectedReservations.length);
       } catch (error) {
         console.log(error);
       }

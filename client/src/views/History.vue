@@ -1,3 +1,28 @@
+<template>
+    <Navbar></Navbar>
+
+    <div class="relative text-left justify-text-center font-bold text-2xl my-6">
+        <a @click.prevent="tohistory"
+            class="thai first text-primary-600 hover:text-primary-600 cursor-pointer">ประวัติการจอง</a>
+        <a @click.prevent="toreporthistory" class="thai ml-8 text-gray-900 hover:text-primary-600 cursor-pointer">ประวัติการรายงาน</a>
+
+        <div class="card mx-6 my-3 py-8 shadow-5 border-round-sm cardbg">
+            <div>
+                <div class="mx-8">
+                    <div class="thai text-lg font-normal text-gray-600 mx-4">รอดำเนินการ ({{ pendingReservationsCount }})</div>
+                    <HistoryPending @pending-count-updated="pendingReservationsCount = $event"></HistoryPending>
+                </div>
+
+                <div class="mx-8">
+                    <div class="thai text-lg font-normal text-gray-600 mx-4 mt-6">เสร็จสิ้น ({{ approvedReservationsCount + rejectedReservationsCount }})</div>
+                    <HistoryComplete @approved-count-updated="approvedReservationsCount = $event"></HistoryComplete>
+                    <HistoryReject @rejected-count-updated="rejectedReservationsCount = $event"></HistoryReject>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
 <script>
 import Navbar from '../components/Navbar.vue';
 import HistoryPending from '../components/HistoryPending.vue';
@@ -18,6 +43,9 @@ export default {
             starttime: '',
             endtime: '',
             roomId: '',
+            pendingReservationsCount: 0,
+            approvedReservationsCount: 0,
+            rejectedReservationsCount: 0,
         }
     },
     mounted() {
@@ -28,7 +56,6 @@ export default {
         if (token) {
             this.username = user.firstName;
             this.isLoggedIn = true;
-
         }
     },
     methods: {
@@ -41,34 +68,9 @@ export default {
             this.$router.push(`/reporthistory/${this.student}`)
         }
     }
-
 }
 </script>
 
-<template>
-    <Navbar></Navbar>
-
-    <div class="relative text-left justify-text-center font-bold text-2xl my-6">
-        <a @click.prevent="tohistory"
-            class="thai first text-primary-600 hover:text-primary-600 cursor-pointer">ประวัติการจอง</a>
-        <a @click.prevent="toreporthistory" class="thai ml-8 text-gray-900 hover:text-primary-600 cursor-pointer">ประวัติการรายงาน</a>
-
-        <div class="card mx-6 my-3 py-8 shadow-5 border-round-sm cardbg">
-            <div>
-                <div class="mx-8">
-                    <div class="thai text-lg font-normal text-gray-600 mx-4">รอดำเนินการ</div>
-                    <HistoryPending></HistoryPending>
-                </div>
-
-                <div class="mx-8">
-                    <div class="thai text-lg font-normal text-gray-600 mx-4 mt-6">เสร็จสิ้น</div>
-                    <HistoryComplete></HistoryComplete>
-                    <HistoryReject></HistoryReject>
-                </div>
-            </div>
-        </div>
-    </div>
-</template>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');

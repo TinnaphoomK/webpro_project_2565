@@ -44,6 +44,7 @@ export default {
         } else {
           this.reservation = []
         }
+        this.$emit('pending-count-updated', this.pendingReservations.length);
       } catch (error) {
         console.log(error);
       }
