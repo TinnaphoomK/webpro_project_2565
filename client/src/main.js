@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 
 // Import primeVue component
+import PrimeVue from 'primevue/config';
 import Button from 'primevue/button';
 import ToastService from 'primevue/toastservice';
 import Toast from 'primevue/toast';
@@ -17,6 +18,7 @@ import ColumnGroup from 'primevue/columngroup';   // optional
 import Row from 'primevue/row';                   // optional
 import Password from 'primevue/password';
 import Dropdown from 'primevue/dropdown';
+import Paginator from 'primevue/paginator';
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import { firebaseApp } from "./firebase";
@@ -34,6 +36,7 @@ const error1 = {
 const app = createApp(App)
 
 app.use(router)
+app.use(PrimeVue);
 app.use(ToastService);
 app.use(VueSweetalert2, error1);
 app.use(VueFire, {
@@ -53,5 +56,6 @@ app.component("ColumnGroup", ColumnGroup)
 app.component("Row", Row)
 app.component("Password", Password)
 app.component("Dropdown", Dropdown)
+app.component("Paginator", Paginator)
 
 app.mount('#app')

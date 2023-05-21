@@ -12,7 +12,7 @@ const createRoomSchema = yup.object().shape({
   detail: yup.string().required(),
   floor: yup.string().required(),
   description: yup.string().required(),
-  totalSeat: yup.number().required(),
+  totalSeat: yup.string().required(),
 });
 
 // Validation schema for the room PATCH route
@@ -21,7 +21,7 @@ const updateRoomSchema = yup.object().shape({
   floor: yup.string(),
   detail: yup.string(),
   description: yup.string(),
-  totalSeat: yup.number(),
+  totalSeat: yup.string(),
 });
 
 router.get("/", async (req, res) => {

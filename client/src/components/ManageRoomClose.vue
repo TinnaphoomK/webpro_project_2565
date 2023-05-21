@@ -17,7 +17,7 @@
         </Button>
         <label class="thai text-sm ml-2" for="">{{ room.name }}</label>
         <label class="thai text-sm ml-2" for="">ชั้น : {{ room.floor }}</label>
-        <a @click.prevent="toedit(room.id)">
+        <a @click.prevent="toedit(room.id)" class="cursor-pointer">
           <i class="pi pi-ellipsis-h mx-2 text-xl text-900"></i>
         </a>
         <Button @click="deleteRoom(room.id)"

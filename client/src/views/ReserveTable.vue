@@ -1,13 +1,11 @@
 <script>
 import Navbar from '../components/Navbar.vue';
-import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import axios from 'axios';
 
 export default {
     components: {
         Navbar,
-
     },
     data() {
         return {
@@ -19,7 +17,7 @@ export default {
                 { field: 'createdAt', header: 'เวลาลงชื่อจอง' },
                 { field: 'dateTimeStart', header: 'เวลาที่เริ่มจอง' },
                 { field: 'dateTimeEnd', header: 'เวลาที่สิ้นสุดการจอง' },
-            ]
+            ],
         };
     },
     mounted() {
@@ -40,7 +38,6 @@ export default {
                 index.createdAt = index.createdAt.slice(0,19).replace("T", "  เวลา ")
                 index.dateTimeStart = index.dateTimeStart.slice(0,19).replace("T", "  เวลา ")
                 index.dateTimeEnd = index.dateTimeEnd.slice(0,19).replace("T", "  เวลา ")
-                console.log(index);
             })
             return this.reservation.filter(reservation => reservation.status === "approved");
         }
