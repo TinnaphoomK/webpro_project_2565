@@ -210,7 +210,7 @@ export default {
         this.resetForm();
         this.$router.push("/signin");
         this.$swal({
-                    position: 'top-end',
+                    position: 'bottom-end',
                     icon: 'success',
                     title: 'Sign up success!',
                     showConfirmButton: false,

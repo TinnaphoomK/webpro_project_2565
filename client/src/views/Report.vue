@@ -34,9 +34,9 @@ export default {
         })
         console.log(res.data);
         this.$swal({
-          position: 'top-end',
+          position: 'bottom-end',
           icon: 'success',
-          title: 'Finish!',
+          title: 'Reported!',
           showConfirmButton: false,
           timer: 2000
         })

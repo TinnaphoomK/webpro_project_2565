@@ -42,7 +42,7 @@ export default {
       if (this.role === 'admin') {
         this.$router.push('/signin');
         this.$swal({
-                    position: 'top-end',
+                    position: 'bottom-end',
                     icon: 'success',
                     title: 'Logout success!',
                     showConfirmButton: false,
@@ -51,7 +51,7 @@ export default {
       } else {
         this.$router.push('/');
         this.$swal({
-                    position: 'top-end',
+                    position: 'bottom-end',
                     icon: 'success',
                     title: 'Logout success!',
                     showConfirmButton: false,
