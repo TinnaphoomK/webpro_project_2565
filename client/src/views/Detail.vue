@@ -61,12 +61,8 @@ export default {
 
 
 <template>
-    <!-- navbar -->
     <Navbar></Navbar>
-
-    <!-- top bar-->
     <div class="relative text-left justify-text-center font-bold text-2xl mt-6">
-
         <div class="card mx-8 my-3 py-6 shadow-5 border-round-sm cardbg">
             <div class="flex justify-content-center flex-wrap card-container">
                 <div class="flex align-items-center justify-content-center">
