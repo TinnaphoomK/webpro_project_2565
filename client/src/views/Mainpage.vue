@@ -12,6 +12,7 @@ export default {
         return {
             room: {},
             selectFloor: '0',
+            search: ''
         }
     },
     methods: {
@@ -24,13 +25,12 @@ export default {
 
 <template>
     <Navbar></Navbar>
-    <!-- <div class="flex justify-content-center align-items-center pt-4 mt-4 text-center w-full fadeindown animation-duration-400">
+    <div class="flex justify-content-center align-items-center pt-4 mt-4 text-center w-full fadeindown animation-duration-200">
         <span class="p-float-label">
             <InputText id="search" type="text" class="p-inputtext-lg shadow-2 w-30rem" v-model="search" />
             <label for="search">Search here !</label>
         </span>
-
-    </div> -->
+    </div>
     <div class="flex justify-content-between font-bold text-2xl pt-4 mx-8 my-4 fadeindown animation-duration-200">
         <div>
             <label class="flex text-6xl" for="">Room</label>
@@ -48,7 +48,7 @@ export default {
     </div>
 
     <div class="flex mx-7 mb-2 px-5 py-6 border-round-xl shadow-5 cardbg gap-5 fadeindown animation-duration-200">
-        <CardItem :floor='selectFloor' />
+        <CardItem :floor='selectFloor' :searchTerm='search'/>
     </div>
 
     <div class="flex justify-content-center mx-7 my-6 px-2 py-4 border-round-xl shadow-5 cardbg fadeindown animation-duration-200">

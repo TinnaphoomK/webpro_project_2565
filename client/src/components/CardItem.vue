@@ -32,18 +32,26 @@ export default {
   },
   props: {
     floor: String,
+    searchTerm: String,
   },
   created() {
-    this.allRooms(this.floor);
+    this.allRooms(this.floor, this.searchTerm);
   },
   watch: {
     floor: function () {
-      this.allRooms(this.floor);
+      this.allRooms(this.floor, this.searchTerm);
+    },
+    searchTerm: function () {
+      this.allRooms(this.floor, this.searchTerm);
     },
   },
   computed: {
     filteredRooms() {
-      return this.rooms.filter(room => room.status === true);
+      let filteredRooms = this.rooms.filter(room => room.status === true);
+      if(this.searchTerm) {
+        filteredRooms = filteredRooms.filter(room => room.name.toLowerCase().includes(this.searchTerm.toLowerCase()));
+      }
+      return filteredRooms;
     },
   },
   methods: {
