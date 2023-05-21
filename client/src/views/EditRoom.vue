@@ -19,46 +19,46 @@
                     <div class="flex flex-column card-container my-6 justify-content-center align-self-start">
                         <div class="my-2">
                             <label class="thai flex text-sm text-black-alpha-90 justify-content-start mx-8"
-                                for="room">ชื่อห้อง : {{rooms.name}}</label>
+                                for="room">ชื่อห้อง : {{ rooms.name }}</label>
                             <div class="flex">
-                                <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room" placeholder="New room name..."
-                                    v-model="name"/>
+                                <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
+                                    placeholder="New room name..." v-model="name" />
+                            </div>
+                        </div>
+
+                        <div class="my-2">
+                            <label class="thai flex text-sm text-black-alpha-90 justify-content-start mx-8" for="room">ชั้น
+                                : {{ rooms.floor }}</label>
+                            <div class="flex">
+                                <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
+                                    placeholder="New floor..." v-model="floor" />
                             </div>
                         </div>
 
                         <div class="my-2">
                             <label class="thai flex text-sm text-black-alpha-90 justify-content-start mx-8"
-                                for="room">ชั้น : {{rooms.floor}}</label>
+                                for="room">รายละเอียด : {{ rooms.detail }}</label>
                             <div class="flex">
-                                <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room" placeholder="New floor..."
-                                    v-model="floor"/>
+                                <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
+                                    placeholder="New detail..." v-model="detail" />
                             </div>
                         </div>
 
                         <div class="my-2">
                             <label class="thai flex text-sm text-black-alpha-90 justify-content-start mx-8"
-                                for="room">รายละเอียด : {{rooms.detail}}</label>
+                                for="room">รายละเอียดเพิ่มเติม : {{ rooms.description }}</label>
                             <div class="flex">
-                                <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room" placeholder="New detail..."
-                                    v-model="detail"/>
+                                <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
+                                    placeholder="New description..." v-model="description" />
                             </div>
                         </div>
 
                         <div class="my-2">
                             <label class="thai flex text-sm text-black-alpha-90 justify-content-start mx-8"
-                                for="room">รายละเอียดเพิ่มเติม : {{rooms.description}}</label>
+                                for="room">จำนวนที่นั่ง : {{ rooms.totalSeat }}</label>
                             <div class="flex">
-                                <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room" placeholder="New description..."
-                                    v-model="description"/>
-                            </div>
-                        </div>
-
-                        <div class="my-2">
-                            <label class="thai flex text-sm text-black-alpha-90 justify-content-start mx-8"
-                                for="room">จำนวนที่นั่ง : {{rooms.totalSeat}}</label>
-                            <div class="flex">
-                                <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room" placeholder="New Total seat..."
-                                    v-model="totalSeat"/>
+                                <InputText type="text" class="flex p-inputtext-sm w-30rem shadow-1 mx-8 mt-1" id="room"
+                                    placeholder="New Total seat..." v-model="totalSeat" />
                             </div>
                         </div>
 
@@ -134,9 +134,22 @@ export default {
                         Authorization: 'Bearer ' + this.userId
                     }
                 });
+                this.$swal({
+                    position: 'bottom-end',
+                    icon: 'success',
+                    title: 'Room edited!',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
                 this.$router.push('/manageroom');
             } catch (err) {
-                alert('Edit room failed');
+                this.$swal({
+                    position: 'bottom-end',
+                    icon: 'error',
+                    title: 'Edit room failed!',
+                    showConfirmButton: false,
+                    timer: 2000
+                })
             }
         },
         async uploadFile(event) {
@@ -170,18 +183,18 @@ export default {
                 console.log(error);
             }
         },
-        async getRoom(id){
-             try{
+        async getRoom(id) {
+            try {
                 const res = await axios.get(`http://localhost:3000/api/room/${id}`, {
                     headers: {
                         Authorization: "Bearer " + this.userId
                     }
-                })                
+                })
                 console.log(res.data)
                 this.rooms = res.data
-             } catch(error) {
+            } catch (error) {
                 console.log(error)
-             }
+            }
         }
     },
     mounted() {
