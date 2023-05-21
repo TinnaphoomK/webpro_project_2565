@@ -15,8 +15,8 @@ const StatusEnum = {
 const createReservationSchema = yup.object().shape({
   userId: yup.number().required(),
   roomId: yup.number().required(),
-  dateTimeStart: yup.date().required(),
-  dateTimeEnd: yup.date().required(),
+  dateTimeStart: yup.date().required('Start time is required!'),
+  dateTimeEnd: yup.date().required('End time is required'),
   detail: yup.string(),
 });
 

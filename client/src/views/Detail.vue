@@ -64,6 +64,11 @@ export default {
     <Navbar></Navbar>
     <div class="relative text-left justify-text-center font-bold text-2xl mt-6">
         <div class="card mx-8 my-3 py-6 shadow-5 border-round-sm cardbg">
+            <router-link to="/">
+                <Button
+                    class="flex justify-content-start mx-8 mb-4 bg-primary-800 hover:bg-primary-900 hover:text-200 border-round-xl text-lg w-6rem justify-content-center shadow-5 pl-2">
+                    <i class="pi pi-chevron-left mr-2"></i> Back</Button>
+            </router-link>
             <div class="flex justify-content-center flex-wrap card-container">
                 <div class="flex align-items-center justify-content-center">
                     <img :src="this.rooms.image" class="w-5 h-30rem border-round-2xl my-4 mx-8 shadow-5" alt="">
@@ -77,7 +82,8 @@ export default {
                         <label class="thai flex flex-column text-gray-500">ชั้น : {{ this.rooms.floor }}</label>
                         <label class="thai flex flex-column text-gray-500">รายละเอียด : {{ this.rooms.detail }}</label>
                         <label class="thai flex flex-column text-gray-500">จำนวนที่นั่ง : {{ this.rooms.totalSeat }}</label>
-                        <label class="thai flex flex-column text-gray-500">มีคิวจองทั้งหมด : {{ reservationCount }} คิว ในวันนี้</label>
+                        <label class="thai flex flex-column text-gray-500">มีคิวจองทั้งหมด : {{ reservationCount }} คิว
+                            ในวันนี้</label>
                         <Button @click.prevent="toreserve(roomId)"
                             class="thai bg-primary-800 hover:bg-primary-900 hover:text-200 border-round-xl text-xl w-16rem h-4rem justify-content-center shadow-5 mt-6">จองห้อง
                         </Button>

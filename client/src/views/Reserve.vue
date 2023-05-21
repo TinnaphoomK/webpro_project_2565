@@ -20,6 +20,7 @@ export default {
             endtime: '',
             roomId: '',
             loading: false,
+            detail: ''
         }
     },
     mounted() {
@@ -27,6 +28,7 @@ export default {
         this.userId = JSON.parse(localStorage.getItem("user")).id
         this.student = JSON.parse(localStorage.getItem("user")).studentId
         this.thisroom(this.roomId)
+        console.log(this.roomId);
     },
     methods: {
         async thisroom(id) {
@@ -67,13 +69,15 @@ export default {
                 this.$swal({
                     position: 'bottom-end',
                     icon: 'error',
-                    title: 'Someone has already reserved this room!',
+                    title: 'Date, Start time and End time are required!',
                     showConfirmButton: false,
                     timer: 2000
                 })
             }
+        },
+        async todetail() {
+            this.$router.push(`/detail/${this.roomId}`)
         }
-
     }
 };
 </script>
@@ -83,6 +87,11 @@ export default {
     <div class="relative text-left justify-text-center font-bold text-2xl mt-6">
 
         <div class="card mx-8 my-3 py-6 shadow-5 border-round-sm cardbg">
+            <a @click.prevent="todetail">
+                <Button
+                    class="flex justify-content-start mx-8 mb-4 bg-primary-800 hover:bg-primary-900 hover:text-200 border-round-xl text-lg w-6rem justify-content-center shadow-5 pl-2">
+                    <i class="pi pi-chevron-left mr-2"></i> Back</Button>
+            </a>
             <div class="flex justify-content-center flex-wrap card-container">
                 <div class="flex align-items-center justify-content-center">
                     <img :src="this.rooms.image" class="w-5 h-30rem border-round-2xl my-4 shadow-5" alt="">
