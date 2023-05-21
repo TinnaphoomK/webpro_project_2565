@@ -11,7 +11,7 @@
         <label class="thai text-base ml-4" for="">วันที่จอง : {{ value.dateTimeStart.slice(0, 19).replace("T", " เวลา ") + value.dateTimeEnd.slice(10, 19).replace("T", " - ") }}</label>
         <label class="thai text-base ml-4" for="">รายละเอียด : {{ value.detail }}</label>
         <a @click.prevent="toreport(value.Room.id)">
-          <i class="pi pi-ellipsis-h mx-4 text-xl text-900"></i>
+          <i class="pi pi-user-edit mr-4 text-2xl text-900"></i>
         </a>
       </div>
     </div>

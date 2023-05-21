@@ -90,7 +90,7 @@ export default {
             <a @click.prevent="todetail">
                 <Button
                     class="flex justify-content-start mx-8 mb-4 bg-primary-800 hover:bg-primary-900 hover:text-200 border-round-xl text-lg w-6rem justify-content-center shadow-5 pl-2">
-                    <i class="pi pi-chevron-left mr-2"></i> Back</Button>
+                    <i class="pi pi-chevron-circle-left mx-2"></i> Back</Button>
             </a>
             <div class="flex justify-content-center flex-wrap card-container">
                 <div class="flex align-items-center justify-content-center">

@@ -54,7 +54,11 @@ export default {
         </div>
     </div>
 
-
+    <router-link to="/manageroom">
+        <Button
+            class="flex justify-content-start mx-6 bg-primary-800 hover:bg-primary-900 hover:text-200 border-round-xl text-lg w-6rem justify-content-center shadow-5 pl-2">
+            <i class="pi pi-chevron-circle-left mx-2"></i> Back</Button>
+    </router-link>
     <div class="card mx-6 my-3 py-8 shadow-5 border-round-sm bg-white">
         <div>
             <div class="mx-8">

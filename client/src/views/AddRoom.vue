@@ -93,8 +93,11 @@ export default {
     <Navbar></Navbar>
 
     <div class="relative text-left justify-text-center font-bold text-2xl my-6 fadeindown animation-duration-200">
-        <label class="thai first text-primary-600 hover:text-primary-600">เพิ่มห้อง</label>
-
+        <router-link to="/manageroom">
+            <Button
+                class="flex justify-content-start mx-8 bg-primary-800 hover:bg-primary-900 hover:text-200 border-round-xl text-lg w-6rem justify-content-center shadow-5 pl-2">
+                <i class="pi pi-chevron-circle-left mx-2"></i> Back</Button>
+        </router-link>
         <div class="card mx-8 my-3 py-6 shadow-5 border-round-sm bg-white">
             <div class="flex justify-content-center">
                 <div class="flex align-items-center justify-content-center">

@@ -61,7 +61,12 @@ export default {
     <Navbar></Navbar>
     <div class="relative text-left justify-text-center font-bold text-2xl mt-6 mb-8">
         <div class="flex flex-column card mx-8 mt-4 pb-8 shadow-5 border-round-sm cardbg justify-content-center fadeindown animation-duration-200">
-            <label class="flex thai text-primary-800 justify-content-center text-center text-7xl mt-6" for="">ตารางจองห้อง</label>
+            <router-link to="/">
+                <Button
+                    class="flex justify-content-start mx-6 mt-6 bg-primary-800 hover:bg-primary-900 hover:text-200 border-round-xl text-lg w-6rem justify-content-center shadow-5 pl-2">
+                    <i class="pi pi-chevron-circle-left mx-2"></i> Back</Button>
+            </router-link>
+            <label class="flex thai text-primary-800 justify-content-center text-center text-7xl mt-4" for="">ตารางจองห้อง</label>
             <div class="flex thai justify-content-center mt-4">
                 <DataTable :value="pendingReservations" showGridlines tableStyle="min-width: 50rem" class="shadow-5">
                     <Column v-for="col of columns" :key="col.field" :field="col.field" :header="col.header"></Column>

@@ -54,13 +54,13 @@ export default {
     <div class="bg-white mx-4 mt-4 mb-6 py-6 shadow-5 border-round-sm fadeindown animation-duration-200">
         <div class="flex justify-content-end mx-6">
             <router-link to="/reserverequest">
-                <Button class="thai bg-primary-800 hover:bg-primary-900 hover:text-200 mx-2">รายการจอง</Button>
+                <Button class="thai border-round-xl bg-primary-800 hover:bg-primary-900 hover:text-200 mx-2"><i class="flex align-items-center pi pi-calendar mr-2"></i>รายการจอง</Button>
             </router-link>
             <router-link to="/reportrequest">
-                <Button class="thai bg-primary-800 hover:bg-primary-900 hover:text-200 mx-2">รายงานห้อง</Button>
+                <Button class="thai border-round-xl bg-primary-800 hover:bg-primary-900 hover:text-200 mx-2"><i class="flex align-items-center pi pi-copy mr-2"></i>รายงานห้อง</Button>
             </router-link>
             <router-link to="/addroom">
-                <Button class="thai bg-primary-800 hover:bg-primary-900 hover:text-200 mx-2">เพิ่มห้อง</Button>
+                <Button class="thai border-round-xl bg-primary-800 hover:bg-primary-900 hover:text-200 mx-2"><i class="flex align-items-center pi pi-plus-circle mr-2"></i>เพิ่มห้อง</Button>
             </router-link>
         </div>
         <!-- open and close card -->
