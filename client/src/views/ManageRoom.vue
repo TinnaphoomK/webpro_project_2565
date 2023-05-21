@@ -57,7 +57,7 @@ export default {
                 <Button class="thai bg-primary-800 hover:bg-primary-900 hover:text-200 mx-2">รายการจอง</Button>
             </router-link>
             <router-link to="/reportrequest">
-                <Button class="thai bg-primary-800 hover:bg-primary-900 hover:text-200 mx-2">คำร้อง</Button>
+                <Button class="thai bg-primary-800 hover:bg-primary-900 hover:text-200 mx-2">รายงานห้อง</Button>
             </router-link>
             <router-link to="/addroom">
                 <Button class="thai bg-primary-800 hover:bg-primary-900 hover:text-200 mx-2">เพิ่มห้อง</Button>

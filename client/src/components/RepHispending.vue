@@ -44,6 +44,7 @@ export default {
                 } else {
                     this.report = []
                 }
+                this.$emit('pending-count-updated', this.pendingReport.length);
             } catch (error) {
                 console.log(error);
             }

@@ -39,6 +39,7 @@ export default {
                 } else {
                     this.allReports = [];
                 }
+                this.$emit('complete-count-updated', this.allReports.length);
             } catch (error) {
                 console.log(error);
             }

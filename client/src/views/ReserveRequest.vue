@@ -18,6 +18,9 @@
              starttime: '',
              endtime: '',
              roomId: '',
+             pendingReservationsCount : 0,
+             approvedReservationsCount : 0,
+             rejectedReservationsCount : 0,
          }
      },
      mounted() {
@@ -60,14 +63,14 @@
          <div class="card mx-6 my-3 py-8 shadow-5 border-round-sm bg-white">
             <div>
                 <div class="mx-8">
-                    <div class="thai text-lg font-normal text-gray-600 mx-4">รอดำเนินการ</div>
-                    <ReserveRpending></ReserveRpending>
+                    <div class="thai text-lg font-normal text-gray-600 mx-4">รอดำเนินการ ({{ pendingReservationsCount }})</div>
+                    <ReserveRpending @pending-count-updated="pendingReservationsCount = $event"></ReserveRpending>
                 </div>
 
                 <div class="mx-8">
-                    <div class="thai text-lg font-normal text-gray-600 mx-4 mt-6">เสร็จสิ้น</div>
-                    <ReserveRcomplete></ReserveRcomplete>
-                    <ReserveRreject></ReserveRreject>
+                    <div class="thai text-lg font-normal text-gray-600 mx-4 mt-6">เสร็จสิ้น ({{ approvedReservationsCount + rejectedReservationsCount }})</div>
+                    <ReserveRcomplete @approved-count-updated="approvedReservationsCount = $event"></ReserveRcomplete>
+                    <ReserveRreject @rejected-count-updated="rejectedReservationsCount = $event"></ReserveRreject>
                 </div>
             </div>
         </div>

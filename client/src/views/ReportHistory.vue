@@ -9,6 +9,12 @@ export default {
         RepHiscomplete
 
     },
+    data() {
+        return {
+            pendingReportsCount: 0,
+            completeReportsCount: 0,
+        }
+    },
     computed: {
         reportData() {
             return JSON.parse(localStorage.getItem('report')) || {};
@@ -42,22 +48,23 @@ export default {
     <Navbar></Navbar>
 
     <div class="relative text-left justify-text-center font-bold text-2xl my-6">
-        <a @click.prevent="tohistory" class="thai first text-gray-900 hover:text-primary-600 cursor-pointer">ประวัติการจอง</a>
+        <a @click.prevent="tohistory"
+            class="thai first text-gray-900 hover:text-primary-600 cursor-pointer">ประวัติการจอง</a>
         <a @click.prevent="toreporthistory"
             class="thai ml-8 text-primary-600 hover:text-primary-600 cursor-pointer">ประวัติการรายงาน</a>
 
         <div class="card mx-6 my-3 py-8 shadow-5 border-round-sm cardbg">
             <div>
                 <div class="mx-8">
-                    <div class="thai text-lg font-normal text-gray-600 mx-4">รอดำเนินการ
-                        </div>
-                    <RepHispending></RepHispending>
+                    <div class="thai text-lg font-normal text-gray-600 mx-4">รอดำเนินการ ({{ pendingReportsCount }})
+                    </div>
+                    <RepHispending @pending-count-updated="pendingReportsCount = $event"></RepHispending>
                 </div>
 
                 <div class="mx-8">
-                    <div class="thai text-lg font-normal text-gray-600 mx-4 mt-6">เสร็จสิ้น
-                        </div>
-                    <RepHiscomplete></RepHiscomplete>
+                    <div class="thai text-lg font-normal text-gray-600 mx-4 mt-6">เสร็จสิ้น ({{ completeReportsCount }})
+                    </div>
+                    <RepHiscomplete @complete-count-updated="completeReportsCount = $event"></RepHiscomplete>
                 </div>
             </div>
         </div>
@@ -80,6 +87,7 @@ body {
 .cardbg {
     background-color: rgba(35, 87, 165, 0.1);
 }
+
 .thai {
     font-family: 'Mitr', sans-serif;
 }

@@ -39,6 +39,7 @@ export default {
                 } else {
                     this.allReservations = [];
                 }
+                this.$emit('rejected-count-updated', this.allReservations.length);
             } catch (error) {
                 console.log(error);
             }

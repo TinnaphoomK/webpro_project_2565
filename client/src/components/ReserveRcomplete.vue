@@ -47,6 +47,7 @@ export default {
                 } else {
                     this.allReservations = [];
                 }
+                this.$emit('approved-count-updated', this.allReservations.length);
             } catch (error) {
                 console.log(error);
             }
