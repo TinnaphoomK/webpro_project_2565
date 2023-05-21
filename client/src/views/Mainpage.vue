@@ -27,13 +27,13 @@ export default {
     <Navbar></Navbar>
     <div class="flex justify-content-center align-items-center pt-4 mt-4 text-center w-full fadeindown animation-duration-200">
         <span class="p-float-label">
-            <InputText id="search" type="text" class="p-inputtext-lg shadow-2 w-30rem" v-model="search" />
+            <InputText id="search" type="text" class="p-inputtext-lg shadow-2" :style="{ width: '50rem', textAlign: 'center' }" v-model="search" />
             <label for="search">Search here !</label>
         </span>
     </div>
-    <div class="flex justify-content-between font-bold text-2xl pt-4 mx-8 my-4 fadeindown animation-duration-200">
+    <div class="flex justify-content-between  font-bold text-2xl pt-4 mx-8 my-4 fadeindown animation-duration-200">
         <div>
-            <label class="flex text-6xl" for="">Room</label>
+            <label class="flex text-6xl text-white" for="">Room</label>
         </div>
         <div class="flex">
             <select @input="floorselection($event)" name="floorSelect" placeholder="Select Floor ..." id="floorSelect"
@@ -96,7 +96,7 @@ export default {
 }
 
 body {
-    background-color: white;
+    background-image: linear-gradient(to right,rgb(35, 87, 165), rgb(3, 8, 16), rgb(35, 87, 165));
 }
 
 .thai {
@@ -104,7 +104,7 @@ body {
 }
 
 .cardbg {
-    background-color: rgba(35, 87, 165, 0.1);
+    background-color: rgb(255, 255, 255);
 }
 
 .navbg {
