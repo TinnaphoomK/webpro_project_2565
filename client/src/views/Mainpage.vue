@@ -48,7 +48,7 @@ export default {
     </div>
 
     <div class="flex mx-7 mb-2 px-5 py-6 border-round-xl shadow-5 cardbg gap-5 fadeindown animation-duration-200">
-        <CardItem :floor='selectFloor' :searchTerm='search'/>
+        <CardItem :floor='selectFloor' :searchRoom='search'/>
     </div>
 
     <div class="flex justify-content-center mx-7 my-6 px-2 py-4 border-round-xl shadow-5 cardbg fadeindown animation-duration-200">
