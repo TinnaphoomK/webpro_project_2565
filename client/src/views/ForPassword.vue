@@ -43,7 +43,7 @@
                         </div>
                         <small v-if="(v$.newPassword.$invalid && submitted) || v$.newPassword.$pending.$response"
                             class="ml-4 p-error">{{
-                                v$.newPassword.required.$message.replace('Value', 'New Password') }}</small>
+                                v$.newPassword.required.$message.replace('Value', 'New password') }}</small>
                     </div>
 
                     <div class="my-2">
@@ -55,9 +55,8 @@
                                 id="confirmpassword" name="confirmpassword" v-model="v$.confirmPassword.$model"
                                 :class="{ 'p-invalid': v$.confirmPassword.$invalid && submitted }" />
                         </div>
-                        <small v-if="(v$.confirmPassword.$invalid && submitted) || v$.confirmPassword.$pending.$response"
-                            class="ml-4 p-error">{{
-                                v$.confirmPassword.required.$message.replace('Value', 'Confirm Password') }}</small>
+                        <small v-if="v$.confirmPassword.$invalid && submitted && !v$.confirmPassword.required.$model"
+                            class="ml-4 p-error">Password does not match</small>
                     </div>
                     <Button type="submit"
                         class="flex bg-primary-800 text-white hover:bg-primary-900 hover:text-200 justify-content-center text-bold shadow-3 mt-4 mb-2 mx-4">Change
@@ -140,7 +139,10 @@ export default {
         return {
             email: { required, email },
             newPassword: { required, minLength: minLength(8) },
-            confirmPassword: { required, sameAs: sameAs(this.newPassword) }
+            confirmPassword: {
+                required,
+                sameAs: sameAs(() => this.newPassword)
+            }
         }
     },
     methods: {
@@ -178,7 +180,3 @@ export default {
     },
 };
 </script>
-
-
-
-

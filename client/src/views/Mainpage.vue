@@ -25,7 +25,8 @@ export default {
 
 <template>
     <Navbar></Navbar>
-    <div class="flex justify-content-center align-items-center pt-4 mt-4 text-center w-full fadeindown animation-duration-200">
+    <div
+        class="flex justify-content-center align-items-center pt-4 mt-4 text-center w-full fadeindown animation-duration-200">
         <span class="p-float-label">
             <InputText id="search" type="text" class="p-inputtext-lg shadow-2" :style="{ width: '50rem', textAlign: 'center' }" v-model="search" />
             <label for="search">Search here !</label>
@@ -48,14 +49,16 @@ export default {
     </div>
 
     <div class="flex mx-7 mb-2 px-5 py-6 border-round-xl shadow-5 cardbg gap-5 fadeindown animation-duration-200">
-        <CardItem :floor='selectFloor' :searchRoom='search'/>
+        <CardItem :floor='selectFloor' :searchRoom='search' />
     </div>
 
-    <div class="flex justify-content-center mx-7 my-6 px-2 py-2 border-round-xl shadow-5 cardbg fadeindown animation-duration-200">
+    <div
+        class="flex justify-content-center mx-7 my-6 px-2 py-2 border-round-xl shadow-5 cardbg fadeindown animation-duration-200">
         <div class="flex flex-column justify-content-start align-self-center card-container text-lg mx-6 my-6">
             <label class="flex flex-column w-30rem my-3 bg-transparent font-bold text-5xl text-gray-900 border-round">
                 Auditorium Room</label>
-            <label class="my-4" for="">For the event and meeting for each important things in faculty. Exclusively for IT students 🖥️</label>
+            <label class="my-4" for="">For the event and meeting for each important things in faculty. Exclusively for IT
+                students 🖥️</label>
             <ul class="flex flex-column list-none align-items-start">
                 <li class="flex my-2 align-items-center">
                     <img class="mx-2" src="../assets/img/itcirclelogo.png" alt="">
@@ -76,10 +79,27 @@ export default {
             </ul>
         </div>
         <router-link to="/detail/37">
-            <div class="flex text-lg my-8 mx-6 justify-content-center align-items-center fadeindown animation-duration-200"><img
-                    src="/src/assets/img/auditorium.jpeg" class="w-full h-full border-round-2xl my-4 mx-8 shadow-3 hover:shadow-5" alt="">
+            <div class="flex text-lg my-8 mx-6 justify-content-center align-items-center fadeindown animation-duration-200">
+                <img src="/src/assets/img/auditorium.jpeg"
+                    class="w-full h-full border-round-2xl my-4 mx-8 shadow-3 hover:shadow-5" alt="">
             </div>
         </router-link>
+    </div>
+
+    <div class="flex flex-column align-items-center mx-7 my-6 px-2 py-2 border-round-xl shadow-5 cardbg fadeindown animation-duration-200">
+        <div class="flex flex-column">
+            <label class="flex text-5xl font-bold my-4" for="">About Us</label>
+        </div>
+        <div class="flex">
+            <div class="flex flex-column justify-content-center">
+                <img class="flex justify-content-center" src="../assets/img/tun1.png" alt="">
+                <label class="flex justify-content-center" for="">UX/UI Designer</label>
+            </div>
+            <div class="flex flex-column justify-content-center">
+                <img class="flex justify-content-center" src="../assets/img/tinz2.png" alt="">
+                <label class="flex justify-content-center" for="">Back-end Developers</label>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -125,6 +145,5 @@ a:hover {
 
 a:active {
     text-decoration: none;
-}
-</style>
+}</style>
 
