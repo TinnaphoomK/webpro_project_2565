@@ -14,8 +14,8 @@ import Card from 'primevue/card'
 import Textarea from 'primevue/textarea';
 import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
-import ColumnGroup from 'primevue/columngroup';   // optional
-import Row from 'primevue/row';                   // optional
+import ColumnGroup from 'primevue/columngroup';
+import Row from 'primevue/row';
 import Password from 'primevue/password';
 import Dropdown from 'primevue/dropdown';
 import Paginator from 'primevue/paginator';

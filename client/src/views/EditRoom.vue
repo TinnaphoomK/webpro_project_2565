@@ -205,11 +205,10 @@ export default {
 </script>
   
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Mitr&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap');
 
 * {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Noto Sans Thai', sans-serif;
     margin: 0;
 }
 
@@ -218,7 +217,7 @@ body {
 }
 
 .thai {
-    font-family: 'Mitr', sans-serif;
+    font-family: 'Noto Sans Thai', sans-serif;
 }
 
 .navbg {

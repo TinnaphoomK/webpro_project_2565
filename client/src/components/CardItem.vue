@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="z-1 mr-2 ml-5 flex flex-wrap gap-5">
+    <div class="z-1 mr-2 flex flex-wrap gap-5">
       <div v-for="(value, index) in filteredRooms" :key="index" class="card border-round-2xl shadow-3 cursor-pointer"
         @click="getdetail(value)">
         <div class="flex flex-column border-round-2xl hover:shadow-5">
@@ -9,10 +9,8 @@
           </div>
           <div class="flex bg-white w-17rem h-4rem border-round-bottom-2xl">
             <div class="flex justify-content-between p-4 w-full">
-              <p class="text-sm text-gray-900 w-7">{{ value.name }}</p>
-              <p class="text-sm text-gray-900 w-4"></p>
-              <p class="text-sm text-gray-900 w-7">Floor : {{ value.floor }}</p>
-              <i class="flex pi pi-search text-gray-900 text-2xl  align-items-center"></i>
+              <p class="thai text-sm text-gray-900 w-full">{{ value.name }}</p>
+              <p class="thai text-sm text-gray-900 w-5">Floor : {{ value.floor }}</p>
             </div>
           </div>
         </div>

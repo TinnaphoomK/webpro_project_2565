@@ -14,9 +14,9 @@ export default {
             columns: [
                 { field: 'User.studentId', header: 'รหัสนักศึกษา' },
                 { field: 'Room.name', header: 'ห้องที่จอง' },
-                { field: 'createdAt', header: 'เวลาลงชื่อจอง' },
-                { field: 'dateTimeStart', header: 'เวลาที่เริ่มจอง' },
-                { field: 'dateTimeEnd', header: 'เวลาที่สิ้นสุดการจอง' },
+                { field: 'createdAt', header: 'เวลาลงชื่อจอง (ปี-เดือน-วัน)' },
+                { field: 'dateTimeStart', header: 'เวลาที่เริ่มจอง (ปี-เดือน-วัน)' },
+                { field: 'dateTimeEnd', header: 'เวลาที่สิ้นสุดการจอง (ปี-เดือน-วัน)' },
             ],
         };
     },
@@ -72,12 +72,10 @@ export default {
 </template>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Mitr&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap');
 
 * {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Noto Sans Thai', sans-serif;
     margin: 0;
 }
 
@@ -98,7 +96,7 @@ body {
 
 
 .thai {
-    font-family: 'Mitr', sans-serif;
+    font-family: 'Noto Sans Thai', sans-serif;
 }
 
 .navbg {

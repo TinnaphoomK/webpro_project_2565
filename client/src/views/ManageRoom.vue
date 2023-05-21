@@ -51,7 +51,7 @@ export default {
                 OFFICER</div>
         </div>
     </div>
-    <div class="bg-white mx-4 mt-4 py-6 shadow-5 border-round-sm fadeindown animation-duration-200">
+    <div class="bg-white mx-4 mt-4 mb-6 py-6 shadow-5 border-round-sm fadeindown animation-duration-200">
         <div class="flex justify-content-end mx-6">
             <router-link to="/reserverequest">
                 <Button class="thai bg-primary-800 hover:bg-primary-900 hover:text-200 mx-2">รายการจอง</Button>
@@ -74,11 +74,10 @@ export default {
 </template>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Mitr&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap');
 
 * {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Noto Sans Thai', sans-serif;
     margin: 0;
 }
 
@@ -87,7 +86,7 @@ body {
 }
 
 .thai {
-    font-family: 'Mitr', sans-serif;
+    font-family: 'Noto Sans Thai', sans-serif;
 }
 
 .navbg {

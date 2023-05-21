@@ -49,12 +49,12 @@ export default {
         </div>
     </div>
 
-    <div class="flex mx-7 mb-2 px-5 py-6 border-round-xl shadow-5 cardbg gap-5 fadeindown animation-duration-200">
+    <div class="flex mx-6 mb-2 px-5 py-6 border-round-xl shadow-5 cardbg gap-5 fadeindown animation-duration-200">
         <CardItem :floor='selectFloor' :searchRoom='search' />
     </div>
 
     <div
-        class="flex justify-content-center mx-7 my-6 px-2 py-2 border-round-xl shadow-5 cardbg fadeindown animation-duration-200">
+        class="flex justify-content-center mx-6 my-6 px-2 py-2 border-round-xl shadow-5 cardbg fadeindown animation-duration-200">
         <div class="flex flex-column justify-content-start align-self-center card-container text-lg mx-6 my-6">
             <label class="flex flex-column w-30rem my-3 bg-transparent font-bold text-5xl text-gray-900 border-round">
                 Auditorium Room</label>
@@ -82,13 +82,13 @@ export default {
         <router-link to="/detail/37">
             <div class="flex text-lg my-8 mx-6 justify-content-center align-items-center fadeindown animation-duration-200">
                 <img src="/src/assets/img/auditorium.jpeg"
-                    class="w-full h-full border-round-2xl my-4 mx-8 shadow-3 hover:shadow-5" alt="">
+                    class="w-full h-full border-round-2xl my-4 mx-8 shadow-3 hover:shadow-6" alt="">
             </div>
         </router-link>
     </div>
 
     <div
-        class="flex flex-column align-items-center mx-7 my-6 px-2 py-2 border-round-xl shadow-5 cardbg fadeindown animation-duration-200">
+        class="flex flex-column align-items-center mx-6 my-6 px-2 py-2 border-round-xl shadow-5 cardbg fadeindown animation-duration-200">
         <div class="flex flex-column">
             <label class="flex text-6xl font-bold my-6" for="">About Us</label>
         </div>
@@ -98,7 +98,7 @@ export default {
                     <img class="flex justify-content-center border-circle w-full shadow-3 hover:shadow-6"
                         src="../assets/img/tun1.png" alt="">
                 </a>
-                <label class="flex justify-content-center mt-4 font-bold text-lg" for="">Front-end Developers</label>
+                <label class="flex justify-content-center mt-4 font-bold text-lg" for="">Front-end Developer 💻</label>
                 <label class="flex justify-content-center mt-2 mb-6 font-bold text-lg" for="">Thampapon Prathum
                     64070046</label>
             </div>
@@ -107,7 +107,7 @@ export default {
                     <img class="flex justify-content-center border-circle w-full shadow-3 hover:shadow-6"
                         src="../assets/img/tinz2.png" alt="">
                 </a>
-                <label class="flex justify-content-center mt-4 font-bold text-lg" for="">Back-end Developers</label>
+                <label class="flex justify-content-center mt-4 font-bold text-lg" for="">Back-end Developer 💻</label>
                 <label class="flex justify-content-center mt-2 mb-6 font-bold text-lg" for="">Tinnaphoom Kirdin
                     64070152</label>
 
@@ -117,10 +117,10 @@ export default {
 </template>
 
 <style setup>
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap');
 
 * {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Noto Sans Thai', sans-serif;
     margin: 0;
 }
 
@@ -133,7 +133,7 @@ body {
 }
 
 .thai {
-    font-family: 'Mitr', sans-serif;
+    font-family: 'Noto Sans Thai', sans-serif;
 }
 
 .cardbg {

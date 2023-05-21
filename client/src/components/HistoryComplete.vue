@@ -4,7 +4,7 @@
       <div v-for="(value, index) in approvedReservations" :key="index"
         class="bg-white text-primary-800 text-xl font-bold flex align-items-center justify-content-between w-full h-6rem border-round-2xl m-2 shadow-5">
         <div
-          class="thai bg-green-700 font-normal text-lg text-white text-center align-items-center h-2rem w-7rem border-round-right-lg">
+          class="flex thai bg-green-700 font-normal text-lg text-white text-center justify-content-center align-items-center h-2rem w-7rem border-round-right-lg">
           อนุมัติ</div>
         <label class="thai text-base" for="">รหัสจอง : #{{ value.id }}</label>
         <label class="thai text-base ml-4" for="">ห้อง : {{ value.Room.name }}</label>
