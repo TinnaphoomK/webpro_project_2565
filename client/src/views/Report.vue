@@ -64,13 +64,13 @@ export default {
 
     <div class="flex flex-column justify-content-center mt-4">
       <label class="flex thai mx-8 px-4" for="">เนื้อหา</label>
-      <Textarea v-model="detail" class="flex flex-column shadow-5 justify-content-center my-4 mx-8 h-20rem cardbg"
+      <Textarea v-model="detail" class="flex flex-column shadow-5 justify-content-center my-4 mx-8 h-30rem cardbg"
         cols="100" />
     </div>
   </div>
   <div class="flex text-center justify-content-center mt-4">
     <Button @click.prevent="report()"
-      class="thai bg-primary-800 hover:bg-primary-900 justify-content-center border-round-xl text-xl w-12rem h-3rem py-5 justify-content-center shadow-5">
+      class="thai bg-primary-800 hover:bg-primary-900 hover:text-200 justify-content-center border-round-xl text-xl w-12rem h-3rem py-5 justify-content-center shadow-5">
       ยืนยันการรายงาน
     </Button>
   </div>
