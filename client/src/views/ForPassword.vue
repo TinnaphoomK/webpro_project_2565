@@ -138,10 +138,7 @@ export default {
         return {
             email: { required, email },
             newPassword: { required, minLength: minLength(8) },
-            confirmPassword: {
-                required,
-                sameAs: sameAs(() => this.newPassword)
-            }
+            confirmPassword: { required, sameAsPassword: sameAs(this.newPassword) }
         }
     },
     methods: {

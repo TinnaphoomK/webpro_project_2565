@@ -42,6 +42,10 @@ export default {
         },
         async createRoom() {
             try {
+                if(roomData.floor < 1){
+                    
+                    return false
+                }
                 console.log(this.roomData)
                 const res = await axios.post("http://localhost:3000/api/room", this.roomData, {
                     headers: {
