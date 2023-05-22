@@ -6,18 +6,11 @@
         <div
           class="flex justify-content-center thai bg-green-700 font-normal text-lg text-white text-center align-items-center h-2rem w-7rem border-round-right-lg">
           อนุมัติ</div>
+          <label class="thai text-base ml-6" for="">รหัสจอง : #{{ value.id }}</label>
         <label class="thai text-base ml-6" for="">ห้อง : {{ value.Room.name }}</label>
-        <label class="thai text-base ml-6" for="">วันที่จอง : {{ new Date(value.dateTimeStart).toLocaleDateString('th-TH', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-        }) }}</label>
-        <label class="thai text-base ml-6" for="">วันที่จอง : {{ value.dateTimeStart.slice(value.dateTimeStart.indexOf('T') + 1,
-          -5) }} - {{ value.dateTimeEnd.slice(value.dateTimeEnd.indexOf('T') + 1, -5) }}</label>
-        <label class="thai text-base ml-6" for="">รหัสจอง : #{{ value.id }}</label>
-        <a href="#">
-          <i class="pi pi-ellipsis-h mx-6 text-xl text-900"></i>
-        </a>
+        <label class="thai text-base ml-4" for="">วันที่ลงชื่อจอง : {{ value.createdAt.slice(0, 19).replace("T", " เวลา ") }}</label>
+        <label class="thai text-base ml-4" for="">วันที่จอง : {{ value.dateTimeStart.slice(0, 19).replace("T", " เวลา ") + value.dateTimeEnd.slice(10, 19).replace("T", " ถึง ") }}</label>
+        <label class="flex align-items-center thai text-base ml-4 mr-6" for="">รายละเอียด : <a @click="swal(value.detail)"><i class="flex text-xl align-items-center pi pi-info-circle mx-2 cursor-pointer hover:text-primary-600"></i></a></label>
       </div>
     </div>
   </div>
@@ -37,6 +30,16 @@ export default {
         await this.getAllReservations();
     },
     methods: {
+      swal(detail) {
+            this.$swal({
+                position: 'center',
+                icon: 'info',
+                title: detail,
+                showConfirmButton: true,
+                confirmButtonColor: '#41b882',
+                timer: false
+            })
+        },
         async getAllReservations() {
             try {
                 const res = await axios.get(`http://localhost:3000/api/reservation/admin?status=approved`);

@@ -8,10 +8,11 @@
           อนุมัติ</div>
         <label class="thai text-base" for="">รหัสจอง : #{{ value.id }}</label>
         <label class="thai text-base ml-4" for="">ห้อง : {{ value.Room.name }}</label>
-        <label class="thai text-base ml-4" for="">วันที่จอง : {{ value.dateTimeStart.slice(0, 19).replace("T", " เวลา ") + value.dateTimeEnd.slice(10, 19).replace("T", " - ") }}</label>
-        <label class="thai text-base ml-4" for="">รายละเอียด : {{ value.detail }}</label>
+        <label class="thai text-base ml-4" for="">วันที่จอง : {{ value.dateTimeStart.slice(0, 19).replace("T", " เวลา ") +
+          value.dateTimeEnd.slice(10, 19).replace("T", " - ") }}</label>
+        <label class="flex align-items-center thai text-base ml-4" for="">รายละเอียด : <a @click="swal(value.detail)"><i class="flex text-xl align-items-center pi pi-info-circle mx-2 cursor-pointer hover:text-primary-600"></i></a></label>
         <a @click.prevent="toreport(value.Room.id)">
-          <i class="pi pi-user-edit mr-4 text-2xl text-900"></i>
+          <i class="pi pi-user-edit mr-6 text-2xl cursor-pointer hover:text-primary-600"></i>
         </a>
       </div>
     </div>
@@ -37,6 +38,16 @@ export default {
     this.allreserve()
   },
   methods: {
+    swal(detail) {
+      this.$swal({
+        position: 'center',
+        icon: 'info',
+        title: detail,
+        showConfirmButton: true,
+        confirmButtonColor: '#41b882',
+        timer: false
+      })
+    },
     async allreserve() {
       try {
         const res = await axios.get(`http://localhost:3000/api/user/history/${this.userId}`)

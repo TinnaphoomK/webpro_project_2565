@@ -30,7 +30,7 @@ export default {
         <span class="p-float-label">
             <InputText id="search" type="text" class="p-inputtext-lg shadow-2"
                 :style="{ width: '50rem', textAlign: 'center' }" v-model="search" />
-            <label for="search">Search here !</label>
+            <label class="flex align-items-center" for="search"><i class="flex align-items-center pi pi-search mr-2"></i>Search here !</label>
         </span>
     </div>
     <div class="flex justify-content-between  font-bold text-2xl pt-4 mx-8 my-4 fadeindown animation-duration-200">

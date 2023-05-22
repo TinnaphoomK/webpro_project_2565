@@ -9,9 +9,9 @@
           <label class="thai text-base ml-2" for="">รหัสรายงาน : #{{ value.id }}</label>
           <label class="thai text-base ml-4" for="">ห้อง : {{ value.Room.name }}</label>
           <label class="thai text-base ml-4" for="">วันที่รายงาน : {{ value.createdAt.slice(0, 19).replace("T", " เวลา ") }}</label>
-          <label class="thai text-base ml-4" for="">รายละเอียด : {{ value.detail }}</label>
+          <label class="flex align-items-center thai text-base mx-4" for="">รายละเอียด : <a @click="swal(value.detail)"><i class="flex text-xl align-items-center pi pi-info-circle mx-2 cursor-pointer hover:text-primary-600"></i></a></label>
           <div class="flex">
-                <Button @click="done(value.id)" class="thai text-xs bg-green-700 hover:bg-green-800 h-2rem w-6rem ml-4 mr-6 justify-content-center">เสร็จสิ้น</Button>
+                <Button @click="done(value.id)" class="thai text-xs bg-green-700 hover:bg-green-800 h-2rem w-6rem ml-2 mr-6 justify-content-center">เสร็จสิ้น</Button>
             </div>
         </div>
       </div>
@@ -35,6 +35,16 @@ export default {
     this.getAllReports();
   },
   methods: {
+    swal(detail){
+      this.$swal({
+                    position: 'center',
+                    icon: 'info',
+                    title: detail,
+                    showConfirmButton: true,
+                    confirmButtonColor: '#41b882',
+                    timer: false
+                })
+    },
     async getAllReports() {
       try {
         const res = await axios.get(`http://localhost:3000/api/report/`);

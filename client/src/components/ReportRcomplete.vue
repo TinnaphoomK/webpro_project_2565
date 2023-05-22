@@ -6,10 +6,12 @@
                 <div
                     class="flex thai bg-green-700 font-normal text-lg justify-content-center text-white text-center align-items-center h-2rem w-7rem border-round-right-lg">
                     เสร็จสิ้น</div>
-                    <label class="thai text-base ml-6" for="">รหัสรายงาน : #{{ value.id }}</label>
+                <label class="thai text-base ml-6" for="">รหัสรายงาน : #{{ value.id }}</label>
                 <label class="thai text-base ml-6" for="">ห้อง : {{ value.Room.name }}</label>
                 <label class="thai text-base ml-6" for="">วันที่รายงาน : {{ value.createdAt.slice(0, 19).replace("T", " เวลา ") }}</label>
-                <label class="thai text-base ml-6 mr-8" for="">รายละเอียด : {{ value.detail }}</label>
+                <label class="flex align-items-center thai text-base ml-4 mr-6" for="">รายละเอียด : <a
+                        @click="swal(value.detail)"><i
+                            class="flex text-xl align-items-center pi pi-info-circle mx-2 cursor-pointer hover:text-primary-600"></i></a></label>
             </div>
         </div>
     </div>
@@ -30,6 +32,16 @@ export default {
         await this.getAllReports();
     },
     methods: {
+        swal(detail) {
+            this.$swal({
+                position: 'center',
+                icon: 'info',
+                title: detail,
+                showConfirmButton: true,
+                confirmButtonColor: '#41b882',
+                timer: false
+            })
+        },
         async getAllReports() {
             try {
                 const res = await axios.get("http://localhost:3000/api/report/done");
