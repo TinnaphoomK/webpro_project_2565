@@ -46,13 +46,15 @@ export default {
         console.log(err);
       }
     },
+    async tohistory() {
+      this.$router.push(`/history/${this.student}`)
+    }
   },
 };
 </script>
 
 <template>
   <Navbar></Navbar>
-  <!-- badge -->
   <div class="card">
     <div class="flex justify-content-center flex-wrap card-container mt-4">
       <div
@@ -63,9 +65,13 @@ export default {
   <div class="text-center justify-content-between mt-6">
 
     <div class="flex flex-column justify-content-center mt-4">
-      <label class="flex thai mx-8 px-4" for="">เนื้อหา</label>
+      <a @click.prevent="tohistory">
+        <Button
+          class="flex justify-content-start mx-8 bg-primary-800 hover:bg-primary-900 hover:text-200 border-round-xl text-lg w-6rem justify-content-center shadow-5 pl-2">
+          <i class="pi pi-chevron-circle-left mx-2"></i> Back</Button>
+      </a>
       <Textarea v-model="detail" class="flex flex-column shadow-5 justify-content-center my-4 mx-8 h-30rem cardbg"
-        cols="100" />
+        cols="100" placeholder="เนื้อหาที่จะรายงาน..." />
     </div>
   </div>
   <div class="flex text-center justify-content-center mt-4">
@@ -82,8 +88,8 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai&display=swap');
 
 * {
-    font-family: 'Noto Sans Thai', sans-serif;
-    margin: 0;
+  font-family: 'Noto Sans Thai', sans-serif;
+  margin: 0;
 }
 
 body {
@@ -127,4 +133,5 @@ a:hover {
 
 a:active {
   text-decoration: none;
-}</style>
+}
+</style>
